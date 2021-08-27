@@ -7,7 +7,9 @@ import { gsap, TweenLite } from 'gsap'
 
 export default function Home() {
 
-  const lineRef = useRef()
+  const el = useRef()
+  const q = gsap.utils.selector(el)
+  const tl = useRef()
 
   useEffect(() => {
     const { CSSRulePlugin } = require("gsap/CSSRulePlugin")
@@ -16,6 +18,11 @@ export default function Home() {
     gsap.registerPlugin(ScrollTrigger, CSSRulePlugin)
 
     const underline = CSSRulePlugin.getRule(".underline:after")
+
+    tl.current = gsap.timeline({ defaults: { opacity: 1, duration: 1 }})
+      .to(q('.fadeIn1'), {})
+      .to(q('.fadeIn2'), {})
+      .to(q('.fadeIn3'), {})
 
     TweenLite.set(underline, {
       cssRule: { width: 0 }
@@ -28,6 +35,8 @@ export default function Home() {
         cssRule: { width: '100%' }
       })
     })
+
+
   }, [])
 
   return (
@@ -52,13 +61,13 @@ export default function Home() {
 
         <div className={styles.heroOverlay}>
 
-          <div className="container">
+          <div className="container" ref={el}>
 
-            <h1 className={styles.heroSubtext}>Freelance web designer and developer in Watford</h1>
+            <h1 className={`${styles.heroSubtext} fadeIn2`}>Freelance web designer and developer in Watford</h1>
 
-            <span className={styles.heroText}>I create amazing websites you and your users will love</span>
+            <span className={`${styles.heroText} fadeIn1`}>I create amazing websites you and your users will love</span>
 
-            <button className={`btn btn-lg ${styles.callToAction}`}>Free Consultation</button>
+            <button className={`btn btn-lg fadeIn3 ${styles.callToAction}`}>Free Consultation</button>
 
           </div>
 
