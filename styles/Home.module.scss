@@ -59,21 +59,9 @@
 
 .heading {
   margin-top: 1em;
+  margin-bottom: 1.3em;
 }
 
-.underline {
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -0.3rem;
-    left: -0.5rem;
-    right: -0.5rem;
-    height: 0.75rem;
-    z-index: -1;
-    background-image: url('../public/images/underline.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+.aboutImage {
+  max-width: 200px;
 }
