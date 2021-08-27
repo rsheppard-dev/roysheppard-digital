@@ -4,7 +4,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const Navbar = () => {
     return (
-        <nav id="navbar" className="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        <nav id="navbar" className="navbar navbar-expand-md bg-dark navbar-dark">
             <div className="container">
                 <a className="navbar-brand" href="#">
                     <div className="logoContainer">
