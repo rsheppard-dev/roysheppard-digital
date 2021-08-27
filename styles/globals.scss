@@ -1,0 +1,43 @@
+@import 'variables';
+
+@import '../node_modules/bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/variables';
+
+$dropdown-bg: $dark;
+$dropdown-link-color: $light;
+
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: #474747;
+}
+
+section, .container {
+  margin: 0 auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+nav {
+  margin: 0 auto;
+  max-width: 1920px;
+
+  .logoContainer {
+    position: relative;
+    height: 35px;
+    width: 200px;
+  }
+
+  .navSeperator {
+    height: 2.5em;
+    width: 0.1em;
+  }
+}

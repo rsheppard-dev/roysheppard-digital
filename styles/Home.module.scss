@@ -1,0 +1,58 @@
+@use 'variables';
+
+.heroContainer {
+  height: 600px;
+  max-width: 1920px;
+  position: relative;
+}
+
+.heroImage {
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  background: rgb(128,128,128);
+  background: linear-gradient(90deg, rgba(128,128,128,0.8) 0%, rgba(128,128,128,0) 50%, rgba(128,128,128,0) 100%);
+
+  .heroSubtext {
+    z-index: 2;
+    color: #F8F0E1;
+    font-size: 1em;
+    text-shadow: 1.5px 1.5px #191919;
+  }
+  
+  .heroText {
+    display: block;
+    z-index: 2;
+    color: #fff;
+    font-weight: 500;
+    width: 16ch;
+    font-size: 2.5em;
+    text-shadow: 1.5px 1.5px #191919;
+    margin-bottom: 1em;
+  }
+  
+  .callToAction {
+    font-size: 1.8em;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    z-index: 2;
+    color: #FFFFFF;
+    border: 5px solid variables.$secondary;
+    border-radius: 0;
+    text-shadow: 1.5px 1.5px #191919;
+    box-shadow: 1.5px 1.5px #191919;
+    transition: all 0.8s ease;
+  
+    &:hover {
+      background: variables.$dark;
+      color: #fff;
+    }
+  }
+}
