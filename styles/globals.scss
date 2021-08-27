@@ -18,12 +18,16 @@ body {
   color: #474747;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 section, .container {
   margin: 0 auto;
 }
 
-* {
-  box-sizing: border-box;
+section {
+  margin-bottom: 1em;
 }
 
 nav {

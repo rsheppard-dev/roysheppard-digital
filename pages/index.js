@@ -67,28 +67,29 @@ export default function Home() {
       </section>
 
       <section className="about container">
-        <div>
-          <h1 className={styles.heading}><span className='underline' ref={lineRef}>Freelance web designer and developer in Watford</span></h1>
-        </div>
-
         <div className="row">
-          <div className="col-md-4 order-md-2 d-flex flex-column justify-content-end align-items-center">
-            <Image
-              src='/images/web-developer-watford.png'
-              width={317}
-              height={391}
-              className={`${styles.aboutImage} mb-4 mb-md-0`}
-              layout='intrinsic'
-              alt='Roy Sheppard, web designer and developer'
-            />
+
+          <div className="col-md-8">
+          
+            <h1 className={styles.heading}><span className='underline'>Freelance web designer and developer in Watford</span></h1>
+
+            <div className={styles.yellowBox}>
+              <p className={styles.aboutText}>My name is Roy Sheppard and I am a freelance web designer and full-stack web developer based in Watford, Hertfordshire.</p>
+
+              <p className={styles.aboutText}>I take pride in creating engaging websites that don't just look good, but also solve problems for you and your users.</p>
+
+              <p className={styles.aboutText}>I would love to work with you to find out what you want to get out of a website and come up with solutions to drive more customers to your business.</p>
+            </div>
           </div>
 
-          <div className="col-md-8 order-md-1">
-            <p>My name is Roy Sheppard and I am a freelance web designer and full-stack web developer based in Watford, Hertfordshire.</p>
-
-            <p>I take pride in creating engaging websites that don't just look good, but also solve problems for you and your users.</p>
-
-            <p>I would love to work with you to find out what you want to get out of a website and come up with solutions to drive more customers to your business.</p>
+          <div className="col-md-4 d-flex justify-content-center align-items-end pt-5">
+            <Image
+              src="/images/web-developer-watford.png"
+              width={317}
+              height={391}
+              className={styles.aboutImage}
+              alt="Roy Sheppard, web designer and developer"
+            />
           </div>
         </div>
 
