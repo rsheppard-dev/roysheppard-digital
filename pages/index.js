@@ -19,7 +19,7 @@ export default function Home() {
 
     const underline = CSSRulePlugin.getRule(".underline:after")
 
-    tl.current = gsap.timeline({ defaults: { opacity: 1, duration: 1 }})
+    tl.current = gsap.timeline({ defaults: { opacity: 1, duration: 1 } })
       .to(q('.fadeIn1'), {})
       .to(q('.fadeIn2'), {})
       .to(q('.fadeIn3'), {})
@@ -29,13 +29,12 @@ export default function Home() {
     })
 
     ScrollTrigger.create({
-      trigger: '.about',
+      trigger: '#about-section',
       start: 'top center',
       animation: TweenLite.to(underline, 1.5, {
         cssRule: { width: '100%' }
       })
     })
-
 
   }, [])
 
@@ -75,34 +74,44 @@ export default function Home() {
 
       </section>
 
-      <section className="about container">
-        <div className="row">
+      <section id="about-section" className="container mb-5">
 
-          <div className="col-md-8">
-          
-            <h1 className={styles.heading}><span className='underline'>Freelance web designer and developer in Watford</span></h1>
+        <h1 className={styles.heading}><span className='underline'>Freelance Web Designer and Developer in Watford</span></h1>
 
-            <div className={styles.yellowBox}>
-              <p className={styles.aboutText}>My name is Roy Sheppard and I am a freelance web designer and full-stack web developer based in Watford, Hertfordshire.</p>
-
-              <p className={styles.aboutText}>I take pride in creating engaging websites that don't just look good, but also solve problems for you and your users.</p>
-
-              <p className={styles.aboutText}>I would love to work with you to find out what you want to get out of a website and come up with solutions to drive more customers to your business.</p>
-            </div>
+        <div className="row"><div className="col-md-4 order-md-1 d-flex justify-content-center">
+            <Image
+              src='/images/web-developer-watford.png'
+              alt='Roy Sheppard - website designer and developer'
+              width={271}
+              height={245}
+              className='pb-4'
+            />
           </div>
 
-          <div className="col-md-4 d-flex justify-content-center align-items-end pt-5">
-            <Image
-              src="/images/web-developer-watford.png"
-              width={317}
-              height={391}
-              className={styles.aboutImage}
-              alt="Roy Sheppard, web designer and developer"
-            />
+          <div className="col-md-8 order-md-12">
+            <div className={styles.aboutText}>
+              <p>My name is Roy Sheppard and I am a freelance web designer and full-stack web developer based in Watford, Hertfordshire.</p>
+
+              <p>I take pride in creating engaging websites that don't just look good, but also solve problems for you and your users.</p>
+
+              <p className="mb-5">I would love to work with you to find out what you want to get out of a website and come up with solutions to drive more customers to your business.</p>
+
+              <Image
+                src='/images/signature.svg'
+                alt='Roy Sheppard signature'
+                width={200}
+                height={100}
+              />
+            </div>
           </div>
         </div>
 
+      </section>
 
+      <section id="services-section" className={styles.subSection}>
+        <div className="container">
+          <h1 className={styles.heading}>Web Design and Development Services</h1>
+        </div>
       </section>
 
       <Script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' />

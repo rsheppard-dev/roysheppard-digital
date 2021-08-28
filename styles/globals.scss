@@ -26,10 +26,6 @@ section, .container {
   margin: 0 auto;
 }
 
-section {
-  margin-bottom: 1em;
-}
-
 nav {
   margin: 0 auto;
   max-width: 1920px;
@@ -52,9 +48,9 @@ nav {
   &::after {
     content: '';
     position: absolute;
-    bottom: -0.3rem;
-    left: -0.5rem;
-    right: -0.5rem;
+    bottom: -0.2rem;
+    left: -0.4rem;
+    right: -0.4rem;
     height: 0.75rem;
     z-index: -1;
     background-image: url('../public/images/underline.svg');
