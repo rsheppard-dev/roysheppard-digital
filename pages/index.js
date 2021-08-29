@@ -1,15 +1,13 @@
-import { useRef, useEffect } from 'react'
+import { useEffect } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import Script from 'next/script'
 import { gsap, TweenLite } from 'gsap'
+import About from '../components/About'
+import Hero from '../components/Hero'
+import Services from '../components/Services'
 
 export default function Home() {
-
-  const el = useRef()
-  const q = gsap.utils.selector(el)
-  const tl = useRef()
 
   useEffect(() => {
     const { CSSRulePlugin } = require("gsap/CSSRulePlugin")
@@ -19,11 +17,6 @@ export default function Home() {
 
     const underline = CSSRulePlugin.getRule(".underline:after")
 
-    tl.current = gsap.timeline({ defaults: { opacity: 1, duration: 1 } })
-      .to(q('.fadeIn1'), {})
-      .to(q('.fadeIn2'), {})
-      .to(q('.fadeIn3'), {})
-
     TweenLite.set(underline, {
       cssRule: { width: 0 }
     })
@@ -31,7 +24,7 @@ export default function Home() {
     ScrollTrigger.create({
       trigger: '#about-section',
       start: 'top center',
-      animation: TweenLite.to(underline, 1.5, {
+      animation: TweenLite.to(underline, 1, {
         cssRule: { width: '100%' }
       })
     })
@@ -46,73 +39,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section id="hero-section" className={`${styles.heroContainer} d-none d-md-block`}>
+      <Hero />
 
-        <Image
-          src='/images/web-designer-watford.png'
-          className={styles.heroImage}
-          alt="Roy Sheppard - Freelance web designer and full-stack developer"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          priority
-        />
+      <About />
 
-        <div className={styles.heroOverlay}>
-
-          <div className="container" ref={el}>
-
-            <h1 className={`${styles.heroSubtext} fadeIn2`}>Freelance web designer and developer in Watford</h1>
-
-            <span className={`${styles.heroText} fadeIn1`}>I create amazing websites you and your users will love</span>
-
-            <button className={`btn btn-lg fadeIn3 ${styles.callToAction}`}>Free Consultation</button>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      <section id="about-section" className="container mb-5">
-
-        <h1 className={styles.heading}><span className='underline'>Freelance Web Designer and Developer in Watford</span></h1>
-
-        <div className="row"><div className="col-md-4 order-md-1 d-flex justify-content-center">
-            <Image
-              src='/images/web-developer-watford.png'
-              alt='Roy Sheppard - website designer and developer'
-              width={271}
-              height={245}
-              className='pb-4'
-            />
-          </div>
-
-          <div className="col-md-8 order-md-12">
-            <div className={styles.aboutText}>
-              <p>My name is Roy Sheppard and I am a freelance web designer and full-stack web developer based in Watford, Hertfordshire.</p>
-
-              <p>I take pride in creating engaging websites that don't just look good, but also solve problems for you and your users.</p>
-
-              <p className="mb-5">I would love to work with you to find out what you want to get out of a website and come up with solutions to drive more customers to your business.</p>
-
-              <Image
-                src='/images/signature.svg'
-                alt='Roy Sheppard signature'
-                width={200}
-                height={100}
-              />
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-      <section id="services-section" className={styles.subSection}>
-        <div className="container">
-          <h1 className={styles.heading}>Web Design and Development Services</h1>
-        </div>
-      </section>
+      <Services />
 
       <Script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' />
     </>

@@ -66,6 +66,22 @@
 }
 
 .subSection {
-  background: variables.$secondary;
   max-width: 1920px;
+  height: 20em;
+  background: variables.$secondary;
+  position: relative;
+  z-index: -2;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 20em;
+    left: 0;
+    width: 150%;
+    height: 100%;
+    background: variables.$secondary;
+    transform: skew(-85deg);
+    transform-origin: top;
+    z-index: -1;
+  }
 }
