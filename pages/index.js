@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
-import styles from '../styles/Home.module.scss'
 import Script from 'next/script'
 import { gsap, TweenLite } from 'gsap'
 import About from '../components/About'
