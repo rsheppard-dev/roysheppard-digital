@@ -71,7 +71,7 @@
   background: variables.$secondary;
   position: relative;
   z-index: -2;
-  overflow: hidden;
+  overflow-x: hidden;
 
   &:after {
     content: "";
