@@ -23,7 +23,7 @@ const Services = () => {
                                     Whether you want me to design you a brand new website or redesign your existing website. Get in touch so we can discuss your specific needs.
                                 </p>
 
-                                <a href="#" class="btn btn-primary rounded-lg mt-auto">Learn more</a>
+                                <a href="#" className="btn btn-primary rounded-lg mt-auto">Learn more</a>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@ const Services = () => {
                                     If you need custom features on your website I can help. This could be a customer area that requires users to login to see unique data, or a schedule for you and your employees when booking client appointments.
                                 </p>
 
-                                <a href="#" class="btn btn-primary rounded-lg mt-auto">Learn more</a>
+                                <a href="#" className="btn btn-primary rounded-lg mt-auto">Learn more</a>
                             </div>
                         </div>
                     </div>
