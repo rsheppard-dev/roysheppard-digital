@@ -63,7 +63,7 @@ const Services = () => {
                                     An online store can really boost your business. More people are shopping online than ever before. Get in touch to learn about how I can help.
                                 </p>
 
-                                <a href="#" class="btn btn-primary rounded-lg mt-auto">Learn more</a>
+                                <a href="#" className="btn btn-primary rounded-lg mt-auto">Learn more</a>
                             </div>
                         </div>
                     </div>
