@@ -1,37 +1,55 @@
+import { useEffect } from 'react'
+import { gsap, TweenLite } from 'gsap'
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 
 const About = () => {
+
+  useEffect(() => {
+    const { CSSRulePlugin } = require("gsap/CSSRulePlugin")
+    const { ScrollTrigger } = require("gsap/ScrollTrigger")
+
+    gsap.registerPlugin(ScrollTrigger, CSSRulePlugin)
+
+    const underline = CSSRulePlugin.getRule(".underline:after")
+
+    TweenLite.set(underline, {
+      cssRule: { width: 0 }
+    })
+
+    ScrollTrigger.create({
+      trigger: '#about-section',
+      start: 'top center',
+      animation: TweenLite.to(underline, 1, {
+        cssRule: { width: '100%' }
+      })
+    })
+
+  }, [])
 
   return (
     <section id="about-section" className="container mb-5">
 
       <h1 className={styles.heading}><span className='underline'>Freelance Web Designer and Developer in Watford</span></h1>
 
-      <div className="row"><div className="col-md-4 order-md-1 d-flex justify-content-center">
+      <div className="row"><div className="col-md-4 order-md-1 d-flex justify-content-center align-items-center">
         <Image
-          src='/images/web-developer-watford.png'
+          src='/images/web-developer-watford.jpg'
           alt='Roy Sheppard - website designer and developer'
           width={250}
           height={250}
-          className='pb-4'
+          className={`${styles.aboutImage} mb-4 mb-md-0`}
         />
       </div>
 
-        <div className="col-md-8 order-md-12">
+        <div className="col-md-8 order-md-12 d-flex align-items-center">
           <div className={styles.aboutText}>
             <p>My name is Roy Sheppard and I am a freelance web designer and full-stack web developer based in Watford, Hertfordshire.</p>
 
             <p>I take pride in creating engaging websites that don't just look good, but also solve problems for you and your users.</p>
 
-            <p className="mb-5">I would love to work with you to find out what you want to get out of a website and come up with solutions to drive more customers to your business.</p>
+            <p>I would love to work with you to find out what you want to get out of a website and come up with solutions to drive more customers to your business.</p>
 
-            <Image
-              src='/images/signature.svg'
-              alt='Roy Sheppard signature'
-              width={200}
-              height={100}
-            />
           </div>
         </div>
       </div>

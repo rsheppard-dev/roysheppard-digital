@@ -1,34 +1,11 @@
-import { useEffect } from 'react'
 import Head from 'next/head'
 import Script from 'next/script'
-import { gsap, TweenLite } from 'gsap'
 import About from '../components/About'
+import Faq from '../components/Faq'
 import Hero from '../components/Hero'
 import Services from '../components/Services'
 
-export default function Home() {
-
-  useEffect(() => {
-    const { CSSRulePlugin } = require("gsap/CSSRulePlugin")
-    const { ScrollTrigger } = require("gsap/ScrollTrigger")
-
-    gsap.registerPlugin(ScrollTrigger, CSSRulePlugin)
-
-    const underline = CSSRulePlugin.getRule(".underline:after")
-
-    TweenLite.set(underline, {
-      cssRule: { width: 0 }
-    })
-
-    ScrollTrigger.create({
-      trigger: '#about-section',
-      start: 'top center',
-      animation: TweenLite.to(underline, 1, {
-        cssRule: { width: '100%' }
-      })
-    })
-
-  }, [])
+export default function Home({ faq }) {
 
   return (
     <>
@@ -44,7 +21,20 @@ export default function Home() {
 
       <Services />
 
+      <Faq faq={faq} />
+
       <Script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' />
     </>
   )
+}
+
+export async function getStaticProps(context) {
+  const res = await fetch('https://salty-eyrie-16291.herokuapp.com/frequently-asked-questions')
+  const faq = await res.json()
+
+  return {
+      props: {
+          faq
+      }
+  }
 }

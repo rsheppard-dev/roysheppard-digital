@@ -2,12 +2,13 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 
 const Services = () => {
+
     return (
-        <section id="services-section" className={styles.subSection}>
+        <section id="services-section">
             <div className="container">
                 <h1 className={styles.heading}>Web Design and Development Services</h1>
 
-                <div className="row d-flex justify-content-between g-4">
+                <div className="row d-flex justify-content-center g-4">
                     <div className="col-md-6 col-lg-4">
                         <div className="card text-center rounded-lg h-100">
                             <div className="card-body d-flex flex-column">
