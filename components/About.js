@@ -34,10 +34,10 @@ const About = () => {
 
       <div className="row"><div className="col-md-4 order-md-1 d-flex justify-content-center align-items-center">
         <Image
-          src='/images/web-developer-watford.jpg'
+          src='/images/web-developer-watford.png'
           alt='Roy Sheppard - website designer and developer'
-          width={250}
-          height={250}
+          width={469}
+          height={469}
           className={`${styles.aboutImage} mb-4 mb-md-0`}
         />
       </div>
