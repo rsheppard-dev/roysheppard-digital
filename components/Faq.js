@@ -11,10 +11,10 @@ const fetcher = async url => {
 const Faq = (props) => {
     const url = 'https://salty-eyrie-16291.herokuapp.com/frequently-asked-questions'
 
-    const { data, error } = useSWR(url, fetcher, { initialData: props })
+    const { data, error } = useSWR(url, fetcher, { initialData: props.faq })
 
     if (error) return <div className="container my-3">Failed to load</div>
-    if (!data) return <div className="container my-3">Loading...</div>
+    if (!data) return <div className="container my-3">Loading questions...</div>
 
     return (
         <section id="faq-section" className="container">
