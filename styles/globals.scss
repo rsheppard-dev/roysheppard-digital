@@ -3,63 +3,181 @@
 @import '../node_modules/bootstrap/scss/functions';
 @import '../node_modules/bootstrap/scss/variables';
 
-$dropdown-bg: $dark;
-$dropdown-link-color: $secondary;
+$dropdown-bg: $light;
+$dropdown-link-color: $dark;
 
 $accordion-button-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$accordion-icon-color}' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z'/></svg>");
 
 $accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$accordion-icon-color}' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z'/></svg>");
 
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 html,
 body {
   padding: 0;
-  margin: 0;
   font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  color: #474747;
+  font-weight: 300;
+  color: $dark;
+  background-color: $light;
+}
+
+body {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 0;
+
+  background-image: url('../public/images/background.svg');
+  background-repeat: no-repeat;
+  background-position: 0 -100px;
+  background-size: 1920px 768px;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 * {
   box-sizing: border-box;
 }
 
+a {
+  color: $link;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 1rem;
+  color: $dark-accent;
+  margin: 1em 0;
+  font-weight: 500;
+}
+
+.heading-large {
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5vw, 3.2rem);
+}
+
+.heading-medium {
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  margin: 1em 0;
+}
+
+.heading-small {
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin: 1em 0;
+}
+
+.heading-xsmall {
+  font-weight: 500;
+  font-size: 1rem;
+  color: $link;
+}
+
+.button {
+  position: relative;
+  display: block;
+  color: $dark;
+  border: 3px solid $dark-accent;
+  font-weight: 400;
+  background: none;
+  padding: 0.5em;
+  cursor: pointer;
+  margin: 1em 0;
+  transition: all 0.3s ease-in-out;
+
+  &:after {
+    content: "";
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    background: $primary;
+    width: 100%;
+    height: 100%;
+    top: 0.2em;
+    left: 0;
+    z-index: -1;
+  }
+
+  &:hover {
+    border-color: $dark;
+  }
+}
+
+.button-large {
+  font-size: 1.2rem;
+}
+
+.link {
+  position: relative;
+  transition: all 0.2s ease-in-out;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -0.2em;
+    width: 0px;
+    height: 2px;
+    transition: all 0.2s ease-in-out;
+    transition-duration: 0.75s;
+    opacity: 0;
+    background-color: $dark-accent;
+  }
+
+  &:before {
+    left: 50%;
+  }
+
+  &:after {
+    right: 50%;
+  }
+
+  &:hover {
+    &:before,
+    &:after {
+      width: 100%;
+      opacity: 1;
+      width: 50%;
+    }
+  }
+}
+
+.underline {
+  --scaleX: 0;
+  --opacity: 0;
+  position: relative;
+  
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 6px;
+    width: 100%;
+    height: 3px;
+    opacity: var(--opacity);
+    background-color: $dark-accent;
+    transform: scale(var(--scaleX), 1);
+    transform-origin: left top;
+  }
+}
+
 section, .container {
   margin: 0 auto;
+}
+
+section {
+  margin-bottom: 2.5em;
 }
 
 nav {
   margin: 0 auto;
   max-width: 1920px;
 
-  .logoContainer {
-    position: relative;
-    height: 35px;
-    width: 200px;
-  }
-
   .navSeperator {
     height: 2.5em;
     width: 0.2em;
-  }
-}
-
-.underline {
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: -0.4rem;
-    right: -0.4rem;
-    height: 0.5rem;
-    z-index: -1;
-    background-image: url('../public/images/underline.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
   }
 }
 

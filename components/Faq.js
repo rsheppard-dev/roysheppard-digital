@@ -11,7 +11,7 @@ const fetcher = async url => {
 const Faq = (props) => {
     const url = 'https://salty-eyrie-16291.herokuapp.com/frequently-asked-questions'
 
-    const { data, error } = useSWR(url, fetcher, { initialData: props.faq })
+    const { data, error } = useSWR(url, fetcher, { fallbackData: props.faq })
 
     if (error) return <div className="container my-3">Failed to load</div>
     if (!data) return <div className="container my-3">Loading questions...</div>
@@ -19,7 +19,7 @@ const Faq = (props) => {
     return (
         <section id="faq-section" className="container">
 
-            <h2 className={styles.heading}>Frequently Asked Questions</h2>
+            <h2 className="heading-medium">Frequently asked questions</h2>
 
             <div className="accordion accordion-flush" id="accordionFAQ">
                 {data.map(item => (

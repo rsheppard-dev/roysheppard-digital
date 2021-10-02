@@ -1,5 +1,3 @@
-@use 'variables';
-
 .heroSubtext {
   opacity: 0;
   z-index: 2;
@@ -26,18 +24,17 @@
 
 .aboutText {
   position: relative;
-
-  &:before {
-    background: variables.$secondary;
-    content: "";
-    position: absolute;
-    top: 1em;
-    left: 1em;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: 0.5;
-  }
+}
+.aboutText:before {
+  background: #D2C7B5;
+  content: "";
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.5;
 }
 
 .question {
@@ -45,5 +42,6 @@
 }
 
 .question:hover {
-  border-left: 8px solid variables.$primary;
+  border-left: 8px solid #E7E1DB;
 }
+/*# sourceMappingURL=Home.module.css.map */

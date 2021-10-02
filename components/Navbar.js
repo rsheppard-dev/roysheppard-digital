@@ -4,18 +4,20 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const Navbar = () => {
     return (
-        <nav id="navbar" className="navbar navbar-expand-md bg-dark navbar-dark">
+        <nav id="navbar" className="navbar navbar-expand-md navbar-light">
             <div className="container">
                 <a className="navbar-brand" href="#">
-                    <div className="logoContainer">
+                    
                         <Image
                             src={logo}
                             alt="Roy Sheppard Digital"
-                            layout="fill"
-                            objectFit="contain"
+                            layout="fixed"
+                            width={175}
+                            height={50}
                             priority
+                            className="dark"
                         />
-                    </div>
+                    
                 </a>
 
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,13 +29,13 @@ const Navbar = () => {
                     <ul className="navbar-nav ms-auto">
                         <div className="navSeperator bg-primary me-2 d-none d-md-inline-block"></div>
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Home</a>
+                            <a className="nav-link link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">About</a>
+                            <a className="nav-link link" href="#">About</a>
                         </li>
                         <li className="nav-item dropdown">
-                            <a className="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services <i className="bi bi-arrow-down-circle" /></a>
+                            <a className="nav-link link" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services <i className="bi bi-arrow-down-circle" /></a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a className="dropdown-item" href="#">Web Design</a></li>
                                 <li><a className="dropdown-item" href="#">e-Commerce</a></li>
@@ -41,10 +43,10 @@ const Navbar = () => {
                             </ul>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">FAQ</a>
+                            <a className="nav-link link" href="#">FAQ</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Contact</a>
+                            <a className="nav-link link" href="#">Contact</a>
                         </li>
                     </ul>
                 </div>

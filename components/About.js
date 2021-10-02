@@ -1,58 +1,66 @@
-import { useEffect } from 'react'
-import { gsap, TweenLite } from 'gsap'
 import Image from 'next/image'
-import styles from '../styles/Home.module.scss'
+import animateUnderline from '../utils/animateUnderline'
 
 const About = () => {
 
-  useEffect(() => {
-    const { CSSRulePlugin } = require("gsap/CSSRulePlugin")
-    const { ScrollTrigger } = require("gsap/ScrollTrigger")
-
-    gsap.registerPlugin(ScrollTrigger, CSSRulePlugin)
-
-    const underline = CSSRulePlugin.getRule(".underline:after")
-
-    TweenLite.set(underline, {
-      cssRule: { width: 0 }
-    })
-
-    ScrollTrigger.create({
-      trigger: '#about-section',
-      start: 'top center',
-      animation: TweenLite.to(underline, 1, {
-        cssRule: { width: '100%' }
-      })
-    })
-
-  }, [])
+  animateUnderline();
 
   return (
-    <section id="about-section" className="container mb-5">
+    <section id="about-section" className="container">
+      <h2 className="heading-medium">Freelance <span className="underline">web designer</span> and <span className="underline">developer</span> in Watford</h2>
 
-      <h1 className={styles.heading}><span className='underline'>Freelance Web Designer and Developer in Watford</span></h1>
+      <p>My name is Roy Sheppard and I am a freelance web designer and full-stack web developer based in Watford, Hertfordshire.</p>
 
-      <div className="row"><div className="col-md-4 order-md-1 d-flex justify-content-center align-items-center">
-        <Image
-          src='/images/web-developer-watford.png'
-          alt='Roy Sheppard - website designer and developer'
-          width={469}
-          height={469}
-          className={`${styles.aboutImage} mb-4 mb-md-0`}
-        />
-      </div>
+      <p>I take pride in creating engaging websites that don't just look good, but also solve problems for you and your users.</p>
 
-        <div className="col-md-8 order-md-12 d-flex align-items-center">
-          <div className={styles.aboutText}>
-            <p>My name is Roy Sheppard and I am a freelance web designer and full-stack web developer based in Watford, Hertfordshire.</p>
+      <p>I would love to work with you to find out what you want to get out of a website and come up with solutions to drive more customers to your business.</p>
 
-            <p>I take pride in creating engaging websites that don't just look good, but also solve problems for you and your users.</p>
+      <div className="row">
+        <div className="col-auto my-auto">
+          <h3 className="heading-small">Latest work</h3>
+        </div>
 
-            <p>I would love to work with you to find out what you want to get out of a website and come up with solutions to drive more customers to your business.</p>
-
-          </div>
+        <div className="col my-auto">
+          <Image
+            src='/images/down-arrow.svg'
+            alt='Latest work below'
+            width={40}
+            height={50}
+            layout='fixed'
+          />
         </div>
       </div>
+
+      <div className="row">
+        <div className="col-md-auto d-flex flex-column justify-content-center mb-4 mb-md-0 order-md-2">
+
+          <Image
+            src='/images/browser-top.svg'
+            alt='Studio120 website'
+            width={318}
+            height={30}
+            layout='fixed'
+          />
+
+          <Image
+            src='/images/web-design-portfolio.png'
+            alt='Studio120 website'
+            width={318}
+            height={188}
+            layout='fixed'
+          />
+        </div>
+
+        <div className="col-md my-auto order-md-1">
+          <h4 className="heading-xsmall mb-3">Studio120</h4>
+
+          <p>A new barber shop that had just opened in Bushey was after a website to help attract new clients.</p>
+
+          <p>The owner was also launching a range of his own products including hair products, clothing and fragrances and wanted his own platform to sell them online.</p>
+        </div>
+      </div>
+
+      <p><a className="link" href="#">View more projects...</a></p>
 
     </section>
   );
