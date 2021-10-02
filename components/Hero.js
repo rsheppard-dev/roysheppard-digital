@@ -15,17 +15,17 @@ const Hero = () => {
             .to(q('.fadeIn2'), {})
             .to(q('.fadeIn3'), {})
 
-    }, [])
+    }, [q])
 
     return (
         <section id="hero-section" className={`${styles.heroContainer} container`}>
             <div className="row">
                 <div className="col-lg my-auto">
-                    <h1>Freelance web designer and developer in Watford</h1>
+                    <h1 className="fadeIn2">Freelance web designer and developer in Watford</h1>
 
-                    <span className="heading-large">I create amazing websites you and your users will love</span>
+                    <span className="heading-large fadeIn1">I create amazing websites you and your users will love</span>
 
-                    <button className="button button-large">Free consultation</button>
+                    <button className="button button-large fadeIn3">Free consultation</button>
                 </div>
 
                 <div className="col-lg my-auto d-none d-lg-block">

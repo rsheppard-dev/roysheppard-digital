@@ -9,7 +9,7 @@ const Services = () => {
         <section id="services-section" className="container">
             <h2 className="heading-medium"><span className="underline">Web design</span> and <span className="underline">development</span> services</h2>
 
-            <div class="row row-cols-1 row-cols-lg-2 g-4">
+            <div className="row row-cols-1 row-cols-lg-2 g-4">
                 <div className="col">
 
                     <div className="card h-100 bg-transparent">
