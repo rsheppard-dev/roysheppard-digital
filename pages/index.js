@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Script from 'next/script'
 import About from '../components/About'
+import Contact from '../components/Contact'
 import Faq from '../components/Faq'
 import Hero from '../components/Hero'
 import Services from '../components/Services'
@@ -22,6 +23,8 @@ export default function Home({ faq }) {
       <Services />
 
       <Faq faq={faq} />
+
+      <Contact />
 
       <Script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' />
     </>

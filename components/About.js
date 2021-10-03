@@ -7,11 +7,11 @@ const About = () => {
 
   return (
     <section id="about-section" className="container">
-      <h2 className="heading-medium">Freelance <span className="underline">web designer</span> and <span className="underline">developer</span> in Watford</h2>
+      <h2 className="heading-medium">Do you want to drive <span className="underline">more customers</span> to your business with a <span className="underline">digital presence?</span></h2>
 
       <p>My name is Roy Sheppard and I am a freelance web designer and full-stack web developer based in Watford, Hertfordshire.</p>
 
-      <p>I take pride in creating engaging websites that don't just look good, but also solve problems for you and your users.</p>
+      <p>I take pride in creating engaging websites that don't just look good, but are fast, responsive and convert vistors into customers.</p>
 
       <p>I would love to work with you to find out what you want to get out of a website and come up with solutions to drive more customers to your business.</p>
 

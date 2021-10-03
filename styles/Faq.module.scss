@@ -1,0 +1,9 @@
+@use 'variables';
+
+.question {
+  border-left: 8px solid variables.$light;
+}
+
+.question:hover {
+  border-left: 8px solid variables.$dark-accent;
+}

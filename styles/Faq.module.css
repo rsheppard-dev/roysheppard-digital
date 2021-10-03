@@ -1,0 +1,8 @@
+.question {
+  border-left: 8px solid #F5F5F5;
+}
+
+.question:hover {
+  border-left: 8px solid #CBBFA8;
+}
+/*# sourceMappingURL=Faq.module.css.map */
