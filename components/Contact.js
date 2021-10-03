@@ -11,26 +11,26 @@ const Contact = () => {
                 <div className="col-md-6 d-flex flex-column justify-content-center">
                     <form>
                         <div className="mb-3">
-                            <label htmlFor="name" class="form-label">Full name</label>
-                            <input type="text" class="form-control" id="name" />
+                            <label htmlFor="name" className="form-label">Full name</label>
+                            <input type="text" className="form-control" id="name" />
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" />
+                            <label htmlFor="email" className="form-label">Email</label>
+                            <input type="email" className="form-control" id="email" />
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="phone" class="form-label">Phone number</label>
-                            <input type="phone" class="form-control" id="phone" />
+                            <label htmlFor="phone" className="form-label">Phone number</label>
+                            <input type="phone" className="form-control" id="phone" />
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" rows="3" />
+                            <label htmlFor="message" className="form-label">Message</label>
+                            <textarea className="form-control" id="message" rows="3" />
                         </div>
 
-                        <button type="submit" class="button">Send message</button>
+                        <button type="submit" className="button">Send message</button>
                     </form>
                 </div>
 
