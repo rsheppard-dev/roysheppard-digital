@@ -8,44 +8,18 @@ const Contact = () => {
 
 
             <div className="row">
-                <div className="col-md-6 d-flex flex-column justify-content-center">
-                    <form>
-                        <div className="mb-3">
-                            <label htmlFor="name" className="form-label">Full name</label>
-                            <input type="text" className="form-control" id="name" />
-                        </div>
+                <div className="col-md-6 justify-content-center align-items-center d-flex flex-column flex-sm-row flex-md-column order-md-2 mb-3">
 
-                        <div className="mb-3">
-                            <label htmlFor="email" className="form-label">Email</label>
-                            <input type="email" className="form-control" id="email" />
-                        </div>
 
-                        <div className="mb-3">
-                            <label htmlFor="phone" className="form-label">Phone number</label>
-                            <input type="phone" className="form-control" id="phone" />
-                        </div>
+                    <Image
+                        src='/images/web-designer-contact.png'
+                        alt='Roy Sheppard'
+                        width={260}
+                        height={260}
+                        layout='intrinsic'
+                        className='p-3'
+                    />
 
-                        <div className="mb-3">
-                            <label htmlFor="message" className="form-label">Message</label>
-                            <textarea className="form-control" id="message" rows="3" />
-                        </div>
-
-                        <button type="submit" className="button">Send message</button>
-                    </form>
-                </div>
-
-                <div className="col-md-6  align-items-center d-flex flex-md-column">
-
-                    
-                        <Image
-                            src='/images/web-designer-contact.png'
-                            alt='Roy Sheppard'
-                            width={250}
-                            height={250}
-                            layout='intrinsic'
-                            className='p-3'
-                        />
-                    
 
                     <div className={styles.contactBox}>
                         <div className="row">
@@ -101,6 +75,33 @@ const Contact = () => {
                     </div>
 
                 </div>
+
+                <div className="col-md-6 d-flex flex-column justify-content-center order-md-1">
+                    <form>
+                        <div className="mb-3">
+                            <label htmlFor="name" className="form-label">Full name</label>
+                            <input type="text" className="form-control" id="name" />
+                        </div>
+
+                        <div className="mb-3">
+                            <label htmlFor="email" className="form-label">Email</label>
+                            <input type="email" className="form-control" id="email" />
+                        </div>
+
+                        <div className="mb-3">
+                            <label htmlFor="phone" className="form-label">Phone number</label>
+                            <input type="phone" className="form-control" id="phone" />
+                        </div>
+
+                        <div className="mb-3">
+                            <label htmlFor="message" className="form-label">Message</label>
+                            <textarea className="form-control" id="message" rows="3" />
+                        </div>
+
+                        <button type="submit" className="button">Send message</button>
+                    </form>
+                </div>
+
             </div>
 
         </section >
