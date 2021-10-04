@@ -6,7 +6,6 @@ const Contact = () => {
         <section id="contact-section" className="container">
             <h2 className="heading-medium">Get in touch</h2>
 
-
             <div className="row">
                 <div className="col-md-6 justify-content-center align-items-center d-flex flex-column flex-sm-row flex-md-column order-md-2 mb-3">
 
@@ -73,7 +72,7 @@ const Contact = () => {
                             </div>
                         </div>
                     </div>
-
+                    <hr className="section-break" />
                 </div>
 
                 <div className="col-md-6 d-flex flex-column justify-content-center order-md-1">

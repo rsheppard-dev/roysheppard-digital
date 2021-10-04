@@ -1,0 +1,21 @@
+.heading {
+    font-weight: 400;
+    font-size: 0.8em;
+}
+
+.navItem {
+    font-weight: 300;
+    font-size: 0.8em;
+}
+
+.socialItem {
+    display: flex;
+
+    li {
+        margin-right: 10px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

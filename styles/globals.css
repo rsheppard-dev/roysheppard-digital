@@ -12481,31 +12481,40 @@ h1, .h1 {
   font-weight: 500;
 }
 
+p {
+  line-height: 1.9;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  margin: 0 auto;
+}
+
 .heading-large {
   font-weight: 700;
   font-size: clamp(2.4rem, 5vw, 3.2rem);
+  margin: 1em 0;
+  display: block;
 }
 
 .heading-medium {
   font-weight: 600;
   font-size: clamp(1.8rem, 3vw, 2.2rem);
-  margin: 1em 0;
+  margin-bottom: 1em;
+  margin-top: 2em;
 }
 
 .heading-small {
   font-weight: 400;
   font-size: 1.5rem;
-  margin: 1em 0;
-}
-
-.heading-xsmall {
-  font-weight: 500;
-  font-size: 1rem;
-  color: #AB5B5B;
 }
 
 .button {
-  position: relative;
   display: block;
   color: #474747;
   border: 3px solid #CBBFA8;
@@ -12517,28 +12526,99 @@ h1, .h1 {
   margin: 1em 0;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-}
-.button:after {
-  content: "";
-  position: absolute;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  border: none;
-  background: #E7E1DB;
-  width: 100%;
-  height: 100%;
-  top: 0.3em;
-  left: 0;
-  z-index: -1;
+  background-image: -webkit-gradient(linear, left top, left bottom, to(#E7E1DB));
+  background-image: linear-gradient(#E7E1DB 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: 0 6px;
 }
 .button:hover {
-  top: 0.3em;
+  -webkit-animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+          animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
 }
 
 .button-large {
   font-size: 1.2rem;
+  -webkit-animation: btnWiggle 5s infinite;
+  animation: btnWiggle 5s infinite;
 }
 
+@-webkit-keyframes btnWiggle {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  2% {
+    -webkit-transform: rotate(-1deg);
+  }
+  3.5% {
+    -webkit-transform: rotate(1deg);
+  }
+  5% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+@keyframes btnWiggle {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  2% {
+    -webkit-transform: rotate(-1deg);
+  }
+  3.5% {
+    -webkit-transform: rotate(1deg);
+  }
+  5% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes shake {
+  10%, 90% {
+    -webkit-transform: translate3d(-1px, 0, 0);
+            transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    -webkit-transform: translate3d(-4px, 0, 0);
+            transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
+  }
+}
+@keyframes shake {
+  10%, 90% {
+    -webkit-transform: translate3d(-1px, 0, 0);
+            transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    -webkit-transform: translate3d(-4px, 0, 0);
+            transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
+  }
+}
 .link {
   position: relative;
   -webkit-transition: all 0.2s ease-in-out;
@@ -12570,26 +12650,12 @@ h1, .h1 {
 }
 
 .underline {
-  --scaleX: 0;
-  --opacity: 0;
-  position: relative;
-}
-.underline:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  bottom: 6px;
-  width: 100%;
-  height: 3px;
-  opacity: var(--opacity);
-  background-color: #CBBFA8;
-  -webkit-transform: scale(var(--scaleX), 1);
-          transform: scale(var(--scaleX), 1);
-  -webkit-transform-origin: left top;
-          transform-origin: left top;
-}
-
-section {
-  margin: 2.5 auto;
+  width: calc(100%);
+  background-image: linear-gradient(transparent calc(100% - 8px), #CBBFA8 8px);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-position: 0 4px;
+  -webkit-transition: background-size 1s;
+  transition: background-size 1s;
 }
 /*# sourceMappingURL=globals.css.map */

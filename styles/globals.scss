@@ -111,31 +111,40 @@ h1 {
   font-weight: 500;
 }
 
+p {
+  line-height: 1.9;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  margin: 0 auto;
+}
+
 .heading-large {
     font-weight: 700;
     font-size: clamp(2.4rem, 5vw, 3.2rem);
+    margin: 1em 0;
+    display: block;
 }
 
 .heading-medium {
   font-weight: 600;
   font-size: clamp(1.8rem, 3vw, 2.2rem);
-  margin: 1em 0;
+  margin-bottom: 1em;
+  margin-top: 2em;
 }
 
 .heading-small {
   font-weight: 400;
   font-size: 1.5rem;
-  margin: 1em 0;
-}
-
-.heading-xsmall {
-  font-weight: 500;
-  font-size: 1rem;
-  color: $link;
 }
 
 .button {
-  position: relative;
   display: block;
   color: $dark;
   border: 3px solid $dark-accent;
@@ -146,27 +155,65 @@ h1 {
   cursor: pointer;
   margin: 1em 0;
   transition: all 0.3s ease-in-out;
-
-  &:after {
-    content: "";
-    position: absolute;
-    transition: all 0.3s ease-in-out;
-    border: none;
-    background: $primary;
-    width: 100%;
-    height: 100%;
-    top: 0.3em;
-    left: 0;
-    z-index: -1;
-  }
+  background-image: linear-gradient($primary 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: 0 6px;
 
   &:hover {
-    top: 0.3em;
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 }
 
 .button-large {
   font-size: 1.2rem;
+  -webkit-animation: btnWiggle 5s infinite;
+  -moz-animation: btnWiggle 5s infinite;
+  -o-animation: btnWiggle 5s infinite;
+  animation: btnWiggle 5s infinite;
+}
+
+@-webkit-keyframes btnWiggle {
+  0% {-webkit-transform: rotate(0deg);}
+  2% {-webkit-transform: rotate(-1deg);}
+  3.5% {-webkit-transform: rotate(1deg);}
+  5% {-webkit-transform: rotate(0deg);}
+  100% {-webkit-transform: rotate(0deg);}
+}
+@-o-keyframes btnWiggle {
+  0% {-webkit-transform: rotate(0deg);}
+  2% {-webkit-transform: rotate(-1deg);}
+  3.5% {-webkit-transform: rotate(1deg);}
+  5% {-webkit-transform: rotate(0deg);}
+  100% {-webkit-transform: rotate(0deg);}
+}
+@keyframes btnWiggle {
+  0% {-webkit-transform: rotate(0deg);}
+  2% {-webkit-transform: rotate(-1deg);}
+  3.5% {-webkit-transform: rotate(1deg);}
+  5% {-webkit-transform: rotate(0deg);}
+  100% {-webkit-transform: rotate(0deg);}
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
 .link {
@@ -205,24 +252,10 @@ h1 {
 }
 
 .underline {
-  --scaleX: 0;
-  --opacity: 0;
-  position: relative;
-  
-  &:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    bottom: 6px;
-    width: 100%;
-    height: 3px;
-    opacity: var(--opacity);
-    background-color: $dark-accent;
-    transform: scale(var(--scaleX), 1);
-    transform-origin: left top;
-  }
-}
-
-section {
-  margin: 2.5 auto;
+  width: calc(100%);
+  background-image: linear-gradient(transparent calc(100% - 8px), $dark-accent 8px);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-position: 0 4px;
+  transition: background-size 1s;
 }

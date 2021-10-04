@@ -2,16 +2,15 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 const Hero = () => {
-
-    const [isVisible, setIsVisible] = useState(false)
+    const [isVisible, setIsVisible] = useState(null)
 
     useEffect(() => {
         const image = document.querySelector('#hero-image')
-
-        console.log(isVisible)
         
-        if (!image.classList.contains('d-none')) {
-            setIsVisible = true;
+        if (image.classList.contains('d-none')) {
+            setIsVisible(false)
+        } else {
+            setIsVisible(true)
         }
 
     }, [isVisible])

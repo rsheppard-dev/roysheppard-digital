@@ -10,8 +10,7 @@ const animateUnderline = () => {
         gsap.utils.toArray('.underline').forEach(el => {
             
             gsap.to(el, {
-                '--scaleX': 1,
-                '--opacity': 1,
+                'background-size': '100% 100%',
                 duration: 1,
                 scrollTrigger: {
                     trigger: el,

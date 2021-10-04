@@ -1,0 +1,22 @@
+.heading {
+  font-weight: 400;
+  font-size: 0.8em;
+}
+
+.navItem {
+  font-weight: 300;
+  font-size: 0.8em;
+}
+
+.socialItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.socialItem li {
+  margin-right: 10px;
+}
+.socialItem li:last-child {
+  margin-right: 0;
+}
+/*# sourceMappingURL=Footer.module.css.map */
