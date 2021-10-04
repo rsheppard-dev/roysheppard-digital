@@ -1,6 +1,20 @@
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 const Hero = () => {
+
+    const [isVisible, setIsVisible] = useState(false)
+
+    useEffect(() => {
+        const image = document.querySelector('#hero-image')
+
+        console.log(isVisible)
+        
+        if (!image.classList.contains('d-none')) {
+            setIsVisible = true;
+        }
+
+    }, [isVisible])
 
     return (
         <section id="hero-section" className="container">
@@ -13,14 +27,14 @@ const Hero = () => {
                     <button className="button button-large">Free consultation</button>
                 </div>
 
-                <div className="col-lg my-auto d-none d-lg-block">
+                <div id="hero-image" className="col-lg my-auto d-none d-lg-block">
                     <Image
                         src='/images/web-developer-watford.png'
                         alt='Roy Sheppard - website designer and developer'
                         width={745}
                         height={723}
                         layout='intrinsic'
-                        priority='true'
+                        priority={isVisible}
                     />
                 </div>
             </div>
