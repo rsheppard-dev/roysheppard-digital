@@ -17,7 +17,60 @@ $accordion-button-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/20
 $accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$accordion-icon-color}' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z'/></svg>");
 
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../public/fonts/poppins-thin-webfont.woff2') format('woff2'),
+       url('../public/fonts/poppins-thin-webfont.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../public/fonts/poppins-light-webfont.woff2') format('woff2'),
+       url('../public/fonts/poppins-light-webfont.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../public/fonts/poppins-medium-webfont.woff2') format('woff2'),
+       url('../public/fonts/poppins-medium-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../public/fonts/poppins-regular-webfont.woff2') format('woff2'),
+       url('../public/fonts/poppins-regular-webfont.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../public/fonts/poppins-semibold-webfont.woff2') format('woff2'),
+       url('../public/fonts/poppins-semibold-webfont.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../public/fonts/poppins-bold-webfont.woff2') format('woff2'),
+       url('../public/fonts/poppins-bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  
+}
 
 html,
 body {
@@ -86,6 +139,7 @@ h1 {
   display: block;
   color: $dark;
   border: 3px solid $dark-accent;
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
   background: none;
   padding: 0.5em;

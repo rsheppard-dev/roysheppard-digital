@@ -5,7 +5,6 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -12407,6 +12406,42 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/fonts/poppins-thin-webfont.woff2") format("woff2"), url("../public/fonts/poppins-thin-webfont.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/fonts/poppins-light-webfont.woff2") format("woff2"), url("../public/fonts/poppins-light-webfont.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/fonts/poppins-medium-webfont.woff2") format("woff2"), url("../public/fonts/poppins-medium-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/fonts/poppins-regular-webfont.woff2") format("woff2"), url("../public/fonts/poppins-regular-webfont.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/fonts/poppins-semibold-webfont.woff2") format("woff2"), url("../public/fonts/poppins-semibold-webfont.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/fonts/poppins-bold-webfont.woff2") format("woff2"), url("../public/fonts/poppins-bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
 html,
 body {
   padding: 0;
@@ -12474,6 +12509,7 @@ h1, .h1 {
   display: block;
   color: #474747;
   border: 3px solid #CBBFA8;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   background: none;
   padding: 0.5em;
