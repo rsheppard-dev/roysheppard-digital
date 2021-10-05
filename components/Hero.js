@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import styles from '../styles/Hero.module.scss'
 
 const Hero = () => {
     const [isVisible, setIsVisible] = useState(null)
@@ -19,9 +20,9 @@ const Hero = () => {
         <section id="hero-section" className="container">
             <div className="row">
                 <div className="col-lg my-auto">
-                    <h1>Freelance web designer and developer in Watford</h1>
+                    <h1 className={styles.headingSmall}>Freelance web designer and developer in Watford</h1>
 
-                    <span className="heading-large">I create amazing websites you and your users will love</span>
+                    <span className={styles.headingLarge}>I create <span className={styles.highlighted}>amazing websites</span> you and your users will love</span>
 
                     <button className="button button-large">Free consultation</button>
                 </div>

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link';
 import animateUnderline from '../utils/animateUnderline';
 
 const Services = () => {
@@ -36,7 +37,7 @@ const Services = () => {
                         </div>
 
                         <div className="card-footer bg-transparent border-0">
-                            <button className="button">More information</button>
+                            <Link href="/web-designer"><a className="button">More information</a></Link>
                         </div>
                     </div>
 
@@ -67,7 +68,7 @@ const Services = () => {
                         </div>
 
                         <div className="card-footer bg-transparent border-0">
-                            <button className="button">More information</button>
+                            <Link href="/web-developer"><a className="button">More information</a></Link>
                         </div>
                     </div>
                 </div>
@@ -97,7 +98,7 @@ const Services = () => {
                         </div>
 
                         <div className="card-footer bg-transparent border-0">
-                            <button className="button">More information</button>
+                            <Link href="/ecommerce"><a className="button">More information</a></Link>
                         </div>
                     </div>
                 </div>

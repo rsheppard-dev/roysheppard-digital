@@ -1,0 +1,19 @@
+@use 'variables';
+
+.headingSmall {
+    font-size: 1rem;
+    color: variables.$dark-accent;
+    font-weight: 500;
+  }
+
+  .headingLarge {
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5vw, 3.2rem);
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+  .highlighted {
+      color: variables.$link;
+  }

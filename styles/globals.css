@@ -4088,7 +4088,7 @@ textarea.form-control-lg {
 }
 .dropdown-item:hover, .dropdown-item:focus {
   color: #1e2125;
-  background-color: #e9ecef;
+  background-color: #ECECEC;
 }
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
@@ -12472,13 +12472,10 @@ body {
 a {
   color: #AB5B5B;
   text-decoration: none;
+  font-weight: 600;
 }
-
-h1, .h1 {
-  font-size: 1rem;
-  color: #CBBFA8;
-  margin: 1em 0;
-  font-weight: 500;
+a:hover {
+  color: #7b3f3f;
 }
 
 p {
@@ -12491,15 +12488,12 @@ ul {
   padding: 0;
 }
 
-section {
-  margin: 0 auto;
+hr {
+  margin: 2.5em 0;
 }
 
-.heading-large {
-  font-weight: 700;
-  font-size: clamp(2.4rem, 5vw, 3.2rem);
-  margin: 1em 0;
-  display: block;
+section {
+  margin: 0 auto;
 }
 
 .heading-medium {
@@ -12531,6 +12525,9 @@ section {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: 0 6px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .button:hover {
   -webkit-animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
@@ -12651,7 +12648,7 @@ section {
 
 .underline {
   width: calc(100%);
-  background-image: linear-gradient(transparent calc(100% - 8px), #CBBFA8 8px);
+  background-image: linear-gradient(transparent calc(100% - 8px), #AB5B5B 8px);
   background-repeat: no-repeat;
   background-size: 0% 100%;
   background-position: 0 4px;

@@ -5,6 +5,7 @@
 
 $dropdown-bg: $light;
 $dropdown-link-color: $dark;
+$dropdown-link-hover-bg: $light-accent;
 
 $accordion-button-bg: $light;
 $accordion-button-active-bg: $light-accent;
@@ -102,13 +103,11 @@ body {
 a {
   color: $link;
   text-decoration: none;
-}
+  font-weight: 600;
 
-h1 {
-  font-size: 1rem;
-  color: $dark-accent;
-  margin: 1em 0;
-  font-weight: 500;
+  &:hover {
+    color: darken($link, 15%);
+  }
 }
 
 p {
@@ -121,15 +120,12 @@ ul {
   padding: 0;
 }
 
-section {
-  margin: 0 auto;
+hr {
+  margin: 2.5em 0;
 }
 
-.heading-large {
-    font-weight: 700;
-    font-size: clamp(2.4rem, 5vw, 3.2rem);
-    margin: 1em 0;
-    display: block;
+section {
+  margin: 0 auto;
 }
 
 .heading-medium {
@@ -159,6 +155,7 @@ section {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: 0 6px;
+  width: fit-content;
 
   &:hover {
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
@@ -253,7 +250,7 @@ section {
 
 .underline {
   width: calc(100%);
-  background-image: linear-gradient(transparent calc(100% - 8px), $dark-accent 8px);
+  background-image: linear-gradient(transparent calc(100% - 8px), $link 8px);
   background-repeat: no-repeat;
   background-size: 0% 100%;
   background-position: 0 4px;

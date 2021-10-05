@@ -1,11 +1,13 @@
+import Link from 'next/link'
 import Image from 'next/image'
 import logo from '../public/images/logo.svg'
+import styles from '../styles/Navbar.module.scss'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const Navbar = () => {
     return (
         <nav id="navbar" className="navbar navbar-expand-md navbar-light container">
-            <a className="navbar-brand" href="#">
+            <Link href="/#"><a className="navbar-brand">
 
                 <Image
                     src={logo}
@@ -16,7 +18,7 @@ const Navbar = () => {
                     priority
                 />
 
-            </a>
+            </a></Link>
 
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -24,26 +26,26 @@ const Navbar = () => {
 
             <div className="collapse navbar-collapse" id="navbarNav">
 
-                <ul className="navbar-nav ms-auto">
+                <ul className={`${styles.navLink} navbar-nav ms-auto`}>
                     <li className="nav-item">
-                        <a className="nav-link link active" aria-current="page" href="#">Home</a>
+                        <Link href="/#"><a className="nav-link link active" aria-current="page">Home</a></Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link link" href="#">About</a>
+                        <Link href="/#about-section"><a className="nav-link link">About</a></Link>
                     </li>
                     <li className="nav-item dropdown">
-                        <a className="nav-link link" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services <i className="bi bi-arrow-down-circle" /></a>
+                        <Link href="/#services-section"><a className="nav-link link" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services <i className="bi bi-arrow-down-circle" /></a></Link>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a className="dropdown-item" href="#">Web Design</a></li>
-                            <li><a className="dropdown-item" href="#">e-Commerce</a></li>
-                            <li><a className="dropdown-item" href="#">Web Development</a></li>
+                            <li><Link href="/web-design"><a className="dropdown-item">Web Design</a></Link></li>
+                            <li><Link href="/web-development"><a className="dropdown-item">Web Development</a></Link></li>
+                            <li><Link href="/ecommerce"><a className="dropdown-item">e-Commerce</a></Link></li>
                         </ul>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link link" href="#">FAQ</a>
+                        <Link href="/#faq-section"><a className="nav-link link">FAQ</a></Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link link" href="#">Contact</a>
+                        <Link href="/#contact-section"><a className="nav-link link">Contact</a></Link>
                     </li>
                 </ul>
             </div>

@@ -22,14 +22,14 @@ const Faq = (props) => {
             <h2 className="heading-medium">Frequently asked questions</h2>
 
             <div className="accordion accordion-flush" id="accordionFAQ">
-                {data.map((item, index) => (
+                {data.map(item => (
                     <div className="accordion-item bg-transparent" key={item.id}>
                         <h2 className={`${styles.question} accordion-header`} id={`flush-heading${item.id}`}>
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#flush-collapse${item.id}`} aria-expanded="false" aria-controls={`flush-heading${item.id}`}>
                                 {item.Question}
                             </button>
                         </h2>
-                        <div id={`flush-collapse${item.id}`} className={`accordion-collapse collapse ${index === 0 && 'show'}`} aria-labelledby={`flush-heading${item.id}`} data-bs-parent="#accordionFAQ">
+                        <div id={`flush-collapse${item.id}`} className="accordion-collapse collapse" aria-labelledby={`flush-heading${item.id}`} data-bs-parent="#accordionFAQ">
                             <div className="accordion-body"><ReactMarkdown>{item.Answer}</ReactMarkdown></div>
                         </div>
                     </div>

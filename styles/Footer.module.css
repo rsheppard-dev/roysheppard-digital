@@ -1,11 +1,21 @@
 .heading {
   font-weight: 400;
-  font-size: 0.8em;
+  font-size: 1em;
 }
 
 .navItem {
   font-weight: 300;
-  font-size: 0.8em;
+  font-size: 1rem;
+  line-height: 2;
+  margin: 0;
+  padding: 0;
+}
+.navItem a {
+  color: #474747;
+  font-weight: 300;
+}
+.navItem a:hover {
+  color: #474747;
 }
 
 .socialItem {

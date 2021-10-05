@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import styles from '../styles/Contact.module.scss'
 
 const Contact = () => {
     return (
@@ -7,7 +6,7 @@ const Contact = () => {
             <h2 className="heading-medium">Get in touch</h2>
 
             <div className="row">
-                <div className="col-md-6 justify-content-center align-items-center d-flex flex-column flex-sm-row flex-md-column order-md-2 mb-3">
+                <div className="col-md-6 align-items-center d-flex flex-column flex-sm-row flex-md-column order-md-2 mb-3">
 
 
                     <Image
@@ -16,64 +15,40 @@ const Contact = () => {
                         width={260}
                         height={260}
                         layout='intrinsic'
-                        className='p-3'
                     />
 
-
-                    <div className={styles.contactBox}>
-                        <div className="row">
-                            <div className="col-auto">
-                                <Image
-                                    src='/images/location.svg'
-                                    alt='Location'
-                                    width={25}
-                                    height={25}
-                                    layout='fixed'
-                                />
-                            </div>
-
-                            <div className="col">
-                                <p><span className={styles.address}>Roy Sheppard Digital</span>
-                                    <span className={styles.address}>43 Maytree Crescent</span>
-                                    <span className={styles.address}>Watford</span>
-                                    <span className={styles.address}>WD24 5NJ</span></p>
-                            </div>
+                    <div className="row row-cols-2 m-5">
+                        <div className="col-2">
+                            <Image
+                                src='/images/call.svg'
+                                alt='Phone number'
+                                width={30}
+                                height={30}
+                                layout='fixed'
+                            />
                         </div>
 
-                        <div className="row">
-                            <div className="col-auto">
-                                <Image
-                                    src='/images/call.svg'
-                                    alt='Phone number'
-                                    width={25}
-                                    height={25}
-                                    layout='fixed'
-                                />
-                            </div>
-
-                            <div className="col">
-                                <p>07883066944</p>
-                            </div>
+                        <div className="col-10">
+                            <a href="tel:07883066944">07883066944</a>
                         </div>
 
-                        <div className="row">
-                            <div className="col-auto">
-                                <Image
-                                    src='/images/email.svg'
-                                    alt='Email'
-                                    width={25}
-                                    height={25}
-                                    layout='fixed'
-                                />
-                            </div>
+                        <div className="col-2">
+                            <Image
+                                src='/images/email.svg'
+                                alt='Email'
+                                width={30}
+                                height={30}
+                                layout='fixed'
+                            />
+                        </div>
 
-                            <div className="col">
-                                <p>info@roysheppard.digital</p>
-                            </div>
+                        <div className="col-10">
+                            <a href="mailto:info@roysheppard.digital">info@roysheppard.digital</a>
                         </div>
                     </div>
-                    <hr className="section-break" />
                 </div>
+                <hr className="d-md-none" />
+
 
                 <div className="col-md-6 d-flex flex-column justify-content-center order-md-1">
                     <form>
