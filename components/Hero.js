@@ -3,16 +3,11 @@ import Image from 'next/image'
 import styles from '../styles/Hero.module.scss'
 
 const Hero = () => {
-    const [isVisible, setIsVisible] = useState(null)
+    const [isVisible, setIsVisible] = useState(true)
 
     useEffect(() => {
-        const image = document.querySelector('#hero-image')
         
-        if (image.classList.contains('d-none')) {
-            setIsVisible(false)
-        } else {
-            setIsVisible(true)
-        }
+        if (screen.width < 992) setIsVisible(false)
 
     }, [isVisible])
 
