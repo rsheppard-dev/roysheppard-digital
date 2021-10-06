@@ -17,7 +17,8 @@ const Contact = () => {
             body: JSON.stringify(formData)
         })
 
-        console.log(formData)
+        e.currentTarget.reset()
+        
     }
 
     return (

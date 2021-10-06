@@ -5,6 +5,7 @@ import styles from '../styles/Navbar.module.scss'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const Navbar = () => {
+    
     return (
         <nav id="navbar" className="navbar navbar-expand-md navbar-light container">
             <Link href="/#"><a className="navbar-brand">
