@@ -20,7 +20,7 @@ const Contact = () => {
         } catch(error) {
             console.log(error)
         }
-
+        e.currentTarget.reset()
     }
 
     return (
