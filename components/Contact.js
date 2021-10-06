@@ -21,7 +21,6 @@ const Contact = () => {
             console.log(error)
         }
 
-        e.currentTarget.reset()
     }
 
     return (
