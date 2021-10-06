@@ -7,9 +7,9 @@ export default (req, res) => {
   
   const message = `
     Name: ${body.name}\r\n
-    Name: ${body.email}\r\n
-    Name: ${body.phone}\r\n
-    Name: ${body.message}
+    Email: ${body.email}\r\n
+    Phone: ${body.phone}\r\n
+    Message: ${body.message}
   `
 
   const data = {
