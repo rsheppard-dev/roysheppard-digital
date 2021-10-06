@@ -17,11 +17,11 @@ const Contact = () => {
                 method: 'post',
                 body: JSON.stringify(formData)
             })
-            e.currentTarget.reset()
         } catch(error) {
             console.log(error)
         }
-        
+
+        e.currentTarget.reset()
     }
 
     return (
