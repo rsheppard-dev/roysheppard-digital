@@ -12,10 +12,15 @@ const Contact = () => {
             formData[field.name] = field.value;
         })
 
-        await fetch('/api/mail', {
-            method: 'post',
-            body: JSON.stringify(formData)
-        }).then(e.currentTarget.reset())
+        try {
+            await fetch('/api/mail', {
+                method: 'post',
+                body: JSON.stringify(formData)
+            })
+            e.currentTarget.reset()
+        } catch(error) {
+            console.log(error)
+        }
         
     }
 
