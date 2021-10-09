@@ -5,8 +5,6 @@ mail.setApiKey(process.env.SENDGRIP_API_KEY)
 export default async (req, res) => {
   const body = JSON.parse(req.body)
 
-  console.log(body)
-
   const validateHuman = async token => {
     const secret = process.env.RECAPTCHA_SECRET_KEY
 
@@ -15,8 +13,6 @@ export default async (req, res) => {
     })
 
     const data = await response.json()
-
-    console.log(data)
 
     return data.success
   }
