@@ -19,7 +19,7 @@ export default async (req, res) => {
     return data.success
   }
 
-  const human = await validateHuman(formData.token)
+  const human = await validateHuman(body.token)
 
   if (!human) {
     res.status(400).json({
