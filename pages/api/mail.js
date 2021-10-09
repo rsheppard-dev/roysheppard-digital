@@ -20,7 +20,11 @@ export default async (req, res) => {
     html: message.replace(/\r\n/g, '<br>')
   }
 
-  mail.send(data)
+  try {
+    mail.send(data)
+  } catch(error) {
+    console.log(error)
+  }
 
   res.status(200).json({ status: 'OK' })
 }
