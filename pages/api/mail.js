@@ -8,7 +8,7 @@ export default async (req, res) => {
   console.log(body)
 
   const validateHuman = async token => {
-    const secret = process.key.RECAPTCHA_SECRET_KEY
+    const secret = process.env.RECAPTCHA_SECRET_KEY
 
     const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`, {
       method: 'POST'
