@@ -1,11 +1,17 @@
+import {useRef } from 'react'
 import Image from 'next/image'
+import ReCAPTCHA from 'react-google-recaptcha'
 
 const Contact = () => {
+    const reRef = useRef()
+
     const handleOnSubmit = async (e) => {
         e.preventDefault()
         
         const $form = e.currentTarget
         const formData = {}
+        const token = await reRef.current.executeAsync()
+        reRef.current.reset()
 
         Array.from($form.elements).forEach(field => {
             if (!field.name) return
@@ -16,7 +22,10 @@ const Contact = () => {
         
         await fetch('/api/mail', {
             method: 'post',
-            body: JSON.stringify(formData)
+            body: {
+                formData: JSON.stringify(formData),
+                token
+            }
         })
 
         $form.reset()
@@ -92,6 +101,12 @@ const Contact = () => {
                             <label htmlFor="message" className="form-label">Message</label>
                             <textarea className="form-control" id="message" name="message" rows="3" />
                         </div>
+
+                        <ReCAPTCHA
+                            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                            size='invisible'
+                            ref={reRef}
+                        />
 
                         <button type="submit" className="button">Send message</button>
                     </form>
