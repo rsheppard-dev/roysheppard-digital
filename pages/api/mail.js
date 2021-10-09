@@ -7,15 +7,6 @@ export default async (req, res) => {
 
   console.log(body)
 
-  const human = await validateHuman(formData.token)
-
-  if (!human) {
-    res.status(400).json({
-      errors: ['Please, you are not fooling us, bot.']
-    })
-    return
-  }
-
   const validateHuman = async token => {
     const secret = process.key.RECAPTCHA_SECRET_KEY
 
@@ -26,6 +17,15 @@ export default async (req, res) => {
     const data = await response.json()
 
     return data.success
+  }
+
+  const human = await validateHuman(formData.token)
+
+  if (!human) {
+    res.status(400).json({
+      errors: ['Please, you are not fooling us, bot.']
+    })
+    return
   }
 
   const message = `
