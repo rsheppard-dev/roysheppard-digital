@@ -106,7 +106,7 @@ const Contact = () => {
                         />
 
                         <button type="submit" className="button">Send message</button>
-                        <small>This site is protected by reCAPTCHA and the Google <a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a> and <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
+                        <small>This site is protected by reCAPTCHA and the Google <a target="_blank" href="https://policies.google.com/privacy" rel="noreferrer">Privacy Policy</a> and <a target="_blank" href="https://policies.google.com/terms" rel="noreferrer">Terms of Service</a> apply.
                         </small>
                     </form>
                 </div>
