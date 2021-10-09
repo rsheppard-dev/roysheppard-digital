@@ -12661,4 +12661,8 @@ section {
   -webkit-transition: background-size 1s;
   transition: background-size 1s;
 }
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
 /*# sourceMappingURL=globals.css.map */

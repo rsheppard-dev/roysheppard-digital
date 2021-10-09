@@ -1,4 +1,4 @@
-import {useRef } from 'react'
+import { useRef } from 'react'
 import Image from 'next/image'
 import ReCAPTCHA from 'react-google-recaptcha'
 
@@ -7,7 +7,7 @@ const Contact = () => {
 
     const handleOnSubmit = async (e) => {
         e.preventDefault()
-        
+
         const $form = e.currentTarget
         const token = await reRef.current.executeAsync()
         reRef.current.reset()
@@ -19,7 +19,7 @@ const Contact = () => {
             formData[field.name] = field.value;
         })
 
-        
+
         await fetch('/api/mail', {
             method: 'post',
             body: JSON.stringify(formData)
@@ -106,6 +106,8 @@ const Contact = () => {
                         />
 
                         <button type="submit" className="button">Send message</button>
+                        <small>This site is protected by reCAPTCHA and the Google <a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a> and <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
+                        </small>
                     </form>
                 </div>
 
