@@ -3,24 +3,25 @@ import Image from 'next/image'
 const Contact = () => {
     const handleOnSubmit = async (e) => {
         e.preventDefault()
-
+        
+        const $form = e.currentTarget
         const formData = {}
 
-        Array.from(e.currentTarget.elements).forEach(field => {
+        Array.from($form.elements).forEach(field => {
             if (!field.name) return
 
             formData[field.name] = field.value;
         })
 
-        try {
-            await fetch('/api/mail', {
-                method: 'post',
-                body: JSON.stringify(formData)
-            })
-        } catch(error) {
-            console.log(error)
-        }
-        e.currentTarget.reset()
+        
+        await fetch('/api/mail', {
+            method: 'post',
+            body: JSON.stringify(formData)
+        }).then(() => {
+            console.log('message sent')
+        })
+
+        $form.reset()
     }
 
     return (
