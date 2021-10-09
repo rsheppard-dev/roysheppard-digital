@@ -9,9 +9,9 @@ const Contact = () => {
         e.preventDefault()
         
         const $form = e.currentTarget
-        const formData = {}
         const token = await reRef.current.executeAsync()
         reRef.current.reset()
+        const formData = { token }
 
         Array.from($form.elements).forEach(field => {
             if (!field.name) return
@@ -22,10 +22,7 @@ const Contact = () => {
         
         await fetch('/api/mail', {
             method: 'post',
-            body: {
-                formData: JSON.stringify(formData),
-                token
-            }
+            body: JSON.stringify(formData)
         })
 
         $form.reset()

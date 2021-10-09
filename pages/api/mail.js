@@ -3,11 +3,11 @@ const mail = require('@sendgrid/mail')
 mail.setApiKey(process.env.SENDGRIP_API_KEY)
 
 export default async (req, res) => {
-  const {formData, token} = JSON.parse(req.body)
+  const body = JSON.parse(req.body)
 
-  console.log(formData, token)
+  console.log(body)
 
-  const human = await validateHuman(token)
+  const human = await validateHuman(formData.token)
 
   if (!human) {
     res.status(400).json({
@@ -16,10 +16,10 @@ export default async (req, res) => {
     return
   }
 
-  const validateHuman = async (token) => {
+  const validateHuman = async token => {
     const secret = process.key.RECAPTCHA_SECRET_KEY
 
-    const response = await fetch(`https://www.google.com/recapture/api/siteverify?secret=${secret}&response=${token}`, {
+    const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`, {
       method: 'POST'
     })
 
@@ -29,15 +29,15 @@ export default async (req, res) => {
   }
 
   const message = `
-  Name: ${formData.name}\r\n
-  Email: ${formData.email}\r\n
-  Phone: ${formData.phone}\r\n
-  Message: ${formData.message}
+  Name: ${body.name}\r\n
+  Email: ${body.email}\r\n
+  Phone: ${body.phone}\r\n
+  Message: ${body.message}
 `
 
   const data = {
     to: 'info@roysheppard.digital',
-    from: formData.email,
+    from: body.email,
     subject: 'Customer Enquiry',
     text: message,
     html: message.replace(/\r\n/g, '<br>')
