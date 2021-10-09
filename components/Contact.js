@@ -17,8 +17,6 @@ const Contact = () => {
         await fetch('/api/mail', {
             method: 'post',
             body: JSON.stringify(formData)
-        }).then(() => {
-            console.log('message sent')
         })
 
         $form.reset()
