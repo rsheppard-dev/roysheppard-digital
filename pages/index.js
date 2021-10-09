@@ -5,8 +5,12 @@ import Hero from '../components/Hero'
 import About from '../components/About'
 import Services from '../components/Services'
 
-const Faq = dynamic(() => import('../components/Faq'))
-const Contact = dynamic(() => import('../components/Contact'))
+const Faq = dynamic(() => import('../components/Faq'), {
+  suspense: true,
+})
+const Contact = dynamic(() => import('../components/Contact'), {
+  suspense: true,
+})
 
 export default function Home({ faq }) {
 
