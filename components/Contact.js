@@ -1,31 +1,25 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import Image from 'next/image'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 const Contact = () => {
-    const reRef = useRef()
+    const [isSending, setIsSending] = useState(false)
+    const recaptchaRef = useRef()
+    const { register, handleSubmit, formState: { errors }  } = useForm()
 
-    const handleOnSubmit = async (e) => {
-        e.preventDefault()
-
-        const $form = e.currentTarget
-        const token = await reRef.current.executeAsync()
-        reRef.current.reset()
-        const formData = { token }
-
-        Array.from($form.elements).forEach(field => {
-            if (!field.name) return
-
-            formData[field.name] = field.value;
-        })
-
+    const onSubmitForm = async (data, e) => {
+        setIsSending(true)
+        const token = await recaptchaRef.current.executeAsync()
+        recaptchaRef.current.reset()
+        data.token = token
 
         await fetch('/api/mail', {
             method: 'post',
-            body: JSON.stringify(formData)
+            body: JSON.stringify(data)
         })
-
-        $form.reset()
+        setIsSending(false)
+        e.target.reset()
     }
 
     return (
@@ -78,34 +72,38 @@ const Contact = () => {
 
 
                 <div className="col-md-6 d-flex flex-column justify-content-center order-md-1">
-                    <form method="post" onSubmit={handleOnSubmit}>
+                    <form method="post" onSubmit={handleSubmit(onSubmitForm)}>
                         <div className="mb-3">
-                            <label htmlFor="name" className="form-label">Full name</label>
-                            <input type="text" className="form-control" id="name" name="name" />
+                            <label htmlFor="name" className="form-label">Full name *</label>
+                            <input type="text" className={`form-control ${errors.name && 'border border-danger'}`} id="name" {...register('name', { required: 'Name is required.', minLength: { value: 4, message: 'Minimum name length is 4 characters.' } })} />
+                            { errors.name && <small className="text-danger">{errors.name.message}</small> }
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="email" className="form-label">Email</label>
-                            <input type="email" className="form-control" id="email" name="email" />
+                            <label htmlFor="email" className="form-label">Email *</label>
+                            <input type="email" className={`form-control ${errors.email && 'border border-danger'}`} id="email" {...register('email', { required: 'Email is required.', pattern: { value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, message: 'You must enter a valid email address.' } })} />
+                            { errors.email && <small className="text-danger">{errors.email.message}</small> }
                         </div>
 
                         <div className="mb-3">
                             <label htmlFor="phone" className="form-label">Phone number</label>
-                            <input type="phone" className="form-control" id="phone" name="phone" />
+                            <input type="phone" className={`form-control ${errors.phone && 'border border-danger'}`} id="phone" {...register('phone', { pattern: { value: /^[0-9]*$/, message: 'Phone number can only include numbers.' }, minLength: { value: 11, message: 'Phone number must be at least 11 numbers.' } })} />
+                            { errors.phone && <small className="text-danger">{errors.phone.message}</small> }
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="message" className="form-label">Message</label>
-                            <textarea className="form-control" id="message" name="message" rows="3" />
+                            <label htmlFor="message" className="form-label">Message *</label>
+                            <textarea className={`form-control ${errors.message && 'border border-danger'}`} id="message" rows="3" {...register('message', { required: 'Message is required.', minLength: { value: 10, message: 'Minimum length of message is 10 characters.' } })} />
+                            { errors.message && <small className="text-danger">{errors.message.message}</small> }
                         </div>
 
                         <ReCAPTCHA
                             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                             size='invisible'
-                            ref={reRef}
+                            ref={recaptchaRef}
                         />
 
-                        <button type="submit" className="button">Send message</button>
+                        <button type="submit" className="button" disabled={isSending}>{isSending ? 'Sending...' : 'Send message'}</button>
                         <small>This site is protected by reCAPTCHA and the Google <a target="_blank" href="https://policies.google.com/privacy" rel="noreferrer">Privacy Policy</a> and <a target="_blank" href="https://policies.google.com/terms" rel="noreferrer">Terms of Service</a> apply.
                         </small>
                     </form>
