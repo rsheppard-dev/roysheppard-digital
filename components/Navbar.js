@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import logo from '../public/images/logo.svg'
+import logo from '../public/images/logo.png'
 import styles from '../styles/Navbar.module.scss'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
@@ -13,7 +13,7 @@ const Navbar = () => {
                 <Image
                     src={logo}
                     alt="Roy Sheppard Digital"
-                    layout="fixed"
+                    layout="intrinsic"
                     width={174}
                     height={45}
                     priority

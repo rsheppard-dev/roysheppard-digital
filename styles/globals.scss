@@ -73,21 +73,13 @@ $accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3
   font-display: swap;
 }
 
-html,
-body {
+html, body {
+  scroll-behavior: smooth;
   padding: 0;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   color: $dark;
   background-color: $light;
-}
-
-body {
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 0;
-
   background-image: url('../public/images/background.svg');
   background-repeat: no-repeat;
   background-position: 0 -100px;
@@ -100,10 +92,11 @@ body {
   box-sizing: border-box;
 }
 
-a {
+a, .cta-link {
   color: $link;
   text-decoration: none;
   font-weight: 600;
+  cursor: pointer;
 
   &:hover {
     color: darken($link, 15%);

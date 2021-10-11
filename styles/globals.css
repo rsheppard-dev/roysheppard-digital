@@ -12411,57 +12411,50 @@ textarea.form-control-lg {
   src: url("../public/fonts/poppins-thin-webfont.woff2") format("woff2"), url("../public/fonts/poppins-thin-webfont.woff") format("woff");
   font-weight: 300;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
   src: url("../public/fonts/poppins-light-webfont.woff2") format("woff2"), url("../public/fonts/poppins-light-webfont.woff") format("woff");
   font-weight: 300;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
   src: url("../public/fonts/poppins-medium-webfont.woff2") format("woff2"), url("../public/fonts/poppins-medium-webfont.woff") format("woff");
   font-weight: 400;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
   src: url("../public/fonts/poppins-regular-webfont.woff2") format("woff2"), url("../public/fonts/poppins-regular-webfont.woff") format("woff");
   font-weight: 500;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
   src: url("../public/fonts/poppins-semibold-webfont.woff2") format("woff2"), url("../public/fonts/poppins-semibold-webfont.woff") format("woff");
   font-weight: 600;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
   src: url("../public/fonts/poppins-bold-webfont.woff2") format("woff2"), url("../public/fonts/poppins-bold-webfont.woff") format("woff");
   font-weight: 700;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
 }
-html,
-body {
+html, body {
+  scroll-behavior: smooth;
   padding: 0;
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   color: #474747;
   background-color: #F5F5F5;
-}
-
-body {
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 0;
   background-image: url("../public/images/background.svg");
   background-repeat: no-repeat;
   background-position: 0 -100px;
@@ -12475,12 +12468,13 @@ body {
           box-sizing: border-box;
 }
 
-a {
+a, .cta-link {
   color: #AB5B5B;
   text-decoration: none;
   font-weight: 600;
+  cursor: pointer;
 }
-a:hover {
+a:hover, .cta-link:hover {
   color: #7b3f3f;
 }
 

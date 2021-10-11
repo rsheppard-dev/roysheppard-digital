@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import logo from '../public/images/logo.svg'
+import logo from '../public/images/logo.png'
 import styles from '../styles/Footer.module.scss'
 
 const Footer = () => {
@@ -32,15 +32,16 @@ const Footer = () => {
                 <div className="col-12 col-md-4 order-md-1 d-flex flex-md-column justify-content-between align-items-end align-items-md-start">
                     <div>
                         <Link href="/#"><a>
-                        <Image
-                            src={logo}
-                            alt="Roy Sheppard Digital"
-                            layout="intrinsic"
-                            width={174}
-                            height={45}
-                        />
+                            <Image
+                                src={logo}
+                                alt="Roy Sheppard Digital"
+                                layout="intrinsic"
+                                width={174}
+                                height={45}
+                                priority
+                            />
                         </a></Link>
-                        <p className={`${styles.navItem} mt-2`}><Link href="/privacy-policy"><a>Privacy policy</a></Link></p>
+                        <p className={`${styles.navItem} mt-2`}><Link href="/privacy"><a>Privacy policy</a></Link></p>
                     </div>
 
                     <div>

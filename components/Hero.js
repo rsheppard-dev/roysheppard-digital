@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { openPopupWidget } from "react-calendly";
 import styles from '../styles/Hero.module.scss'
 
 const Hero = () => {
     const [isVisible, setIsVisible] = useState(true)
 
+    const CTA = ({ url }) => {
+        const onClick = () => openPopupWidget({ url  });
+
+        return <a className="button button-large" onClick={onClick}>Book a free strategy call</a>;
+    };
+
     useEffect(() => {
-        
+
         if (screen.width < 992) setIsVisible(false)
 
     }, [isVisible])
@@ -19,7 +26,7 @@ const Hero = () => {
 
                     <span className={styles.headingLarge}>I create <span className={styles.highlighted}>amazing websites</span> you and your users will love</span>
 
-                    <button className="button button-large">Free consultation</button>
+                    <CTA url='https://calendly.com/roysheppard-digital/30min?background_color=f5f5f5&text_color=474747&primary_color=ab5b5b' />
                 </div>
 
                 <div id="hero-image" className="col-lg my-auto d-none d-lg-block">

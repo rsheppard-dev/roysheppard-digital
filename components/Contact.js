@@ -1,12 +1,20 @@
 import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Image from 'next/image'
+import Link from 'next/link'
 import ReCAPTCHA from 'react-google-recaptcha'
+import { openPopupWidget } from "react-calendly";
 
 const Contact = () => {
     const [isSending, setIsSending] = useState(false)
     const recaptchaRef = useRef()
     const { register, handleSubmit, formState: { errors }  } = useForm()
+
+    const CTA = ({ url }) => {
+        const onClick = () => openPopupWidget({ url });
+
+        return <a className="cta-link" onClick={onClick}>Click here to book a free strategy call at a time that suits you.</a>;
+    };
 
     const onSubmitForm = async (data, e) => {
         setIsSending(true)
@@ -25,6 +33,12 @@ const Contact = () => {
     return (
         <section id="contact-section" className="container">
             <h2 className="heading-medium">Get in touch</h2>
+
+            <p>I offer a <u>free 30 minute strategy call</u> to anyone that is looking to get their business online or is struggling to grow.</p>
+
+            <p><CTA url='https://calendly.com/roysheppard-digital/30min?background_color=f5f5f5&text_color=474747&primary_color=ab5b5b' /></p>
+
+            <p>If you want to hire me or for anything else please contact me through the methods below.</p>
 
             <div className="row">
                 <div className="col-md-6 align-items-center d-flex flex-column flex-sm-row flex-md-column order-md-2 mb-3">
@@ -103,7 +117,7 @@ const Contact = () => {
                             ref={recaptchaRef}
                         />
 
-                        <button type="submit" className="button" disabled={isSending}>{isSending ? 'Sending...' : 'Send message'}</button>
+                        <button type="submit" className="button" disabled={isSending}>{isSending ? 'Sending.....' : 'Send message'}</button>
                         <small>This site is protected by reCAPTCHA and the Google <a target="_blank" href="https://policies.google.com/privacy" rel="noreferrer">Privacy Policy</a> and <a target="_blank" href="https://policies.google.com/terms" rel="noreferrer">Terms of Service</a> apply.
                         </small>
                     </form>
