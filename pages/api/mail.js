@@ -35,7 +35,10 @@ export default async (req, res) => {
 
   const data = {
     to: 'info@roysheppard.digital',
-    from: 'info@roysheppard.digital',
+    from: {
+      email: 'info@roysheppard.digital',
+      name: body.name
+    },
     replyTo: body.email,
     subject: 'Customer Enquiry',
     text: message,
