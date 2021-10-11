@@ -37,7 +37,7 @@ const Services = () => {
                         </div>
 
                         <div className="card-footer bg-transparent border-0">
-                            <Link href="/web-designer"><a className="button">More information</a></Link>
+                            <Link href="/web-design"><a className="button">More information</a></Link>
                         </div>
                     </div>
 

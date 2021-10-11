@@ -12542,6 +12542,7 @@ section {
 
 .button-large {
   font-size: 1.2rem;
+  margin-bottom: 0em;
   -webkit-animation: btnWiggle 5s infinite;
   animation: btnWiggle 5s infinite;
 }

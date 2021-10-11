@@ -35,11 +35,11 @@ const Navbar = () => {
                         <Link href="/#about-section"><a className="nav-link link">About</a></Link>
                     </li>
                     <li className="nav-item dropdown">
-                        <Link href="/#services-section"><a className="nav-link link" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services <i className="bi bi-arrow-down-circle" /></a></Link>
+                        <a className="nav-link link" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services <i className="bi bi-arrow-down-circle" /></a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><Link href="/web-design"><a className="dropdown-item">Web Design</a></Link></li>
                             <li><Link href="/web-development"><a className="dropdown-item">Web Development</a></Link></li>
-                            <li><Link href="/ecommerce"><a className="dropdown-item">e-Commerce</a></Link></li>
+                            <li><Link href="/ecommerce"><a className="dropdown-item">eCommerce</a></Link></li>
                         </ul>
                     </li>
                     <li className="nav-item">
