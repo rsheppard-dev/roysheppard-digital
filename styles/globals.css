@@ -12703,7 +12703,7 @@ section {
   width: calc(100%);
   background-repeat: no-repeat;
   background-size: 0% 100%;
-  background-position: bottom 4px left 0px;
+  background-position: bottom 1px left 0px;
   background-position-x: 0%;
   background-position-y: 0%;
   -webkit-transition: background-size 1s;
