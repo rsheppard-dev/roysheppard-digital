@@ -12526,7 +12526,7 @@ a:hover, .cta-link:hover {
   color: #7b3f3f;
 }
 
-p {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, p, small, .small, span {
   line-height: 1.9;
 }
 
