@@ -187,6 +187,9 @@ section {
   cursor: pointer;
   margin: 1em 0;
   transition: all 0.3s ease-in-out;
+  background-image: -webkit-linear-gradient($primary 100%);
+  background-image: -moz-linear-gradient($primary 100%); 
+  background-image: -o-linear-gradient($primary 100%);
   background-image: linear-gradient($primary 100%);
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -287,11 +290,14 @@ section {
 
 .underline {
   width: calc(100%);
-  background-image: linear-gradient(transparent calc(100% - 8px), $link 8px);
   background-repeat: no-repeat;
   background-size: 0% 100%;
   background-position: 0 4px;
   transition: background-size 1s;
+  background-image: -webkit-linear-gradient(transparent calc(100% - 8px), $link 8px);
+  background-image: -moz-linear-gradient(transparent calc(100% - 8px), $link 8px); 
+  background-image: -o-linear-gradient(transparent calc(100% - 8px), $link 8px);
+  background-image: linear-gradient(transparent calc(100% - 8px), $link 8px);
 }
 
 .grecaptcha-badge { 

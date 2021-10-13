@@ -12697,12 +12697,12 @@ section {
 
 .underline {
   width: calc(100%);
-  background-image: linear-gradient(transparent calc(100% - 8px), #AB5B5B 8px);
   background-repeat: no-repeat;
   background-size: 0% 100%;
   background-position: 0 4px;
   -webkit-transition: background-size 1s;
   transition: background-size 1s;
+  background-image: linear-gradient(transparent calc(100% - 8px), #AB5B5B 8px);
 }
 
 .grecaptcha-badge {
