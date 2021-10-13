@@ -3,23 +3,30 @@ import Image from 'next/image'
 import logo from '../public/images/logo.png'
 import styles from '../styles/Navbar.module.scss'
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import { useEffect } from 'react'
 
 const Navbar = () => {
-    
+    useEffect(() => {
+        import('bootstrap/js/dist/collapse')
+        import('bootstrap/js/dist/dropdown')
+    }, []);
+
     return (
         <nav id="navbar" className="navbar navbar-expand-md navbar-light container">
-            <Link href="/#"><a className="navbar-brand">
+            <div className="logoWrapper">
+                <Link href="/#"><a className="navbar-brand">
 
-                <Image
-                    src={logo}
-                    alt="Roy Sheppard Digital"
-                    layout="intrinsic"
-                    width={174}
-                    height={45}
-                    priority
-                />
+                    <Image
+                        src={logo}
+                        alt="Roy Sheppard Digital"
+                        layout="intrinsic"
+                        width={174}
+                        height={45}
+                        priority
+                    />
 
-            </a></Link>
+                </a></Link>
+            </div>
 
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>

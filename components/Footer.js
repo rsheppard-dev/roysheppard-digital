@@ -41,7 +41,7 @@ const Footer = () => {
                                 priority
                             />
                         </a></Link>
-                        <p className={`${styles.navItem} mt-2`}><Link href="/privacy"><a>Privacy policy</a></Link></p>
+                        <p className={`${styles.navItem} mt-2`}><Link href="/privacy-policy"><a>Privacy policy</a></Link></p>
                     </div>
 
                     <div>

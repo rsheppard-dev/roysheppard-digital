@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import Script from 'next/script'
 import Hero from '../components/Hero'
 import About from '../components/About'
 import Services from '../components/Services'
@@ -32,7 +31,6 @@ export default function Home({ faq }) {
 
       <Contact />
 
-      <Script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' />
     </>
   )
 }
