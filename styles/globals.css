@@ -12530,7 +12530,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, span {
   line-height: 1.5;
 }
 
-p, small, .small {
+p, a, small, .small {
   line-height: 1.9;
 }
 
@@ -12703,7 +12703,7 @@ section {
   width: calc(100%);
   background-repeat: no-repeat;
   background-size: 0% 100%;
-  background-position: bottom 1px left 0px;
+  background-position: bottom 0px left 0px;
   background-position-x: 0%;
   background-position-y: 0%;
   -webkit-transition: background-size 1s;

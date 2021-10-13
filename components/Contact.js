@@ -41,7 +41,7 @@ const Contact = () => {
             <p>If you want to hire me or for anything else please contact me through the methods below.</p>
 
             <div className="row">
-                <div className="col-md-6 align-items-center d-flex flex-column flex-sm-row flex-md-column order-md-2 mb-3">
+                <div className="col-md-6 align-items-center d-flex flex-column flex-sm-row flex-md-column order-md-2 my-3">
 
 
                     <Image
@@ -53,7 +53,7 @@ const Contact = () => {
                     />
 
                     <div className="row row-cols-2 d-flex align-self-start align-self-sm-center mt-5 mt-sm-0 mt-md-5 ms-sm-3">
-                        <div className="col-2">
+                        <div className="col-2 my-auto">
                             <Image
                                 src='/images/call.svg'
                                 alt='Phone number'
@@ -63,11 +63,11 @@ const Contact = () => {
                             />
                         </div>
 
-                        <div className="col-10">
+                        <div className="col-10 my-auto">
                             <a href="tel:07883066944">07883066944</a>
                         </div>
 
-                        <div className="col-2">
+                        <div className="col-2 my-auto">
                             <Image
                                 src='/images/email.svg'
                                 alt='Email'
@@ -77,7 +77,7 @@ const Contact = () => {
                             />
                         </div>
 
-                        <div className="col-10">
+                        <div className="col-10 my-auto">
                             <a href="mailto:info@roysheppard.digital">info@roysheppard.digital</a>
                         </div>
                     </div>
@@ -85,7 +85,7 @@ const Contact = () => {
                 <hr className="d-md-none" />
 
 
-                <div className="col-md-6 d-flex flex-column justify-content-center order-md-1">
+                <div className="col-md-6 d-flex flex-column justify-content-center order-md-1 my-3">
                     <form method="post" onSubmit={handleSubmit(onSubmitForm)}>
                         <div className="mb-3">
                             <label htmlFor="name" className="form-label">Full name *</label>
