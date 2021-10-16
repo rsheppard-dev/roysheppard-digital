@@ -4,6 +4,7 @@
 }
 
 .navItem {
+  list-style-type: none;
   font-weight: 300;
   font-size: 1rem;
   line-height: 2;

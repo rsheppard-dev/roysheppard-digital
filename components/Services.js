@@ -8,7 +8,7 @@ const Services = () => {
 
     return (
         <section id="services-section" className="container">
-            <h2 className="heading-medium"><span className="underline">Web design</span> and <span className="underline">development</span> services</h2>
+            <h3><span className="underline">Web design</span> and <span className="underline">development</span> services</h3>
 
             <div className="row row-cols-1 row-cols-lg-2 g-4">
                 <div className="col">
@@ -27,7 +27,7 @@ const Services = () => {
                                 </div>
 
                                 <div className="col my-auto">
-                                    <h3 className="heading-small">Web design</h3>
+                                    <h4>Web design</h4>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@ const Services = () => {
                                 </div>
 
                                 <div className="col my-auto">
-                                    <h3 className="heading-small">Web development</h3>
+                                    <h4>Web development</h4>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@ const Services = () => {
                                 </div>
 
                                 <div className="col my-auto">
-                                    <h3 className="heading-small">eCommerce</h3>
+                                    <h4>eCommerce</h4>
                                 </div>
                             </div>
                         </div>

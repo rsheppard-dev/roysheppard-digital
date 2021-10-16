@@ -12534,12 +12534,6 @@ p, a, small, .small {
   line-height: 1.9;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
 hr {
   margin: 2.5em 0;
 }
@@ -12548,14 +12542,14 @@ section {
   margin: 0 auto;
 }
 
-.heading-medium {
+h3, .h3 {
   font-weight: 600;
   font-size: clamp(1.8rem, 3vw, 2.2rem);
   margin-bottom: 1em;
   margin-top: 2em;
 }
 
-.heading-small {
+h4, .h4 {
   font-weight: 400;
   font-size: 1.5rem;
 }

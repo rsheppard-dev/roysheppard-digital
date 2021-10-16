@@ -24,7 +24,7 @@ const Hero = () => {
                 <div className="col-lg my-auto">
                     <h1 className={styles.headingSmall}>Freelance web designer and developer in Watford</h1>
 
-                    <span className={styles.headingLarge}>I create <span className={styles.highlighted}>amazing websites</span> you and your users will love</span>
+                    <h2 className={styles.headingLarge}>I create <span className={styles.highlighted}>amazing websites</span> you and your users will love</h2>
 
                     <CTA url='https://calendly.com/roysheppard-digital/30min?background_color=f5f5f5&text_color=474747&primary_color=ab5b5b' />
                 </div>

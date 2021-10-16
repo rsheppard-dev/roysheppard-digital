@@ -5,7 +5,7 @@ const Webdesign = () => {
 
     return (
         <section className="container">
-        <h1><span className="underline">Web design</span></h1>
+        <h3><span className="underline">Web design</span></h3>
         </section>
      );
 }
