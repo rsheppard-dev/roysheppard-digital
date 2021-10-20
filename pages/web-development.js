@@ -14,4 +14,4 @@ const WebDevelopment = () => {
     );
 }
 
-export default WebDesign;
+export default WebDevelopment;
