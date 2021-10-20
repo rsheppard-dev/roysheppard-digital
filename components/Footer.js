@@ -42,6 +42,7 @@ const Footer = () => {
                             />
                         </a></Link>
                         <p className={`${styles.navItem} mt-2`}><Link href="/privacy-policy"><a>Privacy policy</a></Link></p>
+                        <p className={`${styles.navItem} mt-0`}><Link href="/terms-of-service"><a>Terms of service</a></Link></p>
                     </div>
 
                     <div>

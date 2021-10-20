@@ -1,10 +1,19 @@
-import Script from 'next/script'
+import { useEffect, createRef } from 'react'
 
 const Privacy = () => {
+    const privacy = createRef()
+
+    useEffect(() => {
+        fetch('https://app.termageddon.com/api/policy/UkVsTWRIZGxiakJMT1N0ME1WRTlQUT09?h-align=left&no-title=true')
+            .then(res => res.text())
+            .then(res => privacy.current.innerHTML = res)
+            .catch(e => console.log(e))
+    }, [])
+
     return (
         <main className="container">
-            <div id="policy" width="640" height="480" data-policy-key="UkVsTWRIZGxiakJMT1N0ME1WRTlQUT09" data-extra="email-links=true&h-align=left&h-depth=3&table-style=accordion" > </div>
-            <Script src="https://app.termageddon.com/js/termageddon.js" />
+            <h1 className="heading">Privacy policy</h1>
+            <div ref={privacy} />
         </main>
     );
 }

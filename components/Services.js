@@ -8,7 +8,7 @@ const Services = () => {
 
     return (
         <section id="services-section" className="container">
-            <h3><span className="underline">Web design</span> and <span className="underline">development</span> services</h3>
+            <h2 className="heading"><span className="underline">Web design</span> and <span className="underline">development</span> services</h2>
 
             <div className="row row-cols-1 row-cols-lg-2 g-4">
                 <div className="col">
@@ -27,7 +27,7 @@ const Services = () => {
                                 </div>
 
                                 <div className="col my-auto">
-                                    <h4>Web design</h4>
+                                    <h3 className="subHeading">Web design</h3>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@ const Services = () => {
                                 </div>
 
                                 <div className="col my-auto">
-                                    <h4>Web development</h4>
+                                    <h3 className="subHeading">Web development</h3>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@ const Services = () => {
                         </div>
 
                         <div className="card-footer bg-transparent border-0">
-                            <Link href="/web-developer"><a className="button">More information</a></Link>
+                            <Link href="/web-development"><a className="button">More information</a></Link>
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@ const Services = () => {
                                 </div>
 
                                 <div className="col my-auto">
-                                    <h4>eCommerce</h4>
+                                    <h3 className="subHeading">eCommerce</h3>
                                 </div>
                             </div>
                         </div>
