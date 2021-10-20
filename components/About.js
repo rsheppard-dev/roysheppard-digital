@@ -7,7 +7,7 @@ const About = () => {
 
   return (
     <section id="about-section" className="container">
-      <h2 class="heading">Do you want to <span className="underline">drive more customers to your business</span> with a digital presence?</h2>
+      <h2 className="heading">Do you want to <span className="underline">drive more customers to your business</span> with a digital presence?</h2>
 
       <p>My name is Roy Sheppard and I am a freelance web designer and full-stack web developer based in Watford, Hertfordshire.</p>
 
