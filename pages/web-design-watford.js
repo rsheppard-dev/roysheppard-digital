@@ -1,15 +1,9 @@
-import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Hero from '../components/Hero'
 import About from '../components/About'
 import Services from '../components/Services'
-
-const Faq = dynamic(() => import('../components/Faq'), {
-  suspense: true,
-})
-const Contact = dynamic(() => import('../components/Contact'), {
-  suspense: true,
-})
+import Faq from '../components/Faq'
+import Contact from '../components/Contact'
 
 export default function Home({ faq }) {
 

@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Image from 'next/image'
-import Link from 'next/link'
 import ReCAPTCHA from 'react-google-recaptcha'
-import { openPopupWidget } from "react-calendly";
+import { openPopupWidget } from 'react-calendly'
+import * as gtag from '../lib/gtag'
 
 const Contact = () => {
     const [isSending, setIsSending] = useState(false)
@@ -11,13 +11,28 @@ const Contact = () => {
     const { register, handleSubmit, formState: { errors }  } = useForm()
 
     const CTA = ({ url }) => {
-        const onClick = () => openPopupWidget({ url });
+        const onClick = () => {
+            gtag.event({
+                action: 'book_strategy_call',
+                category: 'Engagement',
+                label: 'Contact section link'
+            })
+
+            openPopupWidget({ url })
+        }
 
         return <a className="cta-link" onClick={onClick}>Click here to book a free strategy call at a time that suits you.</a>;
     };
 
     const onSubmitForm = async (data, e) => {
         setIsSending(true)
+
+        gtag.event({
+            action: 'send_message',
+            category: 'Contact',
+            label: data.message
+        })
+
         const token = await recaptchaRef.current.executeAsync()
         recaptchaRef.current.reset()
         data.token = token
@@ -27,7 +42,7 @@ const Contact = () => {
             body: JSON.stringify(data)
         })
         setIsSending(false)
-        e.target.reset()
+        e.target.reset()        
     }
 
     return (

@@ -1,13 +1,22 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { openPopupWidget } from "react-calendly";
+import { openPopupWidget } from 'react-calendly'
 import styles from '../styles/Hero.module.scss'
+import * as gtag from '../lib/gtag'
 
 const Hero = () => {
     const [isVisible, setIsVisible] = useState(true)
 
     const CTA = ({ url }) => {
-        const onClick = () => openPopupWidget({ url  });
+        const onClick = () => {
+            gtag.event({
+                action: 'book_strategy_call',
+                category: 'Engagement',
+                label: 'Hero section button',
+            })
+            
+            openPopupWidget({ url  })
+        }
 
         return <a className="button button-large" onClick={onClick}>Book a free strategy call</a>;
     };
