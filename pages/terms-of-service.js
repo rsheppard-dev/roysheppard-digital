@@ -8,8 +8,7 @@ const Terms = () => {
         fetch('https://app.termageddon.com/api/policy/T1hKMlZVbDJTSEpRZUhSNlNsRTlQUT09?h-align=left&no-title=true')
             .then(res => res.text())
             .then(res => terms.current.innerHTML = res)
-            .catch(e => console.log(e))
-    }, [])
+    }, [terms])
 
     return (
         <>
