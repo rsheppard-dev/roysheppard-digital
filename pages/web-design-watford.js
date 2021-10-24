@@ -16,9 +16,8 @@ export default function Home({ faq }) {
   return (
     <>
       <Head>
-        <title>Roy Sheppard Digital - Freelance web designer and full-stack developer from Watford, Hertfordshire</title>
+        <title>Web Design Watford - Roy Sheppard Digital</title>
         <meta name="description" content="Freelance web designer and full-stack developer from Watford, Hertfordshire" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Hero />

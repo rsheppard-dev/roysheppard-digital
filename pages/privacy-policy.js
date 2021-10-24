@@ -1,4 +1,5 @@
 import { useEffect, createRef } from 'react'
+import Head from 'next/head'
 
 const Privacy = () => {
     const privacy = createRef()
@@ -11,10 +12,16 @@ const Privacy = () => {
     }, [])
 
     return (
-        <main className="container">
-            <h1 className="heading">Privacy policy</h1>
-            <div ref={privacy} />
-        </main>
+        <>
+            <Head>
+                <title>Privacy Policy - Roy Sheppard Digital</title>
+                <meta name="description" content="Privacy policy for Roy SHeppard Digital." />
+            </Head>
+            <main className="container">
+                <h1 className="heading">Privacy policy</h1>
+                <div ref={privacy} />
+            </main>
+        </>
     );
 }
 

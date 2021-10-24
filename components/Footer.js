@@ -12,11 +12,11 @@ const Footer = () => {
                 <div className="col-6 col-md-4 order-md-2">
                     <h4 className={styles.heading}>Navigation</h4>
                     <ul className={styles.navItem}>
-                        <li><Link href="/#"><a>Home</a></Link></li>
-                        <li><Link href="/#about-section"><a>About</a></Link></li>
-                        <li><Link href="/#services-section"><a>Services</a></Link></li>
-                        <li><Link href="/#faq-section"><a>FAQ</a></Link></li>
-                        <li><Link href="/#contact-section"><a>Contact</a></Link></li>
+                        <li><Link href="/web-design-watford"><a>Home</a></Link></li>
+                        <li><Link href="/web-design-watford/#about-section"><a>About</a></Link></li>
+                        <li><Link href="/web-design-watford/#services-section"><a>Services</a></Link></li>
+                        <li><Link href="/web-design-watford/#faq-section"><a>FAQ</a></Link></li>
+                        <li><Link href="/web-design-watford/#contact-section"><a>Contact</a></Link></li>
                     </ul>
                 </div>
 
@@ -31,7 +31,7 @@ const Footer = () => {
 
                 <div className="col-12 col-md-4 order-md-1 d-flex flex-md-column justify-content-between align-items-end align-items-md-start">
                     <div>
-                        <Link href="/#"><a>
+                        <Link href="/web-design-watford"><a>
                             <Image
                                 src={logo}
                                 alt="Roy Sheppard Digital"
@@ -93,4 +93,4 @@ const Footer = () => {
     );
 }
 
-export default Footer;
+export default Footer

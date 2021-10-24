@@ -14,7 +14,7 @@ const Navbar = () => {
     return (
         <nav id="navbar" className="navbar navbar-expand-md navbar-light container">
             <div className="logoWrapper">
-                <Link href="/#"><a className="navbar-brand">
+                <Link href="/web-design-watford"><a className="navbar-brand">
 
                     <Image
                         src={logo}
@@ -36,10 +36,10 @@ const Navbar = () => {
 
                 <ul className={`${styles.navLink} navbar-nav ms-auto`}>
                     <li className="nav-item">
-                        <Link href="/#"><a className="nav-link link active" aria-current="page">Home</a></Link>
+                        <Link href="/web-design-watford"><a className="nav-link link active" aria-current="page">Home</a></Link>
                     </li>
                     <li className="nav-item">
-                        <Link href="/#about-section"><a className="nav-link link">About</a></Link>
+                        <Link href="/web-design-watford/#about-section"><a className="nav-link link">About</a></Link>
                     </li>
                     <li className="nav-item dropdown">
                         <a className="nav-link link" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services <i className="bi bi-arrow-down-circle" /></a>
@@ -50,10 +50,10 @@ const Navbar = () => {
                         </ul>
                     </li>
                     <li className="nav-item">
-                        <Link href="/#faq-section"><a className="nav-link link">FAQ</a></Link>
+                        <Link href="/web-design-watford/#faq-section"><a className="nav-link link">FAQ</a></Link>
                     </li>
                     <li className="nav-item">
-                        <Link href="/#contact-section"><a className="nav-link link">Contact</a></Link>
+                        <Link href="/web-design-watford/#contact-section"><a className="nav-link link">Contact</a></Link>
                     </li>
                 </ul>
             </div>
