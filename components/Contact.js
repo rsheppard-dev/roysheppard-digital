@@ -12,13 +12,13 @@ const Contact = () => {
 
     const CTA = ({ url }) => {
         const onClick = () => {
+            openPopupWidget({ url })
+
             gtag.event({
                 action: 'book_strategy_call',
                 category: 'Engagement',
                 label: 'Contact section link'
             })
-
-            openPopupWidget({ url })
         }
 
         return <a className="cta-link" onClick={onClick}>Click here to book a free strategy call at a time that suits you.</a>;
@@ -26,12 +26,6 @@ const Contact = () => {
 
     const onSubmitForm = async (data, e) => {
         setIsSending(true)
-
-        gtag.event({
-            action: 'send_message',
-            category: 'Contact',
-            label: data.message
-        })
 
         const token = await recaptchaRef.current.executeAsync()
         recaptchaRef.current.reset()
@@ -42,7 +36,13 @@ const Contact = () => {
             body: JSON.stringify(data)
         })
         setIsSending(false)
-        e.target.reset()        
+        e.target.reset()
+        
+        gtag.event({
+            action: 'send_message',
+            category: 'Contact',
+            label: data.message
+        })
     }
 
     return (
