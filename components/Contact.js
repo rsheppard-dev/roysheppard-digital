@@ -41,7 +41,7 @@ const Contact = () => {
         recaptchaRef.current.reset()
         data.token = token
 
-        await fetch('/api/mail', {
+        fetch('/api/mail', {
             method: 'post',
             body: JSON.stringify(data)
         })
