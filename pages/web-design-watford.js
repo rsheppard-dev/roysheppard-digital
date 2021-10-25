@@ -3,7 +3,12 @@ import Hero from '../components/Hero'
 import About from '../components/About'
 import Services from '../components/Services'
 import Faq from '../components/Faq'
-import Contact from '../components/Contact'
+import dynamic from 'next/dynamic'
+
+const Contact = dynamic(
+  () => import('../components/Contact'),
+  { ssr: false }
+)
 
 export default function Home({ faq }) {
 

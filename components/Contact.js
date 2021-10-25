@@ -4,11 +4,15 @@ import Image from 'next/image'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { openPopupWidget } from 'react-calendly'
 import * as gtag from '../lib/gtag'
+import Snackbar from '../utils/snackbar'
 
 const Contact = () => {
     const [isSending, setIsSending] = useState(false)
     const recaptchaRef = useRef()
     const { register, handleSubmit, formState: { errors }  } = useForm()
+
+    const snackbar = new Snackbar()
+    snackbar.init()
 
     const CTA = ({ url }) => {
         const onClick = () => {
@@ -22,10 +26,16 @@ const Contact = () => {
         }
 
         return <a className="cta-link" onClick={onClick}>Click here to book a free strategy call at a time that suits you.</a>;
-    };
-
+    }
+    
     const onSubmitForm = async (data, e) => {
         setIsSending(true)
+
+        gtag.event({
+            action: 'send_message',
+            category: 'Contact',
+            label: data.message
+        })
 
         const token = await recaptchaRef.current.executeAsync()
         recaptchaRef.current.reset()
@@ -35,14 +45,10 @@ const Contact = () => {
             method: 'post',
             body: JSON.stringify(data)
         })
+        
+        snackbar.show('Your message has been sent.')
         setIsSending(false)
         e.target.reset()
-        
-        gtag.event({
-            action: 'send_message',
-            category: 'Contact',
-            label: data.message
-        })
     }
 
     return (
@@ -139,6 +145,12 @@ const Contact = () => {
                 </div>
 
             </div>
+
+            <style jsx> {`
+                button {
+                    width: 15ch;
+                }           
+            `} </style>
 
         </section >
     );

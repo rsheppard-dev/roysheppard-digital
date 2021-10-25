@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import Script from 'next/script'
 import { useRouter } from 'next/router'
+import CookieConsent from 'react-cookie-consent'
 import * as gtag from '../lib/gtag'
 import Layout from '../components/Layout'
 import '../styles/globals.scss'
@@ -37,6 +38,15 @@ function MyApp({ Component, pageProps }) {
           `,
         }}
       />
+
+      <CookieConsent
+        buttonClasses='button'
+        buttonStyle={{
+          background: '#E7E1DB'
+        }}
+      >
+        This website uses cookies to enhance the user experience.
+      </CookieConsent>
 
       <Layout>
         <Component {...pageProps} />

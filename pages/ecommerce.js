@@ -1,6 +1,11 @@
 import Head from 'next/head'
-import Contact from '../components/Contact'
-import animateUnderline from "../utils/animateUnderline";
+import animateUnderline from '../utils/animateUnderline'
+import dynamic from 'next/dynamic'
+
+const Contact = dynamic(
+  () => import('../components/Contact'),
+  { ssr: false }
+)
 
 const Ecommerce = () => {
     animateUnderline()

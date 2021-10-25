@@ -263,3 +263,23 @@ section {
 .grecaptcha-badge { 
   visibility: hidden;
 }
+
+.snackbar {
+  width: 300px;
+  padding: 20px;
+  position: fixed;
+  left: 50%;
+  margin-left: -160px;
+  top: 0;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+  background: lightgreen;
+  text-align: center;
+  color: $dark;
+  margin-top: -100%;
+  transition: all 0.2s ease-in-out;
+}
+
+.snackbar.active {
+  margin-top: 0;
+}
