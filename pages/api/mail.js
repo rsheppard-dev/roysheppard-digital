@@ -2,7 +2,7 @@ const mail = require('@sendgrid/mail')
 
 mail.setApiKey(process.env.SENDGRIP_API_KEY)
 
-export default async (req, res) => {
+const sendEmail = async (req, res) => {
   const body = JSON.parse(req.body)
 
   const validateHuman = async token => {
@@ -53,3 +53,5 @@ export default async (req, res) => {
     console.log(error)
   }
 }
+
+export default sendEmail

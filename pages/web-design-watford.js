@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import Hero from '../components/Hero'
-import About from '../components/About'
-import Services from '../components/Services'
-import Faq from '../components/Faq'
 import dynamic from 'next/dynamic'
 
-const Contact = dynamic(
+const DynamicAbout = dynamic(() => import('../components/About'))
+const DynamicServices = dynamic(() => import('../components/Services'))
+const DynamicFaq = dynamic(() => import('../components/Faq'))
+const DynamicContact = dynamic(
   () => import('../components/Contact'),
   { ssr: false }
 )
@@ -21,13 +21,13 @@ export default function Home({ faq }) {
 
       <Hero />
 
-      <About />
+      <DynamicAbout />
 
-      <Services />
+      <DynamicServices />
 
-      <Faq faq={faq} />
+      <DynamicFaq faq={faq} />
 
-      <Contact />
+      <DynamicContact />
 
     </>
   )

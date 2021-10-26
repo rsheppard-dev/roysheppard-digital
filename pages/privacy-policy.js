@@ -9,7 +9,7 @@ const Privacy = () => {
             .then(res => res.text())
             .then(res => privacy.current.innerHTML = res)
             .catch(e => console.log(e))
-    }, [])
+    }, [privacy])
 
     return (
         <>

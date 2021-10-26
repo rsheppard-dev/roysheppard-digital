@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }) {
           background: '#E7E1DB'
         }}
       >
-        This website uses cookies to enhance the user experience.
+        This website uses cookies to analyse site usage and help improve the user experience.
       </CookieConsent>
 
       <Layout>

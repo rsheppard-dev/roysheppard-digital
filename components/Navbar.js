@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import logo from '../public/images/logo.png'
 import styles from '../styles/Navbar.module.scss'
-import 'bootstrap-icons/font/bootstrap-icons.css'
 import { useEffect } from 'react'
 
 const Navbar = () => {
@@ -14,7 +13,7 @@ const Navbar = () => {
     return (
         <nav id="navbar" className="navbar navbar-expand-md navbar-light container">
             <div className="logoWrapper">
-                <Link href="/web-design-watford"><a className="navbar-brand">
+                <Link href="/web-design-watford" prefetch={false}><a className="navbar-brand">
 
                     <Image
                         src={logo}
@@ -36,13 +35,20 @@ const Navbar = () => {
 
                 <ul className={`${styles.navLink} navbar-nav ms-auto`}>
                     <li className="nav-item">
-                        <Link href="/web-design-watford"><a className="nav-link link active" aria-current="page">Home</a></Link>
+                        <Link href="/web-design-watford" prefetch={false}><a className="nav-link link active" aria-current="page">Home</a></Link>
                     </li>
                     <li className="nav-item">
-                        <Link href="/web-design-watford/#about-section"><a className="nav-link link">About</a></Link>
+                        <Link href="/web-design-watford/#about-section" prefetch={false}><a className="nav-link link">About</a></Link>
                     </li>
                     <li className="nav-item dropdown">
-                        <a className="nav-link link" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services <i className="bi bi-arrow-down-circle" /></a>
+                        <a className="nav-link link" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services 
+                        <Image
+                            src='/images/arrow-down-circle.svg'
+                            width={15}
+                            height={15}
+                            layout='fixed'
+                            alt='Submenu arrow'
+                        /></a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><Link href="/web-design"><a className="dropdown-item">Web Design</a></Link></li>
                             <li><Link href="/web-development"><a className="dropdown-item">Web Development</a></Link></li>
@@ -50,10 +56,10 @@ const Navbar = () => {
                         </ul>
                     </li>
                     <li className="nav-item">
-                        <Link href="/web-design-watford/#faq-section"><a className="nav-link link">FAQ</a></Link>
+                        <Link href="/web-design-watford/#faq-section" prefetch={false}><a className="nav-link link">FAQ</a></Link>
                     </li>
                     <li className="nav-item">
-                        <Link href="/web-design-watford/#contact-section"><a className="nav-link link">Contact</a></Link>
+                        <Link href="/web-design-watford/#contact-section" prefetch={false}><a className="nav-link link">Contact</a></Link>
                     </li>
                 </ul>
             </div>

@@ -1,7 +1,6 @@
 import useSWR from 'swr'
 import ReactMarkdown from 'react-markdown'
 import styles from '../styles/Faq.module.scss'
-import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const fetcher = async url => {
     const res = await fetch(url)

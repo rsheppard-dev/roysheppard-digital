@@ -7,16 +7,20 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "next-sitemap --config sitemap-config.js"
+    "postbuild": "next-sitemap --config sitemap-config.js",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^11.1.2",
     "@popperjs/core": "^2.10.2",
     "@sendgrid/mail": "^7.4.7",
     "bootstrap": "^5.1.0",
-    "bootstrap-icons": "^1.5.0",
+    "cross-env": "^7.0.3",
     "gsap": "^3.8.0",
     "next": "11.1.0",
     "next-sitemap": "^1.6.192",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^6.7.0",
     "react": "17.0.2",
     "react-calendly": "^2.2.2",
     "react-cookie-consent": "^6.4.1",
@@ -28,10 +32,10 @@
     "swr": "^1.0.0"
   },
   "devDependencies": {
-    "@zeit/next-css": "^1.0.1",
+    "@fullhuman/postcss-purgecss": "^4.0.3",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
-    "next-purgecss": "^4.0.0",
+    "postcss": "^8.3.11",
     "sass": "^1.38.1"
   }
 }
