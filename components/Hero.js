@@ -3,9 +3,10 @@ import Image from 'next/image'
 import { openPopupWidget } from 'react-calendly'
 import styles from '../styles/Hero.module.scss'
 import * as gtag from '../lib/gtag'
+import { TruckFlatbed } from 'react-bootstrap-icons'
 
 const Hero = () => {
-    const [isVisible, setIsVisible] = useState(true)
+    const [isVisible, setIsVisible] = useState(false)
 
     const CTA = ({ url }) => {
         const onClick = () => {
@@ -23,7 +24,7 @@ const Hero = () => {
 
     useEffect(() => {
 
-        if (screen.width < 992) setIsVisible(false)
+        if (screen.width > 992) setIsVisible(true)
 
     }, [isVisible])
 

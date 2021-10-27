@@ -30,10 +30,14 @@
     "swr": "^1.0.0"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3",
     "@next/bundle-analyzer": "^11.1.2",
+    "autoprefixer": "^10.3.7",
     "cross-env": "^7.0.3",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^6.7.0",
     "sass": "^1.38.1"
   }
 }
