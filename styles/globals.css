@@ -12512,6 +12512,7 @@ section {
   font-size: 1.5rem;
 }
 
+/*! purgecss ignore */
 .button {
   display: block;
   color: #474747;
