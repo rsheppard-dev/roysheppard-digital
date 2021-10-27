@@ -36,7 +36,7 @@ const Navbar = () => {
 
                 <ul className={`${styles.navLink} navbar-nav ms-auto`}>
                     <li className="nav-item">
-                        <Link href="/web-design-watford" prefetch={false}><a className="nav-link link active" aria-current="page">Home</a></Link>
+                        <Link href="/web-design-watford" prefetch={false}><a className="nav-link link" aria-current="page">Home</a></Link>
                     </li>
                     <li className="nav-item">
                         <Link href="/web-design-watford/#about-section" prefetch={false}><a className="nav-link link">About</a></Link>

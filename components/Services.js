@@ -37,7 +37,7 @@ const Services = () => {
                         </div>
 
                         <div className="card-footer bg-transparent border-0">
-                            <Link href="/web-design"><a className="button">More information</a></Link>
+                            <Link href="/web-design"><a className="button">Get help with web design</a></Link>
                         </div>
                     </div>
 
@@ -68,7 +68,7 @@ const Services = () => {
                         </div>
 
                         <div className="card-footer bg-transparent border-0">
-                            <Link href="/web-development"><a className="button">More information</a></Link>
+                            <Link href="/web-development"><a className="button">Get help with web development</a></Link>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@ const Services = () => {
                         </div>
 
                         <div className="card-footer bg-transparent border-0">
-                            <Link href="/ecommerce"><a className="button">More information</a></Link>
+                            <Link href="/ecommerce"><a className="button">Get help with eCommerce</a></Link>
                         </div>
                     </div>
                 </div>
