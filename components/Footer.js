@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import logo from '../public/images/logo.png'
 import styles from '../styles/Footer.module.scss'
+import { Facebook, Instagram, Linkedin, Twitter } from 'react-bootstrap-icons'
 
 const Footer = () => {
     return (
@@ -48,40 +49,16 @@ const Footer = () => {
                     <div>
                         <ul className={styles.socialItem}>
                             <li>
-                                <Image
-                                    src="/images/facebook.svg"
-                                    alt="Facebook"
-                                    layout="intrinsic"
-                                    width={30}
-                                    height={30}
-                                />
+                                <Facebook size={30} />
                             </li>
                             <li>
-                                <Image
-                                    src="/images/instagram.svg"
-                                    alt="Instagram"
-                                    layout="intrinsic"
-                                    width={30}
-                                    height={30}
-                                />
+                                <Twitter size={30} />
                             </li>
                             <li>
-                                <Image
-                                    src="/images/linkedin.svg"
-                                    alt="LinkedIn"
-                                    layout="intrinsic"
-                                    width={30}
-                                    height={30}
-                                />
+                                <Linkedin size={30} />
                             </li>
                             <li>
-                                <Image
-                                    src="/images/twitter.svg"
-                                    alt="Twitter"
-                                    layout="intrinsic"
-                                    width={30}
-                                    height={30}
-                                />
+                                <Instagram size={30} />
                             </li>
                         </ul>
 
