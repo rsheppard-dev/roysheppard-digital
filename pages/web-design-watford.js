@@ -28,8 +28,10 @@ export default function Home({ faq }) {
       <DynamicAbout />
 
       <DynamicServices />
-
-      <DynamicFaq faq={faq} />
+      
+      <section id="faq-section" className="container">
+        <DynamicFaq faq={faq} />
+      </section>
 
       <section id="contact-section" className="container" ref={observe}>
         {inView && <DynamicContact />}

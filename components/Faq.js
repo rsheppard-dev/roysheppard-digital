@@ -16,7 +16,7 @@ const Faq = (props) => {
     if (!data) return <div className="container my-3">Loading questions...</div>
 
     return (
-        <section id="faq-section" className="container">
+        <>
 
             <h2 className="heading">Frequently asked questions</h2>
 
@@ -34,7 +34,7 @@ const Faq = (props) => {
                     </div>
                 ))}
             </div>
-        </section >
+        </>
     );
 }
 
