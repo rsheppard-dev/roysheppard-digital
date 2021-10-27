@@ -52,7 +52,7 @@ const Contact = () => {
     }
 
     return (
-        <section id="contact-section" className="container">
+        <>
             <h2 className="heading">Get in touch</h2>
 
             <p>I offer a <u>free 30 minute strategy call</u> to anyone that is looking to get their business online or is struggling to grow.</p>
@@ -152,7 +152,7 @@ const Contact = () => {
                 }           
             `} </style>
 
-        </section >
+        </>
     );
 }
 

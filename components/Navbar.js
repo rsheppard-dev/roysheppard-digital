@@ -1,8 +1,9 @@
+import { useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { ArrowDownCircle } from 'react-bootstrap-icons'
 import logo from '../public/images/logo.png'
 import styles from '../styles/Navbar.module.scss'
-import { useEffect } from 'react'
 
 const Navbar = () => {
     useEffect(() => {
@@ -41,14 +42,7 @@ const Navbar = () => {
                         <Link href="/web-design-watford/#about-section" prefetch={false}><a className="nav-link link">About</a></Link>
                     </li>
                     <li className="nav-item dropdown">
-                        <a className="nav-link link" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services 
-                        <Image
-                            src='/images/arrow-down-circle.svg'
-                            width={15}
-                            height={15}
-                            layout='fixed'
-                            alt='Submenu arrow'
-                        /></a>
+                        <a className="nav-link link" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services <ArrowDownCircle className="ms-1" /></a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><Link href="/web-design"><a className="dropdown-item">Web Design</a></Link></li>
                             <li><Link href="/web-development"><a className="dropdown-item">Web Development</a></Link></li>

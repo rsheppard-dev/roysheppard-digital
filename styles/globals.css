@@ -12527,8 +12527,8 @@ section {
   background-image: -webkit-gradient(linear, left top, left bottom, to(#E7E1DB));
   background-image: linear-gradient(#E7E1DB 100%);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: 0 6px;
+  background-size: 100% 90%;
+  background-position: bottom;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -12548,7 +12548,7 @@ section {
   font-size: 1.2rem;
   margin-bottom: 0em;
   -webkit-animation: btnWiggle 5s infinite;
-  animation: btnWiggle 5s infinite;
+          animation: btnWiggle 5s infinite;
 }
 
 @-webkit-keyframes btnWiggle {

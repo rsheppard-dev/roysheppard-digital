@@ -1,6 +1,7 @@
 import Head from 'next/head'
-import Hero from '../components/Hero'
 import dynamic from 'next/dynamic'
+import useInView from "react-cool-inview"
+import Hero from '../components/Hero'
 
 const DynamicAbout = dynamic(() => import('../components/About'))
 const DynamicServices = dynamic(() => import('../components/Services'))
@@ -11,6 +12,9 @@ const DynamicContact = dynamic(
 )
 
 export default function Home({ faq }) {
+  const { observe, inView } = useInView({
+    onEnter: ({ unobserve }) => unobserve()
+  })
 
   return (
     <>
@@ -27,7 +31,9 @@ export default function Home({ faq }) {
 
       <DynamicFaq faq={faq} />
 
-      <DynamicContact />
+      <section id="contact-section" className="container" ref={observe}>
+        {inView && <DynamicContact />}
+      </section>
 
     </>
   )

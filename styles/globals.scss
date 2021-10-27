@@ -148,13 +148,10 @@ section {
   cursor: pointer;
   margin: 1em 0;
   transition: all 0.3s ease-in-out;
-  background-image: -webkit-linear-gradient($primary 100%);
-  background-image: -moz-linear-gradient($primary 100%); 
-  background-image: -o-linear-gradient($primary 100%);
   background-image: linear-gradient($primary 100%);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: 0 6px;
+  background-size: 100% 90%;
+  background-position: bottom;
   width: fit-content;
 
   &:hover {
@@ -168,9 +165,6 @@ section {
 .button-large {
   font-size: 1.2rem;
   margin-bottom: 0em;
-  -webkit-animation: btnWiggle 5s infinite;
-  -moz-animation: btnWiggle 5s infinite;
-  -o-animation: btnWiggle 5s infinite;
   animation: btnWiggle 5s infinite;
 }
 

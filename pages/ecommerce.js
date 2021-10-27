@@ -1,13 +1,18 @@
 import Head from 'next/head'
 import animateUnderline from '../utils/animateUnderline'
 import dynamic from 'next/dynamic'
+import useInView from "react-cool-inview"
 
-const Contact = dynamic(
+const DynamicContact = dynamic(
   () => import('../components/Contact'),
   { ssr: false }
 )
 
 const Ecommerce = () => {
+    const { observe, inView } = useInView({
+        onEnter: ({ unobserve }) => unobserve()
+    })
+
     animateUnderline()
 
     return (
@@ -20,7 +25,10 @@ const Ecommerce = () => {
                 <section className="container">
                     <h1 className="heading"><span className="underline">eCommerce</span></h1>
                 </section>
-                <Contact />
+                
+                <section id="contact-section" className="container" ref={observe}>
+                    { inView && <DynamicContact /> }
+                </section>
             </main>
         </>
     );
