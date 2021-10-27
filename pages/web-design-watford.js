@@ -2,19 +2,16 @@ import { useInView } from 'react-intersection-observer'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import Hero from '../components/Hero'
+import About from '../components/About'
+import Services from '../components/Services'
+import Faq from '../components/Faq'
 
-const DynamicAbout = dynamic(() => import('../components/About'))
-const DynamicServices = dynamic(() => import('../components/Services'))
-const DynamicFaq = dynamic(() => import('../components/Faq'))
 const DynamicContact = dynamic(
   () => import('../components/Contact'),
   { ssr: false }
 )
 
 export default function Home({ faq }) {
-  const [faqRef, faqInView ] = useInView({
-    triggerOnce: true
-  })
   const [contactRef, contactInView ] = useInView({
     triggerOnce: true
   })
@@ -28,12 +25,12 @@ export default function Home({ faq }) {
 
       <Hero />
 
-      <DynamicAbout />
+      <About />
 
-      <DynamicServices />
+      <Services />
       
-      <section id="faq-section" className="container" ref={faqRef}>
-        { faqInView && <DynamicFaq faq={faq} /> }
+      <section id="faq-section" className="container">
+        <Faq faq={faq} />
       </section>
 
       <section id="contact-section" className="container" ref={contactRef}>
