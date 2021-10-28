@@ -11,7 +11,7 @@ const DynamicContact = dynamic(
   { ssr: false }
 )
 
-export default function Home({ faq }) {
+export default function Home({ faqs }) {
   const [contactRef, contactInView ] = useInView({
     triggerOnce: true
   })
@@ -30,7 +30,7 @@ export default function Home({ faq }) {
       <Services />
       
       <section id="faq-section" className="container">
-        <Faq faq={faq} />
+        <Faq faqs={faqs} />
       </section>
 
       <section id="contact-section" className="container" ref={contactRef}>
@@ -41,13 +41,31 @@ export default function Home({ faq }) {
   )
 }
 
-export async function getStaticProps(context) {
-  const res = await fetch('https://salty-eyrie-16291.herokuapp.com/frequently-asked-questions')
-  const faq = await res.json()
+export async function getStaticProps() {
+  const uri = process.env.NEXT_PUBLIC_WP_GRAPHQL
+  const res = await fetch(uri, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+          query: `
+              query faqQuery {
+                faqs {
+                  nodes {
+                    id
+                    title
+                    content
+                  }
+                }
+              }
+          `
+      })
+  })
+
+  const json = await res.json()
 
   return {
       props: {
-          faq
+          faqs: json.data.faqs
       }
   }
 }
