@@ -36,13 +36,13 @@ const Navbar = () => {
 
                 <ul className={`${styles.navLink} navbar-nav ms-auto`}>
                     <li className="nav-item">
-                        <Link href="/web-design-watford" prefetch={false}><a className="nav-link link" aria-current="page">Home</a></Link>
+                        <Link href="/web-design-watford" prefetch={false}><a className={`${styles.link} nav-link`} aria-current="page">Home</a></Link>
                     </li>
                     <li className="nav-item">
-                        <Link href="/web-design-watford/#about-section" prefetch={false}><a className="nav-link link">About</a></Link>
+                        <Link href="/web-design-watford/#about-section" prefetch={false}><a className={`${styles.link} nav-link`}>About</a></Link>
                     </li>
                     <li className="nav-item dropdown">
-                        <a className="nav-link link" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services <ArrowDownCircle className="ms-1" /></a>
+                        <a className={`${styles.link} nav-link`} id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services <ArrowDownCircle className="ms-1" /></a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><Link href="/web-design"><a className="dropdown-item">Web Design</a></Link></li>
                             <li><Link href="/web-development"><a className="dropdown-item">Web Development</a></Link></li>
@@ -50,10 +50,10 @@ const Navbar = () => {
                         </ul>
                     </li>
                     <li className="nav-item">
-                        <Link href="/web-design-watford/#faq-section" prefetch={false}><a className="nav-link link">FAQ</a></Link>
+                        <Link href="/web-design-watford/#faq-section" prefetch={false}><a className={`${styles.link} nav-link`}>FAQ</a></Link>
                     </li>
                     <li className="nav-item">
-                        <Link href="/web-design-watford/#contact-section" prefetch={false}><a className="nav-link link">Contact</a></Link>
+                        <Link href="/web-design-watford/#contact-section" prefetch={false}><a className={`${styles.link} nav-link`}>Contact</a></Link>
                     </li>
                 </ul>
             </div>

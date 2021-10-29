@@ -16,6 +16,7 @@
     a {
         color: variables.$dark;
         font-weight: 300;
+        text-decoration: underline;
 
         &:hover {
             color: variables.$dark;

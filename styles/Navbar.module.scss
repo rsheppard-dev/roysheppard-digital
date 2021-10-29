@@ -1,3 +1,5 @@
+@use 'variables';
+
 .navLink {
     a {
         font-weight: 300;
@@ -5,3 +7,38 @@
         align-items: center;
     }
 }
+
+.link {
+    position: relative;
+    transition: all 0.2s ease-in-out;
+  
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -0.2em;
+      width: 0px;
+      height: 2px;
+      transition: all 0.2s ease-in-out;
+      transition-duration: 0.75s;
+      opacity: 0;
+      background-color: variables.$dark-accent;
+    }
+  
+    &:before {
+      left: 50%;
+    }
+  
+    &:after {
+      right: 50%;
+    }
+  
+    &:hover {
+      &:before,
+      &:after {
+        width: 100%;
+        opacity: 1;
+        width: 50%;
+      }
+    }
+  }

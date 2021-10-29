@@ -140,25 +140,19 @@ section {
 .button {
   display: block;
   color: $dark;
-  border: 3px solid $dark-accent;
+  border: none;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  background: none;
+  background: $primary;
   padding: 0.5em;
   cursor: pointer;
   margin: 1em 0;
   transition: all 0.3s ease-in-out;
-  background-image: linear-gradient($primary 100%);
-  background-repeat: no-repeat;
-  background-size: 100% 90%;
-  background-position: bottom;
   width: fit-content;
 
   &:hover {
-    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    perspective: 1000px;
+    background-color: darken($primary, 5%);
+    color: $dark;
   }
 }
 
@@ -168,79 +162,12 @@ section {
   animation: btnWiggle 5s infinite;
 }
 
-@-webkit-keyframes btnWiggle {
-  0% {-webkit-transform: rotate(0deg);}
-  2% {-webkit-transform: rotate(-1deg);}
-  3.5% {-webkit-transform: rotate(1deg);}
-  5% {-webkit-transform: rotate(0deg);}
-  100% {-webkit-transform: rotate(0deg);}
-}
-@-o-keyframes btnWiggle {
-  0% {-webkit-transform: rotate(0deg);}
-  2% {-webkit-transform: rotate(-1deg);}
-  3.5% {-webkit-transform: rotate(1deg);}
-  5% {-webkit-transform: rotate(0deg);}
-  100% {-webkit-transform: rotate(0deg);}
-}
 @keyframes btnWiggle {
-  0% {-webkit-transform: rotate(0deg);}
-  2% {-webkit-transform: rotate(-1deg);}
-  3.5% {-webkit-transform: rotate(1deg);}
-  5% {-webkit-transform: rotate(0deg);}
-  100% {-webkit-transform: rotate(0deg);}
-}
-
-@keyframes shake {
-  10%, 90% {
-    transform: translate3d(-1px, 0, 0);
-  }
-  
-  20%, 80% {
-    transform: translate3d(2px, 0, 0);
-  }
-
-  30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
-  }
-
-  40%, 60% {
-    transform: translate3d(4px, 0, 0);
-  }
-}
-
-.link {
-  position: relative;
-  transition: all 0.2s ease-in-out;
-
-  &:before,
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: -0.2em;
-    width: 0px;
-    height: 2px;
-    transition: all 0.2s ease-in-out;
-    transition-duration: 0.75s;
-    opacity: 0;
-    background-color: $dark-accent;
-  }
-
-  &:before {
-    left: 50%;
-  }
-
-  &:after {
-    right: 50%;
-  }
-
-  &:hover {
-    &:before,
-    &:after {
-      width: 100%;
-      opacity: 1;
-      width: 50%;
-    }
-  }
+  0% { transform: rotate(0deg); }
+  2% { transform: rotate(-1deg); }
+  3.5% { transform: rotate(1deg); }
+  5% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
 }
 
 .underline {
@@ -267,7 +194,7 @@ section {
   top: 0;
   border-radius: 0 0 5px 5px;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
-  background: lightgreen;
+  background: $primary;
   text-align: center;
   color: $dark;
   margin-top: -100%;
@@ -276,4 +203,9 @@ section {
 
 .snackbar.active {
   margin-top: 0;
+}
+
+.text-box {
+  background-color: lighten($primary, 6%);
+  padding: 5px 0;
 }

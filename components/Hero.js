@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { openPopupWidget } from 'react-calendly'
 import styles from '../styles/Hero.module.scss'
 import * as gtag from '../lib/gtag'
-import { TruckFlatbed } from 'react-bootstrap-icons'
 
 const Hero = () => {
     const [isVisible, setIsVisible] = useState(false)
@@ -32,7 +31,7 @@ const Hero = () => {
         <section id="hero-section" className="container">
             <div className="row">
                 <div className="col-lg my-auto">
-                    <h1 className={styles.headingSmall}>Freelance web designer and developer in Watford</h1>
+                    <h1 className={styles.headingSmall}><span className="text-box">Freelance web designer and developer in Watford</span></h1>
 
                     <h2 className={styles.headingLarge}>I create <span className={styles.highlighted}>amazing websites</span> you and your users will love</h2>
 

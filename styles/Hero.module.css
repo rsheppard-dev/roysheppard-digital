@@ -1,6 +1,6 @@
 .headingSmall {
   font-size: 1rem;
-  color: #CBBFA8;
+  color: #474747;
   font-weight: 500;
 }
 
@@ -8,7 +8,6 @@
   font-weight: 700;
   font-size: clamp(2.4rem, 5vw, 3.2rem);
   display: block;
-  margin-top: 0.5em;
   margin-bottom: 1em;
 }
 

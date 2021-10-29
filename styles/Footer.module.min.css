@@ -1,2 +1,2 @@
-.heading{font-weight:400;font-size:1em}.navItem{list-style-type:none;font-weight:300;font-size:1rem;line-height:2;margin:0;padding:0}.navItem a{color:#474747;font-weight:300}.navItem a:hover{color:#474747}.socialItem{display:-webkit-box;display:-ms-flexbox;display:flex}.socialItem li{margin-right:10px}.socialItem li:last-child{margin-right:0}
+.heading{font-weight:400;font-size:1em}.navItem{list-style-type:none;font-weight:300;font-size:1rem;line-height:2;margin:0;padding:0}.navItem a{color:#474747;font-weight:300;text-decoration:underline}.navItem a:hover{color:#474747}.socialItem{display:-webkit-box;display:-ms-flexbox;display:flex}.socialItem li{margin-right:10px}.socialItem li:last-child{margin-right:0}
 /*# sourceMappingURL=Footer.module.min.css.map */

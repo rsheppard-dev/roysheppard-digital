@@ -5,17 +5,16 @@ const Privacy = () => {
     const privacy = createRef()
 
     useEffect(() => {
-        fetch('https://app.termageddon.com/api/policy/UkVsTWRIZGxiakJMT1N0ME1WRTlQUT09?h-align=left&no-title=true')
+        fetch('https://app.termageddon.com/api/policy/UkVsTWRIZGxiakJMT1N0ME1WRTlQUT09?h-align=left&no-title=true&table-style=accordion')
             .then(res => res.text())
             .then(res => privacy.current.innerHTML = res)
-            .catch(e => console.log(e))
     }, [privacy])
 
     return (
         <>
             <Head>
                 <title>Privacy Policy - Roy Sheppard Digital</title>
-                <meta name="description" content="Privacy policy for Roy SHeppard Digital." />
+                <meta name="description" content="Privacy policy for Roy Sheppard Digital." />
             </Head>
             <main className="container">
                 <h1 className="heading">Privacy policy</h1>
