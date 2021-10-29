@@ -46,9 +46,9 @@ const Contact = () => {
             body: JSON.stringify(data)
         })
         
-        snackbar.show('Your message has been sent.')
         setIsSending(false)
         e.target.reset()
+        snackbar.show('Your message has been sent.')
     }
 
     return (

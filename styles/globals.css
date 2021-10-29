@@ -12486,10 +12486,6 @@ p, a, small, .small {
   line-height: 1.9;
 }
 
-hr {
-  margin: 2.5em 0;
-}
-
 ul {
   list-style-type: none;
   padding: 0;
@@ -12498,6 +12494,12 @@ ul {
 
 section {
   margin: 0 auto;
+}
+
+hr {
+  height: 10px;
+  background-color: #E7E1DB;
+  border: none;
 }
 
 .heading {
