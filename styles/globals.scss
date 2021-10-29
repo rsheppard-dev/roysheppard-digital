@@ -181,7 +181,7 @@ section {
   background-image: linear-gradient(transparent calc(100% - 5px), $link 5px);
 }
 
-/*! purgecss ignore */
+/*! purgecss start ignore */
 .grecaptcha-badge { 
   visibility: hidden;
 }
@@ -202,10 +202,10 @@ section {
   transition: all 0.2s ease-in-out;
 }
 
-/*! purgecss ignore */
 .snackbar.active {
   margin-top: 0;
 }
+/*! purgecss end ignore */
 
 .text-box {
   background-color: lighten($primary, 6%);
