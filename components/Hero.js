@@ -28,7 +28,7 @@ const Hero = () => {
     }, [isVisible])
 
     return (
-        <section id="hero-section" className="container">
+        <section id="hero-section" className="container mt-5">
             <div className="row">
                 <div className="col-lg my-auto">
                     <h1 className={styles.headingSmall}><span className="text-box">Freelance web designer and developer in Watford</span></h1>

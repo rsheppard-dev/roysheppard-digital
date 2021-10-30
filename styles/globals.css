@@ -12408,13 +12408,6 @@ textarea.form-control-lg {
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../public/fonts/poppins-thin-webfont.woff2") format("woff2"), url("../public/fonts/poppins-thin-webfont.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Poppins";
   src: url("../public/fonts/poppins-light-webfont.woff2") format("woff2"), url("../public/fonts/poppins-light-webfont.woff") format("woff");
   font-weight: 300;
   font-style: normal;
@@ -12432,7 +12425,7 @@ textarea.form-control-lg {
   src: url("../public/fonts/poppins-regular-webfont.woff2") format("woff2"), url("../public/fonts/poppins-regular-webfont.woff") format("woff");
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
 }
 @font-face {
   font-family: "Poppins";
@@ -12446,7 +12439,7 @@ textarea.form-control-lg {
   src: url("../public/fonts/poppins-bold-webfont.woff2") format("woff2"), url("../public/fonts/poppins-bold-webfont.woff") format("woff");
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
 }
 html, body {
   scroll-behavior: smooth;
@@ -12486,6 +12479,10 @@ p, a, small, .small {
   line-height: 1.9;
 }
 
+hr {
+  margin: 2.5em 0;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -12494,12 +12491,6 @@ ul {
 
 section {
   margin: 0 auto;
-}
-
-hr {
-  height: 10px;
-  background-color: #E7E1DB;
-  border: none;
 }
 
 .heading {
@@ -12599,6 +12590,7 @@ hr {
   background-image: linear-gradient(transparent calc(100% - 5px), #AB5B5B 5px);
 }
 
+/*! purgecss start ignore */
 .grecaptcha-badge {
   visibility: hidden;
 }
@@ -12625,6 +12617,7 @@ hr {
   margin-top: 0;
 }
 
+/*! purgecss end ignore */
 .text-box {
   background-color: #f3f0ed;
   padding: 5px 0;

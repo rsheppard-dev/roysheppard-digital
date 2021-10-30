@@ -21,15 +21,6 @@ $accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3
 
 @font-face {
   font-family: 'Poppins';
-  src: url('../public/fonts/poppins-thin-webfont.woff2') format('woff2'),
-       url('../public/fonts/poppins-thin-webfont.woff') format('woff');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Poppins';
   src: url('../public/fonts/poppins-light-webfont.woff2') format('woff2'),
        url('../public/fonts/poppins-light-webfont.woff') format('woff');
   font-weight: 300;
@@ -52,7 +43,7 @@ $accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3
        url('../public/fonts/poppins-regular-webfont.woff') format('woff');
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
 }
 
 @font-face {
@@ -70,7 +61,7 @@ $accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3
        url('../public/fonts/poppins-bold-webfont.woff') format('woff');
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
 }
 
 html, body {
