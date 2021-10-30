@@ -34,4 +34,10 @@
             margin-right: 0;
         }
     }
+
+    a {
+        &:hover {
+            color: variables.$highlight;
+        }
+    }
 }
