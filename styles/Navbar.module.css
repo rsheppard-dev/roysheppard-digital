@@ -7,4 +7,34 @@
       -ms-flex-align: center;
           align-items: center;
 }
+
+.link {
+  position: relative;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.link:before, .link:after {
+  content: "";
+  position: absolute;
+  bottom: -0.2em;
+  width: 0px;
+  height: 4px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition-duration: 0.75s;
+          transition-duration: 0.75s;
+  opacity: 0;
+  background-color: #FFBD33;
+}
+.link:before {
+  left: 50%;
+}
+.link:after {
+  right: 50%;
+}
+.link:hover:before, .link:hover:after {
+  width: 100%;
+  opacity: 1;
+  width: 50%;
+}
 /*# sourceMappingURL=Navbar.module.css.map */

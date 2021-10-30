@@ -39,7 +39,6 @@ const Footer = () => {
                                 layout="intrinsic"
                                 width={174}
                                 height={45}
-                                priority
                             />
                         </a></Link>
                         <p className={`${styles.navItem} mt-2`}><Link href="/privacy-policy"><a>Privacy policy</a></Link></p>
@@ -65,7 +64,12 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-
+            
+            <style jsx>{`
+            a:hover {
+                background: none;
+            }
+            `}</style>
         </footer>
     );
 }

@@ -13,7 +13,7 @@ const Navbar = () => {
 
     return (
         <nav id="navbar" className="navbar navbar-expand-md navbar-light container">
-            <div className="logoWrapper">
+            <div>
                 <Link href="/web-design-watford" prefetch={false}><a className="navbar-brand">
 
                     <Image
@@ -22,7 +22,7 @@ const Navbar = () => {
                         layout="intrinsic"
                         width={174}
                         height={45}
-                        priority
+                        priority={true}
                     />
 
                 </a></Link>
@@ -57,6 +57,13 @@ const Navbar = () => {
                     </li>
                 </ul>
             </div>
+
+            <style jsx>{`
+            a:hover {
+                background: none;
+            }
+            `}</style>
+            
         </nav>
     );
 }

@@ -148,7 +148,7 @@ const Contact = () => {
 
             <style jsx> {`
                 button {
-                    width: 15ch;
+                    width: 180px;
                 }           
             `} </style>
 

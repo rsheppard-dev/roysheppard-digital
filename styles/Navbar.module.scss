@@ -18,11 +18,11 @@
       position: absolute;
       bottom: -0.2em;
       width: 0px;
-      height: 2px;
+      height: 4px;
       transition: all 0.2s ease-in-out;
       transition-duration: 0.75s;
       opacity: 0;
-      background-color: variables.$dark-accent;
+      background-color: variables.$highlight;
     }
   
     &:before {

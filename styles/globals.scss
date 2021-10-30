@@ -83,14 +83,17 @@ html, body {
   box-sizing: border-box;
 }
 
-a, .cta-link {
-  color: $link;
+a {
+  color: $dark;
   text-decoration: none;
   font-weight: 600;
   cursor: pointer;
+  padding: 0.2em;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
-    color: darken($link, 15%);
+    color: $dark;
+    background-color: $primary;
   }
 }
 
@@ -169,7 +172,7 @@ section {
   background-position-x: 0%;
   background-position-y: 0%;
   transition: background-size 1s;
-  background-image: linear-gradient(transparent calc(100% - 5px), $link 5px);
+  background-image: linear-gradient(transparent calc(100% - 5px), $highlight 5px);
 }
 
 /*! purgecss start ignore */

@@ -12461,14 +12461,18 @@ html, body {
           box-sizing: border-box;
 }
 
-a, .cta-link {
-  color: #AB5B5B;
+a {
+  color: #474747;
   text-decoration: none;
   font-weight: 600;
   cursor: pointer;
+  padding: 0.2em;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-a:hover, .cta-link:hover {
-  color: #7b3f3f;
+a:hover {
+  color: #474747;
+  background-color: #E7E1DB;
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, span {
@@ -12522,7 +12526,7 @@ section {
   width: fit-content;
 }
 .button:hover {
-  background-color: #ddd4cc;
+  background-color: #FFBD33;
   color: #474747;
 }
 
@@ -12587,7 +12591,7 @@ section {
   background-position-y: 0%;
   -webkit-transition: background-size 1s;
   transition: background-size 1s;
-  background-image: linear-gradient(transparent calc(100% - 5px), #AB5B5B 5px);
+  background-image: linear-gradient(transparent calc(100% - 5px), #FFBD33 5px);
 }
 
 /*! purgecss start ignore */
