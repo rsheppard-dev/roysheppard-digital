@@ -48,22 +48,22 @@ const Footer = () => {
                     <div>
                         <ul className={styles.socialItem}>
                             <li>
-                                <a href="https://www.facebook.com/roysheppard.digital" target="_blank">
+                                <a href="https://www.facebook.com/roysheppard.digital" target="_blank" rel="noreferrer">
                                     <Facebook size={30} />
                                 </a>
                             </li>
                             <li>
-                                <a href="https://twitter.com/rsheppard_dev" target="_blank">
+                                <a href="https://twitter.com/rsheppard_dev" target="_blank" rel="noreferrer">
                                     <Twitter size={30} />
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.linkedin.com/in/roysheppard-digital" target="_blank">
+                                <a href="https://www.linkedin.com/in/roysheppard-digital" target="_blank" rel="noreferrer">
                                     <Linkedin size={30} />
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.instagram.com/roysheppard.digital" target="_blank">
+                                <a href="https://www.instagram.com/roysheppard.digital" target="_blank" rel="noreferrer">
                                     <Instagram size={30} />
                                 </a>
                             </li>
