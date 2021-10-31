@@ -23,7 +23,7 @@ const Faq = (props) => {
     if (!data) return <div className="container my-3">Loading FAQ...</div>
 
     return (
-        <>
+        <section id = "faq-section" className = "container">
             <h2 className="heading">Frequently asked questions</h2>
 
             <div className="accordion accordion-flush" id="accordionFAQ">
@@ -40,7 +40,7 @@ const Faq = (props) => {
                     </div>
                 ))}
                 </div>
-        </>
+        </section>
     );
 }
 

@@ -1,23 +1,30 @@
 import { useRef, useState } from 'react'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
+import { useInView } from 'react-intersection-observer'
 import { useForm } from 'react-hook-form'
-import ReCAPTCHA from 'react-google-recaptcha'
-import { openPopupWidget } from 'react-calendly'
 import * as gtag from '../lib/gtag'
 import { EnvelopeFill, TelephoneFill } from 'react-bootstrap-icons'
-import Snackbar from '../utils/snackbar'
 import styles from '../styles/Contact.module.scss'
+
+const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'))
 
 const Contact = () => {
     const [isSending, setIsSending] = useState(false)
-    const recaptchaRef = useRef()
-    const { register, handleSubmit, formState: { errors }  } = useForm()
 
-    const snackbar = new Snackbar()
-    snackbar.init()
+    const { register, handleSubmit, formState: { errors } } = useForm()
+
+    const recaptchaRef = useRef()
+    
+    const { ref, inView } = useInView({
+        triggerOnce: true
+    })
 
     const CTA = ({ url }) => {
-        const onClick = () => {
+        const onClick = async () => {
+            // dynamically load react-calendly
+            const { openPopupWidget } = (await import('react-calendly'))
+
             openPopupWidget({ url })
 
             gtag.event({
@@ -50,11 +57,16 @@ const Contact = () => {
         
         setIsSending(false)
         e.target.reset()
+
+        // dynamically load snackbar
+        const Snackbar = (await import('../utils/snackbar')).default
+        const snackbar = new Snackbar()
+        snackbar.init()
         snackbar.show('Your message has been sent.')
     }
 
     return (
-        <>
+        <section id="contact-section" className="container" ref={ref}>
             <h2 className="heading">Get in touch</h2>
 
             <p>I offer a <u>free 30 minute strategy call</u> to anyone that is looking to get their business online or is struggling to grow.</p>
@@ -122,11 +134,11 @@ const Contact = () => {
                             { errors.message && <small className="text-danger">{errors.message.message}</small> }
                         </div>
 
-                        <ReCAPTCHA
+                        {inView && <ReCAPTCHA
                             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                             size='invisible'
                             ref={recaptchaRef}
-                        />
+                        />}
 
                         <button type="submit" className="button" disabled={isSending}>{isSending ? 'Sending.....' : 'Send message'}</button>
                         <small>This site is protected by reCAPTCHA and the Google <a target="_blank" href="https://policies.google.com/privacy" rel="noreferrer">Privacy Policy</a> and <a target="_blank" href="https://policies.google.com/terms" rel="noreferrer">Terms of Service</a> apply.
@@ -142,7 +154,7 @@ const Contact = () => {
                 }           
             `} </style>
 
-        </>
+        </section>
     );
 }
 
