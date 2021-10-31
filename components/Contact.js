@@ -7,18 +7,18 @@ import * as gtag from '../lib/gtag'
 import { EnvelopeFill, TelephoneFill } from 'react-bootstrap-icons'
 import styles from '../styles/Contact.module.scss'
 
-const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'))
+import ReCAPTCHA from 'react-google-recaptcha'
 
 const Contact = () => {
     const [isSending, setIsSending] = useState(false)
 
     const { register, handleSubmit, formState: { errors } } = useForm()
-
-    const recaptchaRef = useRef()
     
     const { ref, inView } = useInView({
         triggerOnce: true
     })
+
+    const recaptchaRef = useRef()
 
     const CTA = ({ url }) => {
         const onClick = async () => {
@@ -40,12 +40,6 @@ const Contact = () => {
     const onSubmitForm = async (data, e) => {
         setIsSending(true)
 
-        gtag.event({
-            action: 'send_message',
-            category: 'Contact',
-            label: data.message
-        })
-
         const token = await recaptchaRef.current.executeAsync()
         recaptchaRef.current.reset()
         data.token = token
@@ -63,6 +57,12 @@ const Contact = () => {
         const snackbar = new Snackbar()
         snackbar.init()
         snackbar.show('Your message has been sent.')
+
+        gtag.event({
+            action: 'send_message',
+            category: 'Contact',
+            label: data.message
+        })
     }
 
     return (
@@ -134,11 +134,11 @@ const Contact = () => {
                             { errors.message && <small className="text-danger">{errors.message.message}</small> }
                         </div>
 
-                        {inView && <ReCAPTCHA
+                        <ReCAPTCHA
                             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                             size='invisible'
                             ref={recaptchaRef}
-                        />}
+                        />
 
                         <button type="submit" className="button" disabled={isSending}>{isSending ? 'Sending.....' : 'Send message'}</button>
                         <small>This site is protected by reCAPTCHA and the Google <a target="_blank" href="https://policies.google.com/privacy" rel="noreferrer">Privacy Policy</a> and <a target="_blank" href="https://policies.google.com/terms" rel="noreferrer">Terms of Service</a> apply.
