@@ -1,0 +1,5 @@
+@use 'variables';
+
+.phoneIcon, .emailIcon {
+    color: variables.$dark-accent;
+}

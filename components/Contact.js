@@ -1,10 +1,12 @@
 import { useRef, useState } from 'react'
-import { useForm } from 'react-hook-form'
 import Image from 'next/image'
+import { useForm } from 'react-hook-form'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { openPopupWidget } from 'react-calendly'
 import * as gtag from '../lib/gtag'
+import { EnvelopeFill, TelephoneFill } from 'react-bootstrap-icons'
 import Snackbar from '../utils/snackbar'
+import styles from '../styles/Contact.module.scss'
 
 const Contact = () => {
     const [isSending, setIsSending] = useState(false)
@@ -75,31 +77,19 @@ const Contact = () => {
 
                     <div className="row row-cols-2 d-flex align-self-start align-self-sm-center mt-5 mt-sm-0 mt-md-5 ms-sm-3">
                         <div className="col-2 my-auto">
-                            <Image
-                                src='/images/call.svg'
-                                alt='Phone number'
-                                width={30}
-                                height={30}
-                                layout='fixed'
-                            />
+                            <TelephoneFill size={30} className={styles.phoneIcon} />
                         </div>
 
                         <div className="col-10 my-auto">
-                            <a href="tel:07883066944">07883066944</a>
+                            <a href="tel:07883066944" className={styles.phoneLink}>07883066944</a>
                         </div>
 
                         <div className="col-2 my-auto">
-                            <Image
-                                src='/images/email.svg'
-                                alt='Email'
-                                width={30}
-                                height={30}
-                                layout='fixed'
-                            />
+                            <EnvelopeFill size={30} className={styles.emailIcon} />
                         </div>
 
                         <div className="col-10 my-auto">
-                            <a href="mailto:info@roysheppard.digital">info@roysheppard.digital</a>
+                            <a href="mailto:info@roysheppard.digital" className={styles.emailLink}>info@roysheppard.digital</a>
                         </div>
                     </div>
                 </div>

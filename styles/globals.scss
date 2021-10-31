@@ -89,11 +89,15 @@ a {
   font-weight: 600;
   cursor: pointer;
   padding: 0.2em;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-image: linear-gradient($primary, $secondary);
+  background-repeat: no-repeat;
+  background-size: 100% 40%;
+  background-position: center bottom;
 
   &:hover {
     color: $dark;
-    background-color: $primary;
+    background-size: 100% 100%;
   }
 }
 

@@ -59,6 +59,10 @@ const Navbar = () => {
             </div>
 
             <style jsx>{`
+            a {
+                background: none;
+            }
+
             a:hover {
                 background: none;
             }
