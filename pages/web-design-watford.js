@@ -20,7 +20,7 @@ export default function Home({ faqs }) {
     <>
       <Head>
         <title>Web Design Watford - Roy Sheppard Digital</title>
-        <meta name="description" content="Freelance web designer and full-stack developer from Watford, Hertfordshire" />
+        <meta name="description" content="Freelance web designer and full-stack developer based in Watford, Hertfordshire" />
       </Head>
 
       <Hero />

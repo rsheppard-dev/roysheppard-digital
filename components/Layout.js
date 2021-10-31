@@ -1,5 +1,5 @@
-import Navbar from "./Navbar"
 import dynamic from 'next/dynamic'
+import Navbar from './Navbar'
 
 const DynamicFooter = dynamic(() => import('./Footer'))
 
