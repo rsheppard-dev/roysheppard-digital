@@ -1,5 +1,9 @@
 @use 'variables';
 
-.phoneIcon, .emailIcon {
-    color: variables.$dark-accent;
+.contactBox {
+    margin: 1em;
+
+    .phoneIcon, .emailIcon {
+        margin-right: 10px;
+    }
 }
