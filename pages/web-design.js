@@ -1,18 +1,8 @@
 import Head from 'next/head'
+import Contact from '../components/Contact';
 import animateUnderline from '../utils/animateUnderline'
-import dynamic from 'next/dynamic'
-import { useInView } from 'react-intersection-observer'
-
-const DynamicContact = dynamic(
-  () => import('../components/Contact'),
-  { ssr: false }
-)
 
 const WebDesign = () => {
-    const [contactRef, contactInView ] = useInView({
-        triggerOnce: true
-    })
-
     animateUnderline()
 
     return (
@@ -26,9 +16,7 @@ const WebDesign = () => {
                     <h1 className="heading"><span className="underline">Web design</span></h1>
                 </section>
                 
-                <section id="contact-section" className="container" ref={contactRef}>
-                    { contactInView && <DynamicContact /> }
-                </section>
+                <Contact />
             </main>
         </>
     );
