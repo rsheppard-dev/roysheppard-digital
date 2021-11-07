@@ -1,0 +1,13 @@
+@use 'variables';
+
+.quoteBox {
+    position: relative;
+    background: variables.$secondary;
+    border-radius: 20px;
+
+    .quoteIcon {
+        position: absolute;
+        top: -20px;
+        left: 0;
+    }
+}

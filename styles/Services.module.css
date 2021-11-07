@@ -1,0 +1,11 @@
+.quoteBox {
+  position: relative;
+  background: #D2C7B5;
+  border-radius: 20px;
+}
+.quoteBox .quoteIcon {
+  position: absolute;
+  top: -20px;
+  left: 0;
+}
+/*# sourceMappingURL=Services.module.css.map */
