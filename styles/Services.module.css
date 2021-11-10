@@ -1,6 +1,6 @@
 .quoteBox {
   position: relative;
-  background: #f1eeea;
+  background: #f4dab1;
   border-radius: 10px;
   padding: 1.5em 1em;
   text-align: center;
@@ -20,7 +20,7 @@
   position: relative;
   margin-top: 2em;
   padding-top: 2em;
-  background: #f1eeea;
+  background: #fff;
   border: none;
 }
 .card .cardNumber {
@@ -29,7 +29,7 @@
   left: calc(50% - .3em);
   font-weight: 700;
   font-size: 5em;
-  color: #FFBD33;
+  color: #ffb703;
   -webkit-text-stroke: 1px #474747;
 }
 /*# sourceMappingURL=Services.module.css.map */
