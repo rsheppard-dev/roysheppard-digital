@@ -11,6 +11,8 @@
     "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
     "@popperjs/core": "^2.10.2",
     "@sendgrid/mail": "^7.4.7",
     "bootstrap": "^5.1.0",

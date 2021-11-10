@@ -33,7 +33,7 @@ const Hero = () => {
         <section id="hero-section" className="container mt-5">
             <div className="row">
                 <div className="col-lg my-auto">
-                    <h1 className={styles.headingSmall}><span className="text-box">Freelance web designer and developer in Watford</span></h1>
+                    <h1 className={styles.headingSmall}>Freelance web designer and developer in Watford</h1>
 
                     <h2 className={styles.headingLarge}>I create <span className={styles.highlighted}>amazing websites</span> you and your users will love</h2>
 

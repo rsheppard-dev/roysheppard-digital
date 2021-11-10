@@ -5,10 +5,10 @@
 
 $dropdown-bg: $light;
 $dropdown-link-color: $dark;
-$dropdown-link-hover-bg: $light-accent;
+$dropdown-link-hover-bg: $secondary;
 
 $accordion-button-bg: $light;
-$accordion-button-active-bg: $light-accent;
+$accordion-button-active-bg: none;
 $accordion-button-active-color: $dark;
 $accordion-button-color: $dark;
 $accordion-button-padding-x: 0.9em;
@@ -90,13 +90,13 @@ a {
   cursor: pointer;
   padding: 0.2em;
   transition: all 0.3s ease-in-out;
-  background-image: linear-gradient($primary, $secondary);
+  background-image: linear-gradient($secondary, $primary);
   background-repeat: no-repeat;
-  background-size: 100% 40%;
+  background-size: 100% 20%;
   background-position: center bottom;
 
   &:hover {
-    color: $dark;
+    color: #fff;
     background-size: 100% 100%;
   }
 }
@@ -137,7 +137,7 @@ section {
 
 .button {
   display: block;
-  color: $dark;
+  color: #fff;
   border: none;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
@@ -149,8 +149,8 @@ section {
   width: fit-content;
 
   &:hover {
-    background-color: darken($primary, 5%);
-    color: $dark;
+    background-color: darken($primary, 6%);
+    color: #fff;
   }
 }
 
@@ -193,9 +193,9 @@ section {
   top: 0;
   border-radius: 0 0 5px 5px;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
-  background: $primary;
+  background: #1B998B;
   text-align: center;
-  color: $dark;
+  color: #fff;
   margin-top: -100%;
   transition: all 0.2s ease-in-out;
 }
@@ -204,8 +204,3 @@ section {
   margin-top: 0;
 }
 /*! purgecss end ignore */
-
-.text-box {
-  background-color: lighten($primary, 6%);
-  padding: 5px 0;
-}

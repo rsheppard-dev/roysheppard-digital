@@ -15,7 +15,11 @@ const Services = () => {
 
                     <div className="card h-100 bg-transparent">
                         <div className="card-header">
-                            <div className="row">
+                            <div className="row d-flex justify-content-between">
+                                <div className="col my-auto">
+                                    <h3 className="subHeading">Web design</h3>
+                                </div>
+
                                 <div className="col-auto my-auto">
                                     <Image
                                         src='/images/web-design.svg'
@@ -24,10 +28,6 @@ const Services = () => {
                                         height={60}
                                         layout='fixed'
                                     />
-                                </div>
-
-                                <div className="col my-auto">
-                                    <h3 className="subHeading">Web design</h3>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,11 @@ const Services = () => {
                 <div className="col">
                     <div className="card h-100 bg-transparent">
                         <div className="card-header">
-                            <div className="row">
+                            <div className="row d-flex justify-content-between">
+                                <div className="col my-auto">
+                                    <h3 className="subHeading">Web development</h3>
+                                </div>
+
                                 <div className="col-auto my-auto">
                                     <Image
                                         src='/images/web-development.svg'
@@ -55,10 +59,6 @@ const Services = () => {
                                         height={60}
                                         layout='fixed'
                                     />
-                                </div>
-
-                                <div className="col my-auto">
-                                    <h3 className="subHeading">Web development</h3>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,11 @@ const Services = () => {
                 <div className="col">
                     <div className="card h-100 bg-transparent">
                         <div className="card-header">
-                            <div className="row">
+                            <div className="row d-flex justify-content-between">
+                                <div className="col my-auto">
+                                    <h3 className="subHeading">eCommerce</h3>
+                                </div>
+                                
                                 <div className="col-auto my-auto">
                                     <Image
                                         src='/images/ecommerce.svg'
@@ -85,10 +89,6 @@ const Services = () => {
                                         height={60}
                                         layout='fixed'
                                     />
-                                </div>
-
-                                <div className="col my-auto">
-                                    <h3 className="subHeading">eCommerce</h3>
                                 </div>
                             </div>
                         </div>

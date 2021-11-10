@@ -1,11 +1,35 @@
 .quoteBox {
   position: relative;
-  background: #D2C7B5;
-  border-radius: 20px;
+  background: #f1eeea;
+  border-radius: 10px;
+  padding: 1.5em 1em;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: 600;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  margin: 2em 1em;
 }
 .quoteBox .quoteIcon {
   position: absolute;
-  top: -20px;
-  left: 0;
+  top: -15px;
+  left: 15px;
+  font-size: 2em;
+}
+
+.card {
+  position: relative;
+  margin-top: 2em;
+  padding-top: 2em;
+  background: #f1eeea;
+  border: none;
+}
+.card .cardNumber {
+  position: absolute;
+  top: -55px;
+  left: calc(50% - .3em);
+  font-weight: 700;
+  font-size: 5em;
+  color: #FFBD33;
+  -webkit-text-stroke: 1px #474747;
 }
 /*# sourceMappingURL=Services.module.css.map */
