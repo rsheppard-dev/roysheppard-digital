@@ -25,7 +25,7 @@ const WebDesign = () => {
                         </p>
                     </div>
 
-                    <p>I don't just make websites. I make websites that are tailored to you and your business. They are designed to solve problems so you can get back to focusing on running your business.</p>
+                    <p>I don't just make websites. I make websites that are tailored to you and your business.</p>
 
                     <div className="row row-cols-1 row-cols-md-2 g-4">
                         <div className="col">
