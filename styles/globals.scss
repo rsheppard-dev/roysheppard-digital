@@ -70,11 +70,6 @@ html, body {
   font-weight: 300;
   color: $dark;
   background-color: $light;
-  background-image: url('../public/images/background.svg');
-  background-repeat: no-repeat;
-  background-position: 0 -100px;
-  background-size: 1920px 768px;
-  max-width: 1920px;
   margin: 0 auto;
   padding: 0;
 }
@@ -90,13 +85,13 @@ a {
   cursor: pointer;
   padding: 0.2em;
   transition: all 0.3s ease-in-out;
-  background-image: linear-gradient($secondary, $primary);
+  background-image: linear-gradient($secondary 10%, $primary);
   background-repeat: no-repeat;
-  background-size: 100% 20%;
+  background-size: 100% 30%;
   background-position: center bottom;
 
   &:hover {
-    color: #fff;
+    color: $dark;
     background-size: 100% 100%;
   }
 }
@@ -137,7 +132,7 @@ section {
 
 .button {
   display: block;
-  color: #fff;
+  color: $light;
   border: none;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
@@ -149,8 +144,8 @@ section {
   width: fit-content;
 
   &:hover {
-    background-color: darken($primary, 6%);
-    color: #fff;
+    background-color: darken($primary, 10%);
+    color: $light;
   }
 }
 

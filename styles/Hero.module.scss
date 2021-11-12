@@ -2,13 +2,13 @@
 
 .headingSmall {
   font-size: 1rem;
-  color: variables.$dark;
+  color: lighten(variables.$dark, 40%);
   font-weight: 500;
 }
 
 .headingLarge {
   font-weight: 700;
-  font-size: clamp(2.4rem, 6vw, 3.2rem);
+  font-size: clamp(2.4rem, 3vw, 4rem);
   display: block;
   margin-bottom: 1em;
 }
