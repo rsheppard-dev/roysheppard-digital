@@ -2,8 +2,8 @@
 
 .quoteBox {
     position: relative;
-    background: lighten(variables.$secondary, 10%);
-    border-radius: 10px;
+    background: variables.$secondary;
+    border-radius: 20px;
     padding: 1.5em 1em;
     text-align: center;
     margin: 0 auto;
@@ -16,23 +16,16 @@
         top: -15px;
         left: 15px;
         font-size: 2em;
+        color: lighten(variables.$dark, 20%);
     }
 }
 
-.card {
-    position: relative;
-    margin-top: 2em;
-    padding-top: 2em;
-    background: #fff;
-    border: none;
+.featuresBox {
+    margin: 2em 0;
 
-    .cardNumber {
-    position: absolute;
-    top: -55px;
-    left: calc(50% - .3em);
-    font-weight: 700;
-    font-size: 5em;
-    color: variables.$highlight;
-    -webkit-text-stroke: 1px variables.$dark;
-}
+    .featuresHeader {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1em;
+    }
 }
