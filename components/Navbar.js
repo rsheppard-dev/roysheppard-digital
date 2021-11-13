@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowDownCircle } from 'react-bootstrap-icons'
-import logo from '../public/images/logo.png'
+import logo from '../public/images/logo.gif'
 import styles from '../styles/Navbar.module.scss'
 
 const Navbar = () => {
@@ -20,8 +20,8 @@ const Navbar = () => {
                         src={logo}
                         alt="Roy Sheppard Digital"
                         layout="intrinsic"
-                        width={174}
-                        height={45}
+                        width={200}
+                        height={50}
                         priority={true}
                     />
 

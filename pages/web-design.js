@@ -36,7 +36,7 @@ const WebDesign = () => {
                             />
                             <h3>UI/UX web design</h3>
                         </div>
-                        <p>Understanding user experience and user interface design are import concepts when designing any website but especially when working with business websites.</p>
+                        <p>Understanding user experience and user interface design are important concepts when designing any website but especially when working with business websites.</p>
                     </div>
                     <div className={styles.featuresBox}>
                         <div className={styles.featuresHeader}>
@@ -60,7 +60,7 @@ const WebDesign = () => {
                             />
                             <h3>Accessibility</h3>
                         </div>
-                        <p>People with different disabilities may use your site and it is important their experience is a positive one. My sites use best practice methods to ensure these user can still navigate your website successfully.</p>
+                        <p>People with different disabilities will use your site and it is important their experience is a positive one. My sites use best practice methods to ensure these user can still navigate your website successfully.</p>
                     </div>
                     <div className={styles.featuresBox}>
                         <div className={styles.featuresHeader}>

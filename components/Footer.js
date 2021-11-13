@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import logo from '../public/images/logo.png'
+import logo from '../public/images/logo.gif'
 import styles from '../styles/Footer.module.scss'
 import { Facebook, Instagram, Linkedin, Twitter } from 'react-bootstrap-icons'
 
