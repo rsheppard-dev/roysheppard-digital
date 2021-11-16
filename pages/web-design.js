@@ -26,70 +26,41 @@ const WebDesign = () => {
 
                     <p>I design websites that are tailor made with your business in mind. All my websites are included with the following as standard…</p>
 
-                    <div className={styles.featuresBox}>
-                        <div className={styles.featuresHeader}>
-                            <Image
-                                src="/images/lightning.png"
-                                alt="bullet point"
-                                width={60}
-                                height={60}
-                            />
+                    <ul>
+                        <li>
                             <h3>UI/UX web design</h3>
-                        </div>
-                        <p>Understanding user experience and user interface design are important concepts when designing any website but especially when working with business websites.</p>
-                    </div>
-                    <div className={styles.featuresBox}>
-                        <div className={styles.featuresHeader}>
-                            <Image
-                                src="/images/lightning.png"
-                                alt="bullet point"
-                                width={60}
-                                height={60}
-                            />
+                            <p>Understanding user experience and user interface design are important concepts when designing any website but especially when working with business websites.</p>
+                        </li>
+                        <li>
                             <h3>Responsive web design</h3>
-                        </div>
-                        <p>My websites are made to respond to whatever device your users choose to use, whether that’s a mobile, tablet, laptop or a 4K monitor.</p>
-                    </div>
-                    <div className={styles.featuresBox}>
-                        <div className={styles.featuresHeader}>
-                            <Image
-                                src="/images/lightning.png"
-                                alt="bullet point"
-                                width={60}
-                                height={60}
-                            />
+                            <p>My websites are made to respond to whatever device your users choose to use, whether that’s a mobile, tablet, laptop or a 4K monitor.</p>
+                        </li>
+                        <li>
                             <h3>Accessibility</h3>
-                        </div>
-                        <p>People with different disabilities will use your site and it is important their experience is a positive one. My sites use best practice methods to ensure these user can still navigate your website successfully.</p>
-                    </div>
-                    <div className={styles.featuresBox}>
-                        <div className={styles.featuresHeader}>
-                            <Image
-                                src="/images/lightning.png"
-                                alt="bullet point"
-                                width={60}
-                                height={60}
-                            />
+                            <p>People with different disabilities will use your site and it is important their experience is a positive one. My sites use best practice methods to ensure everyone can navigate your website successfully.</p>
+                        </li>
+                        <li>
                             <h3>SEO optimisation</h3>
-                        </div>
-                        <p>There is no point having an amazing website if no-one can find it. My websites are optimised to stand the best chance of being found by your intended users.</p>
-                    </div>
-                    <div className={styles.featuresBox}>
-                        <div className={styles.featuresHeader}>
-                            <Image
-                                src="/images/lightning.png"
-                                alt="bullet point"
-                                width={60}
-                                height={60}
-                            />
+                            <p>There is no point having an amazing website if no-one can find it. My websites are optimised to stand the best chance of being found by your intended users.</p>
+                        </li>
+                        <li>
                             <h3>Google analytics</h3>
-                        </div>
-                        <p>Analytics data helps you learn who is visiting your site and how they are using it to help you improve your users’ experience as well as improving your conversions and sales.</p>
-                    </div>
+                            <p>Analytics data helps you learn who is visiting your site and how they are using it to help you improve your users’ experience as well as improving your conversions and sales.</p>
+                        </li>
+                    </ul>
                 </section>
                 
                 <Contact />
             </main>
+
+            <style jsx>{`
+                li {
+                    background:url('images/lightning.svg') no-repeat 0 0;
+                    background-size: 40px 60px;
+                    padding-left: 60px;
+                }
+            `}</style>
+
         </>
     );
 }
