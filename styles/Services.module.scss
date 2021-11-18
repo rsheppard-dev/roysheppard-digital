@@ -20,12 +20,49 @@
     }
 }
 
-.featuresBox {
-    margin: 2em 0;
+.bulletLightning {
+    background:url('../public/images/lightning.svg') no-repeat 0 0;
+    background-size: 30px 50px;
+    padding-left: 50px;
+    margin-bottom: 1.5rem;
+}
 
-    .featuresHeader {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1em;
+.statement {
+    margin-bottom: 2rem;
+    font-size: 1.2rem
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2em;
+}
+
+.cardProcess {
+    position: relative;
+    margin-top: 2em;
+    padding: 4em 1em 1em 1em;
+    border-radius: 0.45rem;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    
+    p {
+        margin-top: 1.5em;
+        text-align: left;
     }
+}
+
+.cardProcessNumber {
+    position: absolute;
+    top: -2rem;
+    left: calc(50% - 0.6em);
+    font-weight: 700;
+    font-size: 3rem;
+    color: #ffc300;
+    background-color: variables.$dark;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    margin: auto auto;
+
 }

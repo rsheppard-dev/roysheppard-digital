@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
       <CookieConsent
         buttonClasses='button'
         buttonStyle={{
-          background: '#E7E1DB'
+          background: '#ffc300'
         }}
       >
         This website uses cookies to analyse site usage in order to improve the user experience.
