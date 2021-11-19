@@ -45,24 +45,24 @@
     border-radius: 0.45rem;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+
+    .cardProcessNumber {
+        position: absolute;
+        top: -2rem;
+        left: calc(50% - 0.6em);
+        font-weight: 700;
+        font-size: 3rem;
+        color: #ffc300;
+        background-color: variables.$dark;
+        border-radius: 50%;
+        width: 4rem;
+        height: 4rem;
+        margin: auto auto;
+    
+    }
     
     p {
         margin-top: 1.5em;
         text-align: left;
     }
-}
-
-.cardProcessNumber {
-    position: absolute;
-    top: -2rem;
-    left: calc(50% - 0.6em);
-    font-weight: 700;
-    font-size: 3rem;
-    color: #ffc300;
-    background-color: variables.$dark;
-    border-radius: 50%;
-    width: 4rem;
-    height: 4rem;
-    margin: auto auto;
-
 }
