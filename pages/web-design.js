@@ -76,7 +76,7 @@ const WebDesign = () => {
                                 height={100}
 
                             />
-                            <p>A prototype of the home page is created with content submitted by you. This is submitted to you for to review and submit any revisions or additions you wish to make.</p>
+                            <p>A prototype of the home page is created with the content you supplied. This is submitted to you for review. Now you can let me know about any revisions or additions you wish to make.</p>
                         </div>
 
                         <div className={styles.cardProcess}>
