@@ -38,7 +38,7 @@ export async function getStaticProps() {
               query faqQuery {
                 faqs {
                   nodes {
-                    id
+                    faqId
                     title
                     content
                   }

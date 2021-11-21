@@ -9,7 +9,7 @@ const Faq = (props) => {
         query faqQuery {
             faqs {
                 nodes {
-                    id
+                    faqId
                     title
                     content
                 }
@@ -28,13 +28,13 @@ const Faq = (props) => {
 
             <div className="accordion accordion-flush" id="accordionFAQ">
                 {data.faqs.nodes.map(item => (
-                    <div className="accordion-item bg-transparent" key={item.id}>
-                        <h3 className={`${styles.question} accordion-header`} id={`flush-heading${item.id}`}>
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#flush-collapse${item.id}`} aria-expanded="false" aria-controls={`flush-heading${item.id}`}>
+                    <div className="accordion-item bg-transparent" key={item.faqId}>
+                        <h3 className={`${styles.question} accordion-header`} id={`flush-heading${item.faqId}`}>
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#flush-collapse${item.faqId}`} aria-expanded="false" aria-controls={`flush-heading${item.faqId}`}>
                                 {item.title}
                             </button>
                         </h3>
-                        <div id={`flush-collapse${item.id}`} className="accordion-collapse collapse" aria-labelledby={`flush-heading${item.id}`} data-bs-parent="#accordionFAQ">
+                        <div id={`flush-collapse${item.faqId}`} className="accordion-collapse collapse" aria-labelledby={`flush-heading${item.faqId}`} data-bs-parent="#accordionFAQ">
                             <div className="accordion-body" dangerouslySetInnerHTML={{ __html: item.content }}></div>
                         </div>
                     </div>
