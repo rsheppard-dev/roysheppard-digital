@@ -15,7 +15,7 @@ class MyDocument extends Document {
                     <meta property="og:url" content="https://www.roysheppard.digital/web-design-watford" />
                     <meta property="og:type" content="website" />
                     <meta property="og:description" content="Are you looking to increase traffic to your website? Or need to get your business online? I am a freelance web designer and developer based in Watford that specialises in helping local businesses" />
-                    <meta property="og:image" content="https://www.roysheppard.digital/images/og.png" />
+                    <meta property="og:image" content="https://www.roysheppard.digital/images/facebook-og.png" />
 
                     <meta name="twitter:card" content="summary_large_image"/>
                     <meta name="twitter:title" content="Roy Sheppard - Freelance Web Designer and Developer" />
