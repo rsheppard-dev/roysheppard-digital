@@ -2,6 +2,10 @@
 
 .question {
   border-left: 8px solid variables.$light;
+
+  button {
+    font-size: 1.2rem;
+  }
 }
 
 .question:hover {
