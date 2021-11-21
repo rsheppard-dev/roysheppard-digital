@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { FaQuoteLeft, FaCcStripe, FaCcPaypal } from "react-icons/fa";
+import { FaCcStripe, FaCcPaypal } from "react-icons/fa";
 import { SiShopify, SiWoo } from 'react-icons/si'
 import Contact from "../components/Contact";
 import animateUnderline from "../utils/animateUnderline";
@@ -26,7 +26,6 @@ const Ecommerce = () => {
           </h1>
 
           <div className={styles.quoteBox}>
-            <FaQuoteLeft className={styles.quoteIcon} />
             60% of people said that usability is the most important web design
             characteristic when it comes to online shopping
           </div>
@@ -38,7 +37,7 @@ const Ecommerce = () => {
             market.
           </p>
 
-          <Link href="ecommerce/#contact-section">
+          <Link href="/ecommerce#contact-section">
             <a className="button button-large">Ready to get started?</a>
           </Link>
 

@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaQuoteLeft } from "react-icons/fa";
 import Contact from "../components/Contact";
 import animateUnderline from "../utils/animateUnderline";
 import styles from "../styles/Services.module.scss";
@@ -25,7 +24,6 @@ const WebDesign = () => {
           </h1>
 
           <div className={styles.quoteBox}>
-            <FaQuoteLeft className={styles.quoteIcon} />
             Website design is an important factor for determining credibility
             for 48% of visitors
           </div>
@@ -80,8 +78,8 @@ const WebDesign = () => {
             </li>
           </ul>
 
-          <Link href="web-design/#contact-section">
-            <a className="button button-large">Ready to get started?</a>
+          <Link href="/web-design#contact-section">
+            <a className="button button-large mt-5">Ready to get started?</a>
           </Link>
 
           <h2 className="heading">

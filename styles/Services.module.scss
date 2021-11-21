@@ -10,14 +10,7 @@
     font-weight: 300;
     font-size: clamp(1.2rem, 2vw, 1.5rem);
     margin: 2em 1em;
-
-    .quoteIcon {
-        position: absolute;
-        top: -15px;
-        left: 15px;
-        font-size: 2em;
-        color: lighten(variables.$dark, 20%);
-    }
+    border-bottom: 5px solid variables.$primary;
 }
 
 .bulletLightning {

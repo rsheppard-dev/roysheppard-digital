@@ -15,7 +15,6 @@ import {
   SiPhp,
   SiGraphql,
 } from "react-icons/si";
-import { FaQuoteLeft } from "react-icons/fa";
 import animateUnderline from "../utils/animateUnderline";
 import Contact from "../components/Contact";
 import styles from "../styles/Services.module.scss";
@@ -40,7 +39,6 @@ const WebDevelopment = () => {
           </h1>
 
           <div className={styles.quoteBox}>
-            <FaQuoteLeft className={styles.quoteIcon} />
             42% of people will leave a website because of poor functionality
           </div>
 
@@ -51,7 +49,7 @@ const WebDevelopment = () => {
             giving you back your time to focus on your business.
           </p>
 
-          <Link href="web-development/#contact-section">
+          <Link href="/web-development#contact-section">
             <a className="button button-large">Ready to get started?</a>
           </Link>
 
