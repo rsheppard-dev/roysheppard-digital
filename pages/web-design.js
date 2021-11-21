@@ -5,7 +5,6 @@ import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
 import Contact from '../components/Contact'
 import animateUnderline from '../utils/animateUnderline'
 import styles from '../styles/Services.module.scss'
-import { Lightning } from 'react-bootstrap-icons'
 
 const WebDesign = () => {
     animateUnderline()
@@ -18,7 +17,7 @@ const WebDesign = () => {
             </Head>
             <main>
                 <section className="container">
-                    <h1 className="heading"><span className="underline">Web design that works for you</span></h1>
+                    <h1 className="heading"><span className="underline">Web design</span> that works for you</h1>
 
                     <div className={styles.quoteBox}>
                         <FontAwesomeIcon icon={faQuoteLeft} className={styles.quoteIcon} />

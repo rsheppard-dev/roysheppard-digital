@@ -29,7 +29,7 @@ const Faq = (props) => {
             <div className="accordion accordion-flush" id="accordionFAQ">
                 {data.faqs.nodes.map(item => (
                     <div className="accordion-item bg-transparent" key={item.id}>
-                        <h3 className={`subHeading ${styles.question} accordion-header`} id={`flush-heading${item.id}`}>
+                        <h3 className={`${styles.question} accordion-header`} id={`flush-heading${item.id}`}>
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#flush-collapse${item.id}`} aria-expanded="false" aria-controls={`flush-heading${item.id}`}>
                                 {item.title}
                             </button>
