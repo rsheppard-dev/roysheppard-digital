@@ -19,7 +19,7 @@ const Navbar = () => {
     <nav id="navbar" className="navbar navbar-expand-md navbar-light container">
       <div>
         <Link href="/web-design-watford" prefetch={false}>
-          <a className="navbar-brand" onClick={setIsOpen(false)}>
+          <a className="navbar-brand" onClick={() => setIsOpen(false)}>
             <Image
               src={logo}
               alt="Roy Sheppard Digital"
