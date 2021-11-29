@@ -1,4 +1,4 @@
-import Head from 'next/head'
+§§§import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import Contact from "../components/Contact";
@@ -14,7 +14,7 @@ const WebDesign = () => {
         <title>Web Designer Watford - Roy Sheppard Digital</title>
         <meta
           name="description"
-          content="Freelance web designer in Watford, Hertfordshire. Helping businesses grow online."
+          content="I am Roy Sheppard, a freelance web designer from Watford. I create fast, engaging websites for local businesses that increase traffic and sales."
         />
       </Head>
       <main>

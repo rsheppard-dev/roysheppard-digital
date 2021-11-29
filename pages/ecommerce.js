@@ -15,7 +15,7 @@ const Ecommerce = () => {
         <title>eCommerce Specialist Watford - Roy Sheppard Digital</title>
         <meta
           name="description"
-          content="Freelance eCommerce specialist in Watford, Hertfordshire. Helping businesses grow online."
+          content="I am Roy Sheppard, a freelance eCommerce specialist from Watford. I help businesses grow by working with them to get them selling online."
         />
       </Head>
       <main>

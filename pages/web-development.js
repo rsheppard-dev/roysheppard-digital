@@ -28,7 +28,7 @@ const WebDevelopment = () => {
         <title>Web Developer Watford - Roy Sheppard Digital</title>
         <meta
           name="description"
-          content="Freelance web developer in Watford, Hertfordshire. Helping businesses grow online."
+          content="I am Roy Sheppard, a freelance web developer from Watford. I make websites that are interactive and help solve your businesses specific needs."
         />
       </Head>
       <main>
