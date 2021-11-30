@@ -25,7 +25,7 @@ const Navbar = () => {
               alt="Roy Sheppard Digital"
               layout="intrinsic"
               width={200}
-              height={50}
+              height={53.8}
               priority={true}
             />
           </a>

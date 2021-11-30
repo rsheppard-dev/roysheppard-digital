@@ -38,7 +38,7 @@ const Footer = () => {
                                 alt="Roy Sheppard Digital"
                                 layout="intrinsic"
                                 width={174}
-                                height={45}
+                                height={46.81}
                             />
                         </a></Link>
                         <p className={`${styles.navItem} mt-2`}><Link href="/privacy-policy"><a>Privacy policy</a></Link></p>
