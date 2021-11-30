@@ -64,7 +64,7 @@ const Services = () => {
                         </div>
 
                         <div className="card-body">
-                            <p>If you want a custom feature on your website I can help. This could be a customer area that requires users to login or an online booking system.</p>
+                            <p>If you want a custom feature on your website I can help. I specialise in making bespoke interactivity for your website.</p>
                         </div>
 
                         <div className="card-footer bg-transparent border-0">
