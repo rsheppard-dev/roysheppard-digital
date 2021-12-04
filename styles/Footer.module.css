@@ -12,12 +12,12 @@
   padding: 0;
 }
 .navItem a {
-  color: #474747;
+  color: #212529;
   font-weight: 300;
   text-decoration: underline;
 }
 .navItem a:hover {
-  color: #474747;
+  color: #212529;
 }
 
 .socialItem {
@@ -26,12 +26,13 @@
   display: flex;
 }
 .socialItem li {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 .socialItem li:last-child {
   margin-right: 0;
 }
 .socialItem a:hover {
-  color: #FFBD33;
+  -webkit-filter: brightness(75%);
+          filter: brightness(75%);
 }
 /*# sourceMappingURL=Footer.module.css.map */
