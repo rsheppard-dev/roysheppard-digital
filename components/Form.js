@@ -155,12 +155,11 @@ const Form = () => {
 			</small>
 
 			<style jsx>
-				{' '}
 				{`
 					button {
 						width: 180px;
 					}
-				`}{' '}
+				`}
 			</style>
 		</form>
 	);
