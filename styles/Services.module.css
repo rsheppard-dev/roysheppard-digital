@@ -1,35 +1,79 @@
 .quoteBox {
   position: relative;
-  background: #f4dab1;
-  border-radius: 10px;
+  background: #e0fbfc;
+  border-radius: 20px;
   padding: 1.5em 1em;
   text-align: center;
   margin: 0 auto;
-  font-weight: 600;
+  font-weight: 300;
   font-size: clamp(1.2rem, 2vw, 1.5rem);
   margin: 2em 1em;
-}
-.quoteBox .quoteIcon {
-  position: absolute;
-  top: -15px;
-  left: 15px;
-  font-size: 2em;
+  border-bottom: 5px solid #98c1d9;
 }
 
-.card {
+.bulletLightning {
+  background: url("../public/images/lightning.svg") no-repeat 0 0;
+  background-size: 30px 50px;
+  padding-left: 50px;
+  margin-bottom: 1.5rem;
+}
+
+.statement {
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2em;
+}
+.grid .cardProcess {
   position: relative;
   margin-top: 2em;
-  padding-top: 2em;
-  background: #fff;
-  border: none;
+  padding: 4em 1em 1em 1em;
+  border-radius: 0.45rem;
+  text-align: center;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+          box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 }
-.card .cardNumber {
+.grid .cardProcess .cardProcessNumber {
   position: absolute;
-  top: -55px;
-  left: calc(50% - .3em);
+  top: -2rem;
+  left: calc(50% - 0.6em);
   font-weight: 700;
-  font-size: 5em;
-  color: #ffb703;
-  -webkit-text-stroke: 1px #474747;
+  font-size: 3rem;
+  color: #ffc300;
+  background-color: #212529;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  margin: auto auto;
+}
+.grid .cardProcess p {
+  margin-top: 1.5em;
+  text-align: left;
+}
+
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 2em;
+}
+.skillGrid .skill {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  font-weight: 600;
 }
 /*# sourceMappingURL=Services.module.css.map */
