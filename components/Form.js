@@ -135,22 +135,22 @@ const Form = () => {
 				{isSending ? 'Sending.....' : 'Send message'}
 			</button>
 			<small>
-				This site is protected by reCAPTCHA and the Google{' '}
+				This site is protected by reCAPTCHA and the Google
 				<a
 					target='_blank'
 					href='https://policies.google.com/privacy'
 					rel='noreferrer'
 				>
 					Privacy Policy
-				</a>{' '}
-				and{' '}
+				</a>
+				and
 				<a
 					target='_blank'
 					href='https://policies.google.com/terms'
 					rel='noreferrer'
 				>
 					Terms of Service
-				</a>{' '}
+				</a>
 				apply.
 			</small>
 
