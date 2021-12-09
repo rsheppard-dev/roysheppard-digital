@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { GTM_ID } from '../lib/gtm';
 class MyDocument extends Document {
 	static async getInitialProps(ctx) {
 		const initialProps = await Document.getInitialProps(ctx);
@@ -80,7 +79,7 @@ class MyDocument extends Document {
 				<body>
 					<noscript>
 						<iframe
-							src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+							src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID}`}
 							height='0'
 							width='0'
 							style={{ display: 'none', visibility: 'hidden' }}

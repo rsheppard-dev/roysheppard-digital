@@ -1,20 +1,9 @@
-import { useEffect } from 'react';
 import Script from 'next/script';
-import { useRouter } from 'next/router';
-import { GTM_ID, pageview } from '../lib/gtm';
 import CookieConsent from 'react-cookie-consent';
 import Layout from '../components/Layout';
 import '../styles/globals.scss';
 
 function MyApp({ Component, pageProps }) {
-	const router = useRouter();
-	useEffect(() => {
-		router.events.on('routeChangeComplete', pageview);
-		return () => {
-			router.events.off('routeChangeComplete', pageview);
-		};
-	}, [router.events]);
-
 	return (
 		<>
 			{/* Google Tag Manager - Global base code */}
@@ -26,7 +15,7 @@ function MyApp({ Component, pageProps }) {
                             var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
                             j.async=true;
                             j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                            })(window,document,'script','dataLayer','${GTM_ID}');`,
+                            })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID}');`,
 				}}
 			/>
 
