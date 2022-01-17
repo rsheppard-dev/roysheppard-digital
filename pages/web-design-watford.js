@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Services from '../components/Services';
@@ -7,6 +6,22 @@ import Faq from '../components/Faq';
 import Contact from '../components/Contact';
 
 export default function Home({ faqs }) {
+	const schemaData = {
+		'@context': 'http://schema.org',
+		'@type': 'LocalBusiness',
+		name: 'Roy Sheppard',
+		telephone: '07883066944',
+		email: 'info@roysheppard.digital',
+		address: {
+			'@type': 'PostalAddress',
+			streetAddress: '43 Maytree Crescent',
+			addressLocality: 'Watford',
+			addressRegion: 'Hertfordshire',
+			addressCountry: 'United Kingdom',
+			postalCode: 'WD24 5NJ',
+		},
+		url: 'https://www.roysheppard.digital/web-design-watford',
+	};
 	return (
 		<>
 			<Head>
@@ -14,6 +29,10 @@ export default function Home({ faqs }) {
 				<meta
 					name='description'
 					content='Get in touch today for a FREE website strategy call. I am Roy Sheppard, a freelance web designer and developer from Watford.'
+				/>
+				<script
+					type='application/ld+json'
+					dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
 				/>
 			</Head>
 

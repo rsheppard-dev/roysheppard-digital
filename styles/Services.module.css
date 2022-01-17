@@ -33,8 +33,7 @@
   padding: 4em 1em 1em 1em;
   border-radius: 0.45rem;
   text-align: center;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-          box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 }
 .grid .cardProcess .cardProcessNumber {
   position: absolute;
@@ -60,19 +59,10 @@
   gap: 2em;
 }
 .skillGrid .skill {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   font-weight: 600;
 }
