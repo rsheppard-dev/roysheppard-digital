@@ -15,10 +15,7 @@ class MyDocument extends Document {
 						property='og:title'
 						content='Roy Sheppard - Freelance Web Designer and Developer'
 					/>
-					<meta
-						property='og:url'
-						content='https://www.roysheppard.digital/web-design-watford'
-					/>
+					<meta property='og:url' content='https://www.roysheppard.digital' />
 					<meta property='og:type' content='website' />
 					<meta
 						property='og:description'
@@ -26,7 +23,7 @@ class MyDocument extends Document {
 					/>
 					<meta
 						property='og:image'
-						content='https://www.roysheppard.digital/images/facebook-og.png'
+						content='https://www.roysheppard.digital/images/open-graph.png'
 					/>
 
 					<meta name='twitter:card' content='summary_large_image' />
