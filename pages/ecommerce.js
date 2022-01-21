@@ -8,22 +8,6 @@ import styles from '../styles/Services.module.scss';
 
 const Ecommerce = () => {
 	animateUnderline();
-	const schemaData = {
-		'@context': 'http://schema.org',
-		'@type': 'LocalBusiness',
-		name: 'Roy Sheppard',
-		telephone: '07883066944',
-		email: 'info@roysheppard.digital',
-		address: {
-			'@type': 'PostalAddress',
-			streetAddress: '43 Maytree Crescent',
-			addressLocality: 'Watford',
-			addressRegion: 'Hertfordshire',
-			addressCountry: 'United Kingdom',
-			postalCode: 'WD24 5NJ',
-		},
-		url: 'https://www.roysheppard.digital/ecommerce',
-	};
 
 	return (
 		<>
@@ -32,10 +16,6 @@ const Ecommerce = () => {
 				<meta
 					name='description'
 					content='Get in touch today for a FREE ecommerce strategy call. I am Roy Sheppard, a freelance web designer and developer from Watford.'
-				/>
-				<script
-					type='application/ld+json'
-					dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
 				/>
 			</Head>
 			<main>

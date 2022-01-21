@@ -7,6 +7,29 @@ class MyDocument extends Document {
 	}
 
 	render() {
+		const schemaData = {
+			'@context': 'http://schema.org',
+			'@type': 'LocalBusiness',
+			name: 'Roy Sheppard Digital',
+			telephone: '07883066944',
+			email: 'info@roysheppard.digital',
+			address: {
+				'@type': 'PostalAddress',
+				streetAddress: '43 Maytree Crescent',
+				addressLocality: 'Watford',
+				addressRegion: 'Hertfordshire',
+				addressCountry: 'United Kingdom',
+				postalCode: 'WD24 5NJ',
+			},
+			url: 'https://www.roysheppard.digital',
+			sameAs: [
+				'https://www.facebook.com/roysheppard.digital',
+				'https://twitter.com/rsheppard_dev',
+				'https://www.instagram.com/roysheppard.digital',
+				'https://www.linkedin.com/in/roysheppard-digital',
+			],
+		};
+
 		return (
 			<Html lang='en'>
 				<Head>
@@ -60,6 +83,11 @@ class MyDocument extends Document {
 						href='/favicon-16x16.png'
 					/>
 					<link rel='manifest' href='/site.webmanifest' />
+
+					<script
+						type='application/ld+json'
+						dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+					/>
 				</Head>
 				<body>
 					<noscript>

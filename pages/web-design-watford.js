@@ -9,7 +9,7 @@ export default function Home({ faqs }) {
 	const schemaData = {
 		'@context': 'http://schema.org',
 		'@type': 'LocalBusiness',
-		name: 'Roy Sheppard',
+		name: 'Roy Sheppard Digital',
 		telephone: '07883066944',
 		email: 'info@roysheppard.digital',
 		address: {
@@ -20,7 +20,13 @@ export default function Home({ faqs }) {
 			addressCountry: 'United Kingdom',
 			postalCode: 'WD24 5NJ',
 		},
-		url: 'https://www.roysheppard.digital/web-design-watford',
+		url: 'https://www.roysheppard.digital',
+		sameAs: [
+			'https://www.facebook.com/roysheppard.digital',
+			'https://twitter.com/rsheppard_dev',
+			'https://www.instagram.com/roysheppard.digital',
+			'https://www.linkedin.com/in/roysheppard-digital',
+		],
 	};
 	return (
 		<>
