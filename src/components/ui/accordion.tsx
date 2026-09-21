@@ -1,0 +1,58 @@
+"use client";
+
+import { useState } from "react";
+
+type AccordionItemData = {
+  question: string;
+  answer: string;
+};
+
+function PlusIcon({ open }: { open: boolean }) {
+  return (
+    <span
+      className="relative h-[22px] w-[22px] shrink-0 transition-transform duration-200"
+      style={{ transform: `rotate(${open ? 45 : 0}deg)` }}
+    >
+      <span className="absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 bg-ink" />
+      <span className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-ink" />
+    </span>
+  );
+}
+
+/** A simple, single-purpose FAQ accordion. First item starts open. */
+export function Accordion({ items }: { items: AccordionItemData[] }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  return (
+    <div className="flex max-w-[820px] flex-col">
+      {items.map((item, index) => {
+        const open = openIndex === index;
+        return (
+          <div
+            key={item.question}
+            className={`border-t border-border-tan ${
+              index === items.length - 1 ? "border-b" : ""
+            }`}
+          >
+            <h3>
+              <button
+                type="button"
+                onClick={() => setOpenIndex(open ? null : index)}
+                aria-expanded={open}
+                className="flex w-full items-center justify-between gap-8 py-[26px] text-left font-display text-lg font-bold text-ink"
+              >
+                <span>{item.question}</span>
+                <PlusIcon open={open} />
+              </button>
+            </h3>
+            {open && (
+              <p className="mb-[26px] max-w-[640px] text-[15px] leading-relaxed text-muted">
+                {item.answer}
+              </p>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}

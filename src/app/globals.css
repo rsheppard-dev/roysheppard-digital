@@ -1,26 +1,38 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Design tokens
+ * Single source of truth for color, type and radius across every component.
+ * Change a value here and it updates everywhere it's used.
+ */
+@theme {
+  --color-cream: #faf9f5;
+  --color-tan: #f3efe3;
+  --color-ink: #17171a;
+
+  --color-muted: #6e6a5d;
+  --color-muted-strong: #514e44;
+  --color-muted-soft: #8a8676;
+
+  --color-border: #ece6d8;
+  --color-border-tan: #dfd8c4;
+
+  --color-accent: #ff5d39;
+  --color-accent-soft: #fceee9;
+
+  --font-display: var(--font-space-grotesk);
+  --font-mono: var(--font-ibm-plex-mono);
+
+  --radius-pill: 999px;
+  --radius-card: 20px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  overflow-x: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  overflow-x: hidden;
 }

@@ -1,0 +1,95 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { nav } from "@/content/site";
+import { TextLink } from "@/components/ui/text-link";
+
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <span className="relative block h-4 w-5">
+      <span
+        className={`absolute left-0 top-0 h-0.5 w-full bg-ink transition-transform duration-200 ${
+          open ? "translate-y-[7px] rotate-45" : ""
+        }`}
+      />
+      <span
+        className={`absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 bg-ink transition-opacity duration-200 ${
+          open ? "opacity-0" : ""
+        }`}
+      />
+      <span
+        className={`absolute bottom-0 left-0 h-0.5 w-full bg-ink transition-transform duration-200 ${
+          open ? "-translate-y-[7px] -rotate-45" : ""
+        }`}
+      />
+    </span>
+  );
+}
+
+export function Nav() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="border-b border-border">
+      <div className="flex h-[72px] items-center justify-between px-6 sm:px-10 lg:h-[88px] lg:px-20">
+        <a href="#top" aria-label="Roy Sheppard — home">
+          <Image
+            src="/images/logo.png"
+            alt="Roy Sheppard"
+            width={373}
+            height={32}
+            priority
+            className="h-3 w-auto sm:h-3.5 lg:h-4"
+          />
+        </a>
+
+        {/* Desktop nav */}
+        <div className="hidden items-center gap-10 lg:flex">
+          {nav.map((item) => (
+            <TextLink key={item.href} variant="nav" href={item.href}>
+              {item.label}
+            </TextLink>
+          ))}
+          <TextLink variant="navCta" href="#contact">
+            Let&apos;s talk
+          </TextLink>
+        </div>
+
+        {/* Mobile toggle */}
+        <button
+          type="button"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+          className="flex h-10 w-10 items-center justify-center lg:hidden"
+        >
+          <MenuIcon open={open} />
+        </button>
+      </div>
+
+      {/* Mobile panel */}
+      {open && (
+        <div className="flex flex-col gap-1 border-t border-border px-6 pb-6 pt-2 sm:px-10 lg:hidden">
+          {nav.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="border-b border-border py-3 font-mono text-sm uppercase tracking-[0.03em] text-muted"
+            >
+              {item.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="mt-3 w-fit border-b-[1.5px] border-ink pb-[3px] font-mono text-sm uppercase tracking-[0.03em] text-ink"
+          >
+            Let&apos;s talk
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
