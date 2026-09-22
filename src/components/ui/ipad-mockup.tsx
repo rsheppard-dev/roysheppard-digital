@@ -2,20 +2,19 @@ import type { CSSProperties } from "react";
 import Image from "next/image";
 
 /**
- * Screen boundary measured directly from the source illustration (1448x1086,
- * border line center), as a % of the full frame image. The frame PNG
- * (ipad-mockup-white-bezel.png) has its screen area cut transparent along
- * this same boundary and everything outside the device silhouette cut
- * transparent too — only the device body (filled white) and outline stay
- * opaque, so it sits directly on the section background with no card behind
- * it, and its bezel always masks the screenshot's edges regardless of any
+ * Screen boundary measured directly from the source illustration, as a % of
+ * the full frame image. The frame PNG (ipad-mockup-white-bezel.png) is
+ * cropped tight to the device silhouette (no transparent margin around it,
+ * so cards butt straight up against the device and the caption below sits
+ * right under it) — everything outside the device stays transparent, and
+ * its bezel always masks the screenshot's edges regardless of any
  * sub-pixel rounding difference here.
  */
 const SCREEN = {
-  top: "12.34%",
-  left: "9.53%",
-  width: "80.94%",
-  height: "75.14%",
+  top: "5.96%",
+  left: "4.07%",
+  width: "91.78%",
+  height: "88.41%",
 };
 
 // Aspect ratio (height/width) of the screen box itself — derived from the
@@ -54,7 +53,7 @@ export function IPadMockup({
   return (
     <div
       className={`relative w-full ${className}`}
-      style={{ aspectRatio: "1448 / 1086" }}
+      style={{ aspectRatio: "1277 / 923" }}
     >
       <div
         className="absolute overflow-hidden rounded-[2%] bg-tan"

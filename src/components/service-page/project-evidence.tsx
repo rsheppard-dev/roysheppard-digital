@@ -29,7 +29,7 @@ export function ProjectEvidence({
   quoteCompany,
 }: ProjectEvidenceProps) {
   return (
-    <div className="px-6 py-14 sm:px-10 lg:px-35 lg:py-25">
+    <div className="border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:px-35 lg:py-25">
       <Card className="flex flex-col gap-8 lg:flex-row lg:gap-12">
         <div className="flex flex-1 flex-col gap-3">
           <span className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-soft">

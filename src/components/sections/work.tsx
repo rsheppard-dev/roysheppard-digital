@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { workItems as fallbackWorkItems } from "@/content/site";
 import { IPadMockup } from "@/components/ui/ipad-mockup";
 import { TextLink } from "@/components/ui/text-link";
@@ -35,11 +36,26 @@ export async function Work() {
 
           return (
             <div key={`${item.name ?? ""}-${item.meta ?? ""}`} className="group flex flex-col">
-              <IPadMockup
-                screenshotSrc={screenshotSrc}
-                screenshotAlt={item.name ? `${item.name} website screenshot` : "Website screenshot"}
-                screenshotDimensions={screenshotDimensions}
-              />
+              {url ? (
+                <Link
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.name ? `Visit ${item.name} website` : "Visit website"}
+                >
+                  <IPadMockup
+                    screenshotSrc={screenshotSrc}
+                    screenshotAlt={item.name ? `${item.name} website screenshot` : "Website screenshot"}
+                    screenshotDimensions={screenshotDimensions}
+                  />
+                </Link>
+              ) : (
+                <IPadMockup
+                  screenshotSrc={screenshotSrc}
+                  screenshotAlt={item.name ? `${item.name} website screenshot` : "Website screenshot"}
+                  screenshotDimensions={screenshotDimensions}
+                />
+              )}
               <div className="mt-4 flex flex-col gap-1">
                 <span className="text-lg font-bold">
                   {item.name}

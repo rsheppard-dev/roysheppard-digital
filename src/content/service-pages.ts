@@ -25,7 +25,7 @@ type CaseStudy = {
 export const webDesign = {
 	title: 'Web Design in Watford | Roy Sheppard',
 	description:
-		'Freelance web design in Watford from Roy Sheppard — six years designing sites that look like your business, work properly on mobile, and give visitors a clear next step.',
+		'Freelance web design in Watford from Roy Sheppard — sites that look like your business, work properly on mobile, and give visitors a clear next step.',
 	eyebrow: 'Web Design',
 	heading: 'Web design that looks like your business, not a template',
 	intro:
@@ -95,7 +95,7 @@ export const webDesign = {
 export const webDevelopment = {
 	title: 'Web Development in Watford | Roy Sheppard',
 	description:
-		'Freelance web development in Watford from Roy Sheppard — hand-coded sites built around what your project needs to do, with content you can manage yourself and support after launch.',
+		'Freelance web development in Watford from Roy Sheppard — hand-coded sites built around what your project needs, with content you can manage yourself.',
 	eyebrow: 'Web Development',
 	heading: 'Web development that keeps working after launch',
 	intro:
@@ -165,7 +165,7 @@ export const webDevelopment = {
 export const ecommerce = {
 	title: 'E-Commerce Web Development in Watford | Roy Sheppard',
 	description:
-		'Freelance e-commerce development from Roy Sheppard, based in Watford — online stores built around your products, whether that’s Shopify or a fully custom storefront.',
+		'Freelance e-commerce development from Roy Sheppard, based in Watford — online stores built around your products, on Shopify or a custom storefront.',
 	eyebrow: 'E-Commerce',
 	heading: 'Online stores built around what you sell, not a fixed platform',
 	intro:

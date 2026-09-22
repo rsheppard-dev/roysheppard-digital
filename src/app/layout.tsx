@@ -82,6 +82,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": `${SITE_URL}/#person`,
     name: "Roy Sheppard",
     jobTitle: JOB_TITLE,
     url: SITE_URL,
