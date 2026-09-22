@@ -15,54 +15,14 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
-export type SanityImageAssetReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-};
-
-export type TrustLogo = {
-  _id: string;
-  _type: "trustLogo";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  order: number;
-  name: string;
-  logo: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
-};
-
 export type Faq = {
   _id: string;
   _type: "faq";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  order: number;
-  question: string;
+  order?: number;
+  question?: string;
   answer?: string;
 };
 
@@ -72,10 +32,17 @@ export type Testimonial = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  order: number;
-  quote: string;
+  order?: number;
+  quote?: string;
   name?: string;
   company?: string;
+};
+
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
 export type WorkItem = {
@@ -84,8 +51,8 @@ export type WorkItem = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  order: number;
-  name: string;
+  order?: number;
+  name?: string;
   meta?: string;
   image?: {
     asset?: SanityImageAssetReference;
@@ -97,14 +64,30 @@ export type WorkItem = {
   url?: string;
 };
 
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
 export type Service = {
   _id: string;
   _type: "service";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  order: number;
-  title: string;
+  order?: number;
+  title?: string;
   description?: string;
   bullets?: Array<string>;
 };
@@ -133,7 +116,7 @@ export type Cta = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  heading: string;
+  heading?: string;
   body?: string;
   email?: string;
 };
@@ -145,7 +128,7 @@ export type About = {
   _updatedAt: string;
   _rev: string;
   eyebrow?: string;
-  statement: string;
+  statement?: string;
   tags?: Array<string>;
   image?: {
     asset?: SanityImageAssetReference;
@@ -163,7 +146,7 @@ export type Hero = {
   _updatedAt: string;
   _rev: string;
   badge?: string;
-  heading: string;
+  heading?: string;
   tagline?: string;
   body?: string;
 };
@@ -174,7 +157,6 @@ export type SiteSettings = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  trustLabel?: string;
   seo?: {
     metaTitle?: string;
     metaDescription?: string;
@@ -202,9 +184,9 @@ export type SanityImagePalette = {
 
 export type SanityImageDimensions = {
   _type: "sanity.imageDimensions";
-  height: number;
-  width: number;
-  aspectRatio: number;
+  height?: number;
+  width?: number;
+  aspectRatio?: number;
 };
 
 export type SanityImageMetadata = {
@@ -230,14 +212,14 @@ export type SanityFileAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash: string;
-  extension: string;
-  mimeType: string;
-  size: number;
-  assetId: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
   uploadId?: string;
-  path: string;
-  url: string;
+  path?: string;
+  url?: string;
   source?: SanityAssetSourceData;
 };
 
@@ -259,14 +241,14 @@ export type SanityImageAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash: string;
-  extension: string;
-  mimeType: string;
-  size: number;
-  assetId: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
   uploadId?: string;
-  path: string;
-  url: string;
+  path?: string;
+  url?: string;
   metadata?: SanityImageMetadata;
   source?: SanityAssetSourceData;
 };
@@ -280,18 +262,17 @@ export type Geopoint = {
 
 export type Slug = {
   _type: "slug";
-  current: string;
+  current?: string;
   source?: string;
 };
 
 export type AllSanitySchemaTypes =
-  | SanityImageAssetReference
-  | TrustLogo
-  | SanityImageCrop
-  | SanityImageHotspot
   | Faq
   | Testimonial
+  | SanityImageAssetReference
   | WorkItem
+  | SanityImageCrop
+  | SanityImageHotspot
   | Service
   | Footer
   | Cta
@@ -310,9 +291,8 @@ export type AllSanitySchemaTypes =
 
 // Source: src/sanity/lib/queries.ts
 // Variable: siteSettingsQuery
-// Query: *[_type == "siteSettings"][0]{ trustLabel, seo }
+// Query: *[_type == "siteSettings"][0]{ seo }
 export type SiteSettingsQueryResult = {
-  trustLabel: string | null;
   seo: {
     metaTitle?: string;
     metaDescription?: string;
@@ -324,7 +304,7 @@ export type SiteSettingsQueryResult = {
 // Query: *[_type == "hero"][0]{ badge, heading, tagline, body }
 export type HeroQueryResult = {
   badge: string | null;
-  heading: string;
+  heading: string | null;
   tagline: string | null;
   body: string | null;
 } | null;
@@ -334,7 +314,7 @@ export type HeroQueryResult = {
 // Query: *[_type == "about"][0]{ eyebrow, statement, tags, image }
 export type AboutQueryResult = {
   eyebrow: string | null;
-  statement: string;
+  statement: string | null;
   tags: Array<string> | null;
   image: {
     asset?: SanityImageAssetReference;
@@ -349,7 +329,7 @@ export type AboutQueryResult = {
 // Variable: ctaQuery
 // Query: *[_type == "cta"][0]{ heading, body, email }
 export type CtaQueryResult = {
-  heading: string;
+  heading: string | null;
   body: string | null;
   email: string | null;
 } | null;
@@ -374,7 +354,7 @@ export type FooterQueryResult = {
 // Variable: servicesQuery
 // Query: *[_type == "service"] | order(order asc){ title, description, bullets }
 export type ServicesQueryResult = Array<{
-  title: string;
+  title: string | null;
   description: string | null;
   bullets: Array<string> | null;
 }>;
@@ -383,7 +363,7 @@ export type ServicesQueryResult = Array<{
 // Variable: workItemsQuery
 // Query: *[_type == "workItem"] | order(order asc){ name, meta, image, url, "imageDimensions": image.asset->metadata.dimensions{width, height} }
 export type WorkItemsQueryResult = Array<{
-  name: string;
+  name: string | null;
   meta: string | null;
   image: {
     asset?: SanityImageAssetReference;
@@ -394,8 +374,8 @@ export type WorkItemsQueryResult = Array<{
   } | null;
   url: string | null;
   imageDimensions: {
-    width: number;
-    height: number;
+    width: number | null;
+    height: number | null;
   } | null;
 }>;
 
@@ -403,7 +383,7 @@ export type WorkItemsQueryResult = Array<{
 // Variable: testimonialsQuery
 // Query: *[_type == "testimonial"] | order(order asc){ quote, name, company }
 export type TestimonialsQueryResult = Array<{
-  quote: string;
+  quote: string | null;
   name: string | null;
   company: string | null;
 }>;
@@ -412,33 +392,15 @@ export type TestimonialsQueryResult = Array<{
 // Variable: faqsQuery
 // Query: *[_type == "faq"] | order(order asc){ question, answer }
 export type FaqsQueryResult = Array<{
-  question: string;
+  question: string | null;
   answer: string | null;
-}>;
-
-// Source: src/sanity/lib/queries.ts
-// Variable: trustLogosQuery
-// Query: *[_type == "trustLogo"] | order(order asc){ name, logo, "logoDimensions": logo.asset->metadata.dimensions{width, height} }
-export type TrustLogosQueryResult = Array<{
-  name: string;
-  logo: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  logoDimensions: {
-    width: number;
-    height: number;
-  } | null;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "siteSettings"][0]{ trustLabel, seo }': SiteSettingsQueryResult;
+    '*[_type == "siteSettings"][0]{ seo }': SiteSettingsQueryResult;
     '*[_type == "hero"][0]{ badge, heading, tagline, body }': HeroQueryResult;
     '*[_type == "about"][0]{ eyebrow, statement, tags, image }': AboutQueryResult;
     '*[_type == "cta"][0]{ heading, body, email }': CtaQueryResult;
@@ -447,6 +409,5 @@ declare module "@sanity/client" {
     '*[_type == "workItem"] | order(order asc){ name, meta, image, url, "imageDimensions": image.asset->metadata.dimensions{width, height} }': WorkItemsQueryResult;
     '*[_type == "testimonial"] | order(order asc){ quote, name, company }': TestimonialsQueryResult;
     '*[_type == "faq"] | order(order asc){ question, answer }': FaqsQueryResult;
-    '*[_type == "trustLogo"] | order(order asc){ name, logo, "logoDimensions": logo.asset->metadata.dimensions{width, height} }': TrustLogosQueryResult;
   }
 }

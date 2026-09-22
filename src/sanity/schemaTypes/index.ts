@@ -9,7 +9,6 @@ import { service } from "./service";
 import { workItem } from "./workItem";
 import { testimonial } from "./testimonial";
 import { faq } from "./faq";
-import { trustLogo } from "./trustLogo";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -22,7 +21,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     workItem,
     testimonial,
     faq,
-    trustLogo,
   ],
 };
 

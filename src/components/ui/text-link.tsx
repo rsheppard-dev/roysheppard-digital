@@ -6,7 +6,7 @@ const variants = {
   nav: "font-mono text-[13px] uppercase tracking-[0.03em] text-muted transition-colors hover:text-accent",
   /** Nav CTA: mono, underlined. */
   navCta:
-    "font-mono text-[13px] uppercase tracking-[0.03em] border-b-[1.5px] border-ink pb-[3px] transition-colors hover:text-accent hover:border-accent",
+    "font-mono text-[13px] uppercase tracking-[0.03em] border-b-[1.5px] border-ink pb-0.75 transition-colors hover:text-accent hover:border-accent",
   /** Primary hero-style action: bold, ink, arrow, accent on hover. */
   big: "inline-flex items-center gap-2.5 font-semibold text-ink transition-colors hover:text-accent",
   /**
@@ -16,6 +16,9 @@ const variants = {
    */
   button:
     "inline-flex items-center gap-2.5 rounded-pill bg-accent px-7 py-3.5 font-semibold text-ink transition-colors hover:bg-ink hover:text-cream",
+  /** Same shape as `button`, inverted for use on the accent-colored CTA banner (ink fill, cream text). */
+  buttonInverse:
+    "inline-flex items-center gap-2.5 rounded-pill bg-ink px-7 py-3.5 font-semibold text-cream transition-colors hover:bg-white hover:text-ink",
   /** Same as `big` but for dark backgrounds. */
   bigLight:
     "inline-flex items-center gap-2.5 font-semibold text-cream transition-opacity hover:opacity-65",
@@ -24,7 +27,10 @@ const variants = {
     "border-b-[1.5px] border-ink pb-0.5 font-semibold text-ink transition-colors hover:text-accent hover:border-accent",
   /** Used on the accent-colored CTA banner. */
   ctaLink:
-    "border-b-2 border-ink pb-[3px] font-bold text-ink transition-opacity hover:opacity-65",
+    "border-b-2 border-ink pb-0.75 font-bold text-ink transition-opacity hover:opacity-65",
+  /** Secondary/quieter link on the accent-colored CTA banner (e.g. an email fallback below the primary button). */
+  ctaLinkSecondary:
+    "border-b border-accent-soft/60 pb-0.5 text-sm text-accent-soft transition-colors hover:text-cream hover:border-cream sm:text-base",
   /** Footer link on the dark footer. */
   footer: "text-[#D8D3C6] text-sm transition-colors hover:text-cream",
 } as const;

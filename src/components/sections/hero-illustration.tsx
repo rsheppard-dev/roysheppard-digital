@@ -39,7 +39,7 @@ export function HeroIllustration() {
       height={834}
       unoptimized
       priority
-      className="h-auto w-full max-w-[420px] lg:max-w-[640px]"
+      className="h-auto w-full max-w-105 lg:max-w-160"
     />
   );
 }

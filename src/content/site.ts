@@ -1,7 +1,7 @@
 export const nav = [
-	{ label: 'Work', href: '#work' },
-	{ label: 'Services', href: '#services' },
-	{ label: 'About', href: '#about' },
+	{ label: 'Work', href: '/#work' },
+	{ label: 'Services', href: '/#services' },
+	{ label: 'About', href: '/#about' },
 ];
 
 export const hero = {
@@ -10,30 +10,6 @@ export const hero = {
 	tagline: 'Websites that make people stop scrolling.',
 	body: "I'm Roy, a freelance web designer and developer based in Watford. I design and build fast, thoughtful websites that help businesses and organisations achieve more online.",
 };
-
-export const trustLabel = 'Worked with';
-export const trustLogos = [
-	{
-		name: 'Kingsley Estates',
-		src: '/images/clients/kingsley-estates.png',
-		width: 300,
-		height: 243,
-	},
-	{
-		name: 'Product Zone',
-		src: '/images/clients/product-zone.png',
-		width: 374,
-		height: 374,
-	},
-	{ name: 'LH', src: '/images/clients/lh.png', width: 1882, height: 836 },
-	{
-		name: 'Flame Corporate Clothing',
-		src: '/images/clients/flame.png',
-		width: 256,
-		height: 174,
-	},
-	{ name: 'Koala', src: '/images/clients/koala.png', width: 554, height: 649 },
-];
 
 export const services = [
 	{
@@ -60,13 +36,13 @@ export const services = [
 	},
 	{
 		number: '03',
-		title: 'Ongoing Support',
+		title: 'E-Commerce',
 		description:
-			"Sites need looking after. I keep yours updated, fast and running — so you can forget it's even there.",
+			'Online stores built to present your products clearly and make buying straightforward — not a bolted-on afterthought.',
 		bullets: [
-			'Monthly maintenance plans',
-			'Content updates',
-			'Direct line to me, always',
+			'Product pages that sell',
+			'Simple, secure checkout',
+			'Built to grow with your catalogue',
 		],
 	},
 ];
@@ -109,17 +85,17 @@ export const faqs = [
 	{
 		question: 'How much does a website cost?',
 		answer:
-			'It depends on scope — get in touch for a free, fixed-price quote. No surprises later.',
+			"Every project is different. Get in touch with what you have in mind, and I'll put together a tailored quote based on your goals and requirements.",
 	},
 	{
 		question: 'How long does a project take?',
 		answer:
-			'Most sites launch in [X] weeks, depending on size and how quickly content comes together.',
+			"It depends on the size and scope of the project, and how quickly content and feedback come together. I'll give you a realistic timeline once we've talked through what you need.",
 	},
 	{
 		question: 'Do you offer support after launch?',
 		answer:
-			'Yes — monthly maintenance plans keep your site fast, secure and up to date.',
+			'Yes — ongoing support is available to help keep your site fast, secure and up to date after launch.',
 	},
 	{
 		question: 'Can you work with my existing brand?',

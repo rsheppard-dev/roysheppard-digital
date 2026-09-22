@@ -1,7 +1,7 @@
 import { defineQuery } from "next-sanity";
 
 export const siteSettingsQuery = defineQuery(
-  `*[_type == "siteSettings"][0]{ trustLabel, seo }`,
+  `*[_type == "siteSettings"][0]{ seo }`,
 );
 
 export const heroQuery = defineQuery(
@@ -34,8 +34,4 @@ export const testimonialsQuery = defineQuery(
 
 export const faqsQuery = defineQuery(
   `*[_type == "faq"] | order(order asc){ question, answer }`,
-);
-
-export const trustLogosQuery = defineQuery(
-  `*[_type == "trustLogo"] | order(order asc){ name, logo, "logoDimensions": logo.asset->metadata.dimensions{width, height} }`,
 );

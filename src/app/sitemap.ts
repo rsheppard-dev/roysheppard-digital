@@ -1,14 +1,46 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://roysheppard.digital";
+const SITE_URL = "https://www.roysheppard.digital";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
+
   return [
     {
       url: `${SITE_URL}/`,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: "monthly",
       priority: 1,
+    },
+    {
+      url: `${SITE_URL}/web-design-watford`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/web-development-watford`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/ecommerce-watford`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/contact`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.6,
+    },
+    {
+      url: `${SITE_URL}/privacy-policy`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.3,
     },
   ];
 }

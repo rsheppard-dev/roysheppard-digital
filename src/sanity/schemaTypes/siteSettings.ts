@@ -6,12 +6,6 @@ export const siteSettings = defineType({
   type: "document",
   fields: [
     defineField({
-      name: "trustLabel",
-      title: "Trust strip label",
-      type: "string",
-      initialValue: "Worked with",
-    }),
-    defineField({
       name: "seo",
       title: "SEO",
       type: "object",

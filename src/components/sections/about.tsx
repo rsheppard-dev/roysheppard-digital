@@ -31,20 +31,20 @@ export async function About() {
   return (
     <div
       id="about"
-      className="flex flex-col items-center gap-10 px-6 py-14 sm:px-10 lg:flex-row lg:gap-16 lg:px-[140px] lg:py-[100px]"
+      className="flex flex-col items-center gap-10 border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:flex-row lg:gap-16 lg:px-35 lg:py-25"
     >
       <div className="flex flex-1 flex-col gap-5 lg:gap-6">
-        <Eyebrow>{eyebrow}</Eyebrow>
-        <h2 className="max-w-[580px] text-xl font-medium leading-relaxed lg:text-[28px]">
+        <Eyebrow as="h2">{eyebrow}</Eyebrow>
+        <p className="max-w-145 text-xl font-medium leading-relaxed lg:text-[28px]">
           {statement}
-        </h2>
+        </p>
         <div className="mt-1 flex flex-wrap gap-2.5">
           {tags.map((tag) => (
             <Tag key={tag}>{tag}</Tag>
           ))}
         </div>
       </div>
-      <div className="flex w-full max-w-[220px] shrink-0 items-center justify-center lg:w-[300px] lg:max-w-[300px]">
+      <div className="flex w-full max-w-55 shrink-0 items-center justify-center lg:w-75 lg:max-w-75">
         {isDefaultIllustration ? (
           <AboutIllustration />
         ) : (

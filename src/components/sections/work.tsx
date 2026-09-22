@@ -12,13 +12,13 @@ export async function Work() {
   return (
     <div
       id="work"
-      className="flex flex-col gap-6 bg-ink px-6 py-14 sm:px-10 lg:gap-10 lg:px-[140px] lg:py-[100px]"
+      className="flex flex-col gap-6 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25"
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-        <h2 className="text-3xl font-semibold text-cream lg:text-[42px]">
+        <h2 className="text-3xl font-semibold lg:text-[42px]">
           Recent work
         </h2>
-        <TextLink variant="bigLight" href="#contact" className="text-[15px]">
+        <TextLink variant="big" href="/contact" className="text-[15px]">
           Start yours <span>→</span>
         </TextLink>
       </div>
@@ -27,7 +27,11 @@ export async function Work() {
           const url = "url" in item ? item.url : undefined;
           const screenshotSrc =
             "image" in item && item.image ? urlFor(item.image).width(900).url() : undefined;
-          const screenshotDimensions = "imageDimensions" in item ? item.imageDimensions : undefined;
+          const dims = "imageDimensions" in item ? item.imageDimensions : undefined;
+          const screenshotDimensions =
+            dims?.width != null && dims?.height != null
+              ? { width: dims.width, height: dims.height }
+              : undefined;
 
           return (
             <div key={`${item.name ?? ""}-${item.meta ?? ""}`} className="group flex flex-col">
@@ -37,14 +41,14 @@ export async function Work() {
                 screenshotDimensions={screenshotDimensions}
               />
               <div className="mt-4 flex flex-col gap-1">
-                <span className="text-lg font-bold text-cream">
+                <span className="text-lg font-bold">
                   {item.name}
                 </span>
-                <span className="text-sm text-[#9A9686]">{item.meta}</span>
+                <span className="text-sm text-muted-soft">{item.meta}</span>
               </div>
               {url && (
                 <TextLink
-                  variant="bigLight"
+                  variant="big"
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"

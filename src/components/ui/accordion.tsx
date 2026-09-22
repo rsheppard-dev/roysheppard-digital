@@ -10,7 +10,7 @@ type AccordionItemData = {
 function PlusIcon({ open }: { open: boolean }) {
   return (
     <span
-      className="relative h-[22px] w-[22px] shrink-0 transition-transform duration-200"
+      className="relative h-5.5 w-5.5 shrink-0 transition-transform duration-200"
       style={{ transform: `rotate(${open ? 45 : 0}deg)` }}
     >
       <span className="absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 bg-ink" />
@@ -24,7 +24,7 @@ export function Accordion({ items }: { items: AccordionItemData[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="flex max-w-[820px] flex-col">
+    <div className="flex max-w-205 flex-col">
       {items.map((item, index) => {
         const open = openIndex === index;
         return (
@@ -39,14 +39,14 @@ export function Accordion({ items }: { items: AccordionItemData[] }) {
                 type="button"
                 onClick={() => setOpenIndex(open ? null : index)}
                 aria-expanded={open}
-                className="flex w-full items-center justify-between gap-8 py-[26px] text-left font-display text-lg font-bold text-ink"
+                className="flex w-full items-center justify-between gap-8 py-6.5 text-left font-display text-lg font-bold text-ink"
               >
                 <span>{item.question}</span>
                 <PlusIcon open={open} />
               </button>
             </h3>
             {open && (
-              <p className="mb-[26px] max-w-[640px] text-[15px] leading-relaxed text-muted">
+              <p className="mb-6.5 max-w-160 text-[15px] leading-relaxed text-muted">
                 {item.answer}
               </p>
             )}
