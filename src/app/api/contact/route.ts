@@ -84,10 +84,7 @@ export async function POST(request: Request) {
       { name: values.name, email: values.email, company: values.company },
     );
     return NextResponse.json(
-      {
-        error:
-          "Sorry — the enquiry form isn't fully set up yet, so this couldn't be sent. Please email info@roysheppard.digital directly instead.",
-      },
+      { error: "Sorry — something went wrong sending your message. Please try again shortly." },
       { status: 503 },
     );
   }
@@ -125,10 +122,7 @@ export async function POST(request: Request) {
   if (error) {
     console.error("[contact] Resend returned an error sending the enquiry email:", error);
     return NextResponse.json(
-      {
-        error:
-          "Sorry — something went wrong sending your message. Please try again, or email info@roysheppard.digital directly.",
-      },
+      { error: "Sorry — something went wrong sending your message. Please try again shortly." },
       { status: 502 },
     );
   }

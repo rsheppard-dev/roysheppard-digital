@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { footer as fallbackFooter, cta as fallbackCta } from "@/content/site";
 import {
   validateContactForm,
   hasContactFormErrors,
   type ContactFormValues,
   type ContactFormErrors,
 } from "@/lib/contact-form";
+
+const FALLBACK_EMAIL = fallbackFooter.email || fallbackCta.email;
 
 const EMPTY_VALUES: ContactFormValues = {
   name: "",
@@ -73,12 +76,28 @@ export function ContactForm() {
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState<string>("");
+  // "validation" (fix the highlighted fields — no email fallback needed) vs
+  // "submit" (the send itself failed — offer the direct-email fallback link).
+  const [errorKind, setErrorKind] = useState<"validation" | "submit" | null>(null);
   // Set after mount, not during render — render must stay pure, and this
   // only needs to be "roughly when the form became interactive" anyway.
   const renderedAtRef = useRef<number | null>(null);
   useEffect(() => {
     renderedAtRef.current = Date.now();
   }, []);
+
+  // The success panel and error banner both replace content well above the
+  // submit button — on a long form (especially on mobile, where the
+  // keyboard closing also shifts the layout) that can land outside the
+  // viewport with nothing on screen appearing to happen. Bring whichever one
+  // just appeared into view and move focus to it, for sighted and
+  // screen-reader users alike.
+  const messageRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (status !== "success" && status !== "error") return;
+    messageRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    messageRef.current?.focus({ preventScroll: true });
+  }, [status]);
 
   function updateField<K extends keyof ContactFormValues>(field: K, value: string) {
     setValues((prev) => ({ ...prev, [field]: value }));
@@ -92,12 +111,14 @@ export function ContactForm() {
 
     if (hasContactFormErrors(fieldErrors)) {
       setStatus("error");
+      setErrorKind("validation");
       setStatusMessage("Please fix the highlighted fields below.");
       return;
     }
 
     setStatus("submitting");
     setStatusMessage("");
+    setErrorKind(null);
 
     const formEl = event.currentTarget;
     const honeypot = (new FormData(formEl).get("hp_field") as string) || "";
@@ -117,21 +138,27 @@ export function ContactForm() {
 
       if (!response.ok) {
         setStatus("error");
-        setStatusMessage(
-          data?.error || "Something went wrong sending your message. Please try again or email me directly.",
-        );
-        if (data?.fieldErrors) setErrors(data.fieldErrors);
+        if (data?.fieldErrors) {
+          setErrorKind("validation");
+          setErrors(data.fieldErrors);
+          setStatusMessage(data?.error || "Please fix the highlighted fields below.");
+        } else {
+          setErrorKind("submit");
+          setStatusMessage(data?.error || "Something went wrong sending your message.");
+        }
         return;
       }
 
       setStatus("success");
+      setErrorKind(null);
       setStatusMessage("Thanks — your message is on its way. I usually reply within a day.");
       setValues(EMPTY_VALUES);
       setErrors({});
     } catch {
       setStatus("error");
+      setErrorKind("submit");
       setStatusMessage(
-        "Something went wrong sending your message — please check your connection and try again, or email me directly.",
+        "Something went wrong sending your message — please check your connection and try again.",
       );
     }
   }
@@ -141,8 +168,10 @@ export function ContactForm() {
   if (status === "success") {
     return (
       <div
+        ref={messageRef}
+        tabIndex={-1}
         role="status"
-        className="flex max-w-140 flex-col items-start gap-4 rounded-card border border-border bg-white p-8"
+        className="flex max-w-140 flex-col items-start gap-4 rounded-card border border-border bg-white p-8 focus:outline-none"
       >
         <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
           <CheckIcon />
@@ -178,9 +207,25 @@ export function ContactForm() {
       </div>
 
       {status === "error" && statusMessage && (
-        <div role="alert" className="flex items-start gap-3 rounded-md border border-red-200 bg-red-50 p-4 text-red-800">
+        <div
+          ref={messageRef}
+          tabIndex={-1}
+          role="alert"
+          className="flex items-start gap-3 rounded-md border border-red-200 bg-red-50 p-4 text-red-800 focus:outline-none"
+        >
           <AlertIcon />
-          <p className="text-sm">{statusMessage}</p>
+          <div className="flex flex-col gap-1">
+            <p className="text-sm">{statusMessage}</p>
+            {errorKind === "submit" && (
+              <p className="text-sm">
+                Or email{" "}
+                <a href={`mailto:${FALLBACK_EMAIL}`} className="font-semibold underline underline-offset-2 hover:text-red-950">
+                  {FALLBACK_EMAIL}
+                </a>{" "}
+                directly.
+              </p>
+            )}
+          </div>
         </div>
       )}
 
