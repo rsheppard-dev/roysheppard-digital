@@ -27,6 +27,47 @@ function FieldError({ id, message }: { id: string; message?: string }) {
   );
 }
 
+function CheckIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+
+function AlertIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="mt-0.5 shrink-0"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 8v5" />
+      <path d="M12 16h.01" />
+    </svg>
+  );
+}
+
 export function ContactForm() {
   const [values, setValues] = useState<ContactFormValues>(EMPTY_VALUES);
   const [errors, setErrors] = useState<ContactFormErrors>({});
@@ -59,7 +100,7 @@ export function ContactForm() {
     setStatusMessage("");
 
     const formEl = event.currentTarget;
-    const honeypot = (new FormData(formEl).get("website") as string) || "";
+    const honeypot = (new FormData(formEl).get("hp_field") as string) || "";
 
     try {
       const response = await fetch("/api/contact", {
@@ -67,7 +108,7 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...values,
-          website: honeypot,
+          hpField: honeypot,
           renderedAt: renderedAtRef.current ?? undefined,
         }),
       });
@@ -97,13 +138,51 @@ export function ContactForm() {
 
   const submitting = status === "submitting";
 
+  if (status === "success") {
+    return (
+      <div
+        role="status"
+        className="flex max-w-140 flex-col items-start gap-4 rounded-card border border-border bg-white p-8"
+      >
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
+          <CheckIcon />
+        </span>
+        <div className="flex flex-col gap-1.5">
+          <h2 className="text-xl font-bold text-ink">Message sent</h2>
+          <p className="text-[15px] leading-relaxed text-muted-strong">{statusMessage}</p>
+        </div>
+        <button
+          type="button"
+          onClick={() => setStatus("idle")}
+          className="mt-1 w-fit border-b-[1.5px] border-ink pb-0.5 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
+        >
+          Send another message
+        </button>
+      </div>
+    );
+  }
+
   return (
     <form onSubmit={handleSubmit} noValidate className="flex max-w-140 flex-col gap-5">
-      {/* Honeypot — hidden from real visitors, left blank by them; bots often fill every field. */}
+      {/*
+        Honeypot — hidden from real visitors, left blank by them; bots often
+        fill every field. Deliberately named with no semantic meaning
+        ("hp_field", not "website"/"url"/etc.) — a recognisable field name is
+        a known false-positive trap, since password managers and some
+        browser autofill heuristics fill it with the current page's URL even
+        though it's positioned off-screen.
+      */}
       <div className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden" aria-hidden="true">
-        <label htmlFor="website">Leave this field blank</label>
-        <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+        <label htmlFor="hp_field">Leave this field blank</label>
+        <input type="text" id="hp_field" name="hp_field" tabIndex={-1} autoComplete="off" />
       </div>
+
+      {status === "error" && statusMessage && (
+        <div role="alert" className="flex items-start gap-3 rounded-md border border-red-200 bg-red-50 p-4 text-red-800">
+          <AlertIcon />
+          <p className="text-sm">{statusMessage}</p>
+        </div>
+      )}
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="name" className="text-sm font-medium text-ink">
@@ -187,14 +266,6 @@ export function ContactForm() {
       >
         {submitting ? "Sending…" : "Send message"}
       </button>
-
-      <div role="status" aria-live="polite" className="min-h-[1.5em]">
-        {statusMessage && (
-          <p className={`text-sm ${status === "success" ? "text-emerald-700" : "text-red-600"}`}>
-            {statusMessage}
-          </p>
-        )}
-      </div>
     </form>
   );
 }

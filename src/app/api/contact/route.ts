@@ -10,8 +10,14 @@ export const runtime = "nodejs";
 const MIN_FILL_TIME_MS = 2500;
 
 type ContactRequestBody = ContactFormValues & {
-  /** Honeypot — real visitors never fill this in (hidden from view). */
-  website?: string;
+  /**
+   * Honeypot — real visitors never fill this in (hidden from view). Named
+   * with no semantic meaning on purpose: a field called "website" is a
+   * known false-positive trap, since password managers and some browser
+   * autofill heuristics fill any field named/labelled "website" with the
+   * current page's URL even though it's positioned off-screen.
+   */
+  hpField?: string;
   /** Client-set timestamp (ms) of when the form was first rendered. */
   renderedAt?: number;
 };
@@ -43,13 +49,19 @@ export async function POST(request: Request) {
   // Honeypot tripped: pretend success so bots don't learn to avoid this field,
   // but never send anything. This is the one deliberate "fake success" in
   // this route, and it's for bots, not genuine senders who hit a real error.
-  if (body.website) {
+  // Logged (not just silent) because a fake success looks identical to a real
+  // one from the client, and "success but no email" is otherwise a dead end.
+  if (body.hpField) {
+    console.warn("[contact] Honeypot field was filled in — treating as a bot, no email sent.");
     return NextResponse.json({ ok: true });
   }
 
   if (typeof body.renderedAt === "number") {
     const elapsed = Date.now() - body.renderedAt;
     if (elapsed >= 0 && elapsed < MIN_FILL_TIME_MS) {
+      console.warn(
+        `[contact] Submitted ${elapsed}ms after the form rendered (under the ${MIN_FILL_TIME_MS}ms minimum) — treating as a bot, no email sent.`,
+      );
       return NextResponse.json({ ok: true });
     }
   }
