@@ -23,7 +23,7 @@ type CaseStudy = {
 };
 
 export const webDesign = {
-	title: 'Web Design in Watford | Roy Sheppard',
+	title: 'Web Design in Watford | Website Designer | Roy Sheppard',
 	description:
 		'Freelance web design in Watford from Roy Sheppard — sites that look like your business, work properly on mobile, and give visitors a clear next step.',
 	eyebrow: 'Web Design',
@@ -54,18 +54,18 @@ export const webDesign = {
 	] satisfies FocusArea[],
 	caseStudy: {
 		eyebrow: 'Recent work',
-		name: 'Kingsley Estates',
-		meta: 'Real estate — sales & lettings, Watford',
-		url: 'https://www.kingsley-estates.co.uk/',
+		name: 'LH Plumbing & Heating',
+		meta: 'Home services — plumbing, heating & electrical, Harrow',
+		url: 'https://www.lhplumbing-harrow.co.uk/',
 		contribution: [
-			'Designed and built the site around buyers, sellers, landlords and tenants — each with a clearly different path through it.',
-			'Brought valuations, listings and landlord/tenant information together into one consistent design rather than a bolt-on for each.',
-			'Built in the accreditations, complaints procedure and contact routes that matter for trust in estate agency.',
+			'Designed the full site around a long-established family business, so it looks and feels like them rather than a template.',
+			'Structured plumbing, gas, electrical and carpentry services so a multi-service business reads as one coherent site.',
+			'Added an image gallery of past work, testimonials and a clear contact route on every page.',
 		],
 		quote:
-			'Roy was exceptionally professional and efficient with building us a website for our new barbershop. He had a lot of his own very useful ideas which helped us gain a further reach to our audience. Would highly recommend !',
-		quoteName: 'George Thomas',
-		quoteCompany: 'Studio120',
+			'Got Roy to create a website for my family owned company, could not be happier! He has done an amazing job and has been super helpful throughout the whole process. Would 100% recommend him!',
+		quoteName: 'James Sumner',
+		quoteCompany: 'LH Plumbing and Heating',
 	} satisfies CaseStudy,
 	howItWorks:
 		"Every design starts with a discovery chat about your business, your customers, and what you need the site to achieve. From there I design the key pages first and share them with you before anything gets built, so you're not seeing a finished site for the first time at launch — then we review it together before it goes live.",
@@ -124,18 +124,18 @@ export const webDevelopment = {
 	] satisfies FocusArea[],
 	caseStudy: {
 		eyebrow: 'Recent work',
-		name: 'LH Plumbing & Heating',
-		meta: 'Home services — plumbing, heating & electrical, Harrow',
-		url: 'https://www.lhplumbing-harrow.co.uk/',
+		name: 'Kingsley Estates',
+		meta: 'Real estate — sales & lettings, Watford',
+		url: 'https://www.kingsley-estates.co.uk/',
 		contribution: [
-			'Designed and built the full site — service pages, an image gallery of past work, testimonials and a working contact form.',
-			'Structured plumbing, gas, electrical and carpentry services so a long-established, multi-service business reads as one coherent site.',
-			'Set it up so content — services, testimonials, gallery images — can be updated without touching code.',
+			'Designed and built the site around buyers, sellers, landlords and tenants — each with a clearly different path through it.',
+			'Brought valuations, listings and landlord/tenant information together into one consistent, custom-built system rather than a bolt-on for each.',
+			'Built in the accreditations, complaints procedure and contact routes that matter for trust in estate agency, with ongoing aftercare.',
 		],
 		quote:
-			'Got Roy to create a website for my family owned company, could not be happier! He has done an amazing job and has been super helpful throughout the whole process. Would 100% recommend him!',
-		quoteName: 'James Sumner',
-		quoteCompany: 'LH Plumbing and Heating',
+			'Roy developed my website, and I couldn’t be happier with both the look and functionality of it, as well as the excellent aftercare. I would highly recommend Roy and his company and will definitely be using them again going forward. A fantastic service from start to finish!',
+		quoteName: 'Jack Kingsley',
+		quoteCompany: 'Kingsley Estates',
 	} satisfies CaseStudy,
 	howItWorks:
 		"Once I understand what your project actually needs to do, I build around those requirements rather than forcing them into an off-the-shelf template. You'll see it come together in stages rather than all at once, with a proper review before it goes live — and I'm on hand afterwards to keep it running.",
