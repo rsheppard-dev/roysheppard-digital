@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
+import { isProduction } from "@/lib/is-production";
 
 const SITE_URL = "https://www.roysheppard.digital";
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
-  const isProductionHost = process.env.VERCEL_ENV === "production";
+  const isProductionHost = isProduction;
 
   // Crawling stays open even off production: a page that also carries
   // `noindex` (see layout.tsx) only works if crawlers are able to fetch it

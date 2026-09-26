@@ -7,6 +7,7 @@ import { footerQuery, siteSettingsQuery } from "@/sanity/lib/queries";
 import { ConsentDefaultScript } from "@/components/consent/consent-default-script";
 import { ConsentBanner } from "@/components/consent/consent-banner";
 import { LocalBusinessJsonLd } from "@/components/ui/local-business-jsonld";
+import { isProduction } from "@/lib/is-production";
 import "./globals.css";
 
 const GTM_ID = "GTM-PTDWD92";
@@ -35,7 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const { data } = await sanityFetch({ query: siteSettingsQuery });
   // Build-time flag rather than a per-request Host check: reading headers() here
   // would opt every page out of static rendering and slow the document response.
-  const isProductionHost = process.env.VERCEL_ENV === "production";
+  const isProductionHost = isProduction;
 
   const title = data?.seo?.metaTitle || SITE_TITLE;
   const description = data?.seo?.metaDescription || SITE_DESCRIPTION;
