@@ -14,6 +14,7 @@ export default function Home() {
       <div className="sticky top-0 z-50 bg-cream/95 backdrop-blur-sm">
         <Nav />
       </div>
+      <main>
       <Hero />
       <Services />
       <About />
@@ -21,6 +22,7 @@ export default function Home() {
       <Testimonials />
       <Faq />
       <CtaBanner />
+      </main>
       <Footer />
     </>
   );

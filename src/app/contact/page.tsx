@@ -25,6 +25,7 @@ export default function ContactPage() {
         <Nav />
       </div>
 
+      <main>
       <Breadcrumbs label="Contact" path={PATH} />
 
       <div className="flex flex-col gap-10 px-6 py-14 sm:px-10 lg:flex-row lg:gap-20 lg:px-35 lg:py-25">
@@ -55,6 +56,7 @@ export default function ContactPage() {
           <ContactForm />
         </div>
       </div>
+      </main>
 
       <Footer />
     </>

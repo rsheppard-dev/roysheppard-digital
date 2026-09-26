@@ -9,8 +9,10 @@ export function PageShell({ children }: { children: React.ReactNode }) {
       <div className="sticky top-0 z-50 bg-cream/95 backdrop-blur-sm">
         <Nav />
       </div>
-      {children}
-      <CtaBanner />
+      <main>
+        {children}
+        <CtaBanner />
+      </main>
       <Footer />
     </>
   );

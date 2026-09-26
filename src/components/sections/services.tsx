@@ -70,6 +70,10 @@ export async function Services() {
 									className={`${caveat.className} mt-1 w-fit text-xl leading-none text-ink underline decoration-accent decoration-2 underline-offset-4`}
 								>
 									learn more
+									<span className='sr-only'>
+										{' '}
+										about {service.title} in Watford
+									</span>
 								</Link>
 							)}
 						</div>

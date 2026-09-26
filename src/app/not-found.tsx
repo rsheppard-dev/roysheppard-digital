@@ -17,7 +17,7 @@ export default function NotFound() {
         <Nav />
       </div>
 
-      <div className="flex flex-col items-center gap-10 px-6 py-16 sm:px-10 md:py-20 lg:flex-row lg:justify-between lg:gap-14 lg:px-35 lg:py-24">
+      <main className="flex flex-col items-center gap-10 px-6 py-16 sm:px-10 md:py-20 lg:flex-row lg:justify-between lg:gap-14 lg:px-35 lg:py-24">
         <div className="flex flex-1 flex-col gap-5 lg:max-w-115">
           <div className="flex w-fit items-center gap-2 rounded-pill bg-tan px-4 py-2">
             <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-accent" />
@@ -51,7 +51,7 @@ export default function NotFound() {
             className="h-auto w-full max-w-125 lg:max-w-160"
           />
         </div>
-      </div>
+      </main>
 
       <Footer />
     </>
