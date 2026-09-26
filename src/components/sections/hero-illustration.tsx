@@ -12,9 +12,18 @@ export function HeroIllustration() {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Warm the browser cache for the animated frame so the first scroll swap is instant.
+  // Waits for the load event so the ~1MB file never competes with the LCP image.
   useEffect(() => {
-    const preload = new window.Image();
-    preload.src = "/images/hero-desk-loop.webp";
+    function preloadLoop() {
+      const preload = new window.Image();
+      preload.src = "/images/hero-desk-loop.webp";
+    }
+    if (document.readyState === "complete") {
+      preloadLoop();
+      return;
+    }
+    window.addEventListener("load", preloadLoop, { once: true });
+    return () => window.removeEventListener("load", preloadLoop);
   }, []);
 
   useEffect(() => {
@@ -37,7 +46,10 @@ export function HeroIllustration() {
       alt="Illustration of Roy Sheppard working at his desk"
       width={1112}
       height={834}
-      unoptimized
+      // The static frame goes through the image optimizer (AVIF/WebP, right-sized);
+      // the animated loop must be served as-is or it would be flattened.
+      unoptimized={scrolling}
+      sizes="(min-width: 1024px) 640px, 420px"
       priority
       className="h-auto w-full max-w-105 lg:max-w-160"
     />

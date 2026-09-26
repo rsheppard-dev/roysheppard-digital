@@ -1,12 +1,9 @@
 import type { MetadataRoute } from "next";
-import { headers } from "next/headers";
 
 const SITE_URL = "https://www.roysheppard.digital";
-const PRODUCTION_HOSTS = ["roysheppard.digital", "www.roysheppard.digital"];
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
-  const host = (await headers()).get("host") ?? "";
-  const isProductionHost = PRODUCTION_HOSTS.includes(host);
+  const isProductionHost = process.env.VERCEL_ENV === "production";
 
   // Crawling stays open even off production: a page that also carries
   // `noindex` (see layout.tsx) only works if crawlers are able to fetch it

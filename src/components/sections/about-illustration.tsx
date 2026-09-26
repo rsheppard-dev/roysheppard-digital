@@ -62,6 +62,7 @@ export function AboutIllustration() {
         alt="Illustration of Roy Sheppard"
         width={1792}
         height={2400}
+        sizes="(min-width: 1024px) 300px, 220px"
         className="h-auto w-full"
       />
       <div

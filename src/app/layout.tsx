@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { footer as fallbackFooter } from "@/content/site";
@@ -25,7 +24,6 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 const SITE_URL = "https://www.roysheppard.digital";
-const PRODUCTION_HOSTS = ["roysheppard.digital", "www.roysheppard.digital"];
 const SITE_TITLE = "Web Designer & Web Developer in Watford | Roy Sheppard";
 const SITE_DESCRIPTION =
   "Freelance web designer and developer in Watford. Custom websites for businesses, organisations and agencies. Discuss your project with Roy Sheppard.";
@@ -35,8 +33,9 @@ const COUNTRY = "GB";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await sanityFetch({ query: siteSettingsQuery });
-  const host = (await headers()).get("host") ?? "";
-  const isProductionHost = PRODUCTION_HOSTS.includes(host);
+  // Build-time flag rather than a per-request Host check: reading headers() here
+  // would opt every page out of static rendering and slow the document response.
+  const isProductionHost = process.env.VERCEL_ENV === "production";
 
   const title = data?.seo?.metaTitle || SITE_TITLE;
   const description = data?.seo?.metaDescription || SITE_DESCRIPTION;
