@@ -7,6 +7,7 @@ import { SanityLive, sanityFetch } from "@/sanity/lib/live";
 import { footerQuery, siteSettingsQuery } from "@/sanity/lib/queries";
 import { ConsentDefaultScript } from "@/components/consent/consent-default-script";
 import { ConsentBanner } from "@/components/consent/consent-banner";
+import { LocalBusinessJsonLd } from "@/components/ui/local-business-jsonld";
 import "./globals.css";
 
 const GTM_ID = "GTM-PTDWD92";
@@ -109,6 +110,11 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
+        />
+        <LocalBusinessJsonLd
+          telephone={toE164(phone)}
+          email={email}
+          sameAs={jsonLd.sameAs}
         />
         <noscript>
           <iframe
