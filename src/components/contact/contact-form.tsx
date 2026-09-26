@@ -168,6 +168,7 @@ export function ContactForm() {
   if (status === "success") {
     return (
       <div
+        id="contact-submitted"
         ref={messageRef}
         tabIndex={-1}
         role="status"
