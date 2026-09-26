@@ -30,7 +30,7 @@ export async function Services() {
 		>
 			<div className='flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between'>
 				<h2 className='text-3xl font-semibold lg:text-[42px]'>What I do</h2>
-				<p className='max-w-95 text-sm text-muted-soft lg:text-right lg:text-base'>
+				<p className='max-w-95 text-sm text-muted lg:text-right lg:text-base'>
 					Everything you need to go from idea to a site that actually earns its
 					keep.
 				</p>
@@ -50,7 +50,7 @@ export async function Services() {
 								aria-hidden='true'
 								className={`absolute -top-2.5 left-6 h-4.5 w-11 border border-[#f3d9cd] bg-accent-soft/90 ${tilt.tape}`}
 							/>
-							<span className='font-mono text-sm font-semibold text-accent'>
+							<span className='font-mono text-sm font-semibold text-accent-text'>
 								{String(index + 1).padStart(2, '0')}
 							</span>
 							<h3 className='text-xl font-bold lg:text-[22px]'>
