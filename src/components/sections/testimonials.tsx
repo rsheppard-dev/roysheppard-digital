@@ -12,14 +12,14 @@ export async function Testimonials() {
   return (
     <div className="flex flex-col gap-6 border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:gap-7 lg:px-35 lg:py-25">
       <Eyebrow as="h2">Kind words</Eyebrow>
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-stretch lg:gap-7">
+      <div className="flex flex-col gap-6 lg:gap-7">
         {featured && (
-          <Card className="flex flex-col justify-between gap-6 lg:flex-[1.3]">
+          <Card className="flex flex-col justify-between gap-6">
             <div className="flex flex-col gap-4.5">
               <span className="text-base tracking-[2px] text-accent" aria-hidden="true">
                 ★★★★★
               </span>
-              <p className="text-xl font-medium leading-relaxed text-[#33312A] lg:text-[22px]">
+              <p className="max-w-[60ch] text-xl font-medium leading-relaxed text-[#33312A] lg:text-[24px]">
                 &ldquo;{featured.quote}&rdquo;
               </p>
             </div>
@@ -29,11 +29,15 @@ export async function Testimonials() {
           </Card>
         )}
         {supporting.length > 0 && (
-          <div className="flex flex-1 flex-col gap-6">
+          <div
+            className={`grid gap-6 sm:grid-cols-2 lg:gap-7 ${
+              supporting.length % 3 === 0 ? "lg:grid-cols-3" : ""
+            }`}
+          >
             {supporting.map((testimonial) => (
               <Card
                 key={`${testimonial.name ?? ""}-${testimonial.quote ?? ""}`}
-                className="flex flex-1 flex-col justify-between gap-3"
+                className="flex flex-col justify-between gap-4"
               >
                 <div className="flex flex-col gap-3">
                   <span className="text-sm tracking-[2px] text-accent" aria-hidden="true">
