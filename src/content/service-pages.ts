@@ -53,7 +53,7 @@ export const webDesign = {
 		},
 	] satisfies FocusArea[],
 	caseStudy: {
-		eyebrow: 'Recent work',
+		eyebrow: 'Showcase',
 		name: 'LH Plumbing & Heating',
 		meta: 'Home services — plumbing, heating & electrical, Harrow',
 		url: 'https://www.lhplumbing-harrow.co.uk/',
@@ -123,7 +123,7 @@ export const webDevelopment = {
 		},
 	] satisfies FocusArea[],
 	caseStudy: {
-		eyebrow: 'Recent work',
+		eyebrow: 'Showcase',
 		name: 'Kingsley Estates',
 		meta: 'Real estate — sales & lettings, Watford',
 		url: 'https://www.kingsley-estates.co.uk/',
@@ -193,7 +193,7 @@ export const ecommerce = {
 		},
 	] satisfies FocusArea[],
 	caseStudy: {
-		eyebrow: 'Recent work',
+		eyebrow: 'Showcase',
 		name: 'Product Zone',
 		meta: 'E-commerce — custom headwear & merch',
 		url: 'https://productzone.co.uk/',
