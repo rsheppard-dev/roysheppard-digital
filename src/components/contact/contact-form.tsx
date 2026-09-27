@@ -152,6 +152,12 @@ export function ContactForm() {
         return;
       }
 
+      // GTM triggers the GA4 lead event on this rather than on the success
+      // message's visibility, so a markup change can't silently break it.
+      // GA4 applies Consent Mode itself, so this is pushed regardless of consent.
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "generate_lead", form_name: "contact" });
+
       setStatus("success");
       setErrorKind(null);
       setStatusMessage("Thanks — your message is on its way. I usually reply within a day.");
