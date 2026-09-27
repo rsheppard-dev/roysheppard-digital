@@ -114,7 +114,12 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="bg-cream text-ink font-display">
         <ConsentDefaultScript />
-        <GoogleTagManager gtmId={GTM_ID} />
+        <GoogleTagManager
+          gtmId={GTM_ID}
+          // In production GTM loads first-party via the tag gateway edge function
+          // (netlify/edge-functions/tag-gateway.ts) so ad blockers don't drop it.
+          gtmScriptUrl={isProduction ? `${SITE_URL}/tg/` : undefined}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
