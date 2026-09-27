@@ -248,7 +248,8 @@ const privacyPolicySections: PolicySection[] = [
 			paragraphs: [
 				'The contact form at /contact collects your name, email address, company or organisation (optional), and the project details you enter. There is no field for pricing or budget information.',
 				'Submitting the form does not store your information in a database on this website. It is sent as an email, via Resend (a third-party email delivery service — see ‘Delivery provider’ below), to Roy Sheppard’s inbox, where it’s kept as an ordinary email for as long as any other business correspondence.',
-				'The form also uses standard anti-spam checks (a hidden field, and a minimum time-to-submit check) to filter out automated submissions before they’re sent. Genuine submissions are not affected by this.',
+				'The form also runs automated checks to filter out spam before anything is sent. These don’t collect any extra information about you.',
+				'If you’ve accepted cookies, submitting the form also tells Meta that an enquiry was made — see ‘Advertising measurement (Meta)’ below.',
 				'If you get in touch by email or phone directly instead, using the details in the footer, that’s handled as an ordinary email or phone conversation, not stored in any system by this website.',
 			],
 		},
@@ -257,15 +258,35 @@ const privacyPolicySections: PolicySection[] = [
 			paragraphs: [
 				'Contact form submissions are relayed using Resend (resend.com), a third-party transactional email service. Under Resend’s Data Processing Agreement, Resend acts as a data processor for this message content — it processes it strictly to deliver the email on Roy Sheppard’s behalf, not for its own purposes.',
 				'Resend’s infrastructure is US-based (it uses providers including Amazon Web Services, also US-based, to send and host email). Because this involves transferring personal data out of the UK, Resend’s DPA specifies this is done under Standard Contractual Clauses (the EU SCCs plus the UK Addendum) — the standard legal mechanism for that kind of international transfer.',
-				'Resend’s DPA commits to deleting customer account data within 90 days of an account being closed. Published documentation doesn’t state a specific figure for how long an individual message’s content or delivery log is kept in Resend’s dashboard while the account remains active day-to-day — if that detail matters, it’s worth confirming directly with Resend or in the account’s own settings.',
+				'Resend’s DPA commits to deleting customer account data within 90 days of an account being closed.',
+			],
+		},
+		{
+			heading: 'Hosting',
+			paragraphs: [
+				'This website is hosted by Netlify. Like any web host, Netlify processes technical information about each request — such as your IP address and browser details — to deliver the site and protect it from abuse.',
 			],
 		},
 		{
 			heading: 'Analytics and cookies',
 			paragraphs: [
-				'This website loads Google Tag Manager, a tool that can be configured to load analytics or advertising tags. Depending on how that’s configured, it may set cookies or collect technical information such as your IP address, browser and device details, and the pages you visit.',
-				'A cookie banner asks for your consent before any of that happens. By default, analytics and advertising storage are set to denied — nothing beyond what’s strictly necessary to run the site is set until you actively choose ‘Accept’. You can change your choice at any time using ‘Cookie settings’ in the footer.',
-				'This covers Google’s own tags automatically. Any other, non-Google tag configured inside Google Tag Manager needs to be individually set up to respect this same consent signal — that’s configured in the Tag Manager dashboard, not something visible from this website’s code, so it hasn’t been independently verified end to end.',
+				'This website uses Google Tag Manager to load two tools: Google Analytics 4, which shows how visitors find and use the site, and the Meta Pixel, which measures the results of adverts on Facebook and Instagram. These may set cookies and collect technical information such as your IP address, browser and device details, and the pages you visit.',
+				'Google Tag Manager and Google Analytics are loaded through this website’s own address (roysheppard.digital/tg/) rather than directly from Google’s domains. This doesn’t change what’s collected or who receives it — the information still goes to Google, and your cookie choice still applies.',
+				'A cookie banner asks for your consent first. Until you choose ‘Accept’, analytics and advertising cookies are not set. You can change your choice at any time using ‘Cookie settings’ in the footer.',
+			],
+		},
+		{
+			heading: 'Advertising measurement (Meta)',
+			paragraphs: [
+				'If you’ve accepted cookies and send an enquiry through the contact form, this website tells Meta (the company behind Facebook and Instagram) that an enquiry was made, so adverts can be measured and improved. This is sent directly from this website’s server, and includes your email address and name in hashed form (scrambled so they can’t be read, only matched against existing Meta accounts), your IP address, browser details, and Meta’s own cookie identifiers if present. The content of your message is never sent to Meta.',
+				'If you haven’t accepted cookies, or you’ve rejected them, nothing is sent to Meta when you submit the form.',
+				'Meta processes this information under its own privacy policy (facebook.com/privacy/policy), and may transfer it outside the UK.',
+			],
+		},
+		{
+			heading: 'Why your information is used',
+			paragraphs: [
+				'Replying to an enquiry you’ve sent is based on legitimate interests — you’ve asked to be contacted, and your details are used only to respond. Analytics, the Meta Pixel and the Meta enquiry measurement described above are based on your consent, which you can withdraw at any time using ‘Cookie settings’ in the footer.',
 			],
 		},
 		{
@@ -277,7 +298,7 @@ const privacyPolicySections: PolicySection[] = [
 		{
 			heading: 'Sharing your information',
 			paragraphs: [
-				'This website doesn’t sell or share personal information with third parties for their own marketing purposes. Where information passes through a service provider — Resend to deliver contact form submissions, Google Tag Manager for tagging, or Sanity for hosting site content — it’s only to the extent needed to run the site.',
+				'This website doesn’t sell personal information. Service providers only receive what they need to run the site: Netlify to host it, Resend to deliver contact form submissions, and Sanity to serve site content. With your consent, Google receives analytics data and Meta receives advertising measurement data, as described above.',
 			],
 		},
 		{
@@ -298,6 +319,6 @@ export const privacyPolicy = {
 	title: 'Privacy Policy | Roy Sheppard',
 	description: 'How Roy Sheppard handles data on this website — what is and isn’t collected, and how to get in touch about it.',
 	heading: 'Privacy Policy',
-	lastUpdated: '22 September 2026',
+	lastUpdated: '27 September 2026',
 	sections: privacyPolicySections,
 };
