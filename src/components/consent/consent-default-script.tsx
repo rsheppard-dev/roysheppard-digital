@@ -1,5 +1,5 @@
 import Script from "next/script";
-import { CONSENT_STORAGE_KEY } from "@/lib/consent";
+import { CONSENT_GRANTED_EVENT, CONSENT_STORAGE_KEY } from "@/lib/consent";
 
 /**
  * Must render before <GoogleTagManager> in the tree. Sets Consent Mode v2
@@ -10,6 +10,7 @@ import { CONSENT_STORAGE_KEY } from "@/lib/consent";
  */
 export function ConsentDefaultScript() {
   const storageKey = JSON.stringify(CONSENT_STORAGE_KEY);
+  const grantedEvent = JSON.stringify(CONSENT_GRANTED_EVENT);
 
   return (
     // This rule only recognises the Pages Router's pages/_document.js. For the App Router,
@@ -34,6 +35,7 @@ export function ConsentDefaultScript() {
     ad_personalization: state,
     wait_for_update: 500
   });
+  if (state === 'granted') window.dataLayer.push({ event: ${grantedEvent} });
 })();`,
       }}
     />

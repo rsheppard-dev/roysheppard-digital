@@ -10,6 +10,13 @@
 
 export const CONSENT_STORAGE_KEY = "cookie-consent";
 export const CONSENT_REOPEN_EVENT = "open-cookie-settings";
+/**
+ * dataLayer event pushed once per page when consent is granted (on Accept, or
+ * on load for a returning visitor who accepted before). Non-Google tags in GTM,
+ * like the Meta Pixel, trigger on this instead of "All Pages" so they can't
+ * fire without consent.
+ */
+export const CONSENT_GRANTED_EVENT = "cookie_consent_granted";
 
 export type ConsentChoice = "granted" | "denied";
 
@@ -44,6 +51,12 @@ export function applyConsent(choice: ConsentChoice) {
     ad_user_data: choice,
     ad_personalization: choice,
   });
+  const alreadyGranted = window.dataLayer?.some(
+    (entry) => (entry as { event?: string } | null)?.event === CONSENT_GRANTED_EVENT,
+  );
+  if (choice === "granted" && !alreadyGranted) {
+    window.dataLayer!.push({ event: CONSENT_GRANTED_EVENT });
+  }
   try {
     window.localStorage.setItem(CONSENT_STORAGE_KEY, choice);
   } catch {
