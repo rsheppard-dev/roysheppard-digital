@@ -17,7 +17,7 @@ export async function Work() {
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <h2 className="text-3xl font-semibold lg:text-[42px]">
-          Recent work
+          Client work
         </h2>
         <TextLink variant="big" href="/contact" className="text-[15px]">
           Start yours <span>→</span>
@@ -41,19 +41,6 @@ export async function Work() {
                 <Link
                   href={caseStudyHref}
                   aria-label={item.name ? `Read the ${item.name} case study` : "Read the case study"}
-                >
-                  <IPadMockup
-                    screenshotSrc={screenshotSrc}
-                    screenshotAlt={item.name ? `${item.name} website screenshot` : "Website screenshot"}
-                    screenshotDimensions={screenshotDimensions}
-                  />
-                </Link>
-              ) : url ? (
-                <Link
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={item.name ? `Visit ${item.name} website` : "Visit website"}
                 >
                   <IPadMockup
                     screenshotSrc={screenshotSrc}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BrowserMockup } from "@/components/ui/browser-mockup";
 import { TextLink } from "@/components/ui/text-link";
 import { urlFor } from "@/sanity/lib/image";
@@ -20,8 +21,9 @@ const normaliseUrl = (url?: string | null) => url?.replace(/\/+$/, "").toLowerCa
 /**
  * A real project (screenshot, name, meta, contribution, live link) alongside
  * a separately-attributed client testimonial. The screenshot comes from the
- * matching "Recent work" item in Sanity (matched by live-site URL), so it
- * stays in sync with the homepage. The quote isn't always from the project
+ * matching work item in Sanity (matched by live-site URL), so it stays in
+ * sync with the homepage, and links to that project's case study when it has
+ * one — never out to the live site. The quote isn't always from the project
  * shown, so it's labelled on its own rather than implying it is.
  */
 export async function ProjectEvidence({
@@ -43,23 +45,29 @@ export async function ProjectEvidence({
       ? { width: dims.width, height: dims.height }
       : undefined;
 
+  const mockup = (
+    <BrowserMockup
+      screenshotSrc={screenshotSrc}
+      screenshotAlt={`${name} website screenshot`}
+      screenshotDimensions={screenshotDimensions}
+      address={new URL(url).hostname.replace(/^www\./, "")}
+    />
+  );
+
   return (
     <div className="border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:px-35 lg:py-25">
       <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Visit ${name} website`}
-          className="group w-full lg:w-[55%] lg:shrink-0"
-        >
-          <BrowserMockup
-            screenshotSrc={screenshotSrc}
-            screenshotAlt={`${name} website screenshot`}
-            screenshotDimensions={screenshotDimensions}
-            address={new URL(url).hostname.replace(/^www\./, "")}
-          />
-        </a>
+        {workItem?.slug ? (
+          <Link
+            href={`/work/${workItem.slug}`}
+            aria-label={`Read the ${name} case study`}
+            className="group w-full lg:w-[55%] lg:shrink-0"
+          >
+            {mockup}
+          </Link>
+        ) : (
+          <div className="group w-full lg:w-[55%] lg:shrink-0">{mockup}</div>
+        )}
         <div className="flex flex-1 flex-col gap-3.5">
           <span className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-soft">
             {eyebrow}

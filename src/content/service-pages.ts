@@ -4,7 +4,7 @@
  * pricing, process claims or named technologies. No pricing is published
  * anywhere; enquiries are directed to get in touch for a tailored quote.
  *
- * The `caseStudy` project facts and figures mirror the live "Recent work"
+ * The `caseStudy` project facts and figures mirror the live "Client work"
  * and "Kind words" content in Sanity (workItem/testimonial documents) as of
  * writing — if those are edited in Studio, check these stay in sync.
  */
