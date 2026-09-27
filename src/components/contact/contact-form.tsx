@@ -8,6 +8,7 @@ import {
   type ContactFormValues,
   type ContactFormErrors,
 } from "@/lib/contact-form";
+import { getStoredConsent } from "@/lib/consent";
 
 const FALLBACK_EMAIL = fallbackFooter.email || fallbackCta.email;
 
@@ -131,6 +132,8 @@ export function ContactForm() {
           ...values,
           hpField: honeypot,
           renderedAt: renderedAtRef.current ?? undefined,
+          consent: getStoredConsent(),
+          sourceUrl: window.location.href,
         }),
       });
 

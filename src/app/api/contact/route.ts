@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { cta as fallbackCta, footer as fallbackFooter } from "@/content/site";
 import { validateContactForm, hasContactFormErrors, type ContactFormValues } from "@/lib/contact-form";
+import { sendMetaLead } from "@/lib/meta-capi";
 
 export const runtime = "nodejs";
 
@@ -20,6 +21,10 @@ type ContactRequestBody = ContactFormValues & {
   hpField?: string;
   /** Client-set timestamp (ms) of when the form was first rendered. */
   renderedAt?: number;
+  /** The visitor's cookie-banner choice; the Meta Lead event is only sent when "granted". */
+  consent?: string;
+  /** Page the form was submitted from, reported to Meta as the event source. */
+  sourceUrl?: string;
 };
 
 function escapeHtml(value: string): string {
@@ -125,6 +130,14 @@ export async function POST(request: Request) {
       { error: "Sorry — something went wrong sending your message. Please try again shortly." },
       { status: 502 },
     );
+  }
+
+  if (body.consent === "granted") {
+    await sendMetaLead(request, {
+      name,
+      email,
+      sourceUrl: typeof body.sourceUrl === "string" ? body.sourceUrl : undefined,
+    });
   }
 
   return NextResponse.json({ ok: true });
