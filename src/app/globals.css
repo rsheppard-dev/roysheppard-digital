@@ -24,6 +24,7 @@
 
   --font-display: var(--font-space-grotesk);
   --font-mono: var(--font-ibm-plex-mono);
+  --font-hand: var(--font-caveat);
 
   --radius-pill: 999px;
   --radius-card: 20px;

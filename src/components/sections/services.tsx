@@ -1,10 +1,7 @@
 import Link from 'next/link';
-import { Caveat } from 'next/font/google';
 import { services as fallbackServices } from '@/content/site';
 import { sanityFetch } from '@/sanity/lib/live';
 import { servicesQuery } from '@/sanity/lib/queries';
-
-const caveat = Caveat({ subsets: ['latin'], weight: ['600'] });
 
 const SERVICE_PAGE_HREFS: Record<string, string> = {
 	'Web Design': '/web-design-watford',
@@ -67,7 +64,7 @@ export async function Services() {
 							{pageHref && (
 								<Link
 									href={pageHref}
-									className={`${caveat.className} mt-1 w-fit text-xl leading-none text-ink underline decoration-accent decoration-2 underline-offset-4`}
+									className='font-hand mt-1 w-fit text-xl leading-none text-ink underline decoration-accent decoration-2 underline-offset-4'
 								>
 									learn more
 									<span className='sr-only'>

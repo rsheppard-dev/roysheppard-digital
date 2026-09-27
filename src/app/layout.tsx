@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { Space_Grotesk, IBM_Plex_Mono, Caveat } from "next/font/google";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { footer as fallbackFooter } from "@/content/site";
 import { SanityLive, sanityFetch } from "@/sanity/lib/live";
@@ -22,6 +22,16 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+});
+
+// Handwritten accent used below the fold on the home page. Declared here so its
+// @font-face ships in the global stylesheet, and not preloaded: otherwise every
+// page that prefetches "/" gets an unused preload warning for it.
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: ["600"],
+  preload: false,
 });
 
 const SITE_URL = "https://www.roysheppard.digital";
@@ -100,7 +110,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} antialiased`}
+      className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} ${caveat.variable} antialiased`}
     >
       <body className="bg-cream text-ink font-display">
         <ConsentDefaultScript />
