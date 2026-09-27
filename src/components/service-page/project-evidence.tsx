@@ -80,6 +80,11 @@ export async function ProjectEvidence({
           >
             Visit the live site →
           </TextLink>
+          {workItem?.slug && (
+            <TextLink variant="big" href={`/work/${workItem.slug}`} className="w-fit text-sm">
+              Read the full case study <span>→</span>
+            </TextLink>
+          )}
           <div className="mt-5 flex flex-col gap-2.5 rounded-card bg-ink px-7 py-6">
             <span className="text-base tracking-[2px] text-accent" aria-hidden="true">
               ★★★★★

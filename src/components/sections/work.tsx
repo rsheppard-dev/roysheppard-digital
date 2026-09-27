@@ -26,6 +26,7 @@ export async function Work() {
       <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-3 lg:gap-x-10">
         {workItems.map((item) => {
           const url = "url" in item ? item.url : undefined;
+          const caseStudyHref = "slug" in item && item.slug ? `/work/${item.slug}` : undefined;
           const screenshotSrc =
             "image" in item && item.image ? urlFor(item.image).width(900).url() : undefined;
           const dims = "imageDimensions" in item ? item.imageDimensions : undefined;
@@ -36,7 +37,18 @@ export async function Work() {
 
           return (
             <div key={`${item.name ?? ""}-${item.meta ?? ""}`} className="group flex flex-col">
-              {url ? (
+              {caseStudyHref ? (
+                <Link
+                  href={caseStudyHref}
+                  aria-label={item.name ? `Read the ${item.name} case study` : "Read the case study"}
+                >
+                  <IPadMockup
+                    screenshotSrc={screenshotSrc}
+                    screenshotAlt={item.name ? `${item.name} website screenshot` : "Website screenshot"}
+                    screenshotDimensions={screenshotDimensions}
+                  />
+                </Link>
+              ) : url ? (
                 <Link
                   href={url}
                   target="_blank"
@@ -62,7 +74,23 @@ export async function Work() {
                 </span>
                 <span className="text-sm text-muted-soft">{item.meta}</span>
               </div>
-              {url && (
+              {caseStudyHref ? (
+                <div className="mt-3 flex flex-wrap items-baseline gap-x-5 gap-y-2">
+                  <TextLink variant="big" href={caseStudyHref} className="text-sm">
+                    Read the case study <span>→</span>
+                  </TextLink>
+                  {url && (
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-xs text-muted-soft transition-colors hover:text-accent"
+                    >
+                      Live site ↗
+                    </a>
+                  )}
+                </div>
+              ) : url && (
                 <TextLink
                   variant="big"
                   href={url}

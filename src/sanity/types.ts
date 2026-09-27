@@ -26,23 +26,18 @@ export type Faq = {
   answer?: string;
 };
 
-export type Testimonial = {
-  _id: string;
-  _type: "testimonial";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  order?: number;
-  quote?: string;
-  name?: string;
-  company?: string;
-};
-
 export type SanityImageAssetReference = {
   _ref: string;
   _type: "reference";
   _weak?: boolean;
   [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+};
+
+export type TestimonialReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "testimonial";
 };
 
 export type WorkItem = {
@@ -62,6 +57,120 @@ export type WorkItem = {
     _type: "image";
   };
   url?: string;
+  slug?: Slug;
+  tagline?: string;
+  industry?: string;
+  projectType?: string;
+  services?: Array<string>;
+  client?: string;
+  challenge?: string;
+  solution?: string;
+  showcase?: Array<
+    | {
+        image?: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _type: "showcaseBrowser";
+        _key: string;
+      }
+    | {
+        image?: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _type: "showcaseFullWidth";
+        _key: string;
+      }
+    | {
+        images?: Array<{
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          _key: string;
+        }>;
+        caption?: string;
+        _type: "showcaseMobile";
+        _key: string;
+      }
+    | {
+        first?: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        second?: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _type: "showcasePair";
+        _key: string;
+      }
+    | {
+        image?: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        heading?: string;
+        text?: string;
+        _type: "showcaseDetail";
+        _key: string;
+      }
+  >;
+  features?: Array<{
+    title?: string;
+    description?: string;
+    _key: string;
+  }>;
+  technologies?: Array<{
+    name?: string;
+    reason?: string;
+    _key: string;
+  }>;
+  results?: Array<{
+    figure?: string;
+    title?: string;
+    description?: string;
+    _key: string;
+  }>;
+  testimonial?: TestimonialReference;
+};
+
+export type Testimonial = {
+  _id: string;
+  _type: "testimonial";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  order?: number;
+  quote?: string;
+  name?: string;
+  company?: string;
 };
 
 export type SanityImageCrop = {
@@ -78,6 +187,12 @@ export type SanityImageHotspot = {
   y?: number;
   height?: number;
   width?: number;
+};
+
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
 };
 
 export type Service = {
@@ -260,19 +375,15 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
-};
-
 export type AllSanitySchemaTypes =
   | Faq
-  | Testimonial
   | SanityImageAssetReference
+  | TestimonialReference
   | WorkItem
+  | Testimonial
   | SanityImageCrop
   | SanityImageHotspot
+  | Slug
   | Service
   | Footer
   | Cta
@@ -286,8 +397,7 @@ export type AllSanitySchemaTypes =
   | SanityFileAsset
   | SanityAssetSourceData
   | SanityImageAsset
-  | Geopoint
-  | Slug;
+  | Geopoint;
 
 // Source: src/sanity/lib/queries.ts
 // Variable: siteSettingsQuery
@@ -361,7 +471,7 @@ export type ServicesQueryResult = Array<{
 
 // Source: src/sanity/lib/queries.ts
 // Variable: workItemsQuery
-// Query: *[_type == "workItem"] | order(order asc){ name, meta, image, url, "imageDimensions": image.asset->metadata.dimensions{width, height} }
+// Query: *[_type == "workItem"] | order(order asc){ name, meta, image, url, "slug": slug.current, "imageDimensions": image.asset->metadata.dimensions{width, height} }
 export type WorkItemsQueryResult = Array<{
   name: string | null;
   meta: string | null;
@@ -373,11 +483,196 @@ export type WorkItemsQueryResult = Array<{
     _type: "image";
   } | null;
   url: string | null;
+  slug: string | null;
   imageDimensions: {
     width: number | null;
     height: number | null;
   } | null;
 }>;
+
+// Source: src/sanity/lib/queries.ts
+// Variable: caseStudySlugsQuery
+// Query: *[_type == "workItem" && defined(slug.current)]{ "slug": slug.current, _updatedAt }
+export type CaseStudySlugsQueryResult = Array<{
+  slug: string | null;
+  _updatedAt: string;
+}>;
+
+// Source: src/sanity/lib/queries.ts
+// Variable: caseStudyQuery
+// Query: *[_type == "workItem" && slug.current == $slug][0]{    name,    url,    tagline,    industry,    projectType,    services,    client,    challenge,    solution,    image,    "imageDimensions": image.asset->metadata.dimensions{width, height},    showcase[]{      _key,      _type,      caption,      heading,      text,      image{ ..., "dimensions": asset->metadata.dimensions{width, height} },      first{ ..., "dimensions": asset->metadata.dimensions{width, height} },      second{ ..., "dimensions": asset->metadata.dimensions{width, height} },      images[]{ ..., "dimensions": asset->metadata.dimensions{width, height} }    },    features[]{ _key, title, description },    technologies[]{ _key, name, reason },    results[]{ _key, figure, title, description },    testimonial->{ quote, name, company },    "next": coalesce(      *[_type == "workItem" && defined(slug.current) && order > ^.order] | order(order asc)[0],      *[_type == "workItem" && defined(slug.current) && _id != ^._id] | order(order asc)[0]    ){ name, meta, "slug": slug.current }  }
+export type CaseStudyQueryResult = {
+  name: string | null;
+  url: string | null;
+  tagline: string | null;
+  industry: string | null;
+  projectType: string | null;
+  services: Array<string> | null;
+  client: string | null;
+  challenge: string | null;
+  solution: string | null;
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  imageDimensions: {
+    width: number | null;
+    height: number | null;
+  } | null;
+  showcase: Array<
+    | {
+        _key: string;
+        _type: "showcaseBrowser";
+        caption: string | null;
+        heading: null;
+        text: null;
+        image: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+        first: null;
+        second: null;
+        images: null;
+      }
+    | {
+        _key: string;
+        _type: "showcaseDetail";
+        caption: null;
+        heading: string | null;
+        text: string | null;
+        image: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+        first: null;
+        second: null;
+        images: null;
+      }
+    | {
+        _key: string;
+        _type: "showcaseFullWidth";
+        caption: string | null;
+        heading: null;
+        text: null;
+        image: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+        first: null;
+        second: null;
+        images: null;
+      }
+    | {
+        _key: string;
+        _type: "showcaseMobile";
+        caption: string | null;
+        heading: null;
+        text: null;
+        image: null;
+        first: null;
+        second: null;
+        images: Array<{
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          _key: string;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        }> | null;
+      }
+    | {
+        _key: string;
+        _type: "showcasePair";
+        caption: string | null;
+        heading: null;
+        text: null;
+        image: null;
+        first: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+        second: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+        images: null;
+      }
+  > | null;
+  features: Array<{
+    _key: string;
+    title: string | null;
+    description: string | null;
+  }> | null;
+  technologies: Array<{
+    _key: string;
+    name: string | null;
+    reason: string | null;
+  }> | null;
+  results: Array<{
+    _key: string;
+    figure: string | null;
+    title: string | null;
+    description: string | null;
+  }> | null;
+  testimonial: {
+    quote: string | null;
+    name: string | null;
+    company: string | null;
+  } | null;
+  next: {
+    name: string | null;
+    meta: string | null;
+    slug: string | null;
+  } | null;
+} | null;
 
 // Source: src/sanity/lib/queries.ts
 // Variable: testimonialsQuery
@@ -406,7 +701,9 @@ declare module "@sanity/client" {
     '*[_type == "cta"][0]{ heading, body, email }': CtaQueryResult;
     '*[_type == "footer"][0]{ name, blurb, email, phone, social }': FooterQueryResult;
     '*[_type == "service"] | order(order asc){ title, description, bullets }': ServicesQueryResult;
-    '*[_type == "workItem"] | order(order asc){ name, meta, image, url, "imageDimensions": image.asset->metadata.dimensions{width, height} }': WorkItemsQueryResult;
+    '*[_type == "workItem"] | order(order asc){ name, meta, image, url, "slug": slug.current, "imageDimensions": image.asset->metadata.dimensions{width, height} }': WorkItemsQueryResult;
+    '*[_type == "workItem" && defined(slug.current)]{ "slug": slug.current, _updatedAt }': CaseStudySlugsQueryResult;
+    '*[_type == "workItem" && slug.current == $slug][0]{\n    name,\n    url,\n    tagline,\n    industry,\n    projectType,\n    services,\n    client,\n    challenge,\n    solution,\n    image,\n    "imageDimensions": image.asset->metadata.dimensions{width, height},\n    showcase[]{\n      _key,\n      _type,\n      caption,\n      heading,\n      text,\n      image{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      first{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      second{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      images[]{ ..., "dimensions": asset->metadata.dimensions{width, height} }\n    },\n    features[]{ _key, title, description },\n    technologies[]{ _key, name, reason },\n    results[]{ _key, figure, title, description },\n    testimonial->{ quote, name, company },\n    "next": coalesce(\n      *[_type == "workItem" && defined(slug.current) && order > ^.order] | order(order asc)[0],\n      *[_type == "workItem" && defined(slug.current) && _id != ^._id] | order(order asc)[0]\n    ){ name, meta, "slug": slug.current }\n  }': CaseStudyQueryResult;
     '*[_type == "testimonial"] | order(order asc){ quote, name, company }': TestimonialsQueryResult;
     '*[_type == "faq"] | order(order asc){ question, answer }': FaqsQueryResult;
   }

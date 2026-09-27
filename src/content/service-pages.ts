@@ -169,7 +169,7 @@ export const ecommerce = {
 	eyebrow: 'E-Commerce',
 	heading: 'Online stores built around what you sell, not a fixed platform',
 	intro:
-		"Whether you're launching a new shop or adding online sales to a site you already have, the right setup depends on what you sell and how — not a one-size-fits-all platform. Depending on your catalogue, that might mean building on Shopify or a fully custom storefront, like Product Zone, a custom headwear brand I designed and built from the ground up. I'm based in Watford and take on e-commerce projects there and further afield.",
+		"Whether you're launching a new shop or adding online sales to a site you already have, the right setup depends on what you sell and how — not a one-size-fits-all platform. Depending on your catalogue, that might mean building on Shopify or a fully custom build — and not every product business needs a checkout at all. For Product Zone, a Watford-based custom headwear supplier, I designed and built a bespoke B2B catalogue website from the ground up. I'm based in Watford and take on e-commerce projects there and further afield.",
 	focusAreas: [
 		{
 			title: 'The right platform for your catalogue',
@@ -195,12 +195,12 @@ export const ecommerce = {
 	caseStudy: {
 		eyebrow: 'Showcase',
 		name: 'Product Zone',
-		meta: 'E-commerce — custom headwear & merch',
+		meta: 'B2B catalogue — custom headwear',
 		url: 'https://productzone.co.uk/',
 		contribution: [
-			'Designed and built a custom storefront, rather than on an off-the-shelf e-commerce platform, to support fully bespoke, made-to-order headwear alongside ready-stock products.',
-			'Structured product and category pages to handle both custom orders and standard catalogue items in one coherent shop.',
-			'Set up accounts and search so the catalogue can keep growing without the site needing to be rebuilt.',
+			"Designed and built Product Zone's first website: a bespoke B2B catalogue rather than an off-the-shelf shop, presenting its fully bespoke, made-to-order service alongside its plain stock range.",
+			'Structured the catalogue with product search, filters for product type, colour and size, and a dedicated page for every product.',
+			'Added client accounts designed to give approved clients catalogue pricing once signed in, with products managed in Prismic so the range can grow without a rebuild.',
 		],
 		quote: 'Great job, but more than that Roy has been fantastic at communicating. Top guy',
 		quoteName: 'Paul Franklin',
@@ -212,7 +212,7 @@ export const ecommerce = {
 		{
 			question: 'Do you build on Shopify, or something custom?',
 			answer:
-				'It depends on your catalogue and how you want to run the shop. Sometimes Shopify is the better fit; sometimes a custom-built storefront makes more sense, like Product Zone. I’ll recommend the right approach once I understand what you’re selling.',
+				'It depends on your catalogue and how you want to run the shop. Sometimes Shopify is the better fit; sometimes a custom build makes more sense. And some product businesses don’t need online checkout at all, like Product Zone, where a custom B2B catalogue was the right answer. I’ll recommend the right approach once I understand what you’re selling.',
 		},
 		{
 			question: 'Can you set up payments for me?',
