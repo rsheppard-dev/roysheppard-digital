@@ -13,7 +13,12 @@ function getRevealPercent(dimensions?: { width: number; height: number } | null)
   return ((imageAspect - SCREEN_ASPECT) / imageAspect) * 100;
 }
 
-/** A simple browser window (traffic-light dots, address bar) around a website screenshot. */
+/**
+ * A simple browser window (traffic-light dots, address bar) around a website screenshot.
+ * `clean` is the paper-card frame; `illustrated` draws it as ink line art to match the
+ * homepage's hand-drawn iPad. `fit="natural"` shows the whole screenshot at its own
+ * aspect ratio instead of a 16:10 viewport that pans on hover.
+ */
 export function BrowserMockup({
   screenshotSrc,
   screenshotAlt,
@@ -21,6 +26,9 @@ export function BrowserMockup({
   address,
   sizes = "(min-width: 1024px) 560px, 90vw",
   className = "",
+  variant = "clean",
+  fit = "viewport",
+  pan = true,
 }: {
   /** Optional — omit to show a neutral placeholder until a screenshot is available. */
   screenshotSrc?: string;
@@ -31,7 +39,13 @@ export function BrowserMockup({
   address?: string;
   sizes?: string;
   className?: string;
+  variant?: "clean" | "illustrated";
+  fit?: "viewport" | "natural";
+  /** Scroll a tall screenshot on hover of a `group` ancestor (viewport fit only). */
+  pan?: boolean;
 }) {
+  const illustrated = variant === "illustrated";
+  const natural = fit === "natural" && screenshotDimensions;
   const revealPercent = getRevealPercent(screenshotDimensions);
   const previewHeight = screenshotDimensions
     ? Math.round((PREVIEW_WIDTH * screenshotDimensions.height) / screenshotDimensions.width)
@@ -39,17 +53,41 @@ export function BrowserMockup({
 
   return (
     <div
-      className={`flex w-full flex-col overflow-hidden rounded-card border border-border-tan bg-paper shadow-[0_12px_32px_rgba(23,23,26,0.08)] ${className}`}
+      className={`flex w-full flex-col overflow-hidden ${
+        illustrated
+          ? "rounded-[14px] border-2 border-ink bg-white drop-shadow-[0_18px_20px_rgba(23,23,26,0.10)] lg:rounded-[18px]"
+          : "rounded-card border border-border-tan bg-paper shadow-[0_12px_32px_rgba(23,23,26,0.08)]"
+      } ${className}`}
     >
-      <div className="flex h-10 shrink-0 items-center gap-2 border-b border-border-tan bg-paper px-4">
-        <span className="size-2.5 rounded-full bg-border-tan" aria-hidden="true" />
-        <span className="size-2.5 rounded-full bg-border-tan" aria-hidden="true" />
-        <span className="size-2.5 rounded-full bg-border-tan" aria-hidden="true" />
-        {address && (
-          <span className="ml-3 truncate font-mono text-[11px] text-muted-soft">{address}</span>
-        )}
-      </div>
-      <div className="relative w-full overflow-hidden bg-tan" style={{ aspectRatio: "16 / 10" }}>
+      {illustrated ? (
+        <div className="flex h-9 shrink-0 items-center gap-1.5 border-b-2 border-ink bg-white px-3.5 lg:h-11 lg:gap-2 lg:px-5">
+          <span className="size-2.5 rounded-full border-[1.5px] border-ink lg:size-3" aria-hidden="true" />
+          <span className="size-2.5 rounded-full border-[1.5px] border-ink lg:size-3" aria-hidden="true" />
+          <span className="size-2.5 rounded-full border-[1.5px] border-ink lg:size-3" aria-hidden="true" />
+          {address && (
+            <span className="mx-auto max-w-[60%] truncate rounded-pill border-[1.5px] border-ink px-4 py-0.5 font-mono text-[11px] text-ink lg:px-6 lg:text-xs">
+              {address}
+            </span>
+          )}
+        </div>
+      ) : (
+        <div className="flex h-10 shrink-0 items-center gap-2 border-b border-border-tan bg-paper px-4">
+          <span className="size-2.5 rounded-full bg-border-tan" aria-hidden="true" />
+          <span className="size-2.5 rounded-full bg-border-tan" aria-hidden="true" />
+          <span className="size-2.5 rounded-full bg-border-tan" aria-hidden="true" />
+          {address && (
+            <span className="ml-3 truncate font-mono text-[11px] text-muted-soft">{address}</span>
+          )}
+        </div>
+      )}
+      <div
+        className="relative w-full overflow-hidden bg-tan"
+        style={{
+          aspectRatio: natural
+            ? `${screenshotDimensions.width} / ${screenshotDimensions.height}`
+            : "16 / 10",
+        }}
+      >
         {screenshotSrc ? (
           <Image
             src={screenshotSrc}
@@ -58,7 +96,9 @@ export function BrowserMockup({
             height={previewHeight}
             sizes={sizes}
             style={{ "--reveal": `${revealPercent}%` } as CSSProperties}
-            className="absolute inset-x-0 top-0 h-auto w-full transition-transform duration-2500 ease-in-out group-hover:-translate-y-(--reveal)"
+            className={`absolute inset-x-0 top-0 h-auto w-full ${
+              natural || !pan ? "" : "transition-transform duration-2500 ease-in-out group-hover:-translate-y-(--reveal)"
+            }`}
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center font-mono text-[11px] text-muted-soft">

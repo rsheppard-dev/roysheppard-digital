@@ -66,15 +66,14 @@ export function CaseStudyHero({
       <div className="bg-[linear-gradient(to_bottom,var(--color-cream)_50%,var(--color-tan)_50%)] px-6 sm:px-10 lg:px-35">
         {/* Not a link: the visual belongs to this case study, and the live
             site is reached through the explicit text link above. */}
-        <div className="group">
-          <BrowserMockup
-            screenshotSrc={screenshotSrc}
-            screenshotAlt={`${name} website homepage`}
-            screenshotDimensions={screenshotDimensions}
-            address={hostname}
-            sizes="(min-width: 1024px) calc(100vw - 280px), 92vw"
-          />
-        </div>
+        <BrowserMockup
+          variant="illustrated"
+          screenshotSrc={screenshotSrc}
+          screenshotAlt={`${name} website homepage`}
+          screenshotDimensions={screenshotDimensions}
+          address={hostname}
+          sizes="(min-width: 1024px) calc(100vw - 280px), 92vw"
+        />
       </div>
     </>
   );

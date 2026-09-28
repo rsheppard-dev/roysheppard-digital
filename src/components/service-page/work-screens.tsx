@@ -53,6 +53,7 @@ export async function WorkScreens({ slug }: { slug?: string }) {
           style={{ "--i": index } as React.CSSProperties}
         >
           <PhoneMockup
+            variant="illustrated"
             screenshotSrc={urlFor(screen.asset).width(600).url()}
             screenshotAlt={screen.alt ?? `${screen.name} website on mobile`}
             sizes="(min-width: 1024px) 200px, 34vw"

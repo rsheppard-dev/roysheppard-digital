@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { BrowserMockup } from "@/components/ui/browser-mockup";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { PhoneMockup } from "@/components/ui/phone-mockup";
@@ -24,7 +23,7 @@ function toSource(image: ShowcaseImage | null, width: number) {
   };
 }
 
-/** A flat screenshot in the same card frame the mockups use, at its natural aspect ratio. */
+/** A flat screenshot shown whole, in the same illustrated browser window as the other showcase shots. */
 function FramedImage({
   image,
   width,
@@ -38,21 +37,17 @@ function FramedImage({
 }) {
   const source = toSource(image, width);
   if (!source) return null;
-  const dims = source.dimensions ?? { width: 16, height: 10 };
 
   return (
-    <div
-      className={`overflow-hidden rounded-card border border-border-tan bg-paper shadow-[0_12px_32px_rgba(23,23,26,0.08)] ${className}`}
-    >
-      <Image
-        src={source.src}
-        alt={source.alt}
-        width={width}
-        height={Math.round((width * dims.height) / dims.width)}
-        sizes={sizes}
-        className="h-auto w-full"
-      />
-    </div>
+    <BrowserMockup
+      variant="illustrated"
+      fit="natural"
+      screenshotSrc={source.src}
+      screenshotAlt={source.alt}
+      screenshotDimensions={source.dimensions ?? { width: 16, height: 10 }}
+      sizes={sizes}
+      className={className}
+    />
   );
 }
 
@@ -67,8 +62,9 @@ function ShowcaseBlock({ block, address, flip }: { block: Block; address?: strin
       const source = toSource(block.image, 2400);
       if (!source) return null;
       return (
-        <figure className="group">
+        <figure>
           <BrowserMockup
+            variant="illustrated"
             screenshotSrc={source.src}
             screenshotAlt={source.alt}
             screenshotDimensions={source.dimensions}
@@ -98,6 +94,7 @@ function ShowcaseBlock({ block, address, flip }: { block: Block; address?: strin
           <div className="flex justify-center gap-3 rounded-card bg-tan px-4 py-10 sm:gap-6 sm:px-8 lg:gap-12 lg:py-20">
             {screens.map((screen, index) => (
               <PhoneMockup
+                variant="illustrated"
                 key={screen.key}
                 screenshotSrc={screen.source!.src}
                 screenshotAlt={screen.source!.alt}
