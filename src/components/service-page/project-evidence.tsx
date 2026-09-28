@@ -4,6 +4,7 @@ import { TextLink } from "@/components/ui/text-link";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { workItemsQuery } from "@/sanity/lib/queries";
+import { Signature } from "@/components/ui/signature";
 import { Stars } from "@/components/ui/stars";
 
 type ProjectEvidenceProps = {
@@ -96,15 +97,18 @@ export async function ProjectEvidence({
               Read the full case study <span>→</span>
             </TextLink>
           )}
-          <div className="mt-5 flex flex-col gap-2.5 rounded-card bg-ink px-7 py-6">
-            <Stars size={16} />
-            <p className="text-base font-medium leading-relaxed text-cream">
-              &ldquo;{quote}&rdquo;
-            </p>
-            <span className="font-mono text-xs text-[#d8d4c6]">
-              {quoteName}, {quoteCompany}
-            </span>
-          </div>
+          <figure className="mt-5 flex flex-col gap-4 rounded-card bg-ink px-7 py-7">
+            <div className="flex items-start justify-between gap-6">
+              <span aria-hidden="true" className="-mb-5 -mt-1 text-[56px] font-semibold leading-none text-accent">
+                &ldquo;
+              </span>
+              <Stars size={14} className="mt-1" />
+            </div>
+            <blockquote className="text-pretty text-base font-medium leading-relaxed text-cream">
+              <p>{quote}&rdquo;</p>
+            </blockquote>
+            <Signature name={quoteName} company={quoteCompany} onDark />
+          </figure>
         </div>
       </div>
     </div>
