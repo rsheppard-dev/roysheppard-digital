@@ -28,6 +28,42 @@
 
   --radius-pill: 999px;
   --radius-card: 20px;
+
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/*
+ * Scroll reveal (RevealGroup): items rise into place once, then their star rating
+ * fills left to right. Reduced motion keeps the fade and drops the movement.
+ */
+.reveal-item[data-pending] {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.reveal-item[data-visible] {
+  transition:
+    opacity 500ms var(--ease-out-strong) var(--reveal-delay, 0ms),
+    transform 500ms var(--ease-out-strong) var(--reveal-delay, 0ms);
+}
+
+.reveal-item[data-pending] .reveal-stars {
+  clip-path: inset(0 100% 0 0);
+}
+
+.reveal-item[data-visible] .reveal-stars {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 600ms var(--ease-out-strong) calc(var(--reveal-delay, 0ms) + 200ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-item[data-pending] {
+    transform: none;
+  }
+
+  .reveal-item[data-pending] .reveal-stars {
+    clip-path: none;
+  }
 }
 
 html {
@@ -38,4 +74,41 @@ body {
   background: var(--color-cream);
   color: var(--color-ink);
   overflow-x: hidden;
+}
+
+/*
+ * Service page hero phones (WorkScreens): fan in once on load, then lift a
+ * touch on hover to show they link through to each case study.
+ */
+.fan-in {
+  transition:
+    opacity 700ms var(--ease-out-strong) calc(var(--i, 0) * 90ms + 150ms),
+    transform 700ms var(--ease-out-strong) calc(var(--i, 0) * 90ms + 150ms);
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+}
+
+.phone-lift {
+  transition: transform 200ms var(--ease-out-strong);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fan-in:hover .phone-lift {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fan-in {
+    @starting-style {
+      transform: none;
+    }
+  }
+
+  .fan-in:hover .phone-lift {
+    transform: none;
+  }
 }

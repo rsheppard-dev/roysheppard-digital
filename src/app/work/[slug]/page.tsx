@@ -76,7 +76,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
       cta={{
         heading: "Have a project in mind?",
         body: "Whether it's something like this or something completely different, tell me what you need. No obligation — just an honest conversation about what would work for your business.",
-        buttonLabel: "Start a conversation",
+        buttonLabel: "Start a project",
       }}
     >
       <Breadcrumbs label={`${name} case study`} path={`/work/${slug}`} />

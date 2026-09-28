@@ -67,8 +67,22 @@ export const webDesign = {
 		quoteName: 'James Sumner',
 		quoteCompany: 'LH Plumbing and Heating',
 	} satisfies CaseStudy,
-	howItWorks:
-		"Every design starts with a discovery chat about your business, your customers, and what you need the site to achieve. From there I design the key pages first and share them with you before anything gets built, so you're not seeing a finished site for the first time at launch — then we review it together before it goes live.",
+	process: [
+		{
+			title: 'A discovery chat',
+			description:
+				'We talk through your business, your customers, and what you need the site to achieve.',
+		},
+		{
+			title: 'Key pages designed first',
+			description:
+				"I design the key pages and share them with you before anything gets built, so you're not seeing a finished site for the first time at launch.",
+		},
+		{
+			title: 'Reviewed together, then live',
+			description: 'We go through the finished site together before it goes live.',
+		},
+	] satisfies FocusArea[],
 	faqs: [
 		{
 			question: 'Do you design around branding I already have?',
@@ -137,8 +151,22 @@ export const webDevelopment = {
 		quoteName: 'Jack Kingsley',
 		quoteCompany: 'Kingsley Estates',
 	} satisfies CaseStudy,
-	howItWorks:
-		"Once I understand what your project actually needs to do, I build around those requirements rather than forcing them into an off-the-shelf template. You'll see it come together in stages rather than all at once, with a proper review before it goes live — and I'm on hand afterwards to keep it running.",
+	process: [
+		{
+			title: 'Requirements first',
+			description:
+				'Once I understand what your project actually needs to do, I build around those requirements rather than forcing them into an off-the-shelf template.',
+		},
+		{
+			title: 'Built in stages',
+			description: "You'll see it come together in stages rather than all at once.",
+		},
+		{
+			title: 'Reviewed, launched, looked after',
+			description:
+				"There's a proper review before it goes live, and I'm on hand afterwards to keep it running.",
+		},
+	] satisfies FocusArea[],
 	faqs: [
 		{
 			question: 'What do you build sites with?',
@@ -206,8 +234,22 @@ export const ecommerce = {
 		quoteName: 'Paul Franklin',
 		quoteCompany: 'Koala B2B',
 	} satisfies CaseStudy,
-	howItWorks:
-		"Every online shop is different, so I start by talking through what you sell, who you're selling to, and how you want the buying experience to work — then build around that, rather than forcing your products into a fixed platform.",
+	process: [
+		{
+			title: 'What you sell, and how',
+			description:
+				"Every online shop is different, so I start by talking through what you sell, who you're selling to, and how you want the buying experience to work.",
+		},
+		{
+			title: 'The right setup for your catalogue',
+			description:
+				'That might mean building on Shopify or a fully custom build, and not every product business needs a checkout at all.',
+		},
+		{
+			title: 'Built around your products',
+			description: 'Then I build around that, rather than forcing your products into a fixed platform.',
+		},
+	] satisfies FocusArea[],
 	faqs: [
 		{
 			question: 'Do you build on Shopify, or something custom?',

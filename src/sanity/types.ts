@@ -491,6 +491,30 @@ export type WorkItemsQueryResult = Array<{
 }>;
 
 // Source: src/sanity/lib/queries.ts
+// Variable: workScreensQuery
+// Query: *[_type == "workItem" && defined(slug.current)] | order(order asc){ name, "slug": slug.current, "screen": showcase[_type == "showcaseMobile"][0].images[0]{ alt, asset } }
+export type WorkScreensQueryResult = Array<{
+  name: string | null;
+  slug: string | null;
+  screen: {
+    alt: string | null;
+    asset: SanityImageAssetReference | null;
+  } | null;
+}>;
+
+// Source: src/sanity/lib/queries.ts
+// Variable: projectScreensQuery
+// Query: *[_type == "workItem" && slug.current == $slug][0]{ name, "slug": slug.current, "screens": showcase[_type == "showcaseMobile"][0].images[]{ alt, asset } }
+export type ProjectScreensQueryResult = {
+  name: string | null;
+  slug: string | null;
+  screens: Array<{
+    alt: string | null;
+    asset: SanityImageAssetReference | null;
+  }> | null;
+} | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: caseStudySlugsQuery
 // Query: *[_type == "workItem" && defined(slug.current)]{ "slug": slug.current, _updatedAt }
 export type CaseStudySlugsQueryResult = Array<{
@@ -712,6 +736,8 @@ declare module "@sanity/client" {
     '*[_type == "footer"][0]{ name, blurb, email, phone, social }': FooterQueryResult;
     '*[_type == "service"] | order(order asc){ title, description, bullets }': ServicesQueryResult;
     '*[_type == "workItem"] | order(order asc){ name, meta, image, url, "slug": slug.current, "imageDimensions": image.asset->metadata.dimensions{width, height} }': WorkItemsQueryResult;
+    '*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, "slug": slug.current, "screen": showcase[_type == "showcaseMobile"][0].images[0]{ alt, asset } }': WorkScreensQueryResult;
+    '*[_type == "workItem" && slug.current == $slug][0]{ name, "slug": slug.current, "screens": showcase[_type == "showcaseMobile"][0].images[]{ alt, asset } }': ProjectScreensQueryResult;
     '*[_type == "workItem" && defined(slug.current)]{ "slug": slug.current, _updatedAt }': CaseStudySlugsQueryResult;
     '*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, meta, tagline, "slug": slug.current }': LlmsCaseStudiesQueryResult;
     '*[_type == "workItem" && slug.current == $slug][0]{\n    name,\n    url,\n    tagline,\n    industry,\n    projectType,\n    services,\n    client,\n    challenge,\n    solution,\n    image,\n    "imageDimensions": image.asset->metadata.dimensions{width, height},\n    showcase[]{\n      _key,\n      _type,\n      caption,\n      heading,\n      text,\n      image{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      first{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      second{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      images[]{ ..., "dimensions": asset->metadata.dimensions{width, height} }\n    },\n    features[]{ _key, title, description },\n    technologies[]{ _key, name, reason },\n    results[]{ _key, figure, title, description },\n    testimonial->{ quote, name, company },\n    "next": coalesce(\n      *[_type == "workItem" && defined(slug.current) && order > ^.order] | order(order asc)[0],\n      *[_type == "workItem" && defined(slug.current) && _id != ^._id] | order(order asc)[0]\n    ){ name, meta, "slug": slug.current }\n  }': CaseStudyQueryResult;

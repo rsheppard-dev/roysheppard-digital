@@ -2,6 +2,8 @@ import { Card } from "@/components/ui/card";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { TextLink } from "@/components/ui/text-link";
 import { NumberedList } from "@/components/service-page/numbered-list";
+import { Signature } from "@/components/ui/signature";
+import { Stars } from "@/components/ui/stars";
 
 type Feature = { _key: string; title: string | null; description: string | null };
 type Technology = { _key: string; name: string | null; reason: string | null };
@@ -53,6 +55,18 @@ export function TechnologyList({ items }: { items: Technology[] }) {
   );
 }
 
+/**
+ * Desktop span for each outcome on a 6-column grid so every row is full: rows of
+ * three, switching to rows of two where a lone card would otherwise be left over
+ * (4 reads as 2×2, 5 as 3 + 2). On tablet an odd last card stretches full width.
+ */
+function outcomeSpan(count: number, index: number) {
+  const tablet = count % 2 === 1 && index === count - 1 ? "sm:col-span-2 " : "";
+  if (count === 1) return `${tablet}lg:col-span-6`;
+  const pairs = count % 3 === 0 ? 0 : count % 3 === 2 ? 1 : 2;
+  return `${tablet}${count - index <= pairs * 2 ? "lg:col-span-3" : "lg:col-span-2"}`;
+}
+
 /** Outcomes: a figure is only ever shown when the editor has entered a real one; otherwise the outcome is described in words. */
 export function Outcome({ items }: { items: Result[] }) {
   const shown = items.filter((item) => item.title);
@@ -61,17 +75,18 @@ export function Outcome({ items }: { items: Result[] }) {
   return (
     <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
       <h2 className="text-3xl font-semibold lg:text-[42px]">The outcome</h2>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {shown.map((item) => (
-          <Card key={item._key} className="flex flex-col gap-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-6">
+        {shown.map((item, index) => (
+          <Card
+            key={item._key}
+            className={`flex flex-col gap-3 ${outcomeSpan(shown.length, index)}`}
+          >
             {item.figure ? (
               <span className="text-[42px] font-semibold leading-none text-accent-text lg:text-[54px]">
                 {item.figure}
               </span>
             ) : (
-              <span className="text-lg text-accent" aria-hidden="true">
-                ✦
-              </span>
+              <span className="mb-1 h-0.75 w-8 rounded-pill bg-accent" aria-hidden="true" />
             )}
             <h3 className="text-lg font-bold">{item.title}</h3>
             {item.description && (
@@ -93,29 +108,27 @@ export function ClientQuote({
   name?: string | null;
   company?: string | null;
 }) {
-  const attribution = [name?.trim(), company].filter(Boolean).join(", ");
-
   return (
     <div className="border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:px-35 lg:py-25">
       <figure className="flex flex-col gap-6 rounded-card bg-ink px-7 py-10 sm:px-12 lg:gap-8 lg:px-20 lg:py-18">
-        <span className="text-base tracking-[2px] text-accent" aria-hidden="true">
-          ★★★★★
-        </span>
+        <div className="flex items-start justify-between gap-6">
+          <span aria-hidden="true" className="-mb-8 -mt-2 text-[96px] font-semibold leading-none text-accent">
+            &ldquo;
+          </span>
+          <Stars size={16} className="mt-2" />
+        </div>
         <blockquote className="flex max-w-220 flex-col gap-4 text-xl font-medium leading-relaxed text-cream lg:text-[28px] lg:leading-[1.45]">
           {quote
             .split(/\n\s*\n/)
             .filter(Boolean)
             .map((paragraph, index, all) => (
               <p key={paragraph}>
-                {index === 0 && "“"}
                 {paragraph.trim()}
                 {index === all.length - 1 && "”"}
               </p>
             ))}
         </blockquote>
-        {attribution && (
-          <figcaption className="font-mono text-xs text-[#d8d4c6] lg:text-[13px]">{attribution}</figcaption>
-        )}
+        <Signature name={name} company={company} onDark />
       </figure>
     </div>
   );
@@ -127,8 +140,11 @@ export function NextProject({ name, meta, slug }: { name: string; meta?: string 
       <span className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-soft">
         Next case study
       </span>
-      <TextLink variant="big" href={`/work/${slug}`} className="w-fit text-3xl lg:text-[42px]">
-        {name} <span>→</span>
+      <TextLink variant="big" href={`/work/${slug}`} className="group w-fit text-3xl lg:text-[42px]">
+        {name}{" "}
+        <span aria-hidden="true" className="transition-transform duration-200 ease-out-strong group-hover:translate-x-1.5">
+          →
+        </span>
       </TextLink>
       {meta && <p className="text-sm text-muted-soft">{meta}</p>}
     </div>

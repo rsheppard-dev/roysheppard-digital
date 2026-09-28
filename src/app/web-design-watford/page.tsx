@@ -5,6 +5,8 @@ import { PageShell } from "@/components/service-page/page-shell";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
 import { ServiceHeader } from "@/components/service-page/service-header";
 import { NumberedList } from "@/components/service-page/numbered-list";
+import { ProcessSteps } from "@/components/service-page/process-steps";
+import { WorkScreens } from "@/components/service-page/work-screens";
 import { ProjectEvidence } from "@/components/service-page/project-evidence";
 import { RelatedLinks } from "@/components/service-page/related-links";
 import { ServiceJsonLd } from "@/components/service-page/service-jsonld";
@@ -35,6 +37,7 @@ export default function WebDesignPage() {
         eyebrow={webDesign.eyebrow}
         heading={webDesign.heading}
         intro={webDesign.intro}
+        aside={<WorkScreens />}
       />
 
       <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
@@ -44,15 +47,14 @@ export default function WebDesignPage() {
 
       <ProjectEvidence {...webDesign.caseStudy} />
 
-      <div className="flex flex-col gap-5 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:px-35 lg:py-25">
-        <p className="max-w-155 text-base leading-relaxed text-muted-strong lg:text-lg">
-          {webDesign.howItWorks}
-        </p>
-        <p className="max-w-155 text-base leading-relaxed text-muted-strong lg:text-lg">
+      <div className="flex flex-col gap-10 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-14 lg:px-35 lg:py-25">
+        <h2 className="text-3xl font-semibold lg:text-[42px]">How it works</h2>
+        <ProcessSteps steps={webDesign.process} />
+        <p className="text-base leading-relaxed text-muted-strong lg:text-lg">
           <TextLink variant="underline" href="/contact">
-            Get in touch
+            Start a project
           </TextLink>{" "}
-          to talk through your project.
+          to talk through yours.
         </p>
       </div>
 

@@ -4,6 +4,7 @@ import { TextLink } from "@/components/ui/text-link";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { workItemsQuery } from "@/sanity/lib/queries";
+import { Stars } from "@/components/ui/stars";
 
 type ProjectEvidenceProps = {
   eyebrow: string;
@@ -94,9 +95,7 @@ export async function ProjectEvidence({
             </TextLink>
           )}
           <div className="mt-5 flex flex-col gap-2.5 rounded-card bg-ink px-7 py-6">
-            <span className="text-base tracking-[2px] text-accent" aria-hidden="true">
-              ★★★★★
-            </span>
+            <Stars size={16} />
             <p className="text-base font-medium leading-relaxed text-cream">
               &ldquo;{quote}&rdquo;
             </p>

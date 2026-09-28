@@ -28,6 +28,14 @@ export const workItemsQuery = defineQuery(
   `*[_type == "workItem"] | order(order asc){ name, meta, image, url, "slug": slug.current, "imageDimensions": image.asset->metadata.dimensions{width, height} }`,
 );
 
+export const workScreensQuery = defineQuery(
+  `*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, "slug": slug.current, "screen": showcase[_type == "showcaseMobile"][0].images[0]{ alt, asset } }`,
+);
+
+export const projectScreensQuery = defineQuery(
+  `*[_type == "workItem" && slug.current == $slug][0]{ name, "slug": slug.current, "screens": showcase[_type == "showcaseMobile"][0].images[]{ alt, asset } }`,
+);
+
 export const caseStudySlugsQuery = defineQuery(
   `*[_type == "workItem" && defined(slug.current)]{ "slug": slug.current, _updatedAt }`,
 );
