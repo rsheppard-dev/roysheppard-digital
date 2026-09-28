@@ -4,12 +4,14 @@
 import { defineLive } from "next-sanity/live";
 import { client } from './client'
 
-// `browserToken` deliberately omitted — it's shared with the browser to power
+// `browserToken` deliberately disabled — it's shared with the browser to power
 // live-previewing drafts outside the Presentation Tool, which this site
 // doesn't use (no draftMode/VisualEditing anywhere). `serverToken` alone
 // still powers the live revalidation `sanityFetch`/`SanityLive` are for, and
-// is never sent to the browser.
+// is never sent to the browser. `false` (rather than omitting it) also
+// silences next-sanity's "No `browserToken` provided" warning.
 export const { sanityFetch, SanityLive } = defineLive({
   client,
   serverToken: process.env.SANITY_API_READ_TOKEN,
+  browserToken: false,
 });
