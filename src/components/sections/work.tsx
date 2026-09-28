@@ -1,97 +1,50 @@
-import Link from "next/link";
 import { workItems as fallbackWorkItems } from "@/content/site";
-import { IPadMockup } from "@/components/ui/ipad-mockup";
+import { WorkGrid } from "@/components/sections/work-grid";
 import { TextLink } from "@/components/ui/text-link";
 import { sanityFetch } from "@/sanity/lib/live";
 import { workItemsQuery } from "@/sanity/lib/queries";
-import { urlFor } from "@/sanity/lib/image";
+
+/** The homepage shows the first projects by Sanity `order`; the rest live on /work. */
+const HOMEPAGE_LIMIT = 6;
 
 export async function Work() {
   const { data } = await sanityFetch({ query: workItemsQuery });
   const workItems = data && data.length > 0 ? data : fallbackWorkItems;
+  const hasMore = workItems.length > HOMEPAGE_LIMIT;
 
   return (
     <div
       id="work"
-      className="flex flex-col gap-6 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25"
+      className="flex flex-col gap-6 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-14 lg:px-35 lg:py-25"
     >
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-        <h2 className="text-3xl font-semibold lg:text-[42px]">
-          Client work
-        </h2>
-        <TextLink variant="big" href="/contact" className="text-[15px]">
-          Start yours <span>→</span>
-        </TextLink>
+      <div className="flex items-end justify-between gap-8">
+        <div className="flex flex-col gap-3">
+          <h2 className="text-3xl font-semibold lg:text-[42px]">Client work</h2>
+          <TextLink variant="big" href={hasMore ? "/work" : "/contact"} className="w-fit text-[15px]">
+            {hasMore ? "All work" : "Start yours"} <span aria-hidden="true">→</span>
+          </TextLink>
+        </div>
+        {/* Only where hovering is possible: tells visitors the screens scroll through each site. */}
+        <p className="hidden -rotate-2 items-start gap-2 pb-1 lg:mr-40 font-hand text-xl leading-none text-muted-strong [@media(hover:hover)_and_(pointer:fine)]:lg:flex">
+          hover a screen to scroll the site
+          <svg
+            aria-hidden="true"
+            width="32"
+            height="34"
+            viewBox="0 0 32 34"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="mt-3 text-accent"
+          >
+            <path d="M2 5c11-4 21 3 21 22" />
+            <path d="M17 21l6 7 5-7" />
+          </svg>
+        </p>
       </div>
-      <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-3 lg:gap-x-10">
-        {workItems.map((item) => {
-          const url = "url" in item ? item.url : undefined;
-          const caseStudyHref = "slug" in item && item.slug ? `/work/${item.slug}` : undefined;
-          const screenshotSrc =
-            "image" in item && item.image ? urlFor(item.image).width(900).url() : undefined;
-          const dims = "imageDimensions" in item ? item.imageDimensions : undefined;
-          const screenshotDimensions =
-            dims?.width != null && dims?.height != null
-              ? { width: dims.width, height: dims.height }
-              : undefined;
-
-          return (
-            <div key={`${item.name ?? ""}-${item.meta ?? ""}`} className="group flex flex-col">
-              {caseStudyHref ? (
-                <Link
-                  href={caseStudyHref}
-                  aria-label={item.name ? `Read the ${item.name} case study` : "Read the case study"}
-                >
-                  <IPadMockup
-                    screenshotSrc={screenshotSrc}
-                    screenshotAlt={item.name ? `${item.name} website screenshot` : "Website screenshot"}
-                    screenshotDimensions={screenshotDimensions}
-                  />
-                </Link>
-              ) : (
-                <IPadMockup
-                  screenshotSrc={screenshotSrc}
-                  screenshotAlt={item.name ? `${item.name} website screenshot` : "Website screenshot"}
-                  screenshotDimensions={screenshotDimensions}
-                />
-              )}
-              <div className="mt-4 flex flex-col gap-1">
-                <span className="text-lg font-bold">
-                  {item.name}
-                </span>
-                <span className="text-sm text-muted-soft">{item.meta}</span>
-              </div>
-              {caseStudyHref ? (
-                <div className="mt-3 flex flex-wrap items-baseline gap-x-5 gap-y-2">
-                  <TextLink variant="big" href={caseStudyHref} className="text-sm">
-                    Read the case study <span>→</span>
-                  </TextLink>
-                  {url && (
-                    <a
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-mono text-xs text-muted-soft transition-colors hover:text-accent"
-                    >
-                      Live site ↗
-                    </a>
-                  )}
-                </div>
-              ) : url && (
-                <TextLink
-                  variant="big"
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 w-fit text-sm"
-                >
-                  Visit website <span>→</span>
-                </TextLink>
-              )}
-            </div>
-          );
-        })}
-      </div>
+      <WorkGrid items={workItems.slice(0, HOMEPAGE_LIMIT)} />
     </div>
   );
 }
