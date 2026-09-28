@@ -32,6 +32,10 @@ export const caseStudySlugsQuery = defineQuery(
   `*[_type == "workItem" && defined(slug.current)]{ "slug": slug.current, _updatedAt }`,
 );
 
+export const llmsCaseStudiesQuery = defineQuery(
+  `*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, meta, tagline, "slug": slug.current }`,
+);
+
 export const caseStudyQuery = defineQuery(
   `*[_type == "workItem" && slug.current == $slug][0]{
     name,

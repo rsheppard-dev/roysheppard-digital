@@ -499,6 +499,16 @@ export type CaseStudySlugsQueryResult = Array<{
 }>;
 
 // Source: src/sanity/lib/queries.ts
+// Variable: llmsCaseStudiesQuery
+// Query: *[_type == "workItem" && defined(slug.current)] | order(order asc){ name, meta, tagline, "slug": slug.current }
+export type LlmsCaseStudiesQueryResult = Array<{
+  name: string | null;
+  meta: string | null;
+  tagline: string | null;
+  slug: string | null;
+}>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: caseStudyQuery
 // Query: *[_type == "workItem" && slug.current == $slug][0]{    name,    url,    tagline,    industry,    projectType,    services,    client,    challenge,    solution,    image,    "imageDimensions": image.asset->metadata.dimensions{width, height},    showcase[]{      _key,      _type,      caption,      heading,      text,      image{ ..., "dimensions": asset->metadata.dimensions{width, height} },      first{ ..., "dimensions": asset->metadata.dimensions{width, height} },      second{ ..., "dimensions": asset->metadata.dimensions{width, height} },      images[]{ ..., "dimensions": asset->metadata.dimensions{width, height} }    },    features[]{ _key, title, description },    technologies[]{ _key, name, reason },    results[]{ _key, figure, title, description },    testimonial->{ quote, name, company },    "next": coalesce(      *[_type == "workItem" && defined(slug.current) && order > ^.order] | order(order asc)[0],      *[_type == "workItem" && defined(slug.current) && _id != ^._id] | order(order asc)[0]    ){ name, meta, "slug": slug.current }  }
 export type CaseStudyQueryResult = {
@@ -703,6 +713,7 @@ declare module "@sanity/client" {
     '*[_type == "service"] | order(order asc){ title, description, bullets }': ServicesQueryResult;
     '*[_type == "workItem"] | order(order asc){ name, meta, image, url, "slug": slug.current, "imageDimensions": image.asset->metadata.dimensions{width, height} }': WorkItemsQueryResult;
     '*[_type == "workItem" && defined(slug.current)]{ "slug": slug.current, _updatedAt }': CaseStudySlugsQueryResult;
+    '*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, meta, tagline, "slug": slug.current }': LlmsCaseStudiesQueryResult;
     '*[_type == "workItem" && slug.current == $slug][0]{\n    name,\n    url,\n    tagline,\n    industry,\n    projectType,\n    services,\n    client,\n    challenge,\n    solution,\n    image,\n    "imageDimensions": image.asset->metadata.dimensions{width, height},\n    showcase[]{\n      _key,\n      _type,\n      caption,\n      heading,\n      text,\n      image{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      first{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      second{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      images[]{ ..., "dimensions": asset->metadata.dimensions{width, height} }\n    },\n    features[]{ _key, title, description },\n    technologies[]{ _key, name, reason },\n    results[]{ _key, figure, title, description },\n    testimonial->{ quote, name, company },\n    "next": coalesce(\n      *[_type == "workItem" && defined(slug.current) && order > ^.order] | order(order asc)[0],\n      *[_type == "workItem" && defined(slug.current) && _id != ^._id] | order(order asc)[0]\n    ){ name, meta, "slug": slug.current }\n  }': CaseStudyQueryResult;
     '*[_type == "testimonial"] | order(order asc){ quote, name, company }': TestimonialsQueryResult;
     '*[_type == "faq"] | order(order asc){ question, answer }': FaqsQueryResult;
