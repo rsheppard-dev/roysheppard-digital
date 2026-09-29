@@ -116,9 +116,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <ConsentDefaultScript />
         <GoogleTagManager
           gtmId={GTM_ID}
-          // In production GTM loads first-party via the tag gateway edge function
-          // (netlify/edge-functions/tag-gateway.ts) so ad blockers don't drop it.
-          gtmScriptUrl={isProduction ? `${SITE_URL}/tg/` : undefined}
+          // In production GTM loads first-party via the tag gateway route
+          // (src/app/tg/[[...path]]/route.ts) so ad blockers don't drop it.
+          gtmScriptUrl={isProduction ? `${SITE_URL}/tg` : undefined}
         />
         <script
           type="application/ld+json"
