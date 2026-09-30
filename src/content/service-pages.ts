@@ -25,11 +25,11 @@ type CaseStudy = {
 export const webDesign = {
 	title: 'Web Design in Watford | Website Designer | Roy Sheppard',
 	description:
-		'Freelance web design in Watford from Roy Sheppard — sites that look like your business, work properly on mobile, and give visitors a clear next step.',
+		'Freelance web design in Watford from Roy Sheppard: sites that look like your business, work properly on mobile, and give visitors a clear next step.',
 	eyebrow: 'Web Design',
 	heading: 'Web design that looks like your business, not a template',
 	intro:
-		"If your site could belong to any business in your industry, it isn't doing its job. I design every site from scratch around your business — how it looks, how people move through it, and what you want them to do next — rather than starting from a theme. I'm based in Watford and design for businesses there and further afield.",
+		"If your site could belong to any business in your industry, it isn't doing its job. I design every site from scratch around your business (how it looks, how people move through it, and what you want them to do next) rather than starting from a theme. I'm based in Watford and design for businesses there and further afield.",
 	focusAreas: [
 		{
 			title: 'Built around your brand',
@@ -55,7 +55,7 @@ export const webDesign = {
 	caseStudy: {
 		eyebrow: 'Showcase',
 		name: 'LH Plumbing & Heating',
-		meta: 'Home services — plumbing, heating & electrical, Harrow',
+		meta: 'Home services: plumbing, heating & electrical, Harrow',
 		url: 'https://www.lhplumbing-harrow.co.uk/',
 		contribution: [
 			'Designed the full site around a long-established family business, so it looks and feels like them rather than a template.',
@@ -87,17 +87,17 @@ export const webDesign = {
 		{
 			question: 'Do you design around branding I already have?',
 			answer:
-				"Yes — send over what you've got (logo, colours, fonts, brand guidelines if you have them) and I'll build the site to match. If you don't have that yet, we'll shape a simple visual direction together as part of the design stage.",
+				"Yes. Send over what you've got (logo, colours, fonts, brand guidelines if you have them) and I'll build the site to match. If you don't have that yet, we'll shape a simple visual direction together as part of the design stage.",
 		},
 		{
 			question: "Will I see the design before it's built?",
 			answer:
-				"Yes — I design the key pages first and share them with you before any of it gets built, so you can give feedback early rather than only seeing a finished site.",
+				"Yes. I design the key pages first and share them with you before any of it gets built, so you can give feedback early rather than only seeing a finished site.",
 		},
 		{
 			question: 'Is the design mobile-first?',
 			answer:
-				'Yes — layouts are designed for mobile and desktop together from the start, since most visitors will find you on a phone before a laptop.',
+				'Yes. Layouts are designed for mobile and desktop together from the start, since most visitors will find you on a phone before a laptop.',
 		},
 	] satisfies Faq[],
 	related: [
@@ -109,21 +109,21 @@ export const webDesign = {
 export const webDevelopment = {
 	title: 'Web Development in Watford | Roy Sheppard',
 	description:
-		'Freelance web development in Watford from Roy Sheppard — hand-coded sites built around what your project needs, with content you can manage yourself.',
+		'Freelance web development in Watford from Roy Sheppard: hand-coded sites built around what your project needs, with content you can manage yourself.',
 	eyebrow: 'Web Development',
 	heading: 'Web development that keeps working after launch',
 	intro:
-		"A site that looks right isn't enough if it's slow, breaks on mobile, or you can't touch it without calling me every time. I hand-code every project — no page-builder plugins stacked on top of each other — so what you get is faster, more reliable, and built around what your project actually needs to do. I'm based in Watford and take on development work there and further afield.",
+		"A site that looks right isn't enough if it's slow, breaks on mobile, or you can't touch it without calling me every time. I hand-code every project, with no page-builder plugins stacked on top of each other, so what you get is faster, more reliable, and built around what your project actually needs to do. I'm based in Watford and take on development work there and further afield.",
 	focusAreas: [
 		{
 			title: 'Hand-built, not assembled',
 			description:
-				'No stacks of page-builder plugins — every site is coded properly, which makes it faster to load and easier to maintain over time.',
+				'No stacks of page-builder plugins. Every site is coded properly, which makes it faster to load and easier to maintain over time.',
 		},
 		{
 			title: 'Content you can manage yourself',
 			description:
-				"If you want to update pages, add content or swap images without coming back to me, that's set up as part of the build, with a proper editing interface — and I'll show you how to use it.",
+				"If you want to update pages, add content or swap images without coming back to me, that's set up as part of the build, with a proper editing interface, and I'll show you how to use it.",
 		},
 		{
 			title: 'Performance, not an afterthought',
@@ -133,16 +133,16 @@ export const webDevelopment = {
 		{
 			title: 'Built around what the project needs',
 			description:
-				'Forms, bookings, or whatever else the site needs to do — built in properly around your requirements rather than forced into a fixed template.',
+				'Forms, bookings, or whatever else the site needs to do, built in properly around your requirements rather than forced into a fixed template.',
 		},
 	] satisfies FocusArea[],
 	caseStudy: {
 		eyebrow: 'Showcase',
 		name: 'Kingsley Estates',
-		meta: 'Real estate — sales & lettings, Watford',
+		meta: 'Real estate: sales & lettings, Watford',
 		url: 'https://www.kingsley-estates.co.uk/',
 		contribution: [
-			'Designed and built the site around buyers, sellers, landlords and tenants — each with a clearly different path through it.',
+			'Designed and built the site around buyers, sellers, landlords and tenants, each with a clearly different path through it.',
 			'Brought valuations, listings and landlord/tenant information together into one consistent, custom-built system rather than a bolt-on for each.',
 			'Built in the accreditations, complaints procedure and contact routes that matter for trust in estate agency, with ongoing aftercare.',
 		],
@@ -171,17 +171,17 @@ export const webDevelopment = {
 		{
 			question: 'What do you build sites with?',
 			answer:
-				'Most sites are hand-coded rather than built on a page-builder, often paired with a headless CMS — the same approach behind this site. Exactly which setup depends on what your project needs to do, and I’ll recommend that once I understand it.',
+				'Most sites are hand-coded rather than built on a page-builder, often paired with a headless CMS, the same approach behind this site. Exactly which setup depends on what your project needs to do, and I’ll recommend that once I understand it.',
 		},
 		{
 			question: 'Can I update the content myself once it’s live?',
 			answer:
-				"That's up to you. I can hand the site over with an editing setup so you make changes yourself, or you can send me updates and I'll make them — plenty of clients do a mix of both.",
+				"That's up to you. I can hand the site over with an editing setup so you make changes yourself, or you can send me updates and I'll make them. Plenty of clients do a mix of both.",
 		},
 		{
 			question: 'Can you add custom functionality, or is it a standard brochure site?',
 			answer:
-				'Because sites are hand-built rather than assembled from a template, I can add functionality specific to your project — forms, integrations, bespoke page layouts — rather than working within what a page-builder allows.',
+				'Because sites are hand-built rather than assembled from a template, I can add functionality specific to your project (forms, integrations, bespoke page layouts) rather than working within what a page-builder allows.',
 		},
 	] satisfies Faq[],
 	related: [
@@ -193,16 +193,16 @@ export const webDevelopment = {
 export const ecommerce = {
 	title: 'E-Commerce Web Development in Watford | Roy Sheppard',
 	description:
-		'Freelance e-commerce development from Roy Sheppard, based in Watford — online stores built around your products, on Shopify or a custom storefront.',
+		'Freelance e-commerce development from Roy Sheppard, based in Watford: online stores built around your products, on Shopify or a custom storefront.',
 	eyebrow: 'E-Commerce',
 	heading: 'Online stores built around what you sell, not a fixed platform',
 	intro:
-		"Whether you're launching a new shop or adding online sales to a site you already have, the right setup depends on what you sell and how — not a one-size-fits-all platform. Depending on your catalogue, that might mean building on Shopify or a fully custom build — and not every product business needs a checkout at all. For Product Zone, a Watford-based custom headwear supplier, I designed and built a bespoke B2B catalogue website from the ground up. I'm based in Watford and take on e-commerce projects there and further afield.",
+		"Whether you're launching a new shop or adding online sales to a site you already have, the right setup depends on what you sell and how, not a one-size-fits-all platform. Depending on your catalogue, that might mean building on Shopify or a fully custom build, and not every product business needs a checkout at all. For Product Zone, a Watford-based custom headwear supplier, I designed and built a bespoke B2B catalogue website from the ground up. I'm based in Watford and take on e-commerce projects there and further afield.",
 	focusAreas: [
 		{
 			title: 'The right platform for your catalogue',
 			description:
-				"Sometimes Shopify is the better fit, sometimes a custom-built store makes more sense — I'll recommend the right approach once I understand what you're selling and how.",
+				"Sometimes Shopify is the better fit, sometimes a custom-built store makes more sense. I'll recommend the right approach once I understand what you're selling and how.",
 		},
 		{
 			title: 'Product pages that do the selling',
@@ -223,7 +223,7 @@ export const ecommerce = {
 	caseStudy: {
 		eyebrow: 'Showcase',
 		name: 'Product Zone',
-		meta: 'B2B catalogue — custom headwear',
+		meta: 'B2B catalogue: custom headwear',
 		url: 'https://productzone.co.uk/',
 		contribution: [
 			"Designed and built Product Zone's first website: a bespoke B2B catalogue rather than an off-the-shelf shop, presenting its fully bespoke, made-to-order service alongside its plain stock range.",
@@ -258,12 +258,12 @@ export const ecommerce = {
 		},
 		{
 			question: 'Can you set up payments for me?',
-			answer: 'Yes — I integrate payment providers like Stripe or PayPal so customers can pay securely at checkout.',
+			answer: 'Yes. I integrate payment providers like Stripe or PayPal so customers can pay securely at checkout.',
 		},
 		{
 			question: 'Can you add online sales to a site I already have?',
 			answer:
-				"Yes — plenty of e-commerce projects are about adding online sales to an existing site rather than starting from nothing. I'll look at what you've got and build the shop in around it.",
+				"Yes. Plenty of e-commerce projects are about adding online sales to an existing site rather than starting from nothing. I'll look at what you've got and build the shop in around it.",
 		},
 	] satisfies Faq[],
 	related: [
@@ -282,38 +282,38 @@ const privacyPolicySections: PolicySection[] = [
 		{
 			heading: 'Who this policy covers',
 			paragraphs: [
-				'This policy explains how roysheppard.digital ("this website"), operated by Roy Sheppard, handles information when you visit it. It applies to visitors browsing the public website — it does not cover Sanity Studio, the separate content editing tool used to manage this site’s content.',
+				'This policy explains how roysheppard.digital ("this website"), operated by Roy Sheppard, handles information when you visit it. It applies to visitors browsing the public website. It does not cover Sanity Studio, the separate content editing tool used to manage this site’s content.',
 			],
 		},
 		{
 			heading: 'Information collected through the website itself',
 			paragraphs: [
 				'The contact form at /contact collects your name, email address, company or organisation (optional), and the project details you enter. There is no field for pricing or budget information.',
-				'Submitting the form does not store your information in a database on this website. It is sent as an email, via Resend (a third-party email delivery service — see ‘Delivery provider’ below), to Roy Sheppard’s inbox, where it’s kept as an ordinary email for as long as any other business correspondence.',
+				'Submitting the form does not store your information in a database on this website. It is sent as an email, via Resend (a third-party email delivery service; see ‘Delivery provider’ below), to Roy Sheppard’s inbox, where it’s kept as an ordinary email for as long as any other business correspondence.',
 				'The form also runs automated checks to filter out spam before anything is sent. These don’t collect any extra information about you.',
-				'If you’ve accepted cookies, submitting the form also tells Meta that an enquiry was made — see ‘Advertising measurement (Meta)’ below.',
+				'If you’ve accepted cookies, submitting the form also tells Meta that an enquiry was made. See ‘Advertising measurement (Meta)’ below.',
 				'If you get in touch by email or phone directly instead, using the details in the footer, that’s handled as an ordinary email or phone conversation, not stored in any system by this website.',
 			],
 		},
 		{
 			heading: 'Delivery provider',
 			paragraphs: [
-				'Contact form submissions are relayed using Resend (resend.com), a third-party transactional email service. Under Resend’s Data Processing Agreement, Resend acts as a data processor for this message content — it processes it strictly to deliver the email on Roy Sheppard’s behalf, not for its own purposes.',
-				'Resend’s infrastructure is US-based (it uses providers including Amazon Web Services, also US-based, to send and host email). Because this involves transferring personal data out of the UK, Resend’s DPA specifies this is done under Standard Contractual Clauses (the EU SCCs plus the UK Addendum) — the standard legal mechanism for that kind of international transfer.',
+				'Contact form submissions are relayed using Resend (resend.com), a third-party transactional email service. Under Resend’s Data Processing Agreement, Resend acts as a data processor for this message content. It processes it strictly to deliver the email on Roy Sheppard’s behalf, not for its own purposes.',
+				'Resend’s infrastructure is US-based (it uses providers including Amazon Web Services, also US-based, to send and host email). Because this involves transferring personal data out of the UK, Resend’s DPA specifies this is done under Standard Contractual Clauses (the EU SCCs plus the UK Addendum), the standard legal mechanism for that kind of international transfer.',
 				'Resend’s DPA commits to deleting customer account data within 90 days of an account being closed.',
 			],
 		},
 		{
 			heading: 'Hosting',
 			paragraphs: [
-				'This website is hosted by Netlify. Like any web host, Netlify processes technical information about each request — such as your IP address and browser details — to deliver the site and protect it from abuse.',
+				'This website is hosted by Railway (railway.com). Like any web host, Railway processes technical information about each request (such as your IP address and browser details) to deliver the site and protect it from abuse.',
 			],
 		},
 		{
 			heading: 'Analytics and cookies',
 			paragraphs: [
 				'This website uses Google Tag Manager to load two tools: Google Analytics 4, which shows how visitors find and use the site, and the Meta Pixel, which measures the results of adverts on Facebook and Instagram. These may set cookies and collect technical information such as your IP address, browser and device details, and the pages you visit.',
-				'Google Tag Manager and Google Analytics are loaded through this website’s own address (roysheppard.digital/tg/) rather than directly from Google’s domains. This doesn’t change what’s collected or who receives it — the information still goes to Google, and your cookie choice still applies.',
+				'Google Tag Manager and Google Analytics are loaded through this website’s own address (roysheppard.digital/tg/) rather than directly from Google’s domains. This doesn’t change what’s collected or who receives it. The information still goes to Google, and your cookie choice still applies.',
 				'A cookie banner asks for your consent first. Until you choose ‘Accept’, analytics and advertising cookies are not set. You can change your choice at any time using ‘Cookie settings’ in the footer.',
 			],
 		},
@@ -328,7 +328,7 @@ const privacyPolicySections: PolicySection[] = [
 		{
 			heading: 'Why your information is used',
 			paragraphs: [
-				'Replying to an enquiry you’ve sent is based on legitimate interests — you’ve asked to be contacted, and your details are used only to respond. Analytics, the Meta Pixel and the Meta enquiry measurement described above are based on your consent, which you can withdraw at any time using ‘Cookie settings’ in the footer.',
+				'Replying to an enquiry you’ve sent is based on legitimate interests: you’ve asked to be contacted, and your details are used only to respond. Analytics, the Meta Pixel and the Meta enquiry measurement described above are based on your consent, which you can withdraw at any time using ‘Cookie settings’ in the footer.',
 			],
 		},
 		{
@@ -340,7 +340,7 @@ const privacyPolicySections: PolicySection[] = [
 		{
 			heading: 'Sharing your information',
 			paragraphs: [
-				'This website doesn’t sell personal information. Service providers only receive what they need to run the site: Netlify to host it, Resend to deliver contact form submissions, and Sanity to serve site content. With your consent, Google receives analytics data and Meta receives advertising measurement data, as described above.',
+				'This website doesn’t sell personal information. Service providers only receive what they need to run the site: Railway to host it, Resend to deliver contact form submissions, and Sanity to serve site content. With your consent, Google receives analytics data and Meta receives advertising measurement data, as described above.',
 			],
 		},
 		{
@@ -352,15 +352,15 @@ const privacyPolicySections: PolicySection[] = [
 		{
 			heading: 'Changes to this policy',
 			paragraphs: [
-				'This policy may be updated as the website changes — for example, if the analytics setup changes or a new feature is added. The date at the top shows when it was last revised.',
+				'This policy may be updated as the website changes, for example if the analytics setup changes or a new feature is added. The date at the top shows when it was last revised.',
 			],
 		},
 ];
 
 export const privacyPolicy = {
 	title: 'Privacy Policy | Roy Sheppard',
-	description: 'How Roy Sheppard handles data on this website — what is and isn’t collected, and how to get in touch about it.',
+	description: 'How Roy Sheppard handles data on this website: what is and isn’t collected, and how to get in touch about it.',
 	heading: 'Privacy Policy',
-	lastUpdated: '27 September 2026',
+	lastUpdated: '30 September 2026',
 	sections: privacyPolicySections,
 };

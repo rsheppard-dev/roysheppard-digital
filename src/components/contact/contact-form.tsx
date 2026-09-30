@@ -160,14 +160,14 @@ export function ContactForm() {
 
       setStatus("success");
       setErrorKind(null);
-      setStatusMessage("Thanks — your message is on its way. I usually reply within a day.");
+      setStatusMessage("Thanks, your message is on its way. I usually reply within a day.");
       setValues(EMPTY_VALUES);
       setErrors({});
     } catch {
       setStatus("error");
       setErrorKind("submit");
       setStatusMessage(
-        "Something went wrong sending your message — please check your connection and try again.",
+        "Something went wrong sending your message. Please check your connection and try again.",
       );
     }
   }

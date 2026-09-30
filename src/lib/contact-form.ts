@@ -42,7 +42,7 @@ export function validateContactForm(values: ContactFormValues): ContactFormError
   if (!projectDetails) {
     errors.projectDetails = "Tell me a bit about your project.";
   } else if (projectDetails.length < 10) {
-    errors.projectDetails = "A few more details would help — a sentence or two is fine.";
+    errors.projectDetails = "A few more details would help. A sentence or two is fine.";
   } else if (projectDetails.length > LIMITS.projectDetails) {
     errors.projectDetails = `Keep this under ${LIMITS.projectDetails} characters.`;
   }

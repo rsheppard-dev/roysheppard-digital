@@ -43,3 +43,8 @@ next-env.d.ts
 
 AGENTS.md
 CLAUDE.md
+
+# Claude / AI tooling (local only)
+.claude/
+.mcp.json
+site-brief.md

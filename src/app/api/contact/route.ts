@@ -89,7 +89,7 @@ export async function POST(request: Request) {
       { name: values.name, email: values.email, company: values.company },
     );
     return NextResponse.json(
-      { error: "Sorry — something went wrong sending your message. Please try again shortly." },
+      { error: "Sorry, something went wrong sending your message. Please try again shortly." },
       { status: 503 },
     );
   }
@@ -127,7 +127,7 @@ export async function POST(request: Request) {
   if (error) {
     console.error("[contact] Resend returned an error sending the enquiry email:", error);
     return NextResponse.json(
-      { error: "Sorry — something went wrong sending your message. Please try again shortly." },
+      { error: "Sorry, something went wrong sending your message. Please try again shortly." },
       { status: 502 },
     );
   }

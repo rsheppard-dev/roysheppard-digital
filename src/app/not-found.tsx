@@ -22,7 +22,7 @@ export default function NotFound() {
           <div className="flex w-fit items-center gap-2 rounded-pill bg-tan px-4 py-2">
             <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-accent" />
             <span className="font-mono text-xs font-medium tracking-[0.02em] text-muted-strong">
-              Error 404 — page not found
+              Error 404: page not found
             </span>
           </div>
           <h1 className="text-4xl font-medium leading-[1.1] tracking-[-0.01em] sm:text-5xl lg:text-[52px]">

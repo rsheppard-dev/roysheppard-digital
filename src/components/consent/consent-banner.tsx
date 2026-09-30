@@ -38,7 +38,7 @@ export function ConsentBanner() {
     >
       <div className="mx-auto flex max-w-290 flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p id="cookie-consent-description" className="max-w-140 text-sm leading-relaxed text-muted-strong">
-          This site uses cookies for analytics. I only set them if you say it&apos;s OK — see the{" "}
+          This site uses cookies for analytics. I only set them if you say it&apos;s OK. See the{" "}
           <Link href="/privacy-policy" className="underline decoration-border-tan underline-offset-4 hover:text-accent">
             privacy policy
           </Link>{" "}

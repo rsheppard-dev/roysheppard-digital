@@ -34,7 +34,7 @@ export function Nav() {
   return (
     <div className="border-b border-border">
       <div className="flex h-18 items-center justify-between px-6 sm:px-10 lg:h-22 lg:px-20">
-        <Link href="/" aria-label="Roy Sheppard — home">
+        <Link href="/" aria-label="Roy Sheppard, home">
           <Image
             src="/images/logo.png"
             alt="Roy Sheppard"

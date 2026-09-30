@@ -35,7 +35,7 @@ export default function ContactPage() {
           </h1>
           <p className="text-base leading-relaxed text-muted-strong lg:text-lg">
             Send a few details about what you&apos;re looking to build, and I&apos;ll reply with
-            some thoughts and next steps — usually within a day.
+            some thoughts and next steps, usually within a day.
           </p>
           <div className="mt-2 flex flex-col gap-1.5 border-t border-border pt-5">
             <span className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-soft">

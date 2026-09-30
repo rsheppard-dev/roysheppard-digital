@@ -16,7 +16,7 @@ export const services = [
 		number: '01',
 		title: 'Web Design',
 		description:
-			'Custom, on-brand design — never a template. Built around how your customers actually decide to buy.',
+			'Custom, on-brand design, never a template. Built around how your customers actually decide to buy.',
 		bullets: [
 			'Brand-led visual design',
 			'Mobile-first layouts',
@@ -27,7 +27,7 @@ export const services = [
 		number: '02',
 		title: 'Web Development',
 		description:
-			"Fast, clean-coded builds that work properly on every screen — and don't fall over under real traffic.",
+			"Fast, clean-coded builds that work properly on every screen and don't fall over under real traffic.",
 		bullets: [
 			'Hand-built, no page-builder bloat',
 			'Fast load times',
@@ -38,7 +38,7 @@ export const services = [
 		number: '03',
 		title: 'E-Commerce',
 		description:
-			'Online stores built to present your products clearly and make buying straightforward — not a bolted-on afterthought.',
+			'Online stores built to present your products clearly and make buying straightforward, not a bolted-on afterthought.',
 		bullets: [
 			'Product pages that sell',
 			'Simple, secure checkout',
@@ -48,15 +48,15 @@ export const services = [
 ];
 
 export const workItems = [
-	{ name: '[Project Name]', meta: '[Industry] — brand site & booking system' },
-	{ name: '[Project Name]', meta: '[Industry] — e-commerce rebuild' },
-	{ name: '[Project Name]', meta: '[Industry] — landing page & funnel' },
+	{ name: '[Project Name]', meta: '[Industry]: brand site & booking system' },
+	{ name: '[Project Name]', meta: '[Industry]: e-commerce rebuild' },
+	{ name: '[Project Name]', meta: '[Industry]: landing page & funnel' },
 ];
 
 export const about = {
 	eyebrow: 'About',
 	statement:
-		"I'm Roy. Working from Watford, I've spent the last 6 years designing and building websites for businesses of all sizes — founders, organisations and agencies — who needed something that actually worked, not just looked nice in a mockup.",
+		"I'm Roy. Working from Watford, I've spent the last 6 years designing and building websites for businesses of all sizes (founders, organisations and agencies) who needed something that actually worked, not just looked nice in a mockup.",
 	tags: [
 		'UI / UX Design',
 		'Front-end development',
@@ -69,13 +69,13 @@ export const about = {
 export const testimonials = [
 	{
 		quote:
-			'[Add a short quote about the result this client got — more bookings, more sales, less stress.]',
+			'[Add a short quote about the result this client got: more bookings, more sales, less stress.]',
 		name: '[Client Name]',
 		company: '[Company]',
 	},
 	{
 		quote:
-			'[Add another quote here — about how easy the process was, or how fast you turned it around.]',
+			'[Add another quote here about how easy the process was, or how fast you turned it around.]',
 		name: '[Client Name]',
 		company: '[Company]',
 	},
@@ -95,12 +95,12 @@ export const faqs = [
 	{
 		question: 'Do you offer support after launch?',
 		answer:
-			'Yes — ongoing support is available to help keep your site fast, secure and up to date after launch.',
+			'Yes. Ongoing support is available to help keep your site fast, secure and up to date after launch.',
 	},
 	{
 		question: 'Can you work with my existing brand?',
 		answer:
-			"Absolutely — send over your brand guidelines and I'll build the site around them.",
+			"Absolutely. Send over your brand guidelines and I'll build the site around them.",
 	},
 ];
 
