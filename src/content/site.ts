@@ -5,9 +5,9 @@ export const nav = [
 ];
 
 export const hero = {
-	badge: 'Taking on new projects for [Spring 2026]',
+	badge: '',
 	heading: 'Freelance web designer & developer in Watford',
-	tagline: 'Websites that make people stop scrolling.',
+	tagline: 'Bespoke websites built around how your business actually works.',
 	body: "I'm Roy, a freelance web designer and developer based in Watford. I design and build fast, thoughtful websites that help businesses and organisations achieve more online.",
 };
 
@@ -56,7 +56,7 @@ export const workItems = [
 export const about = {
 	eyebrow: 'About',
 	statement:
-		"I'm Roy. Working from Watford, I've spent the last 6 years designing and building websites for businesses of all sizes (founders, organisations and agencies) who needed something that actually worked, not just looked nice in a mockup.",
+		"I'm Roy. Working from Watford, I've spent the last 6 years designing and building websites for businesses of all sizes, from new start-ups to long-established family firms, who needed something that actually worked, not just looked nice in a mockup.",
 	tags: [
 		'UI / UX Design',
 		'Front-end development',

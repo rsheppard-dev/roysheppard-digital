@@ -21,7 +21,7 @@ export async function GET() {
 
   const body = `# Roy Sheppard
 
-> Roy Sheppard is a freelance web designer and web developer based in Watford, Hertfordshire, UK. He designs and hand-codes custom websites for businesses, organisations and agencies, in Watford and further afield.
+> Roy Sheppard is a freelance web designer and web developer based in Watford, Hertfordshire, UK. He designs and hand-codes custom websites for businesses and organisations, in Watford and further afield.
 
 Key facts:
 

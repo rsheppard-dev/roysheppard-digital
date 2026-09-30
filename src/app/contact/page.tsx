@@ -37,7 +37,20 @@ export default function ContactPage() {
             Send a few details about what you&apos;re looking to build, and I&apos;ll reply with
             some thoughts and next steps, usually within a day.
           </p>
-          <div className="mt-2 flex flex-col gap-1.5 border-t border-border pt-5">
+          <div className="mt-2 flex flex-col gap-3 border-t border-border pt-5">
+            <h2 className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-soft">
+              What happens next
+            </h2>
+            <ol className="flex list-decimal flex-col gap-2 pl-5 text-[15px] leading-relaxed text-muted-strong marker:font-mono marker:text-xs marker:text-muted-soft">
+              <li>I&apos;ll get back to you with a few questions and some first thoughts.</li>
+              <li>
+                We talk it through however suits you: email, a phone call, a video call, or in
+                person if you&apos;re local.
+              </li>
+              <li>You get a clear quote for the work we&apos;ve agreed before anything starts.</li>
+            </ol>
+          </div>
+          <div className="flex flex-col gap-1.5 border-t border-border pt-5">
             <span className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-soft">
               Prefer email or phone?
             </span>

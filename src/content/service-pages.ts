@@ -27,7 +27,7 @@ export const webDesign = {
 	description:
 		'Freelance web design in Watford from Roy Sheppard: sites that look like your business, work properly on mobile, and give visitors a clear next step.',
 	eyebrow: 'Web Design',
-	heading: 'Web design that looks like your business, not a template',
+	heading: 'Web design in Watford that looks like your business, not a template',
 	intro:
 		"If your site could belong to any business in your industry, it isn't doing its job. I design every site from scratch around your business (how it looks, how people move through it, and what you want them to do next) rather than starting from a theme. I'm based in Watford and design for businesses there and further afield.",
 	focusAreas: [
@@ -107,11 +107,11 @@ export const webDesign = {
 };
 
 export const webDevelopment = {
-	title: 'Web Development in Watford | Roy Sheppard',
+	title: 'Web Developer in Watford | Web Development | Roy Sheppard',
 	description:
 		'Freelance web development in Watford from Roy Sheppard: hand-coded sites built around what your project needs, with content you can manage yourself.',
 	eyebrow: 'Web Development',
-	heading: 'Web development that keeps working after launch',
+	heading: 'Web development in Watford that keeps working after launch',
 	intro:
 		"A site that looks right isn't enough if it's slow, breaks on mobile, or you can't touch it without calling me every time. I hand-code every project, with no page-builder plugins stacked on top of each other, so what you get is faster, more reliable, and built around what your project actually needs to do. I'm based in Watford and take on development work there and further afield.",
 	focusAreas: [

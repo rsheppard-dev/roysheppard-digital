@@ -37,7 +37,7 @@ const caveat = Caveat({
 const SITE_URL = "https://www.roysheppard.digital";
 const SITE_TITLE = "Web Designer & Web Developer in Watford | Roy Sheppard";
 const SITE_DESCRIPTION =
-  "Freelance web designer and developer in Watford. Custom websites for businesses, organisations and agencies. Discuss your project with Roy Sheppard.";
+  "Freelance web designer and developer in Watford. Custom websites for businesses and organisations. Discuss your project with Roy Sheppard.";
 const JOB_TITLE = "Freelance Web Designer & Developer";
 const LOCALITY = "Watford";
 const COUNTRY = "GB";
