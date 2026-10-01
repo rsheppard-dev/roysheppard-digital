@@ -4,7 +4,7 @@ import Image from "next/image";
 export function AboutIllustration() {
   return (
     <Image
-      src="/images/about-sketch.webp"
+      src="/images/about-sketch-v2.webp"
       alt="Illustration of Roy Sheppard"
       width={800}
       height={1602}

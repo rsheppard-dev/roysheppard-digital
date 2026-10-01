@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-const STATIC_SRC = "/images/hero-desk-sketch.webp";
-const LOOP_SRC = "/images/hero-desk-sketch-loop.webp";
+const STATIC_SRC = "/images/hero-desk-sketch-v2.webp";
+const LOOP_SRC = "/images/hero-desk-sketch-loop-v2.webp";
 
 /**
  * Static by default; swaps to the looping typing animation while the page
