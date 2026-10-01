@@ -19,13 +19,8 @@ export default function NotFound() {
 
       <main className="flex flex-col items-center gap-10 px-6 py-16 sm:px-10 md:py-20 lg:flex-row lg:justify-between lg:gap-14 lg:px-35 lg:py-24">
         <div className="flex flex-1 flex-col gap-5 lg:max-w-115">
-          <div className="flex w-fit items-center gap-2 rounded-pill bg-tan px-4 py-2">
-            <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-accent" />
-            <span className="font-mono text-xs font-medium tracking-[0.02em] text-muted-strong">
-              Error 404: page not found
-            </span>
-          </div>
           <h1 className="text-4xl font-medium leading-[1.1] tracking-[-0.01em] sm:text-5xl lg:text-[52px]">
+            <span className="sr-only">Page not found. </span>
             What are you doing here?
           </h1>
           <p className="max-w-115 text-base leading-relaxed text-muted-strong lg:text-lg">
@@ -35,21 +30,32 @@ export default function NotFound() {
             <TextLink variant="buttonInverse" href="/" className="text-base lg:text-lg">
               Back to home
             </TextLink>
-            <TextLink variant="underline" href="/contact" className="text-sm lg:text-[15px]">
-              Get in touch
+            <TextLink variant="underline" href="/work" className="text-sm lg:text-[15px]">
+              See my work
             </TextLink>
           </div>
         </div>
 
         <div className="flex w-full flex-1 items-center justify-center">
-          <Image
-            src="/images/404-illustration.png"
-            alt="Illustration of Roy Sheppard sitting in a bubble bath, looking shocked to have been caught, with a large 404 watermark behind him"
-            width={2048}
-            height={1360}
-            priority
-            className="h-auto w-full max-w-125 lg:max-w-160"
-          />
+          {/* The 404 is real text sized in container units, so it keeps the same
+              place behind the drawing (head in front of the 0, foam over the base)
+              at every width. */}
+          <div className="@container relative aspect-1280/850 w-full max-w-125 lg:max-w-160">
+            <span
+              aria-hidden="true"
+              className="absolute inset-x-0 top-[-1cqw] select-none text-center text-[47cqw] font-bold leading-none tracking-[-0.04em] text-[#e6dfcd]"
+            >
+              404
+            </span>
+            <Image
+              src="/images/404-bath-sketch.webp"
+              alt="Illustration of Roy Sheppard in a bubble bath, looking surprised to have been caught"
+              width={1280}
+              height={850}
+              priority
+              className="relative h-auto w-full"
+            />
+          </div>
         </div>
       </main>
 
