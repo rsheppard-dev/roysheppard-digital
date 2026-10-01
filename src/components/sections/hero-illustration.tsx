@@ -5,13 +5,14 @@ import Image from "next/image";
 
 const STATIC_SRC = "/images/hero-desk-sketch-v2.webp";
 const LOOP_SRC = "/images/hero-desk-sketch-loop-v2.webp";
+const SETTLE_MS = 2500;
 
 /**
  * Static by default; swaps to the looping typing animation while the page
  * is actively being scrolled, then settles back a moment after scrolling stops.
  * The static image is the loop's first frame, so the swap doesn't jump.
- * Touch screens hold it longer: a swipe is over in a moment, so a short
- * settle would only ever show the first few frames.
+ * It holds for a couple of seconds after the last scroll: a swipe or wheel
+ * flick is over in a moment, so a short settle only shows the first few frames.
  */
 export function HeroIllustration() {
   const [scrolling, setScrolling] = useState(false);
@@ -35,11 +36,10 @@ export function HeroIllustration() {
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const settleMs = window.matchMedia("(pointer: coarse)").matches ? 2500 : 500;
     function handleScroll() {
       setScrolling(true);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => setScrolling(false), settleMs);
+      timeoutRef.current = setTimeout(() => setScrolling(false), SETTLE_MS);
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true });
