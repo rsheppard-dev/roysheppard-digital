@@ -18,8 +18,7 @@ export async function About() {
   const statement = about?.statement || fallbackAbout.statement;
   const tags = about?.tags && about.tags.length > 0 ? about.tags : fallbackAbout.tags;
 
-  // The floating browser icon is a separate layer cropped from the default
-  // illustration, so it only lines up when that exact asset is in use.
+  // The Sanity default asset means "use the built-in sketch illustration".
   const isDefaultIllustration =
     !about?.image?.asset?._ref ||
     about.image.asset._ref === DEFAULT_ILLUSTRATION_ASSET_REF;
@@ -44,7 +43,7 @@ export async function About() {
           ))}
         </div>
       </div>
-      <div className="flex w-full max-w-55 shrink-0 items-center justify-center lg:w-75 lg:max-w-75">
+      <div className="flex w-full max-w-45 shrink-0 items-center justify-center lg:w-60 lg:max-w-60">
         {isDefaultIllustration ? (
           <AboutIllustration />
         ) : (
