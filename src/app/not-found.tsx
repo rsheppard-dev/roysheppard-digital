@@ -27,7 +27,7 @@ export default function NotFound() {
             This page doesn&apos;t exist. A little privacy, please.
           </p>
           <div className="mt-1 flex flex-wrap items-center gap-6">
-            <TextLink variant="buttonInverse" href="/" className="text-base lg:text-lg">
+            <TextLink variant="buttonDark" href="/" className="text-base lg:text-lg">
               Back to home
             </TextLink>
             <TextLink variant="underline" href="/work" className="text-sm lg:text-[15px]">

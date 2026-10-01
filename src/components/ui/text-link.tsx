@@ -19,6 +19,9 @@ const variants = {
   /** Same shape as `button`, inverted for use on the accent-colored CTA banner (ink fill, cream text). */
   buttonInverse:
     "inline-flex items-center gap-2.5 rounded-pill bg-ink px-7 py-3.5 font-semibold text-cream transition-colors hover:bg-white hover:text-ink",
+  /** Ink button for cream pages: hovers to the brand coral, with ink text for contrast. */
+  buttonDark:
+    "inline-flex items-center gap-2.5 rounded-pill bg-ink px-7 py-3.5 font-semibold text-cream transition-colors hover:bg-accent hover:text-ink",
   /** Same as `big` but for dark backgrounds. */
   bigLight:
     "inline-flex items-center gap-2.5 font-semibold text-cream transition-opacity hover:opacity-65",
