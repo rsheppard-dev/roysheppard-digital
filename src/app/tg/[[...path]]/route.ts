@@ -24,6 +24,10 @@ async function proxy(request: Request) {
   const headers = new Headers(request.headers);
   // fetch() sets Host from the target URL, which Google requires to be the fps.goog origin.
   headers.delete("host");
+  // Let fetch ask for encodings it can decode itself. Browsers also offer zstd, which
+  // Node's fetch passes through still compressed; with content-encoding stripped below,
+  // the browser would then try to run compressed bytes as JavaScript.
+  headers.delete("accept-encoding");
   const country = request.headers.get("cf-ipcountry");
   const region = request.headers.get("cf-region-code");
   if (country && country !== "XX") headers.set("X-Forwarded-Country", country);
