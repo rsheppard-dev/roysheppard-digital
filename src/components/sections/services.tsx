@@ -64,7 +64,7 @@ export async function Services() {
 							{pageHref && (
 								<Link
 									href={pageHref}
-									className='font-hand mt-1 w-fit text-xl leading-none text-ink underline decoration-accent decoration-2 underline-offset-4'
+									className='tap-area font-hand mt-1 w-fit text-xl leading-none text-ink underline decoration-accent decoration-2 underline-offset-4'
 								>
 									learn more
 									<span className='sr-only'>

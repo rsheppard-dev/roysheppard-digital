@@ -56,6 +56,37 @@ html {
   overflow-x: hidden;
 }
 
+/*
+ * Browser surfaces: one keyboard focus ring and one selection colour for the whole
+ * site. The ring takes the element's own text colour, so it reads on cream, tan,
+ * coral and the dark footer alike. Form fields keep their own ring.
+ */
+@layer base {
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-highlight);
+    color: var(--color-ink);
+  }
+}
+
+/*
+ * Tap area: grows a small text link's hit target without moving anything on the page.
+ * The link keeps its size; an invisible layer around it catches the tap.
+ */
+@utility tap-area {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -10px -4px;
+  }
+}
+
 body {
   background: var(--color-cream);
   color: var(--color-ink);

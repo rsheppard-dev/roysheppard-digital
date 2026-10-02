@@ -32,7 +32,7 @@ export function Story({ chapters }: { chapters: Chapter[] }) {
             }`}
           >
             <div className="flex items-baseline gap-3">
-              <span className="font-mono text-[13px] font-medium text-muted-soft" aria-hidden="true">
+              <span className="font-mono text-[13px] font-medium text-muted" aria-hidden="true">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <Eyebrow as="h2">{chapter.title}</Eyebrow>

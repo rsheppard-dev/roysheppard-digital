@@ -43,7 +43,7 @@ export function CaseStudyHero({
           <dl className="mt-3 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-border-tan pt-6 lg:mt-5 lg:grid-cols-4">
             {shownFacts.map((fact) => (
               <div key={fact.label} className="flex flex-col gap-1.5">
-                <dt className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-soft">
+                <dt className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted">
                   {fact.label}
                 </dt>
                 <dd className="text-[15px] font-semibold leading-snug">{fact.value}</dd>

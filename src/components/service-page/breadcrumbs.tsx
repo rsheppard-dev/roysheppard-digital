@@ -19,9 +19,9 @@ export function Breadcrumbs({ label, path }: { label: string; path: string }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
-      <ol className="flex items-center gap-2 font-mono text-xs text-muted-soft">
+      <ol className="flex items-center gap-2 font-mono text-xs text-muted">
         <li>
-          <Link href="/" className="transition-colors hover:text-accent">
+          <Link href="/" className="tap-area transition-colors hover:text-accent-text">
             Home
           </Link>
         </li>

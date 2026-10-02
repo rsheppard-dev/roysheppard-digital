@@ -5,7 +5,7 @@ export function RelatedLinks({ items }: { items: { label: string; href: string }
 
   return (
     <div className="flex flex-col gap-6 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-8 lg:px-35 lg:py-20">
-      <span className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-soft">
+      <span className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted">
         Related services
       </span>
       <ul className="flex flex-col sm:flex-row sm:gap-10">

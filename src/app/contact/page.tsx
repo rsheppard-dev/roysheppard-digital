@@ -38,10 +38,10 @@ export default function ContactPage() {
             some thoughts and next steps, usually within a day.
           </p>
           <div className="mt-2 flex flex-col gap-3 border-t border-border pt-5">
-            <h2 className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-soft">
+            <h2 className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted">
               What happens next
             </h2>
-            <ol className="flex list-decimal flex-col gap-2 pl-5 text-[15px] leading-relaxed text-muted-strong marker:font-mono marker:text-xs marker:text-muted-soft">
+            <ol className="flex list-decimal flex-col gap-2 pl-5 text-[15px] leading-relaxed text-muted-strong marker:font-mono marker:text-xs marker:text-muted">
               <li>I&apos;ll get back to you with a few questions and some first thoughts.</li>
               <li>
                 We talk it through however suits you: email, a phone call, a video call, or in
@@ -50,15 +50,15 @@ export default function ContactPage() {
               <li>You get a clear quote for the work we&apos;ve agreed before anything starts.</li>
             </ol>
           </div>
-          <div className="flex flex-col gap-1.5 border-t border-border pt-5">
-            <span className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-soft">
+          <div className="flex flex-col border-t border-border pt-5">
+            <span className="mb-0.5 font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted">
               Prefer email or phone?
             </span>
-            <a href={`mailto:${email}`} className="w-fit text-[15px] text-ink underline decoration-border-tan underline-offset-4 transition-colors hover:text-accent">
+            <a href={`mailto:${email}`} className="w-fit py-2 text-[15px] text-ink underline decoration-border-tan underline-offset-4 transition-colors hover:text-accent-text">
               {email}
             </a>
             {phone && (
-              <a href={`tel:${phone}`} className="w-fit text-[15px] text-ink underline decoration-border-tan underline-offset-4 transition-colors hover:text-accent">
+              <a href={`tel:${phone}`} className="w-fit py-2 text-[15px] text-ink underline decoration-border-tan underline-offset-4 transition-colors hover:text-accent-text">
                 {phone}
               </a>
             )}

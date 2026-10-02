@@ -21,14 +21,14 @@ export default function PrivacyPolicyPage() {
         <h1 className="text-4xl font-medium tracking-[-0.01em] sm:text-5xl">
           {privacyPolicy.heading}
         </h1>
-        <span className="font-mono text-xs text-muted-soft">
+        <span className="font-mono text-xs text-muted">
           Last updated: {privacyPolicy.lastUpdated}
         </span>
       </div>
 
       <div className="flex flex-col gap-10 px-6 py-14 sm:px-10 lg:px-35 lg:py-25">
         {privacyPolicy.sections.map((section) => (
-          <div key={section.heading} className="flex max-w-190 flex-col gap-3">
+          <div key={section.heading} className="flex max-w-140 flex-col gap-3">
             <h2 className="text-xl font-bold">{section.heading}</h2>
             {section.paragraphs?.map((paragraph, i) => (
               <p key={i} className="text-[15px] leading-relaxed text-muted">

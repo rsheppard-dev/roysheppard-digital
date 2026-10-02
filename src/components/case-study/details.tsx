@@ -137,7 +137,7 @@ export function ClientQuote({
 export function NextProject({ name, meta, slug }: { name: string; meta?: string | null; slug: string }) {
   return (
     <div className="flex flex-col gap-3 border-t border-border-tan bg-tan px-6 py-12 sm:px-10 lg:px-35 lg:py-16">
-      <span className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-soft">
+      <span className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted">
         Next case study
       </span>
       <TextLink variant="big" href={`/work/${slug}`} className="group w-fit text-3xl lg:text-[42px]">
@@ -146,7 +146,7 @@ export function NextProject({ name, meta, slug }: { name: string; meta?: string 
           →
         </span>
       </TextLink>
-      {meta && <p className="text-sm text-muted-soft">{meta}</p>}
+      {meta && <p className="text-sm text-muted">{meta}</p>}
     </div>
   );
 }

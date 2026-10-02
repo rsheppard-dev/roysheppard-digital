@@ -39,7 +39,7 @@ export function ConsentBanner() {
       <div className="mx-auto flex max-w-290 flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p id="cookie-consent-description" className="max-w-140 text-sm leading-relaxed text-muted-strong">
           This site uses cookies for analytics. I only set them if you say it&apos;s OK. See the{" "}
-          <Link href="/privacy-policy" className="underline decoration-border-tan underline-offset-4 hover:text-accent">
+          <Link href="/privacy-policy" className="underline decoration-border-tan underline-offset-4 hover:text-accent-text">
             privacy policy
           </Link>{" "}
           for details.
@@ -48,14 +48,14 @@ export function ConsentBanner() {
           <button
             type="button"
             onClick={() => choose("denied")}
-            className="rounded-pill border border-ink px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-cream"
+            className="rounded-pill border border-ink px-6 py-3 text-sm font-semibold text-ink transition-[color,background-color,scale] ease-out-strong hover:bg-ink hover:text-cream active:scale-[0.97]"
           >
             Decline
           </button>
           <button
             type="button"
             onClick={() => choose("granted")}
-            className="rounded-pill bg-accent px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-cream"
+            className="rounded-pill bg-accent px-6 py-3 text-sm font-semibold text-ink transition-[color,background-color,scale] ease-out-strong hover:bg-ink hover:text-cream active:scale-[0.97]"
           >
             Accept
           </button>

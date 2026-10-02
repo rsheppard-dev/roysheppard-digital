@@ -24,7 +24,14 @@ function tabletSpan(count: number, index: number) {
     : "";
 }
 
-export function WorkGrid({ items }: { items: WorkItem[] }) {
+export function WorkGrid({
+  items,
+  headingLevel: Heading = "h3",
+}: {
+  items: WorkItem[];
+  /** "h2" where the grid sits directly under the page's h1 (the work index). */
+  headingLevel?: "h2" | "h3";
+}) {
   return (
     <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-6 lg:gap-x-10 lg:gap-y-16">
       {items.map((item, index) => {
@@ -55,7 +62,7 @@ export function WorkGrid({ items }: { items: WorkItem[] }) {
               mockup
             )}
             <div className="mt-4 flex flex-col gap-1">
-              <h3 className="text-lg font-bold">
+              <Heading className="text-lg font-bold">
                 {caseStudyHref ? (
                   <Link href={caseStudyHref} className="transition-colors group-hover:text-accent-text">
                     {item.name}
@@ -63,7 +70,7 @@ export function WorkGrid({ items }: { items: WorkItem[] }) {
                 ) : (
                   item.name
                 )}
-              </h3>
+              </Heading>
               {item.meta && <p className="text-sm text-muted">{item.meta}</p>}
             </div>
             <div className="mt-3 flex flex-wrap items-baseline gap-x-5 gap-y-2">
@@ -81,7 +88,7 @@ export function WorkGrid({ items }: { items: WorkItem[] }) {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-xs text-muted transition-colors hover:text-accent-text"
+                  className="tap-area font-mono text-xs text-muted transition-colors hover:text-accent-text"
                 >
                   Live site <span aria-hidden="true">↗</span>
                   <span className="sr-only"> for {item.name} (opens in a new tab)</span>

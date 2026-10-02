@@ -68,7 +68,11 @@ export async function Testimonials() {
                 >
                   <div className="flex flex-col gap-5">
                     <Stars size={14} className="reveal-stars" />
-                    <blockquote className="flex flex-col gap-3 text-pretty text-[15px] leading-relaxed text-ink lg:text-base">
+                    <blockquote
+                      className={`flex flex-col gap-3 text-pretty text-[15px] leading-relaxed text-ink lg:text-base ${
+                        isLastOdd ? "lg:max-w-160" : ""
+                      }`}
+                    >
                       <QuoteParagraphs quote={quote} />
                     </blockquote>
                   </div>

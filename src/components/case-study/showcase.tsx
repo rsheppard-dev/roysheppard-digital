@@ -53,7 +53,7 @@ function FramedImage({
 
 function Caption({ children }: { children?: string | null }) {
   if (!children) return null;
-  return <figcaption className="mt-4 font-mono text-xs text-muted-soft lg:mt-5">{children}</figcaption>;
+  return <figcaption className="mt-4 font-mono text-xs text-muted lg:mt-5">{children}</figcaption>;
 }
 
 function ShowcaseBlock({ block, address, flip }: { block: Block; address?: string; flip: boolean }) {

@@ -73,30 +73,32 @@ export async function ProjectEvidence({
           <div className="group w-full lg:w-[55%] lg:shrink-0">{mockup}</div>
         )}
         <div className="flex flex-1 flex-col gap-3.5">
-          <span className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-soft">
+          <span className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted">
             {eyebrow}
           </span>
           <h3 className="text-2xl font-bold lg:text-[34px] lg:leading-[1.15]">{name}</h3>
-          <p className="text-sm text-muted-soft">{meta}</p>
+          <p className="text-sm text-muted">{meta}</p>
           <ul className="mt-2 flex flex-col gap-2 text-[15px] leading-relaxed text-muted">
             {contribution.map((line) => (
               <li key={line}>— {line}</li>
             ))}
           </ul>
-          <TextLink
-            variant="underline"
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-fit text-sm"
-          >
-            Visit the live site →
-          </TextLink>
-          {workItem?.slug && (
-            <TextLink variant="big" href={`/work/${workItem.slug}`} className="w-fit text-sm">
-              Read the full case study <span>→</span>
+          <div className="mt-1 flex flex-wrap items-baseline gap-x-6 gap-y-5">
+            <TextLink
+              variant="underline"
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-fit text-sm"
+            >
+              Visit the live site →
             </TextLink>
-          )}
+            {workItem?.slug && (
+              <TextLink variant="big" href={`/work/${workItem.slug}`} className="w-fit text-sm">
+                Read the full case study <span>→</span>
+              </TextLink>
+            )}
+          </div>
           <figure className="mt-5 flex flex-col gap-4 rounded-card bg-ink px-7 py-7">
             <div className="flex items-start justify-between gap-6">
               <span aria-hidden="true" className="-mb-5 -mt-1 text-[56px] font-semibold leading-none text-accent">

@@ -72,10 +72,10 @@ export function IPadMockup({
             height={previewHeight}
             sizes={IMAGE_SIZES}
             style={{ "--reveal": `${revealPercent}%` } as CSSProperties}
-            className="absolute inset-x-0 top-0 h-auto w-full transition-transform duration-2500 ease-in-out group-hover:-translate-y-(--reveal)"
+            className="absolute inset-x-0 top-0 h-auto w-full transition-transform duration-2500 ease-in-out group-hover:-translate-y-(--reveal) motion-reduce:transition-none"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center font-mono text-[11px] text-muted-soft">
+          <div className="flex h-full w-full items-center justify-center font-mono text-[11px] text-muted">
             [Project screenshot]
           </div>
         )}

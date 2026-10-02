@@ -12,8 +12,8 @@ function FooterColumn({
 	children: React.ReactNode;
 }) {
 	return (
-		<div className='flex flex-col gap-3.5'>
-			<span className='font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-soft'>
+		<div className='flex flex-col'>
+			<span className='mb-1 font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-soft lg:mb-2'>
 				{label}
 			</span>
 			{children}
@@ -96,11 +96,11 @@ export async function Footer() {
 				</div>
 			</div>
 
-			<div className='mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/10 pt-6 lg:mt-14'>
+			<div className='mt-10 flex flex-wrap items-center gap-x-6 border-t border-white/10 pt-3 lg:mt-14 lg:pt-4.5'>
 				<TextLink variant='footer' href='/privacy-policy'>
 					Privacy Policy
 				</TextLink>
-				<CookieSettingsButton className='w-fit text-left text-sm text-[#D8D3C6] transition-colors hover:text-cream' />
+				<CookieSettingsButton className='w-fit py-3 text-left text-sm text-[#D8D3C6] transition-colors hover:text-cream lg:py-1.5' />
 			</div>
 		</div>
 	);

@@ -21,10 +21,10 @@ export async function CtaBanner({
       id="contact"
       className="flex flex-col items-center justify-center gap-5 bg-accent px-6 py-16 text-center sm:px-10 lg:gap-6 lg:px-35 lg:py-25"
     >
-      <h2 className="max-w-190 text-3xl font-semibold leading-[1.15] text-cream sm:text-4xl lg:text-[54px] lg:leading-[1.1]">
+      <h2 className="max-w-190 text-3xl font-semibold leading-[1.15] text-ink sm:text-4xl lg:text-[54px] lg:leading-[1.1]">
         {heading ?? cta.heading}
       </h2>
-      <p className="max-w-120 text-base text-accent-soft lg:text-lg">
+      <p className="max-w-120 text-base text-ink lg:text-lg">
         {body ?? cta.body}
       </p>
       <TextLink

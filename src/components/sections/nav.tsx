@@ -32,9 +32,14 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b border-border">
+    <div
+      className="border-b border-border"
+      onKeyDown={(event) => {
+        if (event.key === "Escape") setOpen(false);
+      }}
+    >
       <div className="flex h-18 items-center justify-between px-6 sm:px-10 lg:h-22 lg:px-20">
-        <Link href="/" aria-label="Roy Sheppard, home">
+        <Link href="/" aria-label="Roy Sheppard, home" className="flex h-11 items-center">
           <Image
             src="/images/logo.png"
             alt="Roy Sheppard"
@@ -63,7 +68,7 @@ export function Nav() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center lg:hidden"
+          className="-mr-0.5 flex h-11 w-11 items-center justify-center lg:hidden"
         >
           <MenuIcon open={open} />
         </button>
@@ -85,7 +90,7 @@ export function Nav() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-3 w-fit border-b-[1.5px] border-ink pb-0.75 font-mono text-sm uppercase tracking-[0.03em] text-ink"
+            className="tap-area mt-3 w-fit border-b-[1.5px] border-ink pb-0.75 font-mono text-sm uppercase tracking-[0.03em] text-ink"
           >
             Let&apos;s talk
           </Link>

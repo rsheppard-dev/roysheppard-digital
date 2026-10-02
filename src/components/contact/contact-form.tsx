@@ -19,8 +19,9 @@ const EMPTY_VALUES: ContactFormValues = {
   projectDetails: "",
 };
 
+// 16px on phones: iOS zooms the whole page when a focused field's text is smaller.
 const fieldClasses =
-  "w-full rounded-md border bg-white px-4 py-3 text-[15px] text-ink placeholder:text-muted-soft focus:outline-none focus:ring-2 focus:ring-accent/50 transition-colors";
+  "w-full rounded-md border bg-white px-4 py-3 text-base text-ink placeholder:text-muted focus:border-ink focus:outline-none focus:ring-2 focus:ring-accent/50 transition-colors sm:text-[15px]";
 
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
@@ -193,7 +194,7 @@ export function ContactForm() {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-1 w-fit border-b-[1.5px] border-ink pb-0.5 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
+          className="mt-1 w-fit border-b-[1.5px] border-ink pb-0.5 text-sm font-semibold text-ink transition-colors hover:border-accent-text hover:text-accent-text"
         >
           Send another message
         </button>
@@ -253,7 +254,7 @@ export function ContactForm() {
           onChange={(e) => updateField("name", e.target.value)}
           aria-invalid={Boolean(errors.name)}
           aria-describedby={errors.name ? "name-error" : undefined}
-          className={`${fieldClasses} ${errors.name ? "border-red-500" : "border-border"}`}
+          className={`${fieldClasses} ${errors.name ? "border-red-500" : "border-muted-soft"}`}
         />
         <FieldError id="name-error" message={errors.name} />
       </div>
@@ -272,14 +273,14 @@ export function ContactForm() {
           onChange={(e) => updateField("email", e.target.value)}
           aria-invalid={Boolean(errors.email)}
           aria-describedby={errors.email ? "email-error" : undefined}
-          className={`${fieldClasses} ${errors.email ? "border-red-500" : "border-border"}`}
+          className={`${fieldClasses} ${errors.email ? "border-red-500" : "border-muted-soft"}`}
         />
         <FieldError id="email-error" message={errors.email} />
       </div>
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="company" className="text-sm font-medium text-ink">
-          Company or organisation <span className="text-muted-soft">(optional)</span>
+          Company or organisation <span className="text-muted">(optional)</span>
         </label>
         <input
           id="company"
@@ -290,7 +291,7 @@ export function ContactForm() {
           onChange={(e) => updateField("company", e.target.value)}
           aria-invalid={Boolean(errors.company)}
           aria-describedby={errors.company ? "company-error" : undefined}
-          className={`${fieldClasses} ${errors.company ? "border-red-500" : "border-border"}`}
+          className={`${fieldClasses} ${errors.company ? "border-red-500" : "border-muted-soft"}`}
         />
         <FieldError id="company-error" message={errors.company} />
       </div>
@@ -309,7 +310,7 @@ export function ContactForm() {
           onChange={(e) => updateField("projectDetails", e.target.value)}
           aria-invalid={Boolean(errors.projectDetails)}
           aria-describedby={errors.projectDetails ? "projectDetails-error" : undefined}
-          className={`${fieldClasses} resize-y ${errors.projectDetails ? "border-red-500" : "border-border"}`}
+          className={`${fieldClasses} resize-y ${errors.projectDetails ? "border-red-500" : "border-muted-soft"}`}
         />
         <FieldError id="projectDetails-error" message={errors.projectDetails} />
       </div>
@@ -317,7 +318,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="mt-2 inline-flex w-fit items-center gap-2.5 rounded-pill bg-accent px-7 py-3.5 font-semibold text-ink transition-colors hover:bg-ink hover:text-cream disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-2 inline-flex w-fit items-center gap-2.5 rounded-pill bg-accent px-7 py-3.5 font-semibold text-ink transition-[color,background-color,scale] ease-out-strong hover:bg-ink hover:text-cream enabled:active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {submitting ? "Sending…" : "Send message"}
       </button>

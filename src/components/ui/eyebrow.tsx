@@ -7,7 +7,7 @@ export function Eyebrow({
   as?: "div" | "h2";
 }) {
   return (
-    <Tag className="font-mono text-[13px] font-medium uppercase tracking-[0.06em] text-accent">
+    <Tag className="font-mono text-[13px] font-medium uppercase tracking-[0.06em] text-accent-text">
       {children}
     </Tag>
   );
