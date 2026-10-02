@@ -37,11 +37,11 @@ export async function About() {
         <p className="max-w-145 text-xl font-medium leading-relaxed lg:text-[28px]">
           {statement}
         </p>
-        <div className="mt-1 flex flex-wrap gap-2.5">
+        <ul className="mt-1 flex flex-wrap gap-2 sm:gap-2.5">
           {tags.map((tag) => (
             <Tag key={tag}>{tag}</Tag>
           ))}
-        </div>
+        </ul>
       </div>
       <div className="flex w-full max-w-45 shrink-0 items-center justify-center lg:w-60 lg:max-w-60">
         {isDefaultIllustration ? (
