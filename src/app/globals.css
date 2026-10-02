@@ -34,34 +34,19 @@
 }
 
 /*
- * Scroll reveal (RevealGroup): items rise into place once, then their star rating
- * fills left to right. Reduced motion keeps the fade and drops the movement.
+ * Scroll reveal (RevealGroup): the items themselves stay put; each star rating fills
+ * left to right once as its item scrolls into view. Reduced motion shows the stars as they are.
  */
-.reveal-item[data-pending] {
-  opacity: 0;
-  transform: translateY(16px);
-}
-
-.reveal-item[data-visible] {
-  transition:
-    opacity 500ms var(--ease-out-strong) var(--reveal-delay, 0ms),
-    transform 500ms var(--ease-out-strong) var(--reveal-delay, 0ms);
-}
-
 .reveal-item[data-pending] .reveal-stars {
   clip-path: inset(0 100% 0 0);
 }
 
 .reveal-item[data-visible] .reveal-stars {
   clip-path: inset(0 0 0 0);
-  transition: clip-path 600ms var(--ease-out-strong) calc(var(--reveal-delay, 0ms) + 200ms);
+  transition: clip-path 600ms var(--ease-out-strong) var(--reveal-delay, 0ms);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal-item[data-pending] {
-    transform: none;
-  }
-
   .reveal-item[data-pending] .reveal-stars {
     clip-path: none;
   }

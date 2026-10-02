@@ -5,9 +5,10 @@ import { useEffect, useRef } from "react";
 const STAGGER_MS = 70;
 
 /**
- * Reveals each `.reveal-item` child once as it scrolls into view, staggering items
- * that arrive together. Items already on screen at hydration are left alone so nothing
- * flashes, and without JS everything simply renders visible. Motion lives in globals.css.
+ * Flags each `.reveal-item` child once as it scrolls into view, staggering items
+ * that arrive together, so its star rating can fill in. Items already on screen at
+ * hydration are left alone so nothing flashes, and without JS everything simply renders
+ * visible. Motion lives in globals.css.
  */
 export function RevealGroup({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
