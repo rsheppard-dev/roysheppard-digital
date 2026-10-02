@@ -38,9 +38,13 @@ export function getStoredConsent(): ConsentChoice | null {
   }
 }
 
-function gtag(...args: unknown[]) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function gtag(..._args: unknown[]) {
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(args);
+  // Google only treats an Arguments object as a gtag command. A plain array is
+  // silently ignored, which left the consent update unread until the next page load.
+  // eslint-disable-next-line prefer-rest-params
+  window.dataLayer.push(arguments);
 }
 
 /** Updates Consent Mode state and remembers the choice for future visits. */
