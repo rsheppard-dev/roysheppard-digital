@@ -58,11 +58,12 @@ export const about = {
 	statement:
 		"I'm Roy. Working from Watford, I've spent the last 6 years designing and building websites for businesses of all sizes, from new start-ups to long-established family firms, who needed something that actually worked, not just looked nice in a mockup.",
 	tags: [
-		'UI / UX Design',
-		'Front-end development',
-		'E-commerce builds',
-		'CMS & content sites',
-		'Ongoing support',
+		'Bespoke web design',
+		'Custom web development',
+		'E-commerce websites',
+		'Easy to update yourself',
+		'SEO built in',
+		'Support after launch',
 	],
 };
 
