@@ -57,6 +57,8 @@ export async function WorkScreens({ slug }: { slug?: string }) {
             screenshotSrc={urlFor(screen.asset).width(600).url()}
             screenshotAlt={screen.alt ?? `${screen.name} website on mobile`}
             sizes="(min-width: 1024px) 200px, 34vw"
+            // These sit beside the page intro, above the fold on desktop, and are the LCP there.
+            loading="eager"
             className="phone-lift"
           />
           <span className="sr-only">Read the {screen.name} case study</span>

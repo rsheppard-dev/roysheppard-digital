@@ -11,12 +11,15 @@ export function PhoneMockup({
   sizes = "(min-width: 1024px) 300px, 30vw",
   className = "",
   variant = "clean",
+  loading,
 }: {
   screenshotSrc: string;
   screenshotAlt: string;
   sizes?: string;
   className?: string;
   variant?: "clean" | "illustrated";
+  /** Pass "eager" when the phone sits above the fold, so the screenshot isn't lazy-loaded. */
+  loading?: "eager" | "lazy";
 }) {
   if (variant === "illustrated") {
     // Every size is in container units so the frame keeps its proportions at any width.
@@ -33,7 +36,14 @@ export function PhoneMockup({
             className="relative w-full overflow-hidden rounded-[4cqw_4cqw_11cqw_11cqw] border-[1.5px] border-ink bg-tan"
             style={{ aspectRatio: "390 / 844" }}
           >
-            <Image src={screenshotSrc} alt={screenshotAlt} fill sizes={sizes} className="object-cover object-top" />
+            <Image
+              src={screenshotSrc}
+              alt={screenshotAlt}
+              fill
+              sizes={sizes}
+              loading={loading}
+              className="object-cover object-top"
+            />
           </div>
         </div>
       </div>
@@ -53,6 +63,7 @@ export function PhoneMockup({
           alt={screenshotAlt}
           fill
           sizes={sizes}
+          loading={loading}
           className="object-cover object-top"
         />
       </div>
