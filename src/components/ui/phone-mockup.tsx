@@ -39,10 +39,13 @@ export function PhoneMockup({
             <Image
               src={screenshotSrc}
               alt={screenshotAlt}
-              fill
+              // Explicit size (the screen's 390 x 844 ratio) instead of `fill`, so the
+              // lazy-loaded screenshot reserves its box before it arrives.
+              width={390}
+              height={844}
               sizes={sizes}
               loading={loading}
-              className="object-cover object-top"
+              className="absolute inset-0 h-full w-full object-cover object-top"
             />
           </div>
         </div>
@@ -61,10 +64,11 @@ export function PhoneMockup({
         <Image
           src={screenshotSrc}
           alt={screenshotAlt}
-          fill
+          width={390}
+          height={844}
           sizes={sizes}
           loading={loading}
-          className="object-cover object-top"
+          className="absolute inset-0 h-full w-full object-cover object-top"
         />
       </div>
     </div>

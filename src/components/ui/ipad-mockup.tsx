@@ -83,9 +83,11 @@ export function IPadMockup({
       <Image
         src="/images/mockups/ipad-mockup-white-bezel.png"
         alt=""
-        fill
+        // The frame PNG's own pixel size, matching the wrapper's aspect ratio.
+        width={1277}
+        height={923}
         sizes={IMAGE_SIZES}
-        className="pointer-events-none select-none"
+        className="pointer-events-none absolute inset-0 h-full w-full select-none"
       />
     </div>
   );
