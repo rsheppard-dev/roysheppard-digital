@@ -59,6 +59,7 @@ export function HeroIllustration() {
       // the animated loop must be served as-is or it would be flattened.
       unoptimized={scrolling}
       sizes="(min-width: 1024px) 640px, 420px"
+      loading="eager"
       fetchPriority="high"
       className="h-auto w-full max-w-105 lg:max-w-160"
     />

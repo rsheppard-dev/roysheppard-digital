@@ -52,7 +52,8 @@ export default function NotFound() {
               alt="Illustration of Roy Sheppard in a bubble bath, looking surprised to have been caught"
               width={1280}
               height={850}
-              priority
+              loading="eager"
+              fetchPriority="high"
               className="relative h-auto w-full"
             />
           </div>

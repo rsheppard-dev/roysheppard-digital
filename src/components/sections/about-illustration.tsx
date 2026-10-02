@@ -9,6 +9,7 @@ export function AboutIllustration() {
       width={800}
       height={1602}
       sizes="(min-width: 1024px) 240px, 180px"
+      style={{ aspectRatio: "800 / 1602" }}
       className="h-auto w-full"
     />
   );

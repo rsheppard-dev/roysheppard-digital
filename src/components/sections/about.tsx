@@ -53,6 +53,7 @@ export async function About() {
             width={1792}
             height={2400}
             sizes="(min-width: 1024px) 300px, 220px"
+            style={{ aspectRatio: "1792 / 2400" }}
             className="h-auto w-full"
           />
         )}

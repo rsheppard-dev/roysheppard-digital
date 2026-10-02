@@ -45,7 +45,7 @@ export function Nav() {
             alt="Roy Sheppard"
             width={373}
             height={32}
-            priority
+            loading="eager"
             className="h-2.5 w-auto sm:h-3 lg:h-3.5"
           />
         </Link>

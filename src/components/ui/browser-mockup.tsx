@@ -95,7 +95,14 @@ export function BrowserMockup({
             width={PREVIEW_WIDTH}
             height={previewHeight}
             sizes={sizes}
-            style={{ "--reveal": `${revealPercent}%` } as CSSProperties}
+            style={
+              {
+                "--reveal": `${revealPercent}%`,
+                // Stated in CSS too: with `h-auto`, Chrome doesn't count the width/height
+                // attributes alone as reserving space for a lazy image.
+                aspectRatio: `${PREVIEW_WIDTH} / ${previewHeight}`,
+              } as CSSProperties
+            }
             className={`absolute inset-x-0 top-0 h-auto w-full ${
               natural || !pan ? "" : "transition-transform duration-2500 ease-in-out group-hover:-translate-y-(--reveal) motion-reduce:transition-none"
             }`}
