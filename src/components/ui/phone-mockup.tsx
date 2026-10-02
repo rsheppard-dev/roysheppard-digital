@@ -19,18 +19,18 @@ export function PhoneMockup({
   variant?: "clean" | "illustrated";
 }) {
   if (variant === "illustrated") {
-    // Bezel sizes use container units so they scale with the phone, not its parent.
+    // Every size is in container units so the frame keeps its proportions at any width.
+    // The screen's corner radius is the body's radius minus the side bezel, so the
+    // two curves stay parallel instead of the screen's corners crowding the outline.
     return (
-      <div
-        className={`@container relative rounded-[22px] border-2 border-ink bg-white drop-shadow-[0_16px_18px_rgba(23,23,26,0.10)] sm:rounded-[32px] lg:rounded-[40px] ${className}`}
-      >
-        <span
-          aria-hidden="true"
-          className="absolute left-1/2 top-[3.2cqw] size-[2.6cqw] -translate-x-1/2 rounded-full bg-ink"
-        />
-        <div className="px-[4cqw] pb-[6cqw] pt-[9cqw]">
+      <div className={`@container drop-shadow-[0_16px_18px_rgba(23,23,26,0.10)] ${className}`}>
+        <div className="relative rounded-[15cqw] border-2 border-ink bg-white px-[4cqw] pb-[4cqw] pt-[8cqw]">
+          <span
+            aria-hidden="true"
+            className="absolute left-1/2 top-[2.7cqw] size-[2.6cqw] -translate-x-1/2 rounded-full bg-ink"
+          />
           <div
-            className="relative w-full overflow-hidden rounded-[3.5cqw] border-[1.5px] border-ink bg-tan"
+            className="relative w-full overflow-hidden rounded-[4cqw_4cqw_11cqw_11cqw] border-[1.5px] border-ink bg-tan"
             style={{ aspectRatio: "390 / 844" }}
           >
             <Image src={screenshotSrc} alt={screenshotAlt} fill sizes={sizes} className="object-cover object-top" />
