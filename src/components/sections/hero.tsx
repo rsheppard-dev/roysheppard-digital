@@ -1,30 +1,9 @@
 import { hero as fallbackHero } from "@/content/site";
 import { TextLink } from "@/components/ui/text-link";
 import { HeroIllustration } from "@/components/sections/hero-illustration";
+import { HighlightedHeading } from "@/components/ui/highlighted-heading";
 import { sanityFetch } from "@/sanity/lib/live";
 import { heroQuery } from "@/sanity/lib/queries";
-
-const HIGHLIGHT_WORD = "Watford";
-
-/** Puts a marker-pen highlight behind the town name when the heading includes it. */
-function HighlightedHeading({ text }: { text: string }) {
-  const index = text.lastIndexOf(HIGHLIGHT_WORD);
-  if (index === -1) return <>{text}</>;
-
-  return (
-    <>
-      {text.slice(0, index)}
-      <span className="relative z-0 inline-block">
-        {HIGHLIGHT_WORD}
-        <span
-          aria-hidden="true"
-          className="absolute -left-1.5 -right-2 bottom-[0.08em] -z-10 h-[0.42em] rotate-[-1.5deg] skew-x-[-10deg] rounded-[3px_12px_5px_14px] bg-highlight"
-        />
-      </span>
-      {text.slice(index + HIGHLIGHT_WORD.length)}
-    </>
-  );
-}
 
 export async function Hero() {
   const { data } = await sanityFetch({ query: heroQuery });

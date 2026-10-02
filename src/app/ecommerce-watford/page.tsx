@@ -36,6 +36,7 @@ export default function EcommercePage() {
       <ServiceHeader
         eyebrow={ecommerce.eyebrow}
         heading={ecommerce.heading}
+        highlight="Online stores"
         intro={ecommerce.intro}
         aside={<WorkScreens slug="product-zone" />}
       />
