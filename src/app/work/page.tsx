@@ -31,7 +31,7 @@ export default async function WorkIndexPage() {
         </h1>
       </div>
       <div className="border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:px-35 lg:py-25">
-        <WorkGrid items={data ?? []} headingLevel="h2" />
+        <WorkGrid items={data ?? []} headingLevel="h2" eagerCount={3} />
       </div>
     </PageShell>
   );

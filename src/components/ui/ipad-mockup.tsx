@@ -37,6 +37,7 @@ export function IPadMockup({
   screenshotAlt,
   screenshotDimensions,
   className = "",
+  loading,
 }: {
   /** Optional — omit to show a neutral placeholder until a screenshot is available. */
   screenshotSrc?: string;
@@ -44,6 +45,8 @@ export function IPadMockup({
   /** Natural pixel dimensions of the screenshot, used to compute the hover pan distance. */
   screenshotDimensions?: { width: number; height: number } | null;
   className?: string;
+  /** Pass "eager" when the iPad sits above the fold, so the frame and screenshot aren't lazy-loaded. */
+  loading?: "eager" | "lazy";
 }) {
   const revealPercent = getRevealPercent(screenshotDimensions);
   const previewHeight = screenshotDimensions
@@ -71,6 +74,7 @@ export function IPadMockup({
             width={PREVIEW_WIDTH}
             height={previewHeight}
             sizes={IMAGE_SIZES}
+            loading={loading}
             style={
               {
                 "--reveal": `${revealPercent}%`,
@@ -94,6 +98,7 @@ export function IPadMockup({
         width={1277}
         height={923}
         sizes={IMAGE_SIZES}
+        loading={loading}
         className="pointer-events-none absolute inset-0 h-full w-full select-none"
       />
     </div>
