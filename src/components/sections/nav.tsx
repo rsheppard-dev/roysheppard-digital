@@ -53,7 +53,7 @@ export function Nav() {
         {/* Desktop nav */}
         <div className="hidden items-center gap-10 lg:flex">
           {nav.map((item) => (
-            <TextLink key={item.href} variant="nav" href={item.href}>
+            <TextLink key={item.href} variant="nav" href={item.href} className={item.highlight ? "text-accent-text!" : ""}>
               {item.label}
             </TextLink>
           ))}
@@ -82,7 +82,9 @@ export function Nav() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="border-b border-border py-3 font-mono text-sm uppercase tracking-[0.03em] text-muted"
+              className={`border-b border-border py-3 font-mono text-sm uppercase tracking-[0.03em] ${
+                item.highlight ? "text-accent-text" : "text-muted"
+              }`}
             >
               {item.label}
             </Link>

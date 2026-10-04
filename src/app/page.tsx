@@ -4,6 +4,7 @@ import { Testimonials } from "@/components/sections/testimonials";
 import { Services } from "@/components/sections/services";
 import { Work } from "@/components/sections/work";
 import { About } from "@/components/sections/about";
+import { ReviewPromo } from "@/components/sections/review-promo";
 import { Faq } from "@/components/sections/faq";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { PageModifiedJsonLd } from "@/components/ui/page-modified-jsonld";
@@ -19,6 +20,7 @@ export default function Home() {
       <PageModifiedJsonLd path="/" source="home" />
       <Hero />
       <Services />
+      <ReviewPromo />
       <About />
       <Work />
       <Testimonials />

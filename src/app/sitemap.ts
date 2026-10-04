@@ -3,6 +3,7 @@ import { client } from "@/sanity/lib/client";
 import { caseStudySlugsQuery } from "@/sanity/lib/queries";
 import { CONTACT_UPDATED, lastEditsQuery, pageModified, type LastEdits } from "@/lib/page-dates";
 import { ecommerce, privacyPolicy, webDesign, webDevelopment } from "@/content/service-pages";
+import { freeReview } from "@/content/free-review";
 
 const SITE_URL = "https://www.roysheppard.digital";
 
@@ -61,6 +62,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           ]
         : [],
     ),
+    {
+      url: `${SITE_URL}/free-website-review`,
+      lastModified: pageModified(edits, { source: "shared", codeUpdated: freeReview.lastUpdated }),
+      changeFrequency: "yearly",
+      priority: 0.7,
+    },
     {
       url: `${SITE_URL}/contact`,
       lastModified: pageModified(edits, { source: "shared", codeUpdated: CONTACT_UPDATED }),

@@ -8,8 +8,8 @@ export function PageShell({
   cta,
 }: {
   children: React.ReactNode;
-  /** Optional copy overrides for the closing CTA banner. */
-  cta?: React.ComponentProps<typeof CtaBanner>;
+  /** Optional copy overrides for the closing CTA banner, or `false` to leave it off (a page whose own form is the call to action). */
+  cta?: React.ComponentProps<typeof CtaBanner> | false;
 }) {
   return (
     <>
@@ -18,7 +18,7 @@ export function PageShell({
       </div>
       <main>
         {children}
-        <CtaBanner {...cta} />
+        {cta !== false && <CtaBanner {...cta} />}
       </main>
       <Footer />
     </>
