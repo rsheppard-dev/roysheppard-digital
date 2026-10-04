@@ -21,7 +21,7 @@ export async function Work() {
         <div className="flex flex-col gap-3">
           <h2 className="text-3xl font-semibold lg:text-[42px]">Client projects</h2>
           <TextLink variant="big" href={hasMore ? "/work" : "/contact"} className="w-fit text-[15px]">
-            {hasMore ? "All work" : "Start yours"} <span aria-hidden="true">→</span>
+            {hasMore ? "All projects" : "Start yours"} <span aria-hidden="true">→</span>
           </TextLink>
         </div>
         {/* Only where hovering is possible: tells visitors the screens scroll through each site. */}
