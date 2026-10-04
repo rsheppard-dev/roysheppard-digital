@@ -57,7 +57,7 @@ function Details({ item }: { item: WorkIndexItem }) {
   ].filter((fact) => fact.value);
 
   return (
-    <div className="flex max-w-120 flex-col gap-4">
+    <div className="flex max-w-120 flex-1 flex-col gap-4">
       <h2 className="text-2xl font-bold lg:text-[34px] lg:leading-[1.15]">
         {href ? (
           <Link href={href} className="transition-colors group-hover:text-accent-text">
@@ -82,7 +82,7 @@ function Details({ item }: { item: WorkIndexItem }) {
           ))}
         </dl>
       )}
-      <div className="mt-1 flex flex-wrap items-baseline gap-x-6 gap-y-2">
+      <div className="mt-auto flex flex-wrap items-baseline gap-x-6 gap-y-2 pt-1">
         {href && (
           <TextLink variant="big" href={href} className="text-[15px]">
             Read the case study{" "}
