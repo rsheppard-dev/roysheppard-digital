@@ -31,7 +31,7 @@ export default function NotFound() {
               Back to home
             </TextLink>
             <TextLink variant="underline" href="/work" className="text-sm lg:text-[15px]">
-              See my projects
+              See my work
             </TextLink>
           </div>
         </div>

@@ -28,7 +28,7 @@ const caption = defineField({
 
 export const workItem = defineType({
   name: "workItem",
-  title: "Project",
+  title: "Work item",
   type: "document",
   groups: [
     { name: "card", title: "Homepage card", default: true },

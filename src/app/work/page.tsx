@@ -23,9 +23,9 @@ export default async function WorkIndexPage() {
   return (
     <PageShell>
       <PageModifiedJsonLd path={PATH} name="Client Projects" source="work" />
-      <Breadcrumbs label="Projects" path={PATH} />
+      <Breadcrumbs label="Work" path={PATH} />
       <div className="flex flex-col gap-5 px-6 pb-12 pt-8 sm:px-10 lg:gap-6 lg:px-35 lg:pb-16 lg:pt-10">
-        <Eyebrow>Projects</Eyebrow>
+        <Eyebrow>Work</Eyebrow>
         <h1 className="max-w-190 text-4xl font-medium leading-[1.1] tracking-[-0.01em] sm:text-5xl lg:text-[56px] lg:leading-[1.08]">
           Client projects
         </h1>

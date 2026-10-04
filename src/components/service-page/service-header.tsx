@@ -32,7 +32,7 @@ export function ServiceHeader({
             Start a project <span aria-hidden="true">→</span>
           </TextLink>
           <TextLink variant="underline" href="/#work">
-            See my projects
+            See my work
           </TextLink>
         </div>
       </div>
