@@ -11,6 +11,16 @@ const nextConfig: NextConfig = {
       { source: "/hi", destination: "/", permanent: true },
     ];
   },
+  // Keep the Sanity Studio out of search results. Not disallowed in robots.ts
+  // on purpose: crawlers have to be able to fetch it to see this header.
+  async headers() {
+    return [
+      {
+        source: "/studio/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

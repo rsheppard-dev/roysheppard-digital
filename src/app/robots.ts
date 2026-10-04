@@ -13,11 +13,13 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
   // with no snippet — the opposite of what staging protection needs. Actual
   // staging protection should come from hosting-level access control
   // (password/IP allowlist on the non-production deployment), not robots.txt.
+  // /studio is deliberately not disallowed: it is kept out of search by
+  // `noindex` (page metadata and an X-Robots-Tag header in next.config.ts),
+  // which crawlers can only read if they are allowed to fetch it.
   return {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "/studio",
     },
     sitemap: isProductionHost ? `${SITE_URL}/sitemap.xml` : undefined,
   };
