@@ -42,7 +42,7 @@ export function ReviewPromo() {
               type="submit"
               className="inline-flex min-h-13 items-center justify-center gap-2.5 rounded-pill bg-accent px-6.5 text-[17px] sm:min-h-12 font-semibold text-ink transition-[color,background-color,scale] ease-out-strong hover:bg-ink hover:text-cream active:scale-[0.97]"
             >
-              Request my review <span aria-hidden="true" className="text-[19px]">→</span>
+              Request free review <span aria-hidden="true" className="text-[19px]">→</span>
             </button>
           </form>
           <p className="text-[13px] text-muted-strong">Free, with no obligation to hire me.</p>

@@ -323,13 +323,15 @@ export function ReviewForm() {
           "Sending…"
         ) : (
           <>
-            Request my review <span aria-hidden="true" className="text-[19px]">→</span>
+            Request free review <span aria-hidden="true" className="text-[19px]">→</span>
           </>
         )}
       </button>
 
       <p className="text-[13px] leading-relaxed text-muted-strong">
-        I usually reply within 24 hours. I only use your details to send the review. See the{" "}
+        I usually reply within 24 hours. I only use your contact details to send the review. By requesting a
+        review you agree that I may share my findings about your website publicly, including on social media
+        and on this site. I will never share your name or email. See the{" "}
         <a href="/privacy-policy" className="text-ink underline underline-offset-2 hover:text-accent-text">
           privacy policy
         </a>
