@@ -4,6 +4,7 @@ import { buildPageMetadata } from "@/lib/page-metadata";
 import { PageShell } from "@/components/service-page/page-shell";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
 import { CaseStudyHero } from "@/components/case-study/case-study-hero";
+import { PageModifiedJsonLd } from "@/components/ui/page-modified-jsonld";
 import { Story } from "@/components/case-study/story";
 import { Showcase } from "@/components/case-study/showcase";
 import {
@@ -78,6 +79,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
         buttonLabel: "Start a project",
       }}
     >
+      <PageModifiedJsonLd path={`/work/${slug}`} name={`${name} case study`} source="shared" slug={slug} />
       <Breadcrumbs label={`${name} case study`} path={`/work/${slug}`} />
       <CaseStudyHero
         name={name}

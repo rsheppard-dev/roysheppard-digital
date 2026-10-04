@@ -3,6 +3,8 @@ import { footer as fallbackFooter, cta as fallbackCta } from "@/content/site";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import { Nav } from "@/components/sections/nav";
 import { Footer } from "@/components/sections/footer";
+import { PageModifiedJsonLd } from "@/components/ui/page-modified-jsonld";
+import { CONTACT_UPDATED } from "@/lib/page-dates";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
 import { ContactForm } from "@/components/contact/contact-form";
 
@@ -26,6 +28,7 @@ export default function ContactPage() {
       </div>
 
       <main>
+      <PageModifiedJsonLd path={PATH} name="Contact" source="shared" codeUpdated={CONTACT_UPDATED} />
       <Breadcrumbs label="Contact" path={PATH} />
 
       <div className="flex flex-col gap-10 px-6 py-14 sm:px-10 lg:flex-row lg:gap-20 lg:px-35 lg:py-25">

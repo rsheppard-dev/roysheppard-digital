@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { privacyPolicy } from "@/content/service-pages";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import { PageShell } from "@/components/service-page/page-shell";
+import { PageModifiedJsonLd } from "@/components/ui/page-modified-jsonld";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
 
 const PATH = "/privacy-policy";
@@ -15,6 +16,12 @@ export const metadata: Metadata = buildPageMetadata({
 export default function PrivacyPolicyPage() {
   return (
     <PageShell>
+      <PageModifiedJsonLd
+        path={PATH}
+        name={privacyPolicy.title}
+        source="shared"
+        codeUpdated={new Date(privacyPolicy.lastUpdated).toISOString()}
+      />
       <Breadcrumbs label="Privacy Policy" path={PATH} />
 
       <div className="flex flex-col gap-6 px-6 pb-4 pt-8 sm:px-10 lg:px-35 lg:pb-6 lg:pt-10">

@@ -9,6 +9,7 @@ import { ProcessSteps } from "@/components/service-page/process-steps";
 import { WorkScreens } from "@/components/service-page/work-screens";
 import { ProjectEvidence } from "@/components/service-page/project-evidence";
 import { RelatedLinks } from "@/components/service-page/related-links";
+import { PageModifiedJsonLd } from "@/components/ui/page-modified-jsonld";
 import { ServiceJsonLd } from "@/components/service-page/service-jsonld";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Accordion } from "@/components/ui/accordion";
@@ -26,6 +27,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function EcommercePage() {
   return (
     <PageShell>
+      <PageModifiedJsonLd path={PATH} name={ecommerce.title} source="work" codeUpdated={ecommerce.lastUpdated} />
       <ServiceJsonLd
         path={PATH}
         name="E-Commerce"

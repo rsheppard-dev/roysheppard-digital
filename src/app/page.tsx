@@ -6,6 +6,7 @@ import { Work } from "@/components/sections/work";
 import { About } from "@/components/sections/about";
 import { Faq } from "@/components/sections/faq";
 import { CtaBanner } from "@/components/sections/cta-banner";
+import { PageModifiedJsonLd } from "@/components/ui/page-modified-jsonld";
 import { Footer } from "@/components/sections/footer";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <Nav />
       </div>
       <main>
+      <PageModifiedJsonLd path="/" source="home" />
       <Hero />
       <Services />
       <About />

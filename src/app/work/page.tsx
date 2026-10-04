@@ -3,6 +3,7 @@ import { buildPageMetadata } from "@/lib/page-metadata";
 import { PageShell } from "@/components/service-page/page-shell";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
 import { WorkGrid } from "@/components/sections/work-grid";
+import { PageModifiedJsonLd } from "@/components/ui/page-modified-jsonld";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { sanityFetch } from "@/sanity/lib/live";
 import { workItemsQuery } from "@/sanity/lib/queries";
@@ -21,6 +22,7 @@ export default async function WorkIndexPage() {
 
   return (
     <PageShell>
+      <PageModifiedJsonLd path={PATH} name="Client Work" source="work" />
       <Breadcrumbs label="Work" path={PATH} />
       <div className="flex flex-col gap-5 px-6 pb-12 pt-8 sm:px-10 lg:gap-6 lg:px-35 lg:pb-16 lg:pt-10">
         <Eyebrow>Work</Eyebrow>
