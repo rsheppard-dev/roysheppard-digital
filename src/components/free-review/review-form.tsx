@@ -84,7 +84,12 @@ export function ReviewForm() {
     // Pre-fill after mount (one frame later) so the server and first client render match.
     const frame = requestAnimationFrame(() => {
       const site = new URLSearchParams(window.location.search).get("site");
-      if (site) setValues((prev) => ({ ...prev, website: site.slice(0, 200) }));
+      if (site) {
+        setValues((prev) => ({ ...prev, website: site.slice(0, 200) }));
+        // A homepage submission that arrives here counts as a started review, even if the form is never finished.
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "review_started", form_name: "free_review", review_site: site.slice(0, 200) });
+      }
     });
     return () => cancelAnimationFrame(frame);
   }, []);
