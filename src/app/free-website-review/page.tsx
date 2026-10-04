@@ -43,7 +43,7 @@ export default function FreeWebsiteReviewPage() {
         </div>
         <div className="lg:col-start-1 lg:row-start-2 lg:self-start">
           <Image
-            src="/images/free-review-notes.webp"
+            src="/images/free-review-notes-v2.webp"
             alt="Roy at his desk, writing review notes in a notebook"
             width={1168}
             height={880}
