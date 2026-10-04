@@ -19,7 +19,7 @@ export async function Work() {
     >
       <div className="flex items-end justify-between gap-8">
         <div className="flex flex-col gap-3">
-          <h2 className="text-3xl font-semibold lg:text-[42px]">Client work</h2>
+          <h2 className="text-3xl font-semibold lg:text-[42px]">Client projects</h2>
           <TextLink variant="big" href={hasMore ? "/work" : "/contact"} className="w-fit text-[15px]">
             {hasMore ? "All work" : "Start yours"} <span aria-hidden="true">→</span>
           </TextLink>
