@@ -20,10 +20,10 @@ export default function Home() {
       <PageModifiedJsonLd path="/" source="home" />
       <Hero />
       <Services />
-      <ReviewPromo />
       <About />
       <Work />
       <Testimonials />
+      <ReviewPromo />
       <Faq />
       <CtaBanner />
       </main>
