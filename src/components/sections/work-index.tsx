@@ -14,25 +14,7 @@ export type WorkIndexItem = {
   imageDimensions: { width: number | null; height: number | null } | null;
 };
 
-const FEATURE_SIZES = "(min-width: 1024px) 55vw, 92vw";
-const PAIR_SIZES = "(min-width: 1024px) 42vw, (min-width: 640px) 45vw, 92vw";
-
-/**
- * Splits the projects into rows that alternate between one large "feature" and a
- * staggered pair, so the page has a rhythm instead of a uniform grid. A lone
- * project left over for a pair row is shown as a feature.
- */
-function toRows(items: WorkIndexItem[]) {
-  const rows: { kind: "feature" | "pair"; items: WorkIndexItem[] }[] = [];
-  let index = 0;
-  while (index < items.length) {
-    const wantPair = rows.length % 2 === 1 && items.length - index >= 2;
-    const take = wantPair ? 2 : 1;
-    rows.push({ kind: wantPair ? "pair" : "feature", items: items.slice(index, index + take) });
-    index += take;
-  }
-  return rows;
-}
+const SIZES = "(min-width: 1024px) 42vw, (min-width: 640px) 45vw, 92vw";
 
 function Mockup({
   item,
@@ -126,45 +108,24 @@ function Details({ item }: { item: WorkIndexItem }) {
   );
 }
 
-/** The /work index: a large feature, a staggered pair, a feature, and so on, each with what the project was. */
+/** The /work index: every project gets the same space, two across, each with what the project was. */
 export function WorkIndex({ items }: { items: WorkIndexItem[] }) {
-  let featureCount = 0;
-
   return (
-    <div className="flex flex-col gap-20 lg:gap-32">
-      {toRows(items).map((row, rowIndex) => {
-        if (row.kind === "pair") {
-          return (
-            <ul key={`pair-${rowIndex}`} className="grid items-start gap-16 sm:grid-cols-2 lg:gap-14">
-              {row.items.map((item, index) => (
-                <li
-                  key={item.slug ?? item.name}
-                  className={`group flex flex-col gap-7 ${index === 1 ? "sm:mt-16 lg:mt-28" : ""}`}
-                >
-                  <Mockup item={item} width={1400} sizes={PAIR_SIZES} />
-                  <Details item={item} />
-                </li>
-              ))}
-            </ul>
-          );
-        }
-
-        const item = row.items[0];
-        const flip = featureCount++ % 2 === 1;
-        return (
-          <div
-            key={item.slug ?? item.name}
-            className={`group grid items-center gap-8 lg:gap-16 ${
-              flip ? "lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]" : "lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
-            }`}
-          >
-            <div className={flip ? "lg:order-2" : ""}>
-              <Mockup item={item} width={1800} sizes={FEATURE_SIZES} eager={rowIndex === 0} />
-            </div>
-            <Details item={item} />
-          </div>
-        );
-      })}
-    </div>
+    <ul className="grid gap-x-10 gap-y-20 sm:grid-cols-2 lg:gap-x-16 lg:gap-y-28">
+      {items.map((item, index) => (
+        <li
+          key={item.slug ?? item.name}
+          // A lone last project is centred at the same width as the rest, not stretched.
+          className={`group flex flex-col gap-7 ${
+            items.length % 2 === 1 && index === items.length - 1
+              ? "sm:col-span-2 sm:w-[calc(50%-1.25rem)] sm:justify-self-center lg:w-[calc(50%-2rem)]"
+              : ""
+          }`}
+        >
+          <Mockup item={item} width={1400} sizes={SIZES} eager={index < 2} />
+          <Details item={item} />
+        </li>
+      ))}
+    </ul>
   );
 }
