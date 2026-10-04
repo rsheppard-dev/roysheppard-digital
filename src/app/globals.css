@@ -71,6 +71,14 @@ html {
     background: var(--color-highlight);
     color: var(--color-ink);
   }
+
+  /* Tailwind v4 stopped giving buttons a pointer cursor, so every enabled button gets one here.
+     Disabled buttons keep the default cursor (the forms add cursor-not-allowed to theirs). */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  input[type="submit"]:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 /*
