@@ -26,14 +26,8 @@ function tabletSpan(count: number, index: number) {
 
 export function WorkGrid({
   items,
-  headingLevel: Heading = "h3",
-  eagerCount = 0,
 }: {
   items: WorkItem[];
-  /** "h2" where the grid sits directly under the page's h1 (the work index). */
-  headingLevel?: "h2" | "h3";
-  /** How many of the first projects sit above the fold and should load eagerly. */
-  eagerCount?: number;
 }) {
   return (
     <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-6 lg:gap-x-10 lg:gap-y-16">
@@ -48,7 +42,6 @@ export function WorkGrid({
             screenshotSrc={screenshotSrc}
             screenshotAlt={item.name ? `${item.name} website screenshot` : "Website screenshot"}
             screenshotDimensions={screenshotDimensions}
-            loading={index < eagerCount ? "eager" : undefined}
             className="drop-shadow-[0_18px_20px_rgba(23,23,26,0.10)] transition-transform duration-300 ease-out-strong group-hover:-translate-y-1.5"
           />
         );
@@ -66,7 +59,7 @@ export function WorkGrid({
               mockup
             )}
             <div className="mt-4 flex flex-col gap-1">
-              <Heading className="text-lg font-bold">
+              <h3 className="text-lg font-bold">
                 {caseStudyHref ? (
                   <Link href={caseStudyHref} className="transition-colors group-hover:text-accent-text">
                     {item.name}
@@ -74,7 +67,7 @@ export function WorkGrid({
                 ) : (
                   item.name
                 )}
-              </Heading>
+              </h3>
               {item.meta && <p className="text-sm text-muted">{item.meta}</p>}
             </div>
             <div className="mt-3 flex flex-wrap items-baseline gap-x-5 gap-y-2">

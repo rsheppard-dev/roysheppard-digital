@@ -35,7 +35,7 @@ export async function Hero() {
           <TextLink variant="button" href="/contact" className="text-base lg:text-lg">
             Start a project <span className="text-lg lg:text-xl">→</span>
           </TextLink>
-          <TextLink variant="underline" href="/#work" className="text-sm lg:text-[15px]">
+          <TextLink variant="underline" href="/work" className="text-sm lg:text-[15px]">
             See my work
           </TextLink>
         </div>

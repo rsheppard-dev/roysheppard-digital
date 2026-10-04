@@ -28,6 +28,10 @@ export const workItemsQuery = defineQuery(
   `*[_type == "workItem"] | order(order asc){ name, meta, image, url, "slug": slug.current, "imageDimensions": image.asset->metadata.dimensions{width, height} }`,
 );
 
+export const workIndexQuery = defineQuery(
+  `*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, tagline, industry, projectType, url, image, "slug": slug.current, "imageDimensions": image.asset->metadata.dimensions{width, height} }`,
+);
+
 export const workScreensQuery = defineQuery(
   `*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, "slug": slug.current, "screen": showcase[_type == "showcaseMobile"][0].images[0]{ alt, asset } }`,
 );

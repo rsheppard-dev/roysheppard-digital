@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import { PageShell } from "@/components/service-page/page-shell";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
-import { WorkGrid } from "@/components/sections/work-grid";
+import { WorkIndex, type WorkIndexItem } from "@/components/sections/work-index";
 import { PageModifiedJsonLd } from "@/components/ui/page-modified-jsonld";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { sanityFetch } from "@/sanity/lib/live";
-import { workItemsQuery } from "@/sanity/lib/queries";
+import { workIndexQuery } from "@/sanity/lib/queries";
 
 const PATH = "/work";
 
@@ -18,7 +18,7 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default async function WorkIndexPage() {
-  const { data } = await sanityFetch({ query: workItemsQuery });
+  const { data } = (await sanityFetch({ query: workIndexQuery })) as { data: WorkIndexItem[] | null };
 
   return (
     <PageShell>
@@ -29,9 +29,12 @@ export default async function WorkIndexPage() {
         <h1 className="max-w-190 text-4xl font-medium leading-[1.1] tracking-[-0.01em] sm:text-5xl lg:text-[56px] lg:leading-[1.08]">
           Client projects
         </h1>
+        <p className="max-w-155 text-base leading-relaxed text-muted-strong lg:text-lg">
+          Each site here was designed and built from scratch for a real business. Open a case study to see what the business needed and how the site answers it.
+        </p>
       </div>
       <div className="border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:px-35 lg:py-25">
-        <WorkGrid items={data ?? []} headingLevel="h2" eagerCount={3} />
+        <WorkIndex items={data ?? []} />
       </div>
     </PageShell>
   );

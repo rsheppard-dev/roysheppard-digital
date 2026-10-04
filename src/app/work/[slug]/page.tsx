@@ -80,7 +80,11 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
       }}
     >
       <PageModifiedJsonLd path={`/work/${slug}`} name={`${name} case study`} source="shared" slug={slug} />
-      <Breadcrumbs label={`${name} case study`} path={`/work/${slug}`} />
+      <Breadcrumbs
+        label={`${name} case study`}
+        path={`/work/${slug}`}
+        parents={[{ label: "Work", path: "/work" }]}
+      />
       <CaseStudyHero
         name={name}
         tagline={tagline}

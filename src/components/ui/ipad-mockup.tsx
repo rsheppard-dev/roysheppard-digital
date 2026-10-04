@@ -38,6 +38,7 @@ export function IPadMockup({
   screenshotDimensions,
   className = "",
   loading,
+  sizes = IMAGE_SIZES,
 }: {
   /** Optional — omit to show a neutral placeholder until a screenshot is available. */
   screenshotSrc?: string;
@@ -47,6 +48,8 @@ export function IPadMockup({
   className?: string;
   /** Pass "eager" when the iPad sits above the fold, so the frame and screenshot aren't lazy-loaded. */
   loading?: "eager" | "lazy";
+  /** Rendered width of the iPad, for picking the right image size. */
+  sizes?: string;
 }) {
   const revealPercent = getRevealPercent(screenshotDimensions);
   const previewHeight = screenshotDimensions
@@ -73,7 +76,7 @@ export function IPadMockup({
             alt={screenshotAlt}
             width={PREVIEW_WIDTH}
             height={previewHeight}
-            sizes={IMAGE_SIZES}
+            sizes={sizes}
             loading={loading}
             style={
               {
@@ -97,7 +100,7 @@ export function IPadMockup({
         // The frame PNG's own pixel size, matching the wrapper's aspect ratio.
         width={1277}
         height={923}
-        sizes={IMAGE_SIZES}
+        sizes={sizes}
         loading={loading}
         className="pointer-events-none absolute inset-0 h-full w-full select-none"
       />

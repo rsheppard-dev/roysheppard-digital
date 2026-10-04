@@ -1,16 +1,33 @@
+import { Fragment } from "react";
 import Link from "next/link";
 
 const SITE_URL = "https://www.roysheppard.digital";
 
-/** Visible breadcrumb trail plus matching BreadcrumbList structured data (mirrors what's on screen). */
-export function Breadcrumbs({ label, path }: { label: string; path: string }) {
+type Crumb = { label: string; path: string };
+
+/**
+ * Visible breadcrumb trail plus matching BreadcrumbList structured data (mirrors what's on screen).
+ * `parents` are the pages between Home and this one, e.g. Work for a case study.
+ */
+export function Breadcrumbs({
+  label,
+  path,
+  parents = [],
+}: {
+  label: string;
+  path: string;
+  parents?: Crumb[];
+}) {
+  const trail: Crumb[] = [{ label: "Home", path: "/" }, ...parents, { label, path }];
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-      { "@type": "ListItem", position: 2, name: label, item: `${SITE_URL}${path}` },
-    ],
+    itemListElement: trail.map((crumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: crumb.label,
+      item: `${SITE_URL}${crumb.path}`,
+    })),
   };
 
   return (
@@ -20,12 +37,16 @@ export function Breadcrumbs({ label, path }: { label: string; path: string }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
       <ol className="flex items-center gap-2 font-mono text-xs text-muted">
-        <li>
-          <Link href="/" className="tap-area transition-colors hover:text-accent-text">
-            Home
-          </Link>
-        </li>
-        <li aria-hidden="true">/</li>
+        {trail.slice(0, -1).map((crumb) => (
+          <Fragment key={crumb.path}>
+            <li>
+              <Link href={crumb.path} className="tap-area transition-colors hover:text-accent-text">
+                {crumb.label}
+              </Link>
+            </li>
+            <li aria-hidden="true">/</li>
+          </Fragment>
+        ))}
         <li aria-current="page" className="text-muted-strong">
           {label}
         </li>

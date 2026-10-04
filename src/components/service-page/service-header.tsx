@@ -31,7 +31,7 @@ export function ServiceHeader({
           <TextLink variant="button" href="/contact">
             Start a project <span aria-hidden="true">→</span>
           </TextLink>
-          <TextLink variant="underline" href="/#work">
+          <TextLink variant="underline" href="/work">
             See my work
           </TextLink>
         </div>
