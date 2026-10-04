@@ -1,41 +1,8 @@
+import Image from "next/image";
+
 type Step = { title: string; description: string };
 
-/** A paper sheet drawn as an outline with placeholder lines, so the deliverable is visible without inventing any findings. */
-function ReviewSheet() {
-  const lines = [
-    ["w-[86%]", "w-[52%]"],
-    ["w-[78%]", "w-[60%]"],
-    ["w-[82%]", "w-[46%]"],
-  ];
-  return (
-    <div
-      aria-hidden="true"
-      className="mt-9 w-full max-w-90 -rotate-[1.5deg] rounded-[14px] border-2 border-ink bg-paper px-6 pb-7.5 pt-6 drop-shadow-[0_18px_20px_rgba(23,23,26,0.10)]"
-    >
-      <div className="font-hand text-[32px] font-semibold leading-none text-accent-text">Your review</div>
-      <div className="my-4.5 h-px bg-border-tan" />
-      <div className="flex flex-col gap-2.25">
-        <div className="h-2 w-[92%] rounded-full bg-border" />
-        <div className="h-2 w-[74%] rounded-full bg-border" />
-      </div>
-      <div className="mt-6.5 flex flex-col gap-4.5">
-        {lines.map(([first, second], index) => (
-          <div key={index} className="flex items-center gap-3.5">
-            <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-accent font-mono text-xs font-medium">
-              {index + 1}
-            </span>
-            <div className="flex flex-1 flex-col gap-2">
-              <div className={`h-2 rounded-full bg-border-tan ${first}`} />
-              <div className={`h-2 rounded-full bg-border ${second}`} />
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/** Three connected steps beside a drawn "Your review" sheet. The last step's circle is filled: it is the deliverable. */
+/** Three connected steps beside a drawing of the finished notes. The last step's circle is filled: it is the deliverable. */
 export function HowItWorks({ steps }: { steps: Step[] }) {
   return (
     <div className="flex flex-col gap-16 px-6 py-16 sm:px-10 lg:flex-row lg:items-start lg:gap-26 lg:px-35 lg:py-26">
@@ -44,7 +11,14 @@ export function HowItWorks({ steps }: { steps: Step[] }) {
         <p className="max-w-95 text-[17px] leading-relaxed text-muted-strong">
           A few minutes from you. The rest is on me.
         </p>
-        <ReviewSheet />
+        <Image
+          src="/images/free-review-desk.webp"
+          alt="An open notebook with three ticked notes, a pencil, a magnifying glass, a mug and a plant"
+          width={1168}
+          height={880}
+          sizes="(min-width: 1024px) 480px, 92vw"
+          className="mt-7 h-auto w-full max-w-120"
+        />
       </div>
 
       <ol className="flex max-w-160 flex-col lg:flex-[1.3] lg:pt-2">
