@@ -8,7 +8,7 @@ import { Eyebrow } from "@/components/ui/eyebrow";
  */
 export function ReviewPromo() {
   return (
-    <div id="free-review" className="border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:px-35 lg:py-22">
+    <div id="free-review" className="bg-tan px-6 py-14 sm:px-10 lg:px-35 lg:py-22">
       <div className="flex flex-col gap-10 rounded-card border border-border-tan bg-paper p-6 shadow-[0_12px_32px_rgba(23,23,26,0.07)] sm:p-10 lg:flex-row lg:items-center lg:gap-14 lg:p-12">
         <div className="flex flex-col gap-5 lg:flex-1">
           <Eyebrow>Free website review</Eyebrow>

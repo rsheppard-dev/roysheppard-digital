@@ -15,7 +15,7 @@ export async function Faq() {
   return (
     <div
       id="faq"
-      className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25"
+      className="flex flex-col gap-8 bg-cream px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25"
     >
       <FaqJsonLd faqs={faqs} />
       <Eyebrow>FAQ</Eyebrow>
