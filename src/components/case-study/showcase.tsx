@@ -56,7 +56,7 @@ function Caption({ children }: { children?: string | null }) {
   return <figcaption className="mt-4 font-mono text-xs text-muted lg:mt-5">{children}</figcaption>;
 }
 
-function ShowcaseBlock({ block, address, flip }: { block: Block; address?: string; flip: boolean }) {
+function ShowcaseBlock({ block, flip }: { block: Block; flip: boolean }) {
   switch (block._type) {
     case "showcaseBrowser": {
       const source = toSource(block.image, 2400);
@@ -68,7 +68,6 @@ function ShowcaseBlock({ block, address, flip }: { block: Block; address?: strin
             screenshotSrc={source.src}
             screenshotAlt={source.alt}
             screenshotDimensions={source.dimensions}
-            address={address}
             sizes={FULL_SIZES}
           />
           <Caption>{block.caption}</Caption>
@@ -140,7 +139,7 @@ function ShowcaseBlock({ block, address, flip }: { block: Block; address?: strin
 }
 
 /** The screenshots, laid out as a sequence of varied, full-width "spreads" rather than a uniform grid. */
-export function Showcase({ blocks, address }: { blocks: Block[]; address?: string }) {
+export function Showcase({ blocks }: { blocks: Block[] }) {
   if (blocks.length === 0) return null;
   let detailCount = 0;
 
@@ -153,7 +152,7 @@ export function Showcase({ blocks, address }: { blocks: Block[]; address?: strin
       <div className="flex flex-col gap-16 lg:gap-28">
         {blocks.map((block) => {
           const flip = block._type === "showcaseDetail" && detailCount++ % 2 === 1;
-          return <ShowcaseBlock key={block._key} block={block} address={address} flip={flip} />;
+          return <ShowcaseBlock key={block._key} block={block} flip={flip} />;
         })}
       </div>
     </div>

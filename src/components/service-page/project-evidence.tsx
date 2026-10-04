@@ -54,7 +54,6 @@ export async function ProjectEvidence({
       screenshotSrc={screenshotSrc}
       screenshotAlt={`${name} website screenshot`}
       screenshotDimensions={screenshotDimensions}
-      address={new URL(url).hostname.replace(/^www\./, "")}
     />
   );
 

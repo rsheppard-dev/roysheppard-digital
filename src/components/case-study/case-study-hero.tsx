@@ -25,7 +25,6 @@ export function CaseStudyHero({
   screenshotDimensions?: { width: number; height: number };
 }) {
   const shownFacts = facts.filter((fact) => fact.value);
-  const hostname = url ? new URL(url).hostname.replace(/^www\./, "") : undefined;
 
   return (
     <>
@@ -71,7 +70,6 @@ export function CaseStudyHero({
           screenshotSrc={screenshotSrc}
           screenshotAlt={`${name} website homepage`}
           screenshotDimensions={screenshotDimensions}
-          address={hostname}
           sizes="(min-width: 1024px) calc(100vw - 280px), 92vw"
         />
       </div>

@@ -14,7 +14,7 @@ function getRevealPercent(dimensions?: { width: number; height: number } | null)
 }
 
 /**
- * A simple browser window (traffic-light dots, address bar) around a website screenshot.
+ * A simple browser window (traffic-light dots, no address bar) around a website screenshot.
  * `clean` is the paper-card frame; `illustrated` draws it as ink line art to match the
  * homepage's hand-drawn iPad. `fit="natural"` shows the whole screenshot at its own
  * aspect ratio instead of a 16:10 viewport that pans on hover.
@@ -23,7 +23,6 @@ export function BrowserMockup({
   screenshotSrc,
   screenshotAlt,
   screenshotDimensions,
-  address,
   sizes = "(min-width: 1024px) 560px, 90vw",
   className = "",
   variant = "clean",
@@ -35,8 +34,6 @@ export function BrowserMockup({
   screenshotAlt: string;
   /** Natural pixel dimensions of the screenshot, used to compute the hover pan distance. */
   screenshotDimensions?: { width: number; height: number } | null;
-  /** Text shown in the address bar, e.g. the site's hostname. */
-  address?: string;
   sizes?: string;
   className?: string;
   variant?: "clean" | "illustrated";
@@ -64,20 +61,12 @@ export function BrowserMockup({
           <span className="size-2.5 rounded-full border-[1.5px] border-ink lg:size-3" aria-hidden="true" />
           <span className="size-2.5 rounded-full border-[1.5px] border-ink lg:size-3" aria-hidden="true" />
           <span className="size-2.5 rounded-full border-[1.5px] border-ink lg:size-3" aria-hidden="true" />
-          {address && (
-            <span className="mx-auto max-w-[60%] truncate rounded-pill border-[1.5px] border-ink px-4 py-0.5 font-mono text-[11px] text-ink lg:px-6 lg:text-xs">
-              {address}
-            </span>
-          )}
         </div>
       ) : (
         <div className="flex h-10 shrink-0 items-center gap-2 border-b border-border-tan bg-paper px-4">
           <span className="size-2.5 rounded-full bg-border-tan" aria-hidden="true" />
           <span className="size-2.5 rounded-full bg-border-tan" aria-hidden="true" />
           <span className="size-2.5 rounded-full bg-border-tan" aria-hidden="true" />
-          {address && (
-            <span className="ml-3 truncate font-mono text-[11px] text-muted">{address}</span>
-          )}
         </div>
       )}
       <div

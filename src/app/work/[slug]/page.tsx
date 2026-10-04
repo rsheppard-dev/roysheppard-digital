@@ -68,7 +68,6 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
     next,
   } = caseStudy;
 
-  const address = url ? new URL(url).hostname.replace(/^www\./, "") : undefined;
   const techNames = (technologies ?? []).flatMap((item) => (item.name ? [item.name] : []));
 
   return (
@@ -104,7 +103,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
           { title: "The solution", text: caseStudy.solution, lead: true },
         ]}
       />
-      <Showcase blocks={caseStudy.showcase ?? []} address={address} />
+      <Showcase blocks={caseStudy.showcase ?? []} />
       <Features items={caseStudy.features ?? []} />
       <TechnologyList items={technologies ?? []} />
       <Outcome items={caseStudy.results ?? []} />
