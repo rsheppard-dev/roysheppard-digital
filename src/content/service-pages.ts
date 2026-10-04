@@ -23,6 +23,8 @@ type CaseStudy = {
 };
 
 export const webDesign = {
+	/** Last time this page's copy was edited in code. Update when you change it: the sitemap reports it. */
+	lastUpdated: '2026-09-30',
 	title: 'Web Design in Watford | Website Designer | Roy Sheppard',
 	description:
 		'Freelance web design in Watford from Roy Sheppard: sites that look like your business, work properly on mobile, and give visitors a clear next step.',
@@ -107,6 +109,8 @@ export const webDesign = {
 };
 
 export const webDevelopment = {
+	/** Last time this page's copy was edited in code. Update when you change it: the sitemap reports it. */
+	lastUpdated: '2026-09-30',
 	title: 'Web Developer in Watford | Web Development | Roy Sheppard',
 	description:
 		'Freelance web development in Watford from Roy Sheppard: hand-coded sites built around what your project needs, with content you can manage yourself.',
@@ -191,6 +195,8 @@ export const webDevelopment = {
 };
 
 export const ecommerce = {
+	/** Last time this page's copy was edited in code. Update when you change it: the sitemap reports it. */
+	lastUpdated: '2026-10-02',
 	title: 'E-Commerce Web Development in Watford | Roy Sheppard',
 	description:
 		'Freelance e-commerce development from Roy Sheppard, based in Watford: online stores built around your products, on Shopify or a custom storefront.',
