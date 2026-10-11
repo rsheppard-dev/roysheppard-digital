@@ -1,4 +1,5 @@
 import { Nav } from "@/components/sections/nav";
+import { StickyHeader } from "@/components/sections/sticky-header";
 import { Hero } from "@/components/sections/hero";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Services } from "@/components/sections/services";
@@ -13,9 +14,9 @@ import { Footer } from "@/components/sections/footer";
 export default function Home() {
   return (
     <>
-      <div className="sticky top-0 z-50 bg-cream/95 backdrop-blur-sm">
+      <StickyHeader>
         <Nav />
-      </div>
+      </StickyHeader>
       <main>
       <PageModifiedJsonLd path="/" source="home" />
       <Hero />

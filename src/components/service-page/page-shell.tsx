@@ -1,4 +1,5 @@
 import { Nav } from "@/components/sections/nav";
+import { StickyHeader } from "@/components/sections/sticky-header";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { Footer } from "@/components/sections/footer";
 
@@ -13,9 +14,9 @@ export function PageShell({
 }) {
   return (
     <>
-      <div className="sticky top-0 z-50 bg-cream/95 backdrop-blur-sm">
+      <StickyHeader>
         <Nav />
-      </div>
+      </StickyHeader>
       <main>
         {children}
         {cta !== false && <CtaBanner {...cta} />}

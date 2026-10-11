@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Nav } from "@/components/sections/nav";
+import { StickyHeader } from "@/components/sections/sticky-header";
 import { Footer } from "@/components/sections/footer";
 import { TextLink } from "@/components/ui/text-link";
 
@@ -13,9 +14,9 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <>
-      <div className="sticky top-0 z-50 bg-cream/95 backdrop-blur-sm">
+      <StickyHeader>
         <Nav />
-      </div>
+      </StickyHeader>
 
       <main className="flex flex-col items-center gap-10 px-6 py-16 sm:px-10 md:py-20 lg:flex-row lg:justify-between lg:gap-14 lg:px-35 lg:py-24">
         <div className="flex flex-1 flex-col gap-5 lg:max-w-115">

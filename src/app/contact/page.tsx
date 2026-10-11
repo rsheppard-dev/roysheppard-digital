@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { footer as fallbackFooter, cta as fallbackCta } from "@/content/site";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import { Nav } from "@/components/sections/nav";
+import { StickyHeader } from "@/components/sections/sticky-header";
 import { Footer } from "@/components/sections/footer";
 import { PageModifiedJsonLd } from "@/components/ui/page-modified-jsonld";
 import { CONTACT_UPDATED } from "@/lib/page-dates";
@@ -23,9 +24,9 @@ export default function ContactPage() {
 
   return (
     <>
-      <div className="sticky top-0 z-50 bg-cream/95 backdrop-blur-sm">
+      <StickyHeader>
         <Nav />
-      </div>
+      </StickyHeader>
 
       <main>
       <PageModifiedJsonLd path={PATH} name="Contact" source="shared" codeUpdated={CONTACT_UPDATED} />

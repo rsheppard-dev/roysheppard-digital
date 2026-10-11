@@ -52,8 +52,9 @@
   }
 }
 
+/* `clip`, not `hidden`: hidden makes <body> a scroll container, which breaks the sticky header. */
 html {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /*
@@ -98,7 +99,7 @@ html {
 body {
   background: var(--color-cream);
   color: var(--color-ink);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /*
