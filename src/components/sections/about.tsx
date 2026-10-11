@@ -30,7 +30,7 @@ export async function About() {
   return (
     <div
       id="about"
-      className="flex flex-col items-center gap-10 border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:flex-row lg:gap-16 lg:px-35 lg:py-25"
+      className="flex flex-col items-center gap-10 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:flex-row lg:gap-16 lg:px-35 lg:py-25"
     >
       <div className="flex flex-1 flex-col gap-5 lg:gap-6">
         <Eyebrow as="h2">{eyebrow}</Eyebrow>

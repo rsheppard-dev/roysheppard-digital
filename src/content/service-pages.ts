@@ -10,6 +10,7 @@
  */
 
 type FocusArea = { title: string; description: string };
+type Capability = { title: string; description: string; benefit: string };
 type Faq = { question: string; answer: string };
 type CaseStudy = {
 	eyebrow: string;
@@ -31,7 +32,7 @@ export const webDesign = {
 	eyebrow: 'Web Design',
 	heading: 'Web design in Watford that looks like your business, not a template',
 	intro:
-		"If your site could belong to any business in your industry, it isn't doing its job. I design every site from scratch around your business (how it looks, how people move through it, and what you want them to do next) rather than starting from a theme. I'm based in Watford and design for businesses there and further afield.",
+		"If your site could belong to any business in your industry, it isn't doing its job. I design every site around your business (how it looks, how people move through it, and what you want them to do next) rather than starting from a theme. I'm based in Watford and design for businesses there and further afield.",
 	focusAreas: [
 		{
 			title: 'Built around your brand',
@@ -110,19 +111,51 @@ export const webDesign = {
 
 export const webDevelopment = {
 	/** Last time this page's copy was edited in code. Update when you change it: the sitemap reports it. */
-	lastUpdated: '2026-09-30',
-	title: 'Web Developer in Watford | Web Development | Roy Sheppard',
+	lastUpdated: '2026-10-11',
+	title: 'Web Developer in Watford | Custom Web Development | Roy Sheppard',
 	description:
-		'Freelance web development in Watford from Roy Sheppard: hand-coded sites built around what your project needs, with content you can manage yourself.',
+		'Freelance web developer in Watford building custom websites: booking systems, customer accounts and bespoke functionality built around your business.',
 	eyebrow: 'Web Development',
-	heading: 'Web development in Watford that keeps working after launch',
+	heading: 'Web development in Watford for websites that do more than look good',
 	intro:
-		"A site that looks right isn't enough if it's slow, breaks on mobile, or you can't touch it without calling me every time. I hand-code every project, with no page-builder plugins stacked on top of each other, so what you get is faster, more reliable, and built around what your project actually needs to do. I'm based in Watford and take on development work there and further afield.",
+		"I build websites that take bookings, give customers their own accounts and take repetitive admin off your plate. Every project is custom-built around how your business actually works, so you get functionality that fits, not a template that almost does. I'm based in Watford and take on development work there and further afield.",
+	capabilities: [
+		{
+			title: 'Booking and appointment systems',
+			description:
+				'Customers choose a date and time on your site, and the booking lands in your diary with a confirmation sent automatically.',
+			benefit: 'Fewer calls and back-and-forth messages, and less chance of double bookings.',
+		},
+		{
+			title: 'Customer accounts and portals',
+			description:
+				'A private area where customers log in to see their bookings, orders, documents or account details.',
+			benefit: 'Customers get answers without having to ask, so you spend less time on status emails and calls.',
+		},
+		{
+			title: 'Quote calculators and tailored enquiry forms',
+			description:
+				'Forms that ask the right questions for your service, with a calculator that gives an instant estimate where it suits.',
+			benefit: 'You receive complete, useful enquiries, and visitors get an answer without waiting.',
+		},
+		{
+			title: 'Connections with your existing software',
+			description:
+				'Link the website to the tools you already use, such as a CRM, accounting software or an email service.',
+			benefit: 'Information is entered once, instead of being copied between systems by hand.',
+		},
+		{
+			title: 'Tools and workflows built around your business',
+			description:
+				'If a process eats up hours or lives in spreadsheets, it can often become a purpose-built tool, such as an internal dashboard or an approval workflow.',
+			benefit: 'Repetitive admin gets quicker and less error-prone, and your team works from one place.',
+		},
+	] satisfies Capability[],
 	focusAreas: [
 		{
-			title: 'Hand-built, not assembled',
+			title: 'Built around your requirements',
 			description:
-				'No stacks of page-builder plugins. Every site is coded properly, which makes it faster to load and easier to maintain over time.',
+				"I start with what your business needs the site to do, then build to meet those requirements, so you're not fitting your process around what a template allows.",
 		},
 		{
 			title: 'Content you can manage yourself',
@@ -135,9 +168,9 @@ export const webDevelopment = {
 				'Fast loading is a requirement of the build, not something patched in later, because it affects both visitors and search rankings.',
 		},
 		{
-			title: 'Built around what the project needs',
+			title: 'Looked after once it’s live',
 			description:
-				'Forms, bookings, or whatever else the site needs to do, built in properly around your requirements rather than forced into a fixed template.',
+				"I'm on hand after launch to keep everything running, so the features you've paid for keep working as your business changes.",
 		},
 	] satisfies FocusArea[],
 	caseStudy: {
@@ -155,37 +188,50 @@ export const webDevelopment = {
 		quoteName: 'Jack Kingsley',
 		quoteCompany: 'Kingsley Estates',
 	} satisfies CaseStudy,
+	processIntro:
+		"Start with a problem or an idea. You don't need a technical specification, and you don't need to know how it should be built.",
 	process: [
 		{
-			title: 'Requirements first',
+			title: 'Tell me the problem',
 			description:
-				'Once I understand what your project actually needs to do, I build around those requirements rather than forcing them into an off-the-shelf template.',
+				'We talk through how your business works and what you want the site to do, and I turn that into clear requirements.',
 		},
 		{
-			title: 'Built in stages',
-			description: "You'll see it come together in stages rather than all at once.",
+			title: 'Agree the approach',
+			description:
+				"I recommend how to build it, whether that's an existing service, custom development or a mix, so you know what you're getting before I start.",
 		},
 		{
-			title: 'Reviewed, launched, looked after',
+			title: 'Review it in stages',
+			description:
+				'You see it come together as it goes and can react to it, instead of waiting for one big reveal at the end.',
+		},
+		{
+			title: 'Launch and aftercare',
 			description:
 				"There's a proper review before it goes live, and I'm on hand afterwards to keep it running.",
 		},
 	] satisfies FocusArea[],
 	faqs: [
 		{
+			question: 'Can you build booking systems, customer accounts or other custom functionality?',
+			answer:
+				"Yes, that's a big part of what I do. Because each site is custom-built around your business rather than fitted into a template, I can build booking and appointment systems, customer accounts and portals, quote calculators, tailored enquiry forms and connections to software you already use. If you have a process that is repetitive or awkward, it's worth asking whether the website can handle it.",
+		},
+		{
+			question: 'Do I need to know exactly how my system should work?',
+			answer:
+				"No. Most people start with a problem, such as too many phone calls to arrange bookings, not a finished plan. We talk it through and I work out what's needed. Depending on your needs, the answer might be an existing service connected to your site, something custom-built, or a combination of the two. I'll explain the options and recommend what fits, rather than building custom where an existing service already does the job well.",
+		},
+		{
 			question: 'What do you build sites with?',
 			answer:
-				'Most sites are hand-coded rather than built on a page-builder, often paired with a headless CMS, the same approach behind this site. Exactly which setup depends on what your project needs to do, and I’ll recommend that once I understand it.',
+				'It depends on what your project needs to do. Many projects pair a custom-built site with a headless CMS, the same approach behind this site, so content is easy to edit. I’ll recommend the right setup once I understand what you need.',
 		},
 		{
 			question: 'Can I update the content myself once it’s live?',
 			answer:
 				"That's up to you. I can hand the site over with an editing setup so you make changes yourself, or you can send me updates and I'll make them. Plenty of clients do a mix of both.",
-		},
-		{
-			question: 'Can you add custom functionality, or is it a standard brochure site?',
-			answer:
-				'Because sites are hand-built rather than assembled from a template, I can add functionality specific to your project (forms, integrations, bespoke page layouts) rather than working within what a page-builder allows.',
 		},
 	] satisfies Faq[],
 	related: [
@@ -203,7 +249,7 @@ export const ecommerce = {
 	eyebrow: 'E-Commerce',
 	heading: 'Online stores built around what you sell, not a fixed platform',
 	intro:
-		"Whether you're launching a new shop or adding online sales to a site you already have, the right setup depends on what you sell and how, not a one-size-fits-all platform. Depending on your catalogue, that might mean building on Shopify or a fully custom build, and not every product business needs a checkout at all. For Product Zone, a Watford-based custom headwear supplier, I designed and built a bespoke B2B catalogue website from the ground up. I'm based in Watford and take on e-commerce projects there and further afield.",
+		"Whether you're launching a new shop or adding online sales to a site you already have, the right setup depends on what you sell and how, not a one-size-fits-all platform. Depending on your catalogue, that might mean building on Shopify or a fully custom build, and not every product business needs a checkout at all. For Product Zone, a Watford-based custom headwear supplier, I designed and built a bespoke B2B catalogue website around how the business sells. I'm based in Watford and take on e-commerce projects there and further afield.",
 	focusAreas: [
 		{
 			title: 'The right platform for your catalogue',

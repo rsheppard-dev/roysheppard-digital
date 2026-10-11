@@ -30,7 +30,7 @@ export default async function WorkIndexPage() {
           Client projects
         </h1>
         <p className="max-w-155 text-base leading-relaxed text-muted-strong lg:text-lg">
-          Each site here was designed and built from scratch for a real business. Open a case study to see what the business needed and how the site answers it.
+          Each site here was designed and built around a real business. Open a case study to see what the business needed and how the site answers it.
         </p>
       </div>
       <div className="border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:px-35 lg:py-25">

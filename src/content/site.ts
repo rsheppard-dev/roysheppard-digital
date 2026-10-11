@@ -28,11 +28,11 @@ export const services = [
 		number: '02',
 		title: 'Web Development',
 		description:
-			"Fast, clean-coded builds that work properly on every screen and don't fall over under real traffic.",
+			'Custom-built websites and functionality, tailored to how your business works and easy to look after once they are live.',
 		bullets: [
-			'Hand-built, no page-builder bloat',
-			'Fast load times',
-			'SEO fundamentals baked in',
+			'Bookings, accounts and bespoke tools',
+			'Content you can edit yourself',
+			'Support after launch',
 		],
 	},
 	{

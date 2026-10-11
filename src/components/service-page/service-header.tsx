@@ -21,7 +21,7 @@ export function ServiceHeader({
     <div className="flex flex-col gap-10 px-6 pb-12 pt-8 sm:px-10 lg:flex-row lg:items-center lg:gap-16 lg:px-35 lg:pb-20 lg:pt-10">
       <div className="flex flex-col gap-5 lg:flex-1 lg:gap-6">
         <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="max-w-190 text-4xl font-medium leading-[1.1] tracking-[-0.01em] sm:text-5xl lg:text-[56px] lg:leading-[1.08]">
+        <h1 className="max-w-190 text-balance text-4xl font-medium leading-[1.1] tracking-[-0.01em] sm:text-5xl lg:text-[56px] lg:leading-[1.08]">
           <HighlightedHeading text={heading} highlight={highlight} />
         </h1>
         <p className="max-w-155 text-base leading-relaxed text-muted-strong lg:text-lg">

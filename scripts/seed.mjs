@@ -102,8 +102,8 @@ async function main() {
       order: 2,
       title: "Development",
       description:
-        "Fast, clean-coded builds that work properly on every screen — and don't fall over under real traffic.",
-      bullets: ["Hand-built, no page-builder bloat", "Fast load times", "SEO fundamentals baked in"],
+        "Custom-built websites and functionality, tailored to how your business works and easy to look after once they are live.",
+      bullets: ["Bookings, accounts and bespoke tools", "Content you can edit yourself", "Support after launch"],
     },
     {
       _id: "service-3",
