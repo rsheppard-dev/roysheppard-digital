@@ -25,10 +25,10 @@ type CaseStudy = {
 
 export const webDesign = {
 	/** Last time this page's copy was edited in code. Update when you change it: the sitemap reports it. */
-	lastUpdated: '2026-09-30',
-	title: 'Web Design in Watford | Website Designer | Roy Sheppard',
+	lastUpdated: '2026-10-12',
+	title: 'Web Design Watford | Freelance Web Designer | Roy Sheppard',
 	description:
-		'Freelance web design in Watford from Roy Sheppard: sites that look like your business, work properly on mobile, and give visitors a clear next step.',
+		'Looking for a web designer in Watford? Custom, mobile-friendly websites built around your customers, by a local freelancer. Free review available.',
 	eyebrow: 'Web Design',
 	heading: 'Web design in Watford that looks like your business, not a template',
 	intro:
@@ -111,10 +111,10 @@ export const webDesign = {
 
 export const webDevelopment = {
 	/** Last time this page's copy was edited in code. Update when you change it: the sitemap reports it. */
-	lastUpdated: '2026-10-11',
-	title: 'Web Developer in Watford | Custom Web Development | Roy Sheppard',
+	lastUpdated: '2026-10-12',
+	title: 'Web Developer in Watford | Custom Websites | Roy Sheppard',
 	description:
-		'Freelance web developer in Watford building custom websites: booking systems, customer accounts and bespoke functionality built around your business.',
+		'Need more than a brochure site? Booking systems, customer logins and custom features, built by a Watford web developer around how you work.',
 	eyebrow: 'Web Development',
 	heading: 'Web development in Watford for websites that do more than look good',
 	intro:
@@ -242,10 +242,10 @@ export const webDevelopment = {
 
 export const ecommerce = {
 	/** Last time this page's copy was edited in code. Update when you change it: the sitemap reports it. */
-	lastUpdated: '2026-10-02',
-	title: 'E-Commerce Web Development in Watford | Roy Sheppard',
+	lastUpdated: '2026-10-12',
+	title: 'E-Commerce Websites in Watford | Online Shops | Roy Sheppard',
 	description:
-		'Freelance e-commerce development from Roy Sheppard, based in Watford: online stores built around your products, on Shopify or a custom storefront.',
+		'Online shops for Watford businesses, built around your products and easy to run. Clear product pages and a simple checkout. Shopify or custom.',
 	eyebrow: 'E-Commerce',
 	heading: 'Online stores built around what you sell, not a fixed platform',
 	intro:

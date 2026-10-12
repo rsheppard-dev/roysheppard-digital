@@ -30,7 +30,7 @@ export function LocalBusinessJsonLd({
     name: "Roy Sheppard Digital",
     url: SITE_URL,
     description:
-      "Freelance web design, full-stack development and e-commerce websites for businesses in Watford and across Hertfordshire.",
+      "Freelance web design, custom website development and e-commerce websites for businesses in Watford and across Hertfordshire.",
     telephone,
     email,
     founder: { "@id": `${SITE_URL}/#person` },

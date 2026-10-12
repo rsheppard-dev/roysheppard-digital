@@ -8,7 +8,7 @@ import { defineQuery } from "next-sanity";
 
 // The contact page's copy lives in code, so its date is maintained here.
 // (The free review page keeps its own date in content/free-review.ts.)
-export const CONTACT_UPDATED = "2026-10-02";
+export const CONTACT_UPDATED = "2026-10-12";
 
 const latestOf = (types: string[]) =>
   `*[_type in ${JSON.stringify(types)}] | order(_updatedAt desc)[0]._updatedAt`;

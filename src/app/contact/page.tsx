@@ -12,9 +12,9 @@ import { ContactForm } from "@/components/contact/contact-form";
 const PATH = "/contact";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Contact | Roy Sheppard",
+  title: "Contact a Watford Web Designer | Roy Sheppard",
   description:
-    "Get in touch with Roy Sheppard about a web design or development project in Watford or beyond. Send a few details and get a reply within a day.",
+    "Tell Roy about your website project. Share a few details and get a reply within a day. Based in Watford, working with businesses everywhere.",
   path: PATH,
 });
 

@@ -5,11 +5,11 @@
  */
 
 export const freeReview = {
-	title: 'Free Website Review | Roy Sheppard',
+	title: 'Free Website Review for Your Business | Roy Sheppard',
 	description:
-		'Get a free, personal review of your website from Roy Sheppard: a short written review with three clear improvements you can act on.',
+		'Not sure why your website isn\'t getting enquiries? Get a free personal review with three clear things you can fix.',
 	/** Last time this page's copy was edited in code. Update when you change it: the sitemap reports it. */
-	lastUpdated: '2026-10-04',
+	lastUpdated: '2026-10-12',
 	areas: [
 		{
 			title: 'First impressions',

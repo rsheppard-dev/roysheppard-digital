@@ -35,9 +35,9 @@ const caveat = Caveat({
 });
 
 const SITE_URL = "https://www.roysheppard.digital";
-const SITE_TITLE = "Web Designer & Web Developer in Watford | Roy Sheppard";
+const SITE_TITLE = "Web Designer in Watford | Custom Websites | Roy Sheppard";
 const SITE_DESCRIPTION =
-  "Freelance web designer and developer in Watford. Custom websites for businesses and organisations. Discuss your project with Roy Sheppard.";
+  "Freelance web designer in Watford. Custom websites and online shops that look the part and bring in enquiries. Free website review available.";
 const JOB_TITLE = "Freelance Web Designer & Developer";
 const LOCALITY = "Watford";
 const COUNTRY = "GB";

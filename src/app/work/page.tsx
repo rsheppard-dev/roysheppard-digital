@@ -11,9 +11,9 @@ import { workIndexQuery } from "@/sanity/lib/queries";
 const PATH = "/work";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Client Projects | Roy Sheppard",
+  title: "Website Case Studies for Watford Businesses | Roy Sheppard",
   description:
-    "Websites Roy Sheppard has designed and built for businesses in Watford and beyond, with case studies on how each one came together.",
+    "See real websites built for Watford businesses, from estate agents to plumbers. Read how each project came together.",
   path: PATH,
 });
 
