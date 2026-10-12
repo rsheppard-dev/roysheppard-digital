@@ -38,8 +38,9 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
   if (!caseStudy?.name) return {};
 
   return buildPageMetadata({
-    title: `${caseStudy.name} case study | Roy Sheppard`,
+    title: `${caseStudy.name} Website Case Study | Roy Sheppard`,
     description:
+      caseStudy.metaDescription ??
       caseStudy.tagline ??
       `How Roy Sheppard designed and built the ${caseStudy.name} website.`,
     path: `/work/${slug}`,

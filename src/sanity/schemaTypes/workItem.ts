@@ -93,12 +93,22 @@ export const workItem = defineType({
       type: "text",
       rows: 2,
       description:
-        "One or two sentences under the project name, and the page's search/social description. Lead with what the project did for the business.",
+        "One or two sentences under the project name. Lead with what the project did for the business. Also the search description if no Search description is set below.",
       group: "overview",
       validation: (Rule) =>
         Rule.max(200).custom((value, context) =>
           context.document?.slug && !value ? "Needed for the case study page" : true,
         ),
+    }),
+    defineField({
+      name: "metaDescription",
+      title: "Search description",
+      type: "text",
+      rows: 2,
+      description:
+        "Optional. What shows under the page title in Google, aim for 120 to 155 characters. Say what the business is and where, e.g. \"How Roy Sheppard built a new website for a Watford estate agency, with property search and valuations in one place.\" Falls back to the tagline if empty.",
+      group: "overview",
+      validation: (Rule) => Rule.max(160).warning("Google cuts descriptions off at about 155 characters."),
     }),
     defineField({
       name: "industry",

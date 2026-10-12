@@ -53,6 +53,7 @@ export const caseStudyQuery = defineQuery(
     name,
     url,
     tagline,
+    metaDescription,
     industry,
     projectType,
     services,
