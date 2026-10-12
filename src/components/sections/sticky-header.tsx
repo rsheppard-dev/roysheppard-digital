@@ -43,9 +43,24 @@ export function StickyHeader({ children }: { children: React.ReactNode }) {
       const y = Math.max(0, window.scrollY);
       const delta = y - lastY;
 
+      const menuOpen = !!el.querySelector('[aria-expanded="true"]');
+
       if (el.dataset.mode === "static") {
-        // Fully scrolled out of view: park it above the viewport, ready to return.
-        if (y > el.offsetHeight) setMode("fixed", true);
+        if (menuOpen && y > 0) {
+          // Menu open: pin the header where it currently sits, then ease it up to the
+          // top, so the menu never vanishes or jumps while scrolling.
+          el.style.transition = "none";
+          wrap.style.height = `${el.offsetHeight}px`;
+          el.dataset.mode = "fixed";
+          el.dataset.hidden = "false";
+          el.style.translate = `0 ${-y}px`;
+          void el.offsetHeight;
+          el.style.transition = "";
+          el.style.translate = "";
+        } else if (y > el.offsetHeight) {
+          // Fully scrolled out of view: park it above the viewport, ready to return.
+          setMode("fixed", true);
+        }
         lastY = y;
         return;
       }
@@ -55,7 +70,7 @@ export function StickyHeader({ children }: { children: React.ReactNode }) {
         lastY = y;
         return;
       }
-      if (el.querySelector('[aria-expanded="true"]')) {
+      if (menuOpen) {
         el.dataset.hidden = "false";
         lastY = y;
         return;

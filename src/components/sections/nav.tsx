@@ -33,7 +33,7 @@ export function Nav() {
 
   return (
     <div
-      className="border-b border-border"
+      className="relative border-b border-border"
       onKeyDown={(event) => {
         if (event.key === "Escape") setOpen(false);
       }}
@@ -74,9 +74,9 @@ export function Nav() {
         </button>
       </div>
 
-      {/* Mobile panel */}
+      {/* Mobile panel: overlays the page below the header rather than pushing it down */}
       {open && (
-        <div className="flex flex-col gap-1 border-t border-border px-6 pb-6 pt-2 sm:px-10 lg:hidden">
+        <div className="absolute inset-x-0 top-full z-50 flex flex-col gap-1 border-b border-t border-border bg-cream px-6 pb-6 pt-2 shadow-[0_14px_24px_-14px_rgb(26_23_20/0.2)] sm:px-10 lg:hidden">
           {nav.map((item) => (
             <Link
               key={item.href}
