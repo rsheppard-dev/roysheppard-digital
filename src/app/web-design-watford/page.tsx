@@ -15,6 +15,7 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { Accordion } from "@/components/ui/accordion";
 import { FaqJsonLd } from "@/components/ui/faq-jsonld";
 import { TextLink } from "@/components/ui/text-link";
+import { ReviewPromo } from "@/components/sections/review-promo";
 
 const SLUG = "web-design-watford";
 const PATH = `/${SLUG}`;
@@ -61,14 +62,16 @@ export default async function WebDesignPage() {
         </p>
       </div>
 
-      <div className="flex flex-col gap-8 border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
+      <ReviewPromo />
+
+      <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
         <FaqJsonLd faqs={webDesign.faqs} />
         <Eyebrow>FAQ</Eyebrow>
         <h2 className="text-3xl font-semibold lg:text-[42px]">Web design questions</h2>
         <Accordion items={webDesign.faqs} />
       </div>
 
-      <RelatedLinks items={webDesign.related} />
+      <RelatedLinks items={webDesign.related} tone="cream" />
     </PageShell>
   );
 }

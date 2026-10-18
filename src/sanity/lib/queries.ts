@@ -55,7 +55,7 @@ export const workIndexQuery = defineQuery(
 );
 
 export const workScreensQuery = defineQuery(
-  `*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, "slug": slug.current, "screen": showcase[_type == "showcaseMobile"][0].images[0]{ alt, asset } }`,
+  `*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, "slug": slug.current, "screens": showcase[_type == "showcaseMobile"][0].images[]{ alt, asset } }`,
 );
 
 export const projectScreensQuery = defineQuery(

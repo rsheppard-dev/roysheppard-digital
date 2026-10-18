@@ -634,14 +634,14 @@ export type WorkIndexQueryResult = Array<{
 
 // Source: src/sanity/lib/queries.ts
 // Variable: workScreensQuery
-// Query: *[_type == "workItem" && defined(slug.current)] | order(order asc){ name, "slug": slug.current, "screen": showcase[_type == "showcaseMobile"][0].images[0]{ alt, asset } }
+// Query: *[_type == "workItem" && defined(slug.current)] | order(order asc){ name, "slug": slug.current, "screens": showcase[_type == "showcaseMobile"][0].images[]{ alt, asset } }
 export type WorkScreensQueryResult = Array<{
   name: string | null;
   slug: string | null;
-  screen: {
+  screens: Array<{
     alt: string | null;
     asset: SanityImageAssetReference | null;
-  } | null;
+  }> | null;
 }>;
 
 // Source: src/sanity/lib/queries.ts
@@ -883,7 +883,7 @@ declare module "@sanity/client" {
     '*[_type == "servicePage" && defined(slug.current)]{ "slug": slug.current }': ServicePageSlugsQueryResult;
     '*[_type == "workItem"] | order(order asc){ name, meta, image, url, "slug": slug.current, "imageDimensions": image.asset->metadata.dimensions{width, height} }': WorkItemsQueryResult;
     '*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, tagline, industry, projectType, url, image, "slug": slug.current, "imageDimensions": image.asset->metadata.dimensions{width, height} }': WorkIndexQueryResult;
-    '*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, "slug": slug.current, "screen": showcase[_type == "showcaseMobile"][0].images[0]{ alt, asset } }': WorkScreensQueryResult;
+    '*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, "slug": slug.current, "screens": showcase[_type == "showcaseMobile"][0].images[]{ alt, asset } }': WorkScreensQueryResult;
     '*[_type == "workItem" && slug.current == $slug][0]{ name, "slug": slug.current, "screens": showcase[_type == "showcaseMobile"][0].images[]{ alt, asset } }': ProjectScreensQueryResult;
     '*[_type == "workItem" && defined(slug.current)]{ "slug": slug.current, _updatedAt }': CaseStudySlugsQueryResult;
     '*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, meta, tagline, "slug": slug.current }': LlmsCaseStudiesQueryResult;

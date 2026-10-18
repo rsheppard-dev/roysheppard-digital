@@ -13,7 +13,10 @@ const FAN = [
 
 type Screen = { key: string; href: string; name: string; alt: string | null; asset: Parameters<typeof urlFor>[0] };
 
-async function getScreens(slug?: string): Promise<Screen[]> {
+/** Picks which project, and which of its mobile screens, takes the front (middle) phone. */
+type Front = { slug: string; screen: number };
+
+async function getScreens(slug?: string, front?: Front): Promise<Screen[]> {
   if (slug) {
     // One project's mobile screens, all linking to its case study.
     const { data } = await sanityFetch({ query: projectScreensQuery, params: { slug } });
@@ -25,22 +28,31 @@ async function getScreens(slug?: string): Promise<Screen[]> {
     );
   }
 
-  // One homepage from each project, so different businesses sit side by side.
+  // One screen from each project (its homepage unless `front` picks another), so different businesses sit side by side.
   const { data } = await sanityFetch({ query: workScreensQuery });
-  return (data ?? []).flatMap((item) =>
-    item.slug && item.screen?.asset
-      ? [{ key: item.slug, href: `/work/${item.slug}`, name: item.name ?? "", alt: item.screen.alt, asset: item.screen.asset }]
-      : [],
-  );
+  const screens = (data ?? []).flatMap((item) => {
+    const index = front && front.slug === item.slug ? front.screen : 0;
+    const screen = item.screens?.[index];
+    return item.slug && screen?.asset
+      ? [{ key: item.slug, href: `/work/${item.slug}`, name: item.name ?? "", alt: screen.alt, asset: screen.asset }]
+      : [];
+  });
+
+  // The fan's middle phone stands forward, so slot the featured project there.
+  const featured = screens.find((screen) => screen.key === front?.slug);
+  if (!featured) return screens;
+  const others = screens.filter((screen) => screen !== featured);
+  return [others[0], featured, ...others.slice(1)].filter(Boolean);
 }
 
 /**
  * Real client mobile screens fanned out beside a service page intro, pulled from
  * the case studies' mobile showcase in Sanity and linking through to them. With a
- * `slug`, shows that one project's screens; without, one homepage per project.
+ * `slug`, shows that one project's screens; without, one homepage per project, with
+ * `front` bringing a chosen project and screen to the middle.
  */
-export async function WorkScreens({ slug }: { slug?: string }) {
-  const screens = (await getScreens(slug)).slice(0, 3);
+export async function WorkScreens({ slug, front }: { slug?: string; front?: Front }) {
+  const screens = (await getScreens(slug, front)).slice(0, 3);
   if (screens.length === 0) return null;
 
   return (

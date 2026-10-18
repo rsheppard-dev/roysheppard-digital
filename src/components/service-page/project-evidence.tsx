@@ -112,6 +112,13 @@ export async function ProjectEvidence({
           </figure>
         </div>
       </div>
+
+      <div className="mt-12 flex flex-col gap-5 border-t border-border-tan pt-8 sm:flex-row sm:items-center sm:justify-between lg:mt-16">
+        <p className="text-xl font-semibold lg:text-2xl">Want to see more of what I&apos;ve built?</p>
+        <TextLink variant="buttonDark" href="/work" className="w-fit">
+          See more of my work <span aria-hidden="true">→</span>
+        </TextLink>
+      </div>
     </div>
   );
 }

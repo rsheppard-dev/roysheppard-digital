@@ -46,7 +46,7 @@ export default async function WebDevelopmentPage() {
         eyebrow={webDevelopment.eyebrow}
         heading={webDevelopment.heading}
         intro={webDevelopment.intro}
-        aside={<WorkScreens slug="kingsley-estates" />}
+        aside={<WorkScreens front={{ slug: "kingsley-estates", screen: 1 }} />}
       />
 
       <div className="flex flex-col gap-8 border-t border-border-tan px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
