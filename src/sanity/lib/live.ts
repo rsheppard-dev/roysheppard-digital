@@ -1,17 +1,31 @@
-// Querying with "sanityFetch" will keep content automatically updated
-// Before using it, import and render "<SanityLive />" in your layout, see
-// https://github.com/sanity-io/next-sanity#live-content-api for more information.
-import { defineLive } from "next-sanity/live";
-import { client } from './client'
+import type { QueryParams } from "next-sanity";
 
-// `browserToken` deliberately disabled — it's shared with the browser to power
-// live-previewing drafts outside the Presentation Tool, which this site
-// doesn't use (no draftMode/VisualEditing anywhere). `serverToken` alone
-// still powers the live revalidation `sanityFetch`/`SanityLive` are for, and
-// is never sent to the browser. `false` (rather than omitting it) also
-// silences next-sanity's "No `browserToken` provided" warning.
-export const { sanityFetch, SanityLive } = defineLive({
-  client,
-  serverToken: process.env.SANITY_API_READ_TOKEN,
-  browserToken: false,
+import { client } from "./client";
+
+/**
+ * How long a page keeps serving Sanity content before it is rebuilt in the
+ * background. Edits published in Studio reach the live site within about this
+ * long, with no webhook needed. The sitemap and llms.txt have their own timers.
+ */
+const REVALIDATE_SECONDS = 60;
+
+// Published content only. The token is for reading; it is never sent to the browser.
+const serverClient = client.withConfig({
+  token: process.env.SANITY_API_READ_TOKEN,
+  useCdn: false,
 });
+
+export async function sanityFetch<const QueryString extends string>({
+  query,
+  params = {},
+}: {
+  query: QueryString;
+  params?: QueryParams;
+  /** Accepted so existing calls keep working; there is no visual-editing overlay to switch off. */
+  stega?: boolean;
+}) {
+  const data = await serverClient.fetch(query, params, {
+    next: { revalidate: REVALIDATE_SECONDS },
+  });
+  return { data };
+}

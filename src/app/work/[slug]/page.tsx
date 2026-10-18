@@ -21,8 +21,6 @@ import { urlFor } from "@/sanity/lib/image";
 export async function generateStaticParams() {
   const { data } = await sanityFetch({
     query: caseStudySlugsQuery,
-    perspective: "published",
-    stega: false,
   });
   return (data ?? []).flatMap((item) => (item.slug ? [{ slug: item.slug }] : []));
 }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, IBM_Plex_Mono, Caveat } from "next/font/google";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { footer as fallbackFooter } from "@/content/site";
-import { SanityLive, sanityFetch } from "@/sanity/lib/live";
+import { sanityFetch } from "@/sanity/lib/live";
 import { footerQuery, siteSettingsQuery } from "@/sanity/lib/queries";
 import { ConsentDefaultScript } from "@/components/consent/consent-default-script";
 import { ConsentBanner } from "@/components/consent/consent-banner";
@@ -141,7 +141,6 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         </noscript>
         {children}
         <ConsentBanner />
-        <SanityLive />
       </body>
     </html>
   );
