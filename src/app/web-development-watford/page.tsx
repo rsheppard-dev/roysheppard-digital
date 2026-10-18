@@ -15,6 +15,7 @@ import { ServiceJsonLd } from "@/components/service-page/service-jsonld";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Accordion } from "@/components/ui/accordion";
 import { FaqJsonLd } from "@/components/ui/faq-jsonld";
+import { ReviewPromo } from "@/components/sections/review-promo";
 
 const SLUG = "web-development-watford";
 const PATH = `/${SLUG}`;
@@ -53,23 +54,25 @@ export default async function WebDevelopmentPage() {
         <CapabilityList items={webDevelopment.capabilities} />
       </div>
 
-      <div className="flex flex-col gap-8 border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
-        <h2 className="text-3xl font-semibold lg:text-[42px]">What the build includes</h2>
-        <FocusCards tone="cream" items={webDevelopment.focusAreas} />
-      </div>
+      <ProjectEvidence {...webDevelopment.caseStudy} tone="cream" />
 
-      <ProjectEvidence {...webDevelopment.caseStudy} tone="tan" />
+      <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
+        <h2 className="text-3xl font-semibold lg:text-[42px]">What the build includes</h2>
+        <FocusCards tone="tan" items={webDevelopment.focusAreas} />
+      </div>
 
       <ProcessSection tone="cream" intro={webDevelopment.processIntro} steps={webDevelopment.process} />
 
-      <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
+      <ReviewPromo tone="tan" />
+
+      <div className="flex flex-col gap-8 border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
         <FaqJsonLd faqs={webDevelopment.faqs} />
         <Eyebrow>FAQ</Eyebrow>
         <h2 className="text-3xl font-semibold lg:text-[42px]">Web development questions</h2>
         <Accordion items={webDevelopment.faqs} />
       </div>
 
-      <RelatedLinks items={webDevelopment.related} tone="cream" />
+      <RelatedLinks items={webDevelopment.related} tone="tan" />
     </PageShell>
   );
 }
