@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { TextLink } from "@/components/ui/text-link";
-import { NumberedList } from "@/components/service-page/numbered-list";
+import { FeatureList } from "@/components/service-page/feature-list";
 import { Signature } from "@/components/ui/signature";
 import { Stars } from "@/components/ui/stars";
 
@@ -16,7 +16,7 @@ export function Features({ items }: { items: Feature[] }) {
   return (
     <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
       <h2 className="text-3xl font-semibold lg:text-[42px]">Key features</h2>
-      <NumberedList
+      <FeatureList
         items={shown.map((item) => ({ title: item.title!, description: item.description ?? "" }))}
       />
     </div>

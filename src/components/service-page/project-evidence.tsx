@@ -37,7 +37,8 @@ export async function ProjectEvidence({
   quote,
   quoteName,
   quoteCompany,
-}: ProjectEvidenceProps) {
+  tone = "cream",
+}: ProjectEvidenceProps & { tone?: "tan" | "cream" }) {
   const { data } = await sanityFetch({ query: workItemsQuery });
   const workItem = data?.find((item) => normaliseUrl(item.url) === normaliseUrl(url));
   const screenshotSrc = workItem?.image ? urlFor(workItem.image).width(1200).url() : undefined;
@@ -58,7 +59,7 @@ export async function ProjectEvidence({
   );
 
   return (
-    <div className="border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:px-35 lg:py-25">
+    <div className={`border-t border-border-tan ${tone === "tan" ? "bg-tan" : "bg-cream"} px-6 py-14 sm:px-10 lg:px-35 lg:py-25`}>
       <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
         {workItem?.slug ? (
           <Link
