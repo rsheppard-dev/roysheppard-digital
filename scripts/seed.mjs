@@ -32,13 +32,6 @@ async function uploadImage(relativePath) {
 async function main() {
   console.log("Uploading images…");
   const aboutImage = await uploadImage("images/about-illustration.png");
-  const clientLogos = {
-    "Kingsley Estates": await uploadImage("images/clients/kingsley-estates.png"),
-    "Product Zone": await uploadImage("images/clients/product-zone.png"),
-    LH: await uploadImage("images/clients/lh.png"),
-    "Flame Corporate Clothing": await uploadImage("images/clients/flame.png"),
-    Koala: await uploadImage("images/clients/koala.png"),
-  };
   console.log("Images uploaded.");
 
   const docs = [
@@ -186,29 +179,6 @@ async function main() {
       answer: "Absolutely — send over your brand guidelines and I'll build the site around them.",
     },
 
-    {
-      _id: "trust-logo-1",
-      _type: "trustLogo",
-      order: 1,
-      name: "Kingsley Estates",
-      logo: clientLogos["Kingsley Estates"],
-    },
-    {
-      _id: "trust-logo-2",
-      _type: "trustLogo",
-      order: 2,
-      name: "Product Zone",
-      logo: clientLogos["Product Zone"],
-    },
-    { _id: "trust-logo-3", _type: "trustLogo", order: 3, name: "LH", logo: clientLogos.LH },
-    {
-      _id: "trust-logo-4",
-      _type: "trustLogo",
-      order: 4,
-      name: "Flame Corporate Clothing",
-      logo: clientLogos["Flame Corporate Clothing"],
-    },
-    { _id: "trust-logo-5", _type: "trustLogo", order: 5, name: "Koala", logo: clientLogos.Koala },
   ];
 
   console.log(`Writing ${docs.length} documents…`);

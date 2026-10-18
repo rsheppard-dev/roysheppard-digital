@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { client } from "@/sanity/lib/client";
 import { caseStudySlugsQuery } from "@/sanity/lib/queries";
 import { CONTACT_UPDATED, lastEditsQuery, pageModified, type LastEdits } from "@/lib/page-dates";
-import { ecommerce, privacyPolicy, webDesign, webDevelopment } from "@/content/service-pages";
+import { privacyPolicy } from "@/content/service-pages";
 import { freeReview } from "@/content/free-review";
 
 const SITE_URL = "https://www.roysheppard.digital";
@@ -16,8 +16,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     client.fetch<LastEdits>(lastEditsQuery),
   ]);
 
-  // Service pages pull their project screenshots from work items.
-  const servicePage = (codeUpdated: string) => pageModified(edits, { source: "work", codeUpdated });
+  // Service pages render from their own Sanity documents plus project screenshots from work items.
+  const servicePage = () => pageModified(edits, { source: "service" });
 
   return [
     {
@@ -28,19 +28,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${SITE_URL}/web-design-watford`,
-      lastModified: servicePage(webDesign.lastUpdated),
+      lastModified: servicePage(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${SITE_URL}/web-development-watford`,
-      lastModified: servicePage(webDevelopment.lastUpdated),
+      lastModified: servicePage(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${SITE_URL}/ecommerce-watford`,
-      lastModified: servicePage(ecommerce.lastUpdated),
+      lastModified: servicePage(),
       changeFrequency: "monthly",
       priority: 0.7,
     },

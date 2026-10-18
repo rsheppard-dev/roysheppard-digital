@@ -6,6 +6,7 @@ import { about } from "./about";
 import { cta } from "./cta";
 import { footer } from "./footer";
 import { service } from "./service";
+import { servicePage } from "./servicePage";
 import { workItem } from "./workItem";
 import { testimonial } from "./testimonial";
 import { faq } from "./faq";
@@ -18,6 +19,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     cta,
     footer,
     service,
+    servicePage,
     workItem,
     testimonial,
     faq,

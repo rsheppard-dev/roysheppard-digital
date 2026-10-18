@@ -17,12 +17,13 @@ const latestOf = (types: string[]) =>
 export const lastEditsQuery = defineQuery(`{
   "home": ${latestOf(["hero", "about", "cta", "footer", "service", "testimonial", "faq", "workItem", "siteSettings"])},
   "work": ${latestOf(["workItem", "cta", "footer", "siteSettings"])},
-  "shared": ${latestOf(["cta", "footer", "siteSettings"])}
+  "shared": ${latestOf(["cta", "footer", "siteSettings"])},
+  "service": ${latestOf(["servicePage", "workItem", "cta", "footer", "siteSettings"])}
 }`);
 
-export type LastEdits = { home: string | null; work: string | null; shared: string | null };
+export type LastEdits = { home: string | null; work: string | null; shared: string | null; service: string | null };
 
-/** `home`: the homepage's sections. `work`: work items plus the shared sections. `shared`: only the shared sections (call-to-action, footer, settings). */
+/** `home`: the homepage's sections. `work`: work items plus the shared sections. `service`: service pages, work items (their screenshots) and the shared sections. `shared`: only the shared sections (call-to-action, footer, settings). */
 export type DateSource = keyof LastEdits;
 
 /** The most recent of the given dates (ignoring missing ones). */

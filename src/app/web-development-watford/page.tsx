@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { webDevelopment } from "@/content/service-pages";
+import { getServicePage } from "@/lib/service-page";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import { PageShell } from "@/components/service-page/page-shell";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
@@ -17,15 +17,16 @@ import { Accordion } from "@/components/ui/accordion";
 import { FaqJsonLd } from "@/components/ui/faq-jsonld";
 import { TextLink } from "@/components/ui/text-link";
 
-const PATH = "/web-development-watford";
+const SLUG = "web-development-watford";
+const PATH = `/${SLUG}`;
 
-export const metadata: Metadata = buildPageMetadata({
-  title: webDevelopment.title,
-  description: webDevelopment.description,
-  path: PATH,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getServicePage(SLUG);
+  return buildPageMetadata({ title: page.title, description: page.description, path: PATH });
+}
 
-export default function WebDevelopmentPage() {
+export default async function WebDevelopmentPage() {
+  const webDevelopment = await getServicePage(SLUG);
   return (
     <PageShell
       cta={{
@@ -33,7 +34,7 @@ export default function WebDevelopmentPage() {
         body: "Tell me about an idea, or a business process you'd like to make easier. No obligation, just a chat.",
       }}
     >
-      <PageModifiedJsonLd path={PATH} name={webDevelopment.title} source="work" codeUpdated={webDevelopment.lastUpdated} />
+      <PageModifiedJsonLd path={PATH} name={webDevelopment.title} source="service" />
       <ServiceJsonLd
         path={PATH}
         name="Web Development"

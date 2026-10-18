@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ecommerce } from "@/content/service-pages";
+import { getServicePage } from "@/lib/service-page";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import { PageShell } from "@/components/service-page/page-shell";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
@@ -16,18 +16,19 @@ import { Accordion } from "@/components/ui/accordion";
 import { FaqJsonLd } from "@/components/ui/faq-jsonld";
 import { TextLink } from "@/components/ui/text-link";
 
-const PATH = "/ecommerce-watford";
+const SLUG = "ecommerce-watford";
+const PATH = `/${SLUG}`;
 
-export const metadata: Metadata = buildPageMetadata({
-  title: ecommerce.title,
-  description: ecommerce.description,
-  path: PATH,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getServicePage(SLUG);
+  return buildPageMetadata({ title: page.title, description: page.description, path: PATH });
+}
 
-export default function EcommercePage() {
+export default async function EcommercePage() {
+  const ecommerce = await getServicePage(SLUG);
   return (
     <PageShell>
-      <PageModifiedJsonLd path={PATH} name={ecommerce.title} source="work" codeUpdated={ecommerce.lastUpdated} />
+      <PageModifiedJsonLd path={PATH} name={ecommerce.title} source="service" />
       <ServiceJsonLd
         path={PATH}
         name="E-Commerce"
@@ -38,7 +39,7 @@ export default function EcommercePage() {
       <ServiceHeader
         eyebrow={ecommerce.eyebrow}
         heading={ecommerce.heading}
-        highlight="Online stores"
+        highlight={ecommerce.highlight}
         intro={ecommerce.intro}
         aside={<WorkScreens slug="product-zone" />}
       />

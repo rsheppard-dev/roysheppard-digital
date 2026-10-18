@@ -7,9 +7,6 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { aboutQuery } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 
-const DEFAULT_ILLUSTRATION_ASSET_REF =
-  "image-0e4e9b6d1b6123dfa018ceebd070b027b97aa670-1792x2400-png";
-
 export async function About() {
   const { data } = await sanityFetch({ query: aboutQuery });
   const about = data ?? null;
@@ -18,14 +15,11 @@ export async function About() {
   const statement = about?.statement || fallbackAbout.statement;
   const tags = about?.tags && about.tags.length > 0 ? about.tags : fallbackAbout.tags;
 
-  // The Sanity default asset means "use the built-in sketch illustration".
-  const isDefaultIllustration =
-    !about?.image?.asset?._ref ||
-    about.image.asset._ref === DEFAULT_ILLUSTRATION_ASSET_REF;
-  const cmsImageSrc =
-    about?.image && !isDefaultIllustration
-      ? urlFor(about.image).width(600).height(800).fit("max").url()
-      : null;
+  const imageWidth = about?.imageDimensions?.width ?? 800;
+  const imageHeight = about?.imageDimensions?.height ?? 1602;
+  const imageSrc = about?.image?.asset
+    ? urlFor(about.image).width(Math.min(imageWidth, 800)).fit("max").auto("format").url()
+    : null;
 
   return (
     <div
@@ -44,18 +38,18 @@ export async function About() {
         </ul>
       </div>
       <div className="flex w-full max-w-45 shrink-0 items-center justify-center lg:w-60 lg:max-w-60">
-        {isDefaultIllustration ? (
-          <AboutIllustration />
-        ) : (
+        {imageSrc ? (
           <Image
-            src={cmsImageSrc!}
+            src={imageSrc}
             alt="Illustration of Roy Sheppard"
-            width={1792}
-            height={2400}
-            sizes="(min-width: 1024px) 300px, 220px"
-            style={{ aspectRatio: "1792 / 2400" }}
+            width={imageWidth}
+            height={imageHeight}
+            sizes="(min-width: 1024px) 240px, 180px"
+            style={{ aspectRatio: `${imageWidth} / ${imageHeight}` }}
             className="h-auto w-full"
           />
+        ) : (
+          <AboutIllustration />
         )}
       </div>
     </div>

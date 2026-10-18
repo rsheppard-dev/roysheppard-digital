@@ -9,7 +9,7 @@ export const heroQuery = defineQuery(
 );
 
 export const aboutQuery = defineQuery(
-  `*[_type == "about"][0]{ eyebrow, statement, tags, image }`,
+  `*[_type == "about"][0]{ eyebrow, statement, tags, image, "imageDimensions": image.asset->metadata.dimensions{width, height} }`,
 );
 
 export const ctaQuery = defineQuery(
@@ -22,6 +22,28 @@ export const footerQuery = defineQuery(
 
 export const servicesQuery = defineQuery(
   `*[_type == "service"] | order(order asc){ title, description, bullets }`,
+);
+
+export const servicePageQuery = defineQuery(
+  `*[_type == "servicePage" && slug.current == $slug][0]{
+    title,
+    description,
+    eyebrow,
+    heading,
+    highlight,
+    intro,
+    capabilities[]{ _key, title, description, benefit },
+    focusAreas[]{ _key, title, description },
+    caseStudy{ eyebrow, name, meta, url, contribution, quote, quoteName, quoteCompany },
+    processIntro,
+    process[]{ _key, title, description },
+    faqs[]{ _key, question, answer },
+    related[]{ _key, label, href }
+  }`,
+);
+
+export const servicePageSlugsQuery = defineQuery(
+  `*[_type == "servicePage" && defined(slug.current)]{ "slug": slug.current }`,
 );
 
 export const workItemsQuery = defineQuery(
