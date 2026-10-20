@@ -1,4 +1,5 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
+import { socialImageField } from "./seoFields";
 
 /** A screenshot with the alt text that describes it (required for anything shown on the case study page). */
 const screenshot = (name: string, title: string) =>
@@ -99,6 +100,20 @@ export const workItem = defineType({
         Rule.max(200).custom((value, context) =>
           context.document?.slug && !value ? "Needed for the case study page" : true,
         ),
+    }),
+    defineField({
+      name: "metaTitle",
+      title: "Search title",
+      type: "string",
+      description: "Optional. The title shown in Google and the browser tab. Leave blank for \"[Name] Website Case Study | Roy Sheppard\".",
+      group: "overview",
+      validation: (Rule) => Rule.max(70).warning("Over 70 characters may be cut off in Google."),
+    }),
+    defineField({
+      ...socialImageField(),
+      description:
+        "Optional. The picture shown when this case study is shared. 1200 × 630 works best. Leave blank to use a crop of the main screenshot.",
+      group: "overview",
     }),
     defineField({
       name: "metaDescription",

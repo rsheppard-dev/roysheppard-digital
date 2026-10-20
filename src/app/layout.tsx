@@ -4,6 +4,7 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import { footer as fallbackFooter } from "@/content/site";
 import { sanityFetch } from "@/sanity/lib/live";
 import { footerQuery, siteSettingsQuery } from "@/sanity/lib/queries";
+import { socialImageUrl } from "@/lib/page-metadata";
 import { ConsentDefaultScript } from "@/components/consent/consent-default-script";
 import { ConsentBanner } from "@/components/consent/consent-banner";
 import { LocalBusinessJsonLd } from "@/components/ui/local-business-jsonld";
@@ -50,6 +51,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const title = data?.seo?.metaTitle || SITE_TITLE;
   const description = data?.seo?.metaDescription || SITE_DESCRIPTION;
+  const images = data?.seo?.socialImage
+    ? [{ url: socialImageUrl(data.seo.socialImage), width: 1200, height: 630 }]
+    : undefined;
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -71,11 +75,13 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "Roy Sheppard",
       locale: "en_US",
       type: "website",
+      ...(images && { images }),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      ...(images && { images }),
     },
   };
 }

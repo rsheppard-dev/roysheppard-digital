@@ -25,6 +25,14 @@ export const siteSettings = defineType({
           rows: 3,
           description: "Leave blank to use the default site description.",
         }),
+        defineField({
+          name: "socialImage",
+          title: "Default social share image",
+          type: "image",
+          options: { hotspot: true },
+          description:
+            "The picture shown when any page is shared on social media or in messages, unless that page has its own. 1200 × 630 works best. Leave blank to use the built-in image.",
+        }),
       ],
     }),
   ],

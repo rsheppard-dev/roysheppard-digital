@@ -1,4 +1,13 @@
 import type { Metadata } from "next";
+import type { SanityImageSource } from "@sanity/image-url";
+import { sanityFetch } from "@/sanity/lib/live";
+import { siteSettingsQuery } from "@/sanity/lib/queries";
+import { urlFor } from "@/sanity/lib/image";
+
+/** A Sanity image as a 1200×630 share card (a ready URL is passed through unchanged). */
+export function socialImageUrl(image: SanityImageSource | string): string {
+  return typeof image === "string" ? image : urlFor(image).width(1200).height(630).fit("crop").url();
+}
 
 /**
  * Per-page metadata for a retained standalone page. `robots` and
@@ -6,8 +15,11 @@ import type { Metadata } from "next";
  * layout's host-aware production/staging logic — only fields that must be
  * page-specific (title, description, canonical, social) are set here, so a
  * page never silently inherits the homepage's canonical or og:url.
+ *
+ * Share image: the page's own `image` if it has one, otherwise the default
+ * from Site Settings, otherwise the built-in opengraph-image.png / twitter-image.png.
  */
-export function buildPageMetadata({
+export async function buildPageMetadata({
   title,
   description,
   path,
@@ -16,10 +28,14 @@ export function buildPageMetadata({
   title: string;
   description: string;
   path: string;
-  /** Optional page-specific social share image (1200×630); otherwise the site default is used. */
-  image?: string;
-}): Metadata {
-  const images = image ? [{ url: image, width: 1200, height: 630 }] : undefined;
+  /** Page-specific share image: a Sanity image or a ready 1200×630 URL. */
+  image?: SanityImageSource | string | null;
+}): Promise<Metadata> {
+  const { data: settings } = await sanityFetch({ query: siteSettingsQuery });
+  const source = image ?? settings?.seo?.socialImage;
+  // Pages that set their own metadata do not inherit the built-in file images, so name them here.
+  const og = [{ url: source ? socialImageUrl(source) : "/opengraph-image.png", width: 1200, height: 630 }];
+  const twitter = [{ url: source ? socialImageUrl(source) : "/twitter-image.png", width: 1200, height: 630 }];
   return {
     title,
     description,
@@ -33,13 +49,13 @@ export function buildPageMetadata({
       siteName: "Roy Sheppard",
       locale: "en_US",
       type: "website",
-      ...(images && { images }),
+      images: og,
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      ...(images && { images }),
+      images: twitter,
     },
   };
 }

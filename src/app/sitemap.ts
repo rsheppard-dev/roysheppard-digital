@@ -1,9 +1,7 @@
 import type { MetadataRoute } from "next";
 import { client } from "@/sanity/lib/client";
 import { caseStudySlugsQuery } from "@/sanity/lib/queries";
-import { CONTACT_UPDATED, lastEditsQuery, pageModified, type LastEdits } from "@/lib/page-dates";
-import { privacyPolicy } from "@/content/service-pages";
-import { freeReview } from "@/content/free-review";
+import { lastEditsQuery, pageModified, type LastEdits } from "@/lib/page-dates";
 
 const SITE_URL = "https://www.roysheppard.digital";
 
@@ -64,19 +62,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ),
     {
       url: `${SITE_URL}/free-website-review`,
-      lastModified: pageModified(edits, { source: "shared", codeUpdated: freeReview.lastUpdated }),
+      lastModified: pageModified(edits, { source: "freeReview" }),
       changeFrequency: "yearly",
       priority: 0.7,
     },
     {
       url: `${SITE_URL}/contact`,
-      lastModified: pageModified(edits, { source: "shared", codeUpdated: CONTACT_UPDATED }),
+      lastModified: pageModified(edits, { source: "contact" }),
       changeFrequency: "yearly",
       priority: 0.6,
     },
     {
       url: `${SITE_URL}/privacy-policy`,
-      lastModified: pageModified(edits, { source: "shared", codeUpdated: new Date(privacyPolicy.lastUpdated).toISOString() }),
+      lastModified: pageModified(edits, { source: "privacy" }),
       changeFrequency: "yearly",
       priority: 0.3,
     },

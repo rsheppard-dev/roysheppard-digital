@@ -10,6 +10,11 @@ import { servicePage } from "./servicePage";
 import { workItem } from "./workItem";
 import { testimonial } from "./testimonial";
 import { faq } from "./faq";
+import { privacyPolicy } from "./privacyPolicy";
+import { freeReviewPage } from "./freeReviewPage";
+import { contactPage } from "./contactPage";
+import { notFoundPage } from "./notFoundPage";
+import { workIndexPage } from "./workIndexPage";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -23,6 +28,11 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     workItem,
     testimonial,
     faq,
+    privacyPolicy,
+    freeReviewPage,
+    contactPage,
+    notFoundPage,
+    workIndexPage,
   ],
 };
 
@@ -33,4 +43,9 @@ export const singletonTypes = new Set([
   "about",
   "cta",
   "footer",
+  "privacyPolicy",
+  "freeReviewPage",
+  "contactPage",
+  "notFoundPage",
+  "workIndexPage",
 ]);

@@ -1,4 +1,5 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
+import { socialImageField } from "./seoFields";
 
 const titledText = (name: string, title: string, withBenefit = false) =>
   defineField({
@@ -66,6 +67,7 @@ export const servicePage = defineType({
       description: "The snippet shown under the title in Google.",
       validation: (Rule) => Rule.required().max(165).warning("Over 165 characters may be cut off in Google."),
     }),
+    socialImageField(),
     defineField({
       name: "eyebrow",
       title: "Eyebrow label",

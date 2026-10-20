@@ -36,16 +36,19 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
   if (!caseStudy?.name) return {};
 
   return buildPageMetadata({
-    title: `${caseStudy.name} Website Case Study | Roy Sheppard`,
+    title: caseStudy.metaTitle ?? `${caseStudy.name} Website Case Study | Roy Sheppard`,
     description:
       caseStudy.metaDescription ??
       caseStudy.tagline ??
       `How Roy Sheppard designed and built the ${caseStudy.name} website.`,
     path: `/work/${slug}`,
-    // Full-page screenshots are tall, so crop from the top to show the homepage hero.
-    image: caseStudy.image
-      ? urlFor(caseStudy.image).width(1200).height(630).fit("crop").crop("top").url()
-      : undefined,
+    // Its own share image if set, otherwise the main screenshot. Full-page screenshots are tall,
+    // so crop from the top to show the homepage hero.
+    image:
+      caseStudy.socialImage ??
+      (caseStudy.image
+        ? urlFor(caseStudy.image).width(1200).height(630).fit("crop").crop("top").url()
+        : undefined),
   });
 }
 

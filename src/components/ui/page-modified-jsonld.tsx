@@ -18,14 +18,11 @@ export async function PageModifiedJsonLd({
   path,
   name,
   source,
-  codeUpdated,
   slug,
 }: {
   path: string;
   name?: string;
   source: DateSource;
-  /** Date (YYYY-MM-DD or similar) the page's copy was last edited in code. */
-  codeUpdated?: string;
   slug?: string;
 }) {
   const [{ data: edits }, own] = await Promise.all([
@@ -46,7 +43,7 @@ export async function PageModifiedJsonLd({
     url: `${SITE_URL}${path === "/" ? "/" : path}`,
     ...(name ? { name } : {}),
     inLanguage: "en-GB",
-    dateModified: pageModified(edits, { source, own: own.data, codeUpdated }).toISOString(),
+    dateModified: pageModified(edits, { source, own: own.data }).toISOString(),
   };
 
   return (

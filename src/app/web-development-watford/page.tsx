@@ -22,7 +22,7 @@ const PATH = `/${SLUG}`;
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getServicePage(SLUG);
-  return buildPageMetadata({ title: page.title, description: page.description, path: PATH });
+  return buildPageMetadata({ title: page.title, description: page.description, path: PATH, image: page.socialImage });
 }
 
 export default async function WebDevelopmentPage() {

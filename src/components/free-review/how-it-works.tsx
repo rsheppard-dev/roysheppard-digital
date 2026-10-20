@@ -3,13 +3,13 @@ import Image from "next/image";
 type Step = { title: string; description: string };
 
 /** Three connected steps beside a drawing of the finished notes. The last step's circle is filled: it is the deliverable. */
-export function HowItWorks({ steps }: { steps: Step[] }) {
+export function HowItWorks({ heading, intro, steps }: { heading: string; intro: string; steps: Step[] }) {
   return (
     <div className="flex flex-col gap-16 px-6 py-16 sm:px-10 lg:flex-row lg:items-start lg:gap-26 lg:px-35 lg:py-26">
       <div className="flex max-w-110 flex-col gap-3.5 lg:flex-1">
-        <h2 className="text-3xl font-semibold lg:text-[42px] lg:leading-[1.12]">How it works</h2>
+        <h2 className="text-3xl font-semibold lg:text-[42px] lg:leading-[1.12]">{heading}</h2>
         <p className="max-w-95 text-[17px] leading-relaxed text-muted-strong">
-          A few minutes from you. The rest is on me.
+          {intro}
         </p>
         <Image
           src="/images/free-review-desk.webp"

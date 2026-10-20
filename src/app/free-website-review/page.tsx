@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { freeReview } from "@/content/free-review";
+import { getFreeReviewPage } from "@/lib/site-pages";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import { PageShell } from "@/components/service-page/page-shell";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
@@ -13,29 +13,28 @@ import { HowItWorks } from "@/components/free-review/how-it-works";
 
 const PATH = "/free-website-review";
 
-export const metadata: Metadata = buildPageMetadata({
-  title: freeReview.title,
-  description: freeReview.description,
-  path: PATH,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const freeReview = await getFreeReviewPage();
+  return buildPageMetadata({ title: freeReview.title, description: freeReview.description, path: PATH, image: freeReview.socialImage });
+}
 
-export default function FreeWebsiteReviewPage() {
+export default async function FreeWebsiteReviewPage() {
+  const freeReview = await getFreeReviewPage();
   return (
     // The form is the page's call to action, so no closing banner repeats it.
     <PageShell cta={false}>
-      <PageModifiedJsonLd path={PATH} name={freeReview.title} source="shared" codeUpdated={freeReview.lastUpdated} />
+      <PageModifiedJsonLd path={PATH} name={freeReview.title} source="freeReview" />
       <Breadcrumbs label="Free website review" path={PATH} />
 
       {/* On a phone the order is text, form, picture so the form is never pushed down; from lg the picture sits under the text. */}
       <div className="grid grid-cols-1 gap-x-18 gap-y-10 px-6 pb-20 pt-10 sm:px-10 lg:grid-cols-2 lg:gap-y-6 lg:px-35 lg:pb-24">
         <div className="flex flex-col gap-6 lg:col-start-1 lg:row-start-1">
-          <Eyebrow>Free website review</Eyebrow>
+          <Eyebrow>{freeReview.eyebrow}</Eyebrow>
           <h1 className="max-w-150 text-4xl font-medium leading-[1.06] tracking-[-0.015em] sm:text-5xl lg:text-[60px]">
-            Find out what your website could be doing better
+            {freeReview.heading}
           </h1>
           <p className="max-w-130 text-lg leading-relaxed text-muted-strong lg:text-[19px]">
-            I&apos;ll look at your site the way a customer does and send back a short, personal review with three clear
-            improvements.
+            {freeReview.intro}
           </p>
         </div>
         <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
@@ -56,9 +55,9 @@ export default function FreeWebsiteReviewPage() {
 
       <div className="flex flex-col gap-12 border-t border-border-tan bg-tan px-6 py-16 sm:px-10 lg:gap-14 lg:px-35 lg:py-24">
         <div className="flex max-w-160 flex-col gap-3.5">
-          <h2 className="text-3xl font-semibold lg:text-[42px] lg:leading-[1.12]">What I look at</h2>
+          <h2 className="text-3xl font-semibold lg:text-[42px] lg:leading-[1.12]">{freeReview.areasHeading}</h2>
           <p className="text-[17px] leading-relaxed text-muted-strong">
-            Six things that decide whether a website brings in work.
+            {freeReview.areasIntro}
           </p>
         </div>
         <ul className="grid gap-x-18 gap-y-12 sm:grid-cols-2">
@@ -71,7 +70,7 @@ export default function FreeWebsiteReviewPage() {
         </ul>
       </div>
 
-      <HowItWorks steps={freeReview.steps} />
+      <HowItWorks heading={freeReview.stepsHeading} intro={freeReview.stepsIntro} steps={freeReview.steps} />
 
       <div
         id="faq"
@@ -79,7 +78,7 @@ export default function FreeWebsiteReviewPage() {
       >
         <FaqJsonLd faqs={freeReview.faqs} />
         <Eyebrow>FAQ</Eyebrow>
-        <h2 className="text-3xl font-semibold lg:text-[42px]">Common questions</h2>
+        <h2 className="text-3xl font-semibold lg:text-[42px]">{freeReview.faqHeading}</h2>
         <Accordion items={freeReview.faqs} />
       </div>
     </PageShell>

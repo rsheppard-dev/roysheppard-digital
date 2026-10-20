@@ -5,20 +5,19 @@ import { Nav } from "@/components/sections/nav";
 import { StickyHeader } from "@/components/sections/sticky-header";
 import { Footer } from "@/components/sections/footer";
 import { PageModifiedJsonLd } from "@/components/ui/page-modified-jsonld";
-import { CONTACT_UPDATED } from "@/lib/page-dates";
+import { getContactPage } from "@/lib/site-pages";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
 import { ContactForm } from "@/components/contact/contact-form";
 
 const PATH = "/contact";
 
-export const metadata: Metadata = buildPageMetadata({
-  title: "Contact a Watford Web Designer | Roy Sheppard",
-  description:
-    "Tell Roy about your website project. Share a few details and get a reply within a day. Based in Watford, working with businesses everywhere.",
-  path: PATH,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getContactPage();
+  return buildPageMetadata({ title: page.title, description: page.description, path: PATH, image: page.socialImage });
+}
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const page = await getContactPage();
   const email = fallbackFooter.email || fallbackCta.email;
   const phone = fallbackFooter.phone;
 
@@ -29,34 +28,30 @@ export default function ContactPage() {
       </StickyHeader>
 
       <main>
-      <PageModifiedJsonLd path={PATH} name="Contact" source="shared" codeUpdated={CONTACT_UPDATED} />
+      <PageModifiedJsonLd path={PATH} name="Contact" source="contact" />
       <Breadcrumbs label="Contact" path={PATH} />
 
       <div className="flex flex-col gap-10 px-6 py-14 sm:px-10 lg:flex-row lg:gap-20 lg:px-35 lg:py-25">
         <div className="flex flex-1 flex-col gap-5 lg:max-w-105">
           <h1 className="text-4xl font-medium leading-[1.1] tracking-[-0.01em] sm:text-5xl">
-            Let&apos;s talk about your project
+            {page.heading}
           </h1>
           <p className="text-base leading-relaxed text-muted-strong lg:text-lg">
-            Send a few details about what you&apos;re looking to build, and I&apos;ll reply with
-            some thoughts and next steps, usually within a day.
+            {page.intro}
           </p>
           <div className="mt-2 flex flex-col gap-3 border-t border-border pt-5">
             <h2 className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted">
-              What happens next
+              {page.stepsHeading}
             </h2>
             <ol className="flex list-decimal flex-col gap-2 pl-5 text-[15px] leading-relaxed text-muted-strong marker:font-mono marker:text-xs marker:text-muted">
-              <li>I&apos;ll get back to you with a few questions and some first thoughts.</li>
-              <li>
-                We talk it through however suits you: email, a phone call, a video call, or in
-                person if you&apos;re local.
-              </li>
-              <li>You get a clear quote for the work we&apos;ve agreed before anything starts.</li>
+              {page.steps.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
             </ol>
           </div>
           <div className="flex flex-col border-t border-border pt-5">
             <span className="mb-0.5 font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted">
-              Prefer email or phone?
+              {page.directHeading}
             </span>
             <a href={`mailto:${email}`} className="w-fit py-2 text-[15px] text-ink underline decoration-border-tan underline-offset-4 transition-colors hover:text-accent-text">
               {email}

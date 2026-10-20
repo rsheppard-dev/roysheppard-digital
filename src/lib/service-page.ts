@@ -11,6 +11,7 @@ export async function getServicePage(slug: string) {
   return {
     title: data.title ?? "",
     description: data.description ?? "",
+    socialImage: data.socialImage ?? null,
     eyebrow: data.eyebrow ?? "",
     heading: data.heading ?? "",
     highlight: data.highlight ?? undefined,

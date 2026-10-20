@@ -4,14 +4,15 @@ import { Nav } from "@/components/sections/nav";
 import { StickyHeader } from "@/components/sections/sticky-header";
 import { Footer } from "@/components/sections/footer";
 import { TextLink } from "@/components/ui/text-link";
+import { getNotFoundPage } from "@/lib/site-pages";
 
-export const metadata: Metadata = {
-  title: "Page not found | Roy Sheppard",
-  description: "The page you're looking for doesn't exist, got moved, or maybe never did.",
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getNotFoundPage();
+  return { title: page.title, description: page.description, robots: { index: false, follow: false } };
+}
 
-export default function NotFound() {
+export default async function NotFound() {
+  const page = await getNotFoundPage();
   return (
     <>
       <StickyHeader>
@@ -22,17 +23,17 @@ export default function NotFound() {
         <div className="flex flex-1 flex-col gap-5 lg:max-w-115">
           <h1 className="text-4xl font-medium leading-[1.1] tracking-[-0.01em] sm:text-5xl lg:text-[52px]">
             <span className="sr-only">Page not found. </span>
-            What are you doing here?
+            {page.heading}
           </h1>
           <p className="max-w-115 text-base leading-relaxed text-muted-strong lg:text-lg">
-            This page doesn&apos;t exist. A little privacy, please.
+            {page.body}
           </p>
           <div className="mt-1 flex flex-wrap items-center gap-6">
             <TextLink variant="buttonDark" href="/" className="text-base lg:text-lg">
-              Back to home
+              {page.primaryButton}
             </TextLink>
             <TextLink variant="underline" href="/work" className="text-sm lg:text-[15px]">
-              See my work
+              {page.secondaryLink}
             </TextLink>
           </div>
         </div>
