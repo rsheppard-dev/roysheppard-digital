@@ -121,7 +121,9 @@ export const caseStudyQuery = defineQuery(
       image{ ..., "dimensions": asset->metadata.dimensions{width, height} },
       first{ ..., "dimensions": asset->metadata.dimensions{width, height} },
       second{ ..., "dimensions": asset->metadata.dimensions{width, height} },
-      images[]{ ..., "dimensions": asset->metadata.dimensions{width, height} }
+      images[]{ ..., "dimensions": asset->metadata.dimensions{width, height} },
+      view,
+      pieces[]{ _key, label, source, place, scale, rotate }
     },
     features[]{ _key, title, description },
     technologies[]{ _key, name, reason },

@@ -287,6 +287,43 @@ export type WorkItem = {
         _type: "showcaseDetail";
         _key: string;
       }
+    | {
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        view?: {
+          x?: number;
+          y?: number;
+          width?: number;
+          height?: number;
+        };
+        pieces?: Array<{
+          label?: string;
+          source?: {
+            x?: number;
+            y?: number;
+            width?: number;
+            height?: number;
+          };
+          place?: {
+            x?: number;
+            y?: number;
+          };
+          scale?: number;
+          rotate?: number;
+          _key: string;
+        }>;
+        caption?: string;
+        _type: "showcasePopout";
+        _key: string;
+      }
   >;
   features?: Array<{
     title?: string;
@@ -949,7 +986,7 @@ export type LlmsCaseStudiesQueryResult = Array<{
 
 // Source: src/sanity/lib/queries.ts
 // Variable: caseStudyQuery
-// Query: *[_type == "workItem" && slug.current == $slug][0]{    name,    url,    tagline,    metaTitle,    metaDescription,    socialImage,    industry,    projectType,    services,    client,    challenge,    solution,    image,    "imageDimensions": image.asset->metadata.dimensions{width, height},    showcase[]{      _key,      _type,      caption,      heading,      text,      image{ ..., "dimensions": asset->metadata.dimensions{width, height} },      first{ ..., "dimensions": asset->metadata.dimensions{width, height} },      second{ ..., "dimensions": asset->metadata.dimensions{width, height} },      images[]{ ..., "dimensions": asset->metadata.dimensions{width, height} }    },    features[]{ _key, title, description },    technologies[]{ _key, name, reason },    results[]{ _key, figure, title, description },    testimonial->{ quote, name, company },    "next": coalesce(      *[_type == "workItem" && defined(slug.current) && order > ^.order] | order(order asc)[0],      *[_type == "workItem" && defined(slug.current) && _id != ^._id] | order(order asc)[0]    ){ name, meta, "slug": slug.current }  }
+// Query: *[_type == "workItem" && slug.current == $slug][0]{    name,    url,    tagline,    metaTitle,    metaDescription,    socialImage,    industry,    projectType,    services,    client,    challenge,    solution,    image,    "imageDimensions": image.asset->metadata.dimensions{width, height},    showcase[]{      _key,      _type,      caption,      heading,      text,      image{ ..., "dimensions": asset->metadata.dimensions{width, height} },      first{ ..., "dimensions": asset->metadata.dimensions{width, height} },      second{ ..., "dimensions": asset->metadata.dimensions{width, height} },      images[]{ ..., "dimensions": asset->metadata.dimensions{width, height} },      view,      pieces[]{ _key, label, source, place, scale, rotate }    },    features[]{ _key, title, description },    technologies[]{ _key, name, reason },    results[]{ _key, figure, title, description },    testimonial->{ quote, name, company },    "next": coalesce(      *[_type == "workItem" && defined(slug.current) && order > ^.order] | order(order asc)[0],      *[_type == "workItem" && defined(slug.current) && _id != ^._id] | order(order asc)[0]    ){ name, meta, "slug": slug.current }  }
 export type CaseStudyQueryResult = {
   name: string | null;
   url: string | null;
@@ -1002,6 +1039,8 @@ export type CaseStudyQueryResult = {
         first: null;
         second: null;
         images: null;
+        view: null;
+        pieces: null;
       }
     | {
         _key: string;
@@ -1024,6 +1063,8 @@ export type CaseStudyQueryResult = {
         first: null;
         second: null;
         images: null;
+        view: null;
+        pieces: null;
       }
     | {
         _key: string;
@@ -1046,6 +1087,8 @@ export type CaseStudyQueryResult = {
         first: null;
         second: null;
         images: null;
+        view: null;
+        pieces: null;
       }
     | {
         _key: string;
@@ -1069,6 +1112,8 @@ export type CaseStudyQueryResult = {
             height: number | null;
           } | null;
         }> | null;
+        view: null;
+        pieces: null;
       }
     | {
         _key: string;
@@ -1102,6 +1147,52 @@ export type CaseStudyQueryResult = {
           } | null;
         } | null;
         images: null;
+        view: null;
+        pieces: null;
+      }
+    | {
+        _key: string;
+        _type: "showcasePopout";
+        caption: string | null;
+        heading: string | null;
+        text: string | null;
+        image: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+        first: null;
+        second: null;
+        images: null;
+        view: {
+          x?: number;
+          y?: number;
+          width?: number;
+          height?: number;
+        } | null;
+        pieces: Array<{
+          _key: string;
+          label: string | null;
+          source: {
+            x?: number;
+            y?: number;
+            width?: number;
+            height?: number;
+          } | null;
+          place: {
+            x?: number;
+            y?: number;
+          } | null;
+          scale: number | null;
+          rotate: number | null;
+        }> | null;
       }
   > | null;
   features: Array<{
@@ -1173,7 +1264,7 @@ declare module "@sanity/client" {
     '*[_type == "workItem" && slug.current == $slug][0]{ name, "slug": slug.current, "screens": showcase[_type == "showcaseMobile"][0].images[]{ alt, asset } }': ProjectScreensQueryResult;
     '*[_type == "workItem" && defined(slug.current)]{ "slug": slug.current, _updatedAt }': CaseStudySlugsQueryResult;
     '*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, meta, tagline, "slug": slug.current }': LlmsCaseStudiesQueryResult;
-    '*[_type == "workItem" && slug.current == $slug][0]{\n    name,\n    url,\n    tagline,\n    metaTitle,\n    metaDescription,\n    socialImage,\n    industry,\n    projectType,\n    services,\n    client,\n    challenge,\n    solution,\n    image,\n    "imageDimensions": image.asset->metadata.dimensions{width, height},\n    showcase[]{\n      _key,\n      _type,\n      caption,\n      heading,\n      text,\n      image{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      first{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      second{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      images[]{ ..., "dimensions": asset->metadata.dimensions{width, height} }\n    },\n    features[]{ _key, title, description },\n    technologies[]{ _key, name, reason },\n    results[]{ _key, figure, title, description },\n    testimonial->{ quote, name, company },\n    "next": coalesce(\n      *[_type == "workItem" && defined(slug.current) && order > ^.order] | order(order asc)[0],\n      *[_type == "workItem" && defined(slug.current) && _id != ^._id] | order(order asc)[0]\n    ){ name, meta, "slug": slug.current }\n  }': CaseStudyQueryResult;
+    '*[_type == "workItem" && slug.current == $slug][0]{\n    name,\n    url,\n    tagline,\n    metaTitle,\n    metaDescription,\n    socialImage,\n    industry,\n    projectType,\n    services,\n    client,\n    challenge,\n    solution,\n    image,\n    "imageDimensions": image.asset->metadata.dimensions{width, height},\n    showcase[]{\n      _key,\n      _type,\n      caption,\n      heading,\n      text,\n      image{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      first{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      second{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      images[]{ ..., "dimensions": asset->metadata.dimensions{width, height} },\n      view,\n      pieces[]{ _key, label, source, place, scale, rotate }\n    },\n    features[]{ _key, title, description },\n    technologies[]{ _key, name, reason },\n    results[]{ _key, figure, title, description },\n    testimonial->{ quote, name, company },\n    "next": coalesce(\n      *[_type == "workItem" && defined(slug.current) && order > ^.order] | order(order asc)[0],\n      *[_type == "workItem" && defined(slug.current) && _id != ^._id] | order(order asc)[0]\n    ){ name, meta, "slug": slug.current }\n  }': CaseStudyQueryResult;
     '*[_type == "testimonial"] | order(order asc){ quote, name, company }': TestimonialsQueryResult;
     '*[_type == "faq"] | order(order asc){ question, answer }': FaqsQueryResult;
   }

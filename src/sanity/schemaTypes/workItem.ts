@@ -256,6 +256,115 @@ export const workItem = defineType({
             prepare: ({ title, media }) => ({ title, subtitle: "Detail with notes", media }),
           },
         }),
+        defineArrayMember({
+          name: "showcasePopout",
+          title: "Pop-out",
+          type: "object",
+          description:
+            "One full-page screenshot with parts of it lifted off the page. Every piece is cut from the same screenshot, so there is nothing else to upload.",
+          fields: [
+            defineField({
+              name: "heading",
+              title: "Heading",
+              type: "string",
+              description: "What this part of the build does for the client. With a heading the pop-out sits beside its text instead of full width.",
+            }),
+            defineField({
+              name: "text",
+              title: "Text",
+              type: "text",
+              rows: 4,
+              description: "What you built and why, in plain words. Only what is true of this project.",
+            }),
+            defineField({
+              ...screenshot("image", "Full screenshot"),
+              description:
+                "Capture the page at 2x (e.g. 1440px wide at device scale 2, so 2880px). All the numbers below are pixels in this image.",
+            }),
+            defineField({
+              name: "view",
+              title: "Visible area",
+              type: "object",
+              description: "The part of the screenshot shown as the page behind the pieces.",
+              options: { columns: 4 },
+              fields: [
+                defineField({ name: "x", title: "Left", type: "number", validation: (Rule) => Rule.required().min(0) }),
+                defineField({ name: "y", title: "Top", type: "number", validation: (Rule) => Rule.required().min(0) }),
+                defineField({ name: "width", title: "Width", type: "number", validation: (Rule) => Rule.required().min(1) }),
+                defineField({ name: "height", title: "Height", type: "number", validation: (Rule) => Rule.required().min(1) }),
+              ],
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "pieces",
+              title: "Pieces",
+              type: "array",
+              description: "Two to four work best. Each is lifted off the page with a soft shadow.",
+              of: [
+                defineArrayMember({
+                  type: "object",
+                  fields: [
+                    defineField({
+                      name: "label",
+                      title: "What it shows",
+                      type: "string",
+                      description: "Read out to screen readers, e.g. \"Search filters for area, price and bedrooms\".",
+                      validation: (Rule) => Rule.required(),
+                    }),
+                    defineField({
+                      name: "source",
+                      title: "Cut from the screenshot",
+                      type: "object",
+                      options: { columns: 4 },
+                      fields: [
+                        defineField({ name: "x", title: "Left", type: "number", validation: (Rule) => Rule.required().min(0) }),
+                        defineField({ name: "y", title: "Top", type: "number", validation: (Rule) => Rule.required().min(0) }),
+                        defineField({ name: "width", title: "Width", type: "number", validation: (Rule) => Rule.required().min(1) }),
+                        defineField({ name: "height", title: "Height", type: "number", validation: (Rule) => Rule.required().min(1) }),
+                      ],
+                      validation: (Rule) => Rule.required(),
+                    }),
+                    defineField({
+                      name: "place",
+                      title: "Where it sits",
+                      type: "object",
+                      description: "Top-left corner, in the same pixels as the screenshot, measured from the screenshot's own top-left.",
+                      options: { columns: 2 },
+                      fields: [
+                        defineField({ name: "x", title: "Left", type: "number", validation: (Rule) => Rule.required() }),
+                        defineField({ name: "y", title: "Top", type: "number", validation: (Rule) => Rule.required() }),
+                      ],
+                      validation: (Rule) => Rule.required(),
+                    }),
+                    defineField({
+                      name: "scale",
+                      title: "Size",
+                      type: "number",
+                      description: "1 is the size it has on the page. Slightly above 1 reads as lifted towards the viewer.",
+                      initialValue: 1,
+                      validation: (Rule) => Rule.min(0.5).max(2),
+                    }),
+                    defineField({
+                      name: "rotate",
+                      title: "Tilt (degrees)",
+                      type: "number",
+                      description: "Optional. Keep it under 2.",
+                      initialValue: 0,
+                      validation: (Rule) => Rule.min(-4).max(4),
+                    }),
+                  ],
+                  preview: { select: { title: "label" } },
+                }),
+              ],
+              validation: (Rule) => Rule.required().min(1).max(5),
+            }),
+            caption,
+          ],
+          preview: {
+            select: { title: "heading", fallback: "caption", media: "image" },
+            prepare: ({ title, fallback, media }) => ({ title: title || fallback || "Pop-out", subtitle: "Pop-out", media }),
+          },
+        }),
       ],
     }),
 

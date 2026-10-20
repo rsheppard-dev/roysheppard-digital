@@ -117,6 +117,60 @@ body {
   }
 }
 
+/*
+ * Case study pop-out (Popout): each piece is cut from the page behind it. Until the stage reaches
+ * mid-screen the piece sits exactly on the page (same place, same size, no shadow), so it is
+ * invisible against it. Then it lifts: it settles at its own size, its shadow grows and the page
+ * behind dims a touch. Stages already past mid-screen on load, and no-JS, show the lifted state.
+ */
+.popout-piece {
+  transform-origin: 0 0;
+  transform: rotate(var(--rot, 0deg));
+  box-shadow:
+    0 2px 4px rgba(23, 23, 26, 0.06),
+    0 14px 28px rgba(23, 23, 26, 0.12),
+    0 36px 72px rgba(23, 23, 26, 0.16);
+  transition:
+    transform 800ms var(--ease-out-strong) calc(var(--i, 0) * 80ms),
+    box-shadow 800ms var(--ease-out-strong) calc(var(--i, 0) * 80ms);
+}
+
+.popout[data-pending] .popout-piece {
+  transform: translate(var(--from-x), var(--from-y)) scale(var(--from-s));
+  box-shadow:
+    0 0 0 rgba(23, 23, 26, 0),
+    0 0 0 rgba(23, 23, 26, 0),
+    0 0 0 rgba(23, 23, 26, 0);
+}
+
+.popout-wash {
+  opacity: 0.4;
+  transition: opacity 800ms var(--ease-out-strong);
+}
+
+.popout[data-pending] .popout-wash {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .popout-piece,
+  .popout-wash {
+    transition: none;
+  }
+
+  .popout[data-pending] .popout-wash {
+    opacity: 0.4;
+  }
+
+  .popout[data-pending] .popout-piece {
+    transform: rotate(var(--rot, 0deg));
+    box-shadow:
+      0 2px 4px rgba(23, 23, 26, 0.06),
+      0 14px 28px rgba(23, 23, 26, 0.12),
+      0 36px 72px rgba(23, 23, 26, 0.16);
+  }
+}
+
 .phone-lift {
   transition: transform 200ms var(--ease-out-strong);
 }

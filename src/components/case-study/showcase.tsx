@@ -1,6 +1,7 @@
 import { BrowserMockup } from "@/components/ui/browser-mockup";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { PhoneMockup } from "@/components/ui/phone-mockup";
+import { Popout } from "./popout";
 import { urlFor } from "@/sanity/lib/image";
 import type { CaseStudyQueryResult } from "@/sanity/types";
 
@@ -118,6 +119,34 @@ function ShowcaseBlock({ block, flip }: { block: Block; flip: boolean }) {
         </figure>
       );
 
+    case "showcasePopout":
+      // With a heading the visual sits beside the text it illustrates; without one it runs full width.
+      if (!block.heading) {
+        return (
+          <figure>
+            <Popout block={block} />
+            <Caption>{block.caption}</Caption>
+          </figure>
+        );
+      }
+      return (
+        <div
+          className={`grid items-center gap-8 lg:gap-16 ${
+            flip ? "lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]" : "lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
+          }`}
+        >
+          <div className={`flex max-w-110 flex-col gap-3 ${flip ? "lg:order-1" : "lg:order-2"}`}>
+            <h3 className="text-2xl font-bold lg:text-[30px] lg:leading-[1.2]">{block.heading}</h3>
+            {block.text && (
+              <p className="text-[15px] leading-relaxed text-muted lg:text-base">{block.text}</p>
+            )}
+          </div>
+          <div className={flip ? "lg:order-2" : "lg:order-1"}>
+            <Popout block={block} />
+          </div>
+        </div>
+      );
+
     case "showcaseDetail":
       return (
         <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-16">
@@ -151,7 +180,8 @@ export function Showcase({ blocks }: { blocks: Block[] }) {
       </div>
       <div className="flex flex-col gap-16 lg:gap-28">
         {blocks.map((block) => {
-          const flip = block._type === "showcaseDetail" && detailCount++ % 2 === 1;
+          const beside = block._type === "showcaseDetail" || (block._type === "showcasePopout" && !!block.heading);
+          const flip = beside && detailCount++ % 2 === 1;
           return <ShowcaseBlock key={block._key} block={block} flip={flip} />;
         })}
       </div>
