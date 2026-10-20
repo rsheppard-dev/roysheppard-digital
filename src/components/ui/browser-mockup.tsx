@@ -28,6 +28,7 @@ export function BrowserMockup({
   variant = "clean",
   fit = "viewport",
   pan = true,
+  loading,
 }: {
   /** Optional — omit to show a neutral placeholder until a screenshot is available. */
   screenshotSrc?: string;
@@ -40,6 +41,8 @@ export function BrowserMockup({
   fit?: "viewport" | "natural";
   /** Scroll a tall screenshot on hover of a `group` ancestor (viewport fit only). */
   pan?: boolean;
+  /** Pass "eager" when the mockup sits above the fold, so the screenshot isn't lazy-loaded. */
+  loading?: "eager" | "lazy";
 }) {
   const illustrated = variant === "illustrated";
   const natural = fit === "natural" && screenshotDimensions;
@@ -84,6 +87,7 @@ export function BrowserMockup({
             width={PREVIEW_WIDTH}
             height={previewHeight}
             sizes={sizes}
+            loading={loading}
             style={
               {
                 "--reveal": `${revealPercent}%`,

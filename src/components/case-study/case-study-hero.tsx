@@ -71,6 +71,8 @@ export function CaseStudyHero({
           screenshotAlt={`${name} website homepage`}
           screenshotDimensions={screenshotDimensions}
           sizes="(min-width: 1024px) calc(100vw - 280px), 92vw"
+          // The hero visual is the page's LCP.
+          loading="eager"
         />
       </div>
     </>
