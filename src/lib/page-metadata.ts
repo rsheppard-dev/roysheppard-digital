@@ -9,6 +9,17 @@ export function socialImageUrl(image: SanityImageSource | string): string {
   return typeof image === "string" ? image : urlFor(image).width(1200).height(630).fit("crop").url();
 }
 
+const SHARE_ALT = "Roy Sheppard, freelance web designer and developer";
+
+/** The share image tags for og and twitter: the given image, else the built-in files in /public. */
+export function shareImages(source?: SanityImageSource | string | null) {
+  const url = source ? socialImageUrl(source) : null;
+  return {
+    og: [{ url: url ?? "/opengraph-image.png", width: 1200, height: 630, alt: SHARE_ALT }],
+    twitter: [{ url: url ?? "/twitter-image.png", width: 1200, height: 630, alt: SHARE_ALT }],
+  };
+}
+
 /**
  * Per-page metadata for a retained standalone page. `robots` and
  * `metadataBase` are intentionally left undefined so they inherit the root
@@ -33,9 +44,7 @@ export async function buildPageMetadata({
 }): Promise<Metadata> {
   const { data: settings } = await sanityFetch({ query: siteSettingsQuery });
   const source = image ?? settings?.seo?.socialImage;
-  // Pages that set their own metadata do not inherit the built-in file images, so name them here.
-  const og = [{ url: source ? socialImageUrl(source) : "/opengraph-image.png", width: 1200, height: 630 }];
-  const twitter = [{ url: source ? socialImageUrl(source) : "/twitter-image.png", width: 1200, height: 630 }];
+  const { og, twitter } = shareImages(source);
   return {
     title,
     description,
