@@ -66,7 +66,6 @@ export function CaseStudyHero({
         {/* Not a link: the visual belongs to this case study, and the live
             site is reached through the explicit text link above. */}
         <BrowserMockup
-          variant="illustrated"
           screenshotSrc={screenshotSrc}
           screenshotAlt={`${name} website homepage`}
           screenshotDimensions={screenshotDimensions}

@@ -1,24 +1,8 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
 
-/**
- * Screen boundary measured directly from the source illustration, as a % of
- * the full frame image. The frame PNG (ipad-mockup-white-bezel.png) is
- * cropped tight to the device silhouette (no transparent margin around it,
- * so cards butt straight up against the device and the caption below sits
- * right under it) — everything outside the device stays transparent, and
- * its bezel always masks the screenshot's edges regardless of any
- * sub-pixel rounding difference here.
- */
-const SCREEN = {
-  top: "5.96%",
-  left: "4.07%",
-  width: "91.78%",
-  height: "88.41%",
-};
-
-// Aspect ratio (height/width) of the screen box itself — derived from the
-// same pixel measurement as SCREEN above (1172 x 816 at native scale).
+// Aspect ratio (height / width) of the screen itself. The bezel is added around it, so the whole
+// device lands close to the old drawn frame's proportions and the grids don't shift.
 const SCREEN_ASPECT = 816 / 1172;
 const PREVIEW_WIDTH = 900;
 const IMAGE_SIZES = "(min-width: 1024px) 380px, (min-width: 768px) 320px, 85vw";
@@ -32,6 +16,12 @@ function getRevealPercent(dimensions?: { width: number; height: number } | null)
   return ((imageAspect - SCREEN_ASPECT) / imageAspect) * 100;
 }
 
+/**
+ * A slim tablet around a website screenshot: a light bezel with a hairline edge, a small camera
+ * dot and a soft layered shadow, matching BrowserMockup and PhoneMockup. Sizes are in container
+ * units so the frame keeps its proportions at any width. On hover of a `group` ancestor a tall
+ * screenshot scrolls to its bottom.
+ */
 export function IPadMockup({
   screenshotSrc,
   screenshotAlt,
@@ -40,13 +30,13 @@ export function IPadMockup({
   loading,
   sizes = IMAGE_SIZES,
 }: {
-  /** Optional — omit to show a neutral placeholder until a screenshot is available. */
+  /** Optional: omit to show a neutral placeholder until a screenshot is available. */
   screenshotSrc?: string;
   screenshotAlt: string;
   /** Natural pixel dimensions of the screenshot, used to compute the hover pan distance. */
   screenshotDimensions?: { width: number; height: number } | null;
   className?: string;
-  /** Pass "eager" when the iPad sits above the fold, so the frame and screenshot aren't lazy-loaded. */
+  /** Pass "eager" when the iPad sits above the fold, so the screenshot isn't lazy-loaded. */
   loading?: "eager" | "lazy";
   /** Rendered width of the iPad, for picking the right image size. */
   sizes?: string;
@@ -57,53 +47,41 @@ export function IPadMockup({
     : Math.round(PREVIEW_WIDTH * SCREEN_ASPECT);
 
   return (
-    <div
-      className={`relative w-full ${className}`}
-      style={{ aspectRatio: "1277 / 923" }}
-    >
-      <div
-        className="absolute overflow-hidden rounded-[2%] bg-tan"
-        style={{
-          top: SCREEN.top,
-          left: SCREEN.left,
-          width: SCREEN.width,
-          height: SCREEN.height,
-        }}
-      >
-        {screenshotSrc ? (
-          <Image
-            src={screenshotSrc}
-            alt={screenshotAlt}
-            width={PREVIEW_WIDTH}
-            height={previewHeight}
-            sizes={sizes}
-            loading={loading}
-            style={
-              {
-                "--reveal": `${revealPercent}%`,
-                // Stated in CSS too: with `h-auto`, Chrome doesn't count the width/height
-                // attributes alone as reserving space for a lazy image.
-                aspectRatio: `${PREVIEW_WIDTH} / ${previewHeight}`,
-              } as CSSProperties
-            }
-            className="absolute inset-x-0 top-0 h-auto w-full transition-transform duration-2500 ease-in-out group-hover:-translate-y-(--reveal) motion-reduce:transition-none"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center font-mono text-[11px] text-muted">
-            [Project screenshot]
-          </div>
-        )}
+    <div className={`@container w-full ${className}`}>
+      <div className="relative rounded-[3.6cqw] bg-white p-[2.6cqw] shadow-[0_2px_6px_rgba(23,23,26,0.06),0_18px_40px_rgba(23,23,26,0.13)] ring-1 ring-ink/10">
+        <span
+          aria-hidden="true"
+          className="absolute left-1/2 top-[0.85cqw] size-[0.9cqw] -translate-x-1/2 rounded-full bg-ink/70"
+        />
+        <div
+          className="relative w-full overflow-hidden rounded-[1.1cqw] bg-tan"
+          style={{ aspectRatio: "1172 / 816" }}
+        >
+          {screenshotSrc ? (
+            <Image
+              src={screenshotSrc}
+              alt={screenshotAlt}
+              width={PREVIEW_WIDTH}
+              height={previewHeight}
+              sizes={sizes}
+              loading={loading}
+              style={
+                {
+                  "--reveal": `${revealPercent}%`,
+                  // Stated in CSS too: with `h-auto`, Chrome doesn't count the width/height
+                  // attributes alone as reserving space for a lazy image.
+                  aspectRatio: `${PREVIEW_WIDTH} / ${previewHeight}`,
+                } as CSSProperties
+              }
+              className="absolute inset-x-0 top-0 h-auto w-full transition-transform duration-2500 ease-in-out group-hover:-translate-y-(--reveal) motion-reduce:transition-none"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center font-mono text-[11px] text-muted">
+              [Project screenshot]
+            </div>
+          )}
+        </div>
       </div>
-      <Image
-        src="/images/mockups/ipad-mockup-white-bezel.png"
-        alt=""
-        // The frame PNG's own pixel size, matching the wrapper's aspect ratio.
-        width={1277}
-        height={923}
-        sizes={sizes}
-        loading={loading}
-        className="pointer-events-none absolute inset-0 h-full w-full select-none"
-      />
     </div>
   );
 }

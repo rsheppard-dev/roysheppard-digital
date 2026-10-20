@@ -50,7 +50,6 @@ export async function ProjectEvidence({
 
   const mockup = (
     <BrowserMockup
-      variant="illustrated"
       className="transition-transform duration-300 ease-out-strong group-hover:-translate-y-1.5"
       screenshotSrc={screenshotSrc}
       screenshotAlt={`${name} website screenshot`}

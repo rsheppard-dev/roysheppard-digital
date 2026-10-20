@@ -14,9 +14,9 @@ function getRevealPercent(dimensions?: { width: number; height: number } | null)
 }
 
 /**
- * A simple browser window (traffic-light dots, no address bar) around a website screenshot.
- * `clean` is the paper-card frame; `illustrated` draws it as ink line art to match the
- * homepage's hand-drawn iPad. `fit="natural"` shows the whole screenshot at its own
+ * A simple browser window (muted dots, no address bar) around a website screenshot: white
+ * body, a light toolbar, a hairline edge and a soft layered shadow, so it sits on the page
+ * rather than being drawn onto it. `fit="natural"` shows the whole screenshot at its own
  * aspect ratio instead of a 16:10 viewport that pans on hover.
  */
 export function BrowserMockup({
@@ -25,7 +25,6 @@ export function BrowserMockup({
   screenshotDimensions,
   sizes = "(min-width: 1024px) 560px, 90vw",
   className = "",
-  variant = "clean",
   fit = "viewport",
   pan = true,
   loading,
@@ -37,14 +36,12 @@ export function BrowserMockup({
   screenshotDimensions?: { width: number; height: number } | null;
   sizes?: string;
   className?: string;
-  variant?: "clean" | "illustrated";
   fit?: "viewport" | "natural";
   /** Scroll a tall screenshot on hover of a `group` ancestor (viewport fit only). */
   pan?: boolean;
   /** Pass "eager" when the mockup sits above the fold, so the screenshot isn't lazy-loaded. */
   loading?: "eager" | "lazy";
 }) {
-  const illustrated = variant === "illustrated";
   const natural = fit === "natural" && screenshotDimensions;
   const revealPercent = getRevealPercent(screenshotDimensions);
   const previewHeight = screenshotDimensions
@@ -53,25 +50,13 @@ export function BrowserMockup({
 
   return (
     <div
-      className={`flex w-full flex-col overflow-hidden ${
-        illustrated
-          ? "rounded-[14px] border-2 border-ink bg-white drop-shadow-[0_18px_20px_rgba(23,23,26,0.10)] lg:rounded-[18px]"
-          : "rounded-card border border-border-tan bg-paper shadow-[0_12px_32px_rgba(23,23,26,0.08)]"
-      } ${className}`}
+      className={`flex w-full flex-col overflow-hidden rounded-xl bg-white shadow-[0_2px_6px_rgba(23,23,26,0.05),0_20px_48px_rgba(23,23,26,0.10)] ring-1 ring-ink/[0.07] lg:rounded-2xl ${className}`}
     >
-      {illustrated ? (
-        <div className="flex h-9 shrink-0 items-center gap-1.5 border-b-2 border-ink bg-white px-3.5 lg:h-11 lg:gap-2 lg:px-5">
-          <span className="size-2.5 rounded-full border-[1.5px] border-ink lg:size-3" aria-hidden="true" />
-          <span className="size-2.5 rounded-full border-[1.5px] border-ink lg:size-3" aria-hidden="true" />
-          <span className="size-2.5 rounded-full border-[1.5px] border-ink lg:size-3" aria-hidden="true" />
-        </div>
-      ) : (
-        <div className="flex h-10 shrink-0 items-center gap-2 border-b border-border-tan bg-paper px-4">
-          <span className="size-2.5 rounded-full bg-border-tan" aria-hidden="true" />
-          <span className="size-2.5 rounded-full bg-border-tan" aria-hidden="true" />
-          <span className="size-2.5 rounded-full bg-border-tan" aria-hidden="true" />
-        </div>
-      )}
+      <div className="flex h-9 shrink-0 items-center gap-1.5 border-b border-border-tan bg-tan px-3.5 lg:h-11 lg:gap-2 lg:px-5">
+        <span className="size-2.5 rounded-full bg-ink/15 lg:size-3" aria-hidden="true" />
+        <span className="size-2.5 rounded-full bg-ink/15 lg:size-3" aria-hidden="true" />
+        <span className="size-2.5 rounded-full bg-ink/15 lg:size-3" aria-hidden="true" />
+      </div>
       <div
         className="relative w-full overflow-hidden bg-tan"
         style={{

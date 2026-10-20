@@ -24,7 +24,7 @@ function toSource(image: ShowcaseImage | null, width: number) {
   };
 }
 
-/** A flat screenshot shown whole, in the same illustrated browser window as the other showcase shots. */
+/** A flat screenshot shown whole, in the same browser window as the other showcase shots. */
 function FramedImage({
   image,
   width,
@@ -41,7 +41,6 @@ function FramedImage({
 
   return (
     <BrowserMockup
-      variant="illustrated"
       fit="natural"
       screenshotSrc={source.src}
       screenshotAlt={source.alt}
@@ -65,7 +64,6 @@ function ShowcaseBlock({ block, flip }: { block: Block; flip: boolean }) {
       return (
         <figure>
           <BrowserMockup
-            variant="illustrated"
             screenshotSrc={source.src}
             screenshotAlt={source.alt}
             screenshotDimensions={source.dimensions}
@@ -94,7 +92,6 @@ function ShowcaseBlock({ block, flip }: { block: Block; flip: boolean }) {
           <div className="flex justify-center gap-3 rounded-card bg-tan px-4 py-10 sm:gap-6 sm:px-8 lg:gap-12 lg:py-20">
             {screens.map((screen, index) => (
               <PhoneMockup
-                variant="illustrated"
                 key={screen.key}
                 screenshotSrc={screen.source!.src}
                 screenshotAlt={screen.source!.alt}

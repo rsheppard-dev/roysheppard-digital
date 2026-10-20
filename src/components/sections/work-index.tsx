@@ -37,7 +37,7 @@ function Mockup({
       }
       sizes={sizes}
       loading={eager ? "eager" : undefined}
-      className="drop-shadow-[0_18px_20px_rgba(23,23,26,0.10)] transition-transform duration-300 ease-out-strong group-hover:-translate-y-1.5"
+      className="transition-transform duration-300 ease-out-strong group-hover:-translate-y-1.5"
     />
   );
   return item.slug ? (
