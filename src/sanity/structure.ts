@@ -36,6 +36,9 @@ export const structure: StructureResolver = (S) =>
                 .title("Work page")
                 .child(S.document().schemaType("workIndexPage").documentId("workIndexPage")),
               S.listItem()
+                .title("Services page")
+                .child(S.document().schemaType("servicesIndexPage").documentId("servicesIndexPage")),
+              S.listItem()
                 .title("Free website review")
                 .child(S.document().schemaType("freeReviewPage").documentId("freeReviewPage")),
               S.listItem()

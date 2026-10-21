@@ -68,6 +68,10 @@ export const workIndexPageQuery = defineQuery(
   `*[_type == "workIndexPage"][0]{ title, description, socialImage, eyebrow, heading, intro }`,
 );
 
+export const servicesIndexPageQuery = defineQuery(
+  `*[_type == "servicesIndexPage"][0]{ title, description, socialImage, eyebrow, heading, intro }`,
+);
+
 export const servicePageSlugsQuery = defineQuery(
   `*[_type == "servicePage" && defined(slug.current)]{ "slug": slug.current }`,
 );

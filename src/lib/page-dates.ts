@@ -14,6 +14,7 @@ export const lastEditsQuery = defineQuery(`{
   "home": ${latestOf(["hero", "about", "cta", "footer", "service", "testimonial", "faq", "workItem", "siteSettings"])},
   "work": ${latestOf(["workIndexPage", "workItem", "cta", "footer", "siteSettings"])},
   "shared": ${latestOf(["cta", "footer", "siteSettings"])},
+  "services": ${latestOf(["servicesIndexPage", "service", "cta", "footer", "siteSettings"])},
   "service": ${latestOf(["servicePage", "workItem", "cta", "footer", "siteSettings"])},
   "freeReview": ${latestOf(["freeReviewPage", "footer", "siteSettings"])},
   "contact": ${latestOf(["contactPage", "footer", "siteSettings"])},
@@ -24,6 +25,7 @@ export type LastEdits = {
   home: string | null;
   work: string | null;
   shared: string | null;
+  services: string | null;
   service: string | null;
   freeReview: string | null;
   contact: string | null;

@@ -8,7 +8,7 @@ export function RelatedLinks({
   /** Band colour, so it can alternate with whichever section sits above it. */
   tone?: "tan" | "cream";
 }) {
-  const links = [...items, { label: "All services", href: "/#services" }];
+  const links = [...items, { label: "All services", href: "/services" }];
 
   return (
     <div className={`flex flex-col gap-6 border-t border-border-tan ${tone === "cream" ? "bg-cream" : "bg-tan"} px-6 py-14 sm:px-10 lg:gap-8 lg:px-35 lg:py-20`}>

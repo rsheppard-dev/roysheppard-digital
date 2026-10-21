@@ -25,6 +25,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
+      url: `${SITE_URL}/services`,
+      lastModified: pageModified(edits, { source: "services" }),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${SITE_URL}/web-design-watford`,
       lastModified: servicePage(),
       changeFrequency: "monthly",

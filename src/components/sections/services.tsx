@@ -28,7 +28,7 @@ export async function Services() {
 			<div className='flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between'>
 				<h2 className='text-3xl font-semibold lg:text-[42px]'>What I do</h2>
 				<p className='max-w-95 text-sm text-muted lg:text-right lg:text-base'>
-					Everything you need to go from idea to a site that actually earns its
+					Everything you need to go from idea to a site that earns its
 					keep.
 				</p>
 			</div>

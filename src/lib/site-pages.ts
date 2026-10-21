@@ -4,6 +4,7 @@ import {
   freeReviewPageQuery,
   notFoundPageQuery,
   privacyPolicyQuery,
+  servicesIndexPageQuery,
   workIndexPageQuery,
 } from "@/sanity/lib/queries";
 
@@ -93,5 +94,31 @@ export async function getWorkIndexPage() {
     eyebrow: page.eyebrow ?? "",
     heading: page.heading ?? "",
     intro: page.intro ?? "",
+  };
+}
+
+/** Falls back to this copy until the "Services page" document is published in Studio. */
+const servicesIndexFallback = {
+  title: "Web Design, Development & E-Commerce Services in Watford",
+  description:
+    "Freelance web design, web development and e-commerce for Watford businesses. Custom-built around how you work, with support after launch.",
+  eyebrow: "Services",
+  heading: "Web design, development and e-commerce in Watford",
+  intro:
+    "Three ways I can help, all built around how your business works. Pick the one that fits, or tell me what you need and we'll work it out together.",
+};
+
+export async function getServicesIndexPage() {
+  const { data } = await sanityFetch({ query: servicesIndexPageQuery });
+  const page = data as Partial<Record<keyof typeof servicesIndexFallback | "socialImage", unknown>> | null;
+  const text = (key: keyof typeof servicesIndexFallback) =>
+    (typeof page?.[key] === "string" && (page[key] as string)) || servicesIndexFallback[key];
+  return {
+    title: text("title"),
+    description: text("description"),
+    socialImage: (page?.socialImage as Parameters<typeof import("@/lib/page-metadata").socialImageUrl>[0] | null | undefined) ?? null,
+    eyebrow: text("eyebrow"),
+    heading: text("heading"),
+    intro: text("intro"),
   };
 }

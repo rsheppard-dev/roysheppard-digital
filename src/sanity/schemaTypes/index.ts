@@ -15,6 +15,7 @@ import { freeReviewPage } from "./freeReviewPage";
 import { contactPage } from "./contactPage";
 import { notFoundPage } from "./notFoundPage";
 import { workIndexPage } from "./workIndexPage";
+import { servicesIndexPage } from "./servicesIndexPage";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -33,6 +34,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     contactPage,
     notFoundPage,
     workIndexPage,
+    servicesIndexPage,
   ],
 };
 
@@ -48,4 +50,5 @@ export const singletonTypes = new Set([
   "contactPage",
   "notFoundPage",
   "workIndexPage",
+  "servicesIndexPage",
 ]);

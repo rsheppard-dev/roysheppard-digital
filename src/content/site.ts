@@ -1,6 +1,37 @@
-export const nav = [
+/** The service pages, shared by the nav dropdown, the services page and the home page cards. */
+export const serviceLinks = [
+	{
+		title: 'Web Design',
+		href: '/web-design-watford',
+		summary: 'Custom, on-brand design built around how your customers decide.',
+		fit: "Your site looks dated, or doesn't feel like your business.",
+		image: 'brand',
+	},
+	{
+		title: 'Web Development',
+		href: '/web-development-watford',
+		summary: 'Bookings, accounts and bespoke tools built around your business.',
+		fit: "You need it to do more, like bookings, customer accounts or a quote calculator.",
+		image: 'platform',
+	},
+	{
+		title: 'E-Commerce',
+		href: '/ecommerce-watford',
+		summary: 'Online stores that present products clearly and make buying simple.',
+		fit: 'You want to sell products online, or show a catalogue to trade customers.',
+		image: 'product-pages',
+	},
+];
+
+export const nav: {
+	label: string;
+	href: string;
+	highlight?: boolean;
+	/** Show the service pages in a dropdown under this item. */
+	menu?: boolean;
+}[] = [
 	{ label: 'Work', href: '/work' },
-	{ label: 'Services', href: '/#services' },
+	{ label: 'Services', href: '/services', menu: true },
 	{ label: 'About', href: '/#about' },
 	{ label: 'Free review', href: '/free-website-review', highlight: true },
 ];
@@ -8,7 +39,7 @@ export const nav = [
 export const hero = {
 	badge: '',
 	heading: 'Freelance web designer & developer in Watford',
-	tagline: 'Bespoke websites built around how your business actually works.',
+	tagline: 'Bespoke websites built around how your business works.',
 	body: "I'm Roy, a freelance web designer and developer based in Watford. I design and build fast, thoughtful websites that help businesses and organisations achieve more online.",
 };
 
@@ -17,7 +48,7 @@ export const services = [
 		number: '01',
 		title: 'Web Design',
 		description:
-			'Custom, on-brand design, never a template. Built around how your customers actually decide to buy.',
+			'Custom, on-brand design, never a template. Built around how your customers decide to buy.',
 		bullets: [
 			'Brand-led visual design',
 			'Mobile-first layouts',
