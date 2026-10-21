@@ -77,9 +77,25 @@ export async function ProjectEvidence({
           </span>
           <h3 className="text-2xl font-bold lg:text-[34px] lg:leading-[1.15]">{name}</h3>
           <p className="text-sm text-muted">{meta}</p>
-          <ul className="mt-2 flex flex-col gap-2 text-[15px] leading-relaxed text-muted">
+          <ul className="mt-2 flex flex-col gap-2.5 text-[15px] leading-relaxed text-muted-strong">
             {contribution.map((line) => (
-              <li key={line}>— {line}</li>
+              <li key={line} className="flex items-start gap-3">
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="mt-1.25 shrink-0 text-accent"
+                >
+                  <path d="M2.5 8.6l3.6 3.7L13.5 3.8" />
+                </svg>
+                <span>{line}</span>
+              </li>
             ))}
           </ul>
           <div className="mt-1 flex flex-wrap items-baseline gap-x-6 gap-y-5">

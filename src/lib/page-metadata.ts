@@ -56,7 +56,7 @@ export async function buildPageMetadata({
       description,
       url: path,
       siteName: "Roy Sheppard",
-      locale: "en_US",
+      locale: "en_GB",
       type: "website",
       images: og,
     },

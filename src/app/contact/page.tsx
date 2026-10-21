@@ -8,6 +8,7 @@ import { PageModifiedJsonLd } from "@/components/ui/page-modified-jsonld";
 import { getContactPage } from "@/lib/site-pages";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
 import { ContactForm } from "@/components/contact/contact-form";
+import { formatUkPhone, telHref } from "@/lib/phone";
 
 const PATH = "/contact";
 
@@ -57,8 +58,8 @@ export default async function ContactPage() {
               {email}
             </a>
             {phone && (
-              <a href={`tel:${phone}`} className="w-fit py-2 text-[15px] text-ink underline decoration-border-tan underline-offset-4 transition-colors hover:text-accent-text">
-                {phone}
+              <a href={telHref(phone)} className="w-fit py-2 text-[15px] text-ink underline decoration-border-tan underline-offset-4 transition-colors hover:text-accent-text">
+                {formatUkPhone(phone)}
               </a>
             )}
           </div>

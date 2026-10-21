@@ -12,7 +12,7 @@ export const serviceLinks = [
 		href: '/web-development-watford',
 		summary: 'Bookings, accounts and bespoke tools built around your business.',
 		fit: "You need it to do more, like bookings, customer accounts or a quote calculator.",
-		image: 'platform',
+		image: 'requirements',
 	},
 	{
 		title: 'E-Commerce',

@@ -71,7 +71,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       url: SITE_URL,
       siteName: "Roy Sheppard",
-      locale: "en_US",
+      locale: "en_GB",
       type: "website",
       images: og,
     },

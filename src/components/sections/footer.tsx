@@ -3,6 +3,7 @@ import { TextLink } from '@/components/ui/text-link';
 import { CookieSettingsButton } from '@/components/consent/cookie-settings-button';
 import { sanityFetch } from '@/sanity/lib/live';
 import { footerQuery } from '@/sanity/lib/queries';
+import { formatUkPhone, telHref } from '@/lib/phone';
 
 function FooterColumn({
 	label,
@@ -75,8 +76,8 @@ export async function Footer() {
 						<TextLink variant='footer' href={`mailto:${footer.email}`}>
 							{footer.email}
 						</TextLink>
-						<TextLink variant='footer' href={`tel:${footer.phone}`}>
-							{footer.phone}
+						<TextLink variant='footer' href={telHref(footer.phone)}>
+							{formatUkPhone(footer.phone)}
 						</TextLink>
 					</FooterColumn>
 
