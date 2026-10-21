@@ -4,21 +4,21 @@ export const serviceLinks = [
 		title: 'Web Design',
 		href: '/web-design-watford',
 		summary: 'Custom, on-brand design built around how your customers decide.',
-		fit: "Your site looks dated, or doesn't feel like your business.",
+		fit: "Good for you if your site looks dated, or doesn't feel like your business.",
 		image: 'brand',
 	},
 	{
 		title: 'Web Development',
 		href: '/web-development-watford',
 		summary: 'Bookings, accounts and bespoke tools built around your business.',
-		fit: "You need it to do more, like bookings, customer accounts or a quote calculator.",
+		fit: "Good for you if you need it to do more, like bookings, customer accounts or a quote calculator.",
 		image: 'requirements',
 	},
 	{
 		title: 'E-Commerce',
 		href: '/ecommerce-watford',
 		summary: 'Online stores that present products clearly and make buying simple.',
-		fit: 'You want to sell products online, or show a catalogue to trade customers.',
+		fit: 'Good for you if you want to start selling your products online.',
 		image: 'product-pages',
 	},
 ];
@@ -50,9 +50,9 @@ export const services = [
 		description:
 			'Custom, on-brand design, never a template. Built around how your customers decide to buy.',
 		bullets: [
-			'Brand-led visual design',
-			'Mobile-first layouts',
-			'Conversion-focused UX',
+			'A look that matches your business',
+			'Looks right on phones first',
+			'Easy for customers to find what they need',
 		],
 	},
 	{
@@ -61,9 +61,9 @@ export const services = [
 		description:
 			'Custom-built websites and functionality, tailored to how your business works and easy to look after once they are live.',
 		bullets: [
-			'Bookings, accounts and bespoke tools',
-			'Content you can edit yourself',
-			'Support after launch',
+			'Bookings, customer accounts and custom tools',
+			'Edit your own content, no developer needed',
+			"Looked after once it's live",
 		],
 	},
 	{
@@ -72,9 +72,9 @@ export const services = [
 		description:
 			'Online stores built to present your products clearly and make buying straightforward, not a bolted-on afterthought.',
 		bullets: [
-			'Product pages that sell',
+			'Clear product pages',
 			'Simple, secure checkout',
-			'Built to grow with your catalogue',
+			'Easy to add and update products yourself',
 		],
 	},
 ];

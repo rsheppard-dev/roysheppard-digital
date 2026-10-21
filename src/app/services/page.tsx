@@ -58,7 +58,7 @@ export default async function ServicesPage() {
           {services.map((service, index) => (
             <li
               key={service.href}
-              className={`grid gap-8 py-10 lg:grid-cols-[minmax(0,10rem)_minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-14 lg:py-14 ${
+              className={`grid gap-8 py-10 lg:grid-cols-[10rem_minmax(0,1fr)] lg:gap-14 lg:py-14 ${
                 index > 0 ? "border-t border-border-tan" : ""
               }`}
             >
@@ -73,7 +73,7 @@ export default async function ServicesPage() {
 
               <div className="flex flex-col gap-4">
                 <h2 className="text-3xl font-semibold leading-tight lg:text-[40px]">{service.title}</h2>
-                <p className="max-w-120 text-base leading-relaxed text-muted-strong lg:text-lg">{service.description}</p>
+                <p className="max-w-130 text-base leading-relaxed text-muted-strong lg:text-lg">{service.description}</p>
                 <ul className="flex flex-col gap-1.5 text-[15px] text-muted-strong">
                   {service.bullets.map((bullet) => (
                     <li key={bullet} className="flex gap-3">
@@ -84,16 +84,8 @@ export default async function ServicesPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              <div className="flex flex-col justify-between gap-8 lg:pt-1.5">
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-mono text-[13px] font-medium uppercase tracking-[0.06em] text-muted">
-                    A good fit if
-                  </h3>
-                  <p className="max-w-80 text-base leading-relaxed text-ink">{service.fit}</p>
-                </div>
-                <TextLink variant="big" href={service.href} className="w-fit">
+                <p className="mt-2 max-w-130 text-lg font-medium leading-snug text-ink lg:text-xl">{service.fit}</p>
+                <TextLink variant="big" href={service.href} className="mt-1 w-fit">
                   Explore {service.title.toLowerCase()} <span aria-hidden="true">→</span>
                 </TextLink>
               </div>

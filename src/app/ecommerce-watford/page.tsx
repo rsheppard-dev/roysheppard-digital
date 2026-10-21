@@ -34,7 +34,7 @@ export default async function EcommercePage() {
         serviceType="E-commerce website development"
         description={ecommerce.description}
       />
-      <Breadcrumbs label="E-Commerce" path={PATH} />
+      <Breadcrumbs label="E-Commerce" path={PATH} parents={[{ label: "Services", path: "/services" }]} />
       <ServiceHeader
         eyebrow={ecommerce.eyebrow}
         heading={ecommerce.heading}

@@ -24,7 +24,7 @@ Content is edited in Sanity Studio and rendered by a Next.js site. Pages are sha
 
 ## Capabilities and Constraints
 
-- Services: web design, web development, e-commerce (Shopify or custom, including B2B catalogues without checkout). SEO work is offered but not led with.
+- Services: web design, web development, e-commerce (online shops that sell, on Shopify or a custom build). Lead with selling online, not trade catalogues. SEO work is offered but not led with.
 - Home address is never published anywhere.
 - Never promise page 1 of Google or invent results, percentages or a count of sites built.
 - No certifications, awards or memberships to claim.

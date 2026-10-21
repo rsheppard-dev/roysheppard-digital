@@ -50,7 +50,7 @@ async function main() {
       statement:
         "I've spent the last [X] years designing and building websites for small businesses, founders and agencies who needed something that actually worked — not just looked nice in a mockup.",
       tags: [
-        "UI / UX Design",
+        "Website design",
         "Front-end development",
         "E-commerce builds",
         "CMS & content sites",
@@ -87,7 +87,7 @@ async function main() {
       title: "Web Design",
       description:
         "Custom, on-brand design — never a template. Built around how your customers actually decide to buy.",
-      bullets: ["Brand-led visual design", "Mobile-first layouts", "Conversion-focused UX"],
+      bullets: ["A look that matches your business", "Looks right on phones first", "Easy for customers to find what they need"],
     },
     {
       _id: "service-2",

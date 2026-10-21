@@ -28,7 +28,7 @@ Key facts:
 - Freelancer with 6 years designing and building websites for businesses of all sizes.
 - Services: custom web design, web development, and e-commerce / online catalogue builds.
 - Every site is designed and built around the business rather than fitted into a template, often with a headless CMS so clients can edit their own content.
-- Also offers UI/UX design, bespoke functionality, SEO fundamentals, content management setup and ongoing support after launch.
+- Also offers bespoke functionality, SEO fundamentals, content management setup and ongoing support after launch.
 - E-commerce is built on Shopify or as a custom build, depending on the catalogue; not every product business needs online checkout.
 - Pricing is quoted per project after an initial conversation about the business and its goals.
 - Contact: info@roysheppard.digital, 07883066944, or the contact form. He usually replies within a day.
@@ -36,7 +36,7 @@ Key facts:
 ## Services
 
 - [All services](${SITE_URL}/services): An overview of the three services and which one fits.
-- [Web design in Watford](${SITE_URL}/web-design-watford): Custom, brand-led, mobile-first design with a clear next step on every page.
+- [Web design in Watford](${SITE_URL}/web-design-watford): Custom design built around your brand and customers, looking right on phones first, with a clear next step on every page.
 - [Web development in Watford](${SITE_URL}/web-development-watford): Custom-built websites with content clients can manage themselves, plus custom functionality such as booking systems, customer accounts, portals and quote calculators.
 - [E-commerce in Watford](${SITE_URL}/ecommerce-watford): Online stores and B2B catalogues built around what the business sells, on Shopify or a custom build.
 

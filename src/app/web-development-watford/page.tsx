@@ -41,7 +41,7 @@ export default async function WebDevelopmentPage() {
         serviceType="Web development"
         description={webDevelopment.description}
       />
-      <Breadcrumbs label="Web Development" path={PATH} />
+      <Breadcrumbs label="Web Development" path={PATH} parents={[{ label: "Services", path: "/services" }]} />
       <ServiceHeader
         eyebrow={webDevelopment.eyebrow}
         heading={webDevelopment.heading}
