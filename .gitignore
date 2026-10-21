@@ -48,3 +48,8 @@ CLAUDE.md
 .claude/
 .mcp.json
 site-brief.md
+
+# Impeccable design context (local only)
+/PRODUCT.md
+/DESIGN.md
+/.impeccable/
