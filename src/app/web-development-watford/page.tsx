@@ -34,7 +34,7 @@ export default async function WebDevelopmentPage() {
         body: "Tell me about an idea, or a business process you'd like to make easier. No obligation, just a chat.",
       }}
     >
-      <PageModifiedJsonLd path={PATH} name={webDevelopment.title} source="service" />
+      <PageModifiedJsonLd path={PATH} name={webDevelopment.title} source="service" portrait />
       <ServiceJsonLd
         path={PATH}
         name="Web Development"

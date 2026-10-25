@@ -59,7 +59,7 @@ export default async function ServicesPage() {
 
   return (
     <PageShell>
-      <PageModifiedJsonLd path={PATH} name="Services" source="services" />
+      <PageModifiedJsonLd path={PATH} name="Services" source="services" portrait />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}

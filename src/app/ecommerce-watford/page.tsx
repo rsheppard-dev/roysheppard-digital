@@ -27,7 +27,7 @@ export default async function EcommercePage() {
   const ecommerce = await getServicePage(SLUG);
   return (
     <PageShell>
-      <PageModifiedJsonLd path={PATH} name={ecommerce.title} source="service" />
+      <PageModifiedJsonLd path={PATH} name={ecommerce.title} source="service" portrait />
       <ServiceJsonLd
         path={PATH}
         name="E-Commerce"

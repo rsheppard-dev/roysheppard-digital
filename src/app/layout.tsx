@@ -9,6 +9,7 @@ import { ConsentDefaultScript } from "@/components/consent/consent-default-scrip
 import { ConsentBanner } from "@/components/consent/consent-banner";
 import { LocalBusinessJsonLd } from "@/components/ui/local-business-jsonld";
 import { isProduction } from "@/lib/is-production";
+import { PORTRAIT } from "@/lib/portrait";
 import "./globals.css";
 
 const GTM_ID = "GTM-PTDWD92";
@@ -101,6 +102,12 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     name: "Roy Sheppard",
     jobTitle: JOB_TITLE,
     url: SITE_URL,
+    image: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}${PORTRAIT.path}`,
+      width: PORTRAIT.width,
+      height: PORTRAIT.height,
+    },
     email,
     telephone: toE164(phone),
     address: {

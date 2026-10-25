@@ -28,7 +28,7 @@ export default async function WebDesignPage() {
   const webDesign = await getServicePage(SLUG);
   return (
     <PageShell>
-      <PageModifiedJsonLd path={PATH} name={webDesign.title} source="service" />
+      <PageModifiedJsonLd path={PATH} name={webDesign.title} source="service" portrait />
       <ServiceJsonLd
         path={PATH}
         name="Web Design"

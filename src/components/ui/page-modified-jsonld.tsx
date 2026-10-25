@@ -1,6 +1,7 @@
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
 import { lastEditsQuery, pageModified, type DateSource, type LastEdits } from "@/lib/page-dates";
+import { PORTRAIT } from "@/lib/portrait";
 
 const SITE_URL = "https://www.roysheppard.digital";
 
@@ -19,11 +20,14 @@ export async function PageModifiedJsonLd({
   name,
   source,
   slug,
+  portrait,
 }: {
   path: string;
   name?: string;
   source: DateSource;
   slug?: string;
+  /** The page shows Roy's portrait (the ServiceHeader byline): name it as the page's main image. */
+  portrait?: boolean;
 }) {
   const [{ data: edits }, own] = await Promise.all([
     sanityFetch({ query: lastEditsQuery, stega: false }) as Promise<{ data: LastEdits }>,
@@ -44,6 +48,16 @@ export async function PageModifiedJsonLd({
     ...(name ? { name } : {}),
     inLanguage: "en-GB",
     dateModified: pageModified(edits, { source, own: own.data }).toISOString(),
+    ...(portrait
+      ? {
+          primaryImageOfPage: {
+            "@type": "ImageObject",
+            url: `${SITE_URL}${PORTRAIT.path}`,
+            width: PORTRAIT.width,
+            height: PORTRAIT.height,
+          },
+        }
+      : {}),
   };
 
   return (

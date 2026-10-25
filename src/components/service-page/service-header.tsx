@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { PORTRAIT } from "@/lib/portrait";
 import { HighlightedHeading } from "@/components/ui/highlighted-heading";
 import { TextLink } from "@/components/ui/text-link";
 
@@ -27,6 +29,21 @@ export function ServiceHeader({
         <p className="max-w-155 text-base leading-relaxed text-muted-strong lg:text-lg">
           {intro}
         </p>
+        <div className="flex items-center gap-4">
+          <Image
+            src={PORTRAIT.path}
+            alt={PORTRAIT.alt}
+            width={PORTRAIT.width}
+            height={PORTRAIT.height}
+            sizes="96px"
+            priority
+            className="h-20 w-20 shrink-0 rounded-full border border-border-tan lg:h-24 lg:w-24"
+          />
+          <p className="flex flex-col text-sm leading-snug text-muted-strong lg:text-base">
+            <span className="font-semibold text-ink">Roy Sheppard</span>
+            Freelance web designer and developer in Watford
+          </p>
+        </div>
         <div className="mt-2 flex flex-wrap items-center gap-x-7 gap-y-4">
           <TextLink variant="button" href="/contact">
             Start a project <span aria-hidden="true">→</span>
