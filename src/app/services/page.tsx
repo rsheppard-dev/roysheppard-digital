@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { serviceLinks, services as fallbackServices } from "@/content/site";
+import { newSiteChoice, serviceLinks, services as fallbackServices } from "@/content/site";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import { getServicesIndexPage } from "@/lib/site-pages";
 import { sanityFetch } from "@/sanity/lib/live";
@@ -8,6 +7,7 @@ import { servicesQuery } from "@/sanity/lib/queries";
 import { PageShell } from "@/components/service-page/page-shell";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
 import { ServiceHeader } from "@/components/service-page/service-header";
+import { ServicePicker, type PickerChoice } from "@/components/service-page/service-picker";
 import { PageModifiedJsonLd } from "@/components/ui/page-modified-jsonld";
 import { TextLink } from "@/components/ui/text-link";
 import { ReviewPromo } from "@/components/sections/review-promo";
@@ -31,6 +31,20 @@ export default async function ServicesPage() {
     return { ...link, description: detail?.description ?? link.summary, bullets: detail?.bullets ?? [] };
   });
 
+  const choices: PickerChoice[] = [
+    newSiteChoice,
+    ...services.map((service) => ({
+      label: service.choice,
+      tag: service.title,
+      title: service.title,
+      description: service.description,
+      image: `/images/focus/${service.image}.webp`,
+      href: service.href,
+      cta: `Explore ${service.title.toLowerCase()}`,
+      bullets: service.bullets,
+    })),
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -53,45 +67,19 @@ export default async function ServicesPage() {
       <Breadcrumbs label="Services" path={PATH} />
       <ServiceHeader eyebrow={page.eyebrow} heading={page.heading} intro={page.intro} />
 
-      <div className="border-t border-border-tan bg-tan px-6 py-6 sm:px-10 lg:px-35 lg:py-10">
-        <ul className="flex flex-col">
-          {services.map((service, index) => (
-            <li
-              key={service.href}
-              className={`grid gap-8 py-10 lg:grid-cols-[10rem_minmax(0,1fr)] lg:gap-14 lg:py-14 ${
-                index > 0 ? "border-t border-border-tan" : ""
-              }`}
-            >
-              <Image
-                src={`/images/focus/${service.image}.webp`}
-                alt=""
-                width={400}
-                height={400}
-                sizes="(min-width: 1024px) 160px, 128px"
-                className="h-32 w-auto self-start lg:h-40"
-              />
-
-              <div className="flex flex-col gap-4">
-                <h2 className="text-3xl font-semibold leading-tight lg:text-[40px]">{service.title}</h2>
-                <p className="max-w-130 text-base leading-relaxed text-muted-strong lg:text-lg">{service.description}</p>
-                <ul className="flex flex-col gap-1.5 text-[15px] text-muted-strong">
-                  {service.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-3">
-                      <span aria-hidden="true" className="text-accent-text">
-                        +
-                      </span>
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-2 max-w-130 text-lg font-medium leading-snug text-ink lg:text-xl">{service.fit}</p>
-                <TextLink variant="big" href={service.href} className="mt-1 w-fit">
-                  Explore {service.title.toLowerCase()} <span aria-hidden="true">→</span>
-                </TextLink>
-              </div>
-            </li>
+      <div className="border-y border-border-tan bg-tan px-6 py-12 sm:px-10 lg:px-35 lg:py-20">
+        <h2 className="mb-8 max-w-180 text-3xl font-medium leading-tight tracking-[-0.01em] lg:mb-10 lg:text-[44px]">
+          Which of these sounds like you?
+        </h2>
+        <ServicePicker choices={choices} />
+        <nav aria-label="Services" className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-1 text-[15px] text-muted-strong lg:mt-12">
+          <span>Or go straight to a service:</span>
+          {services.map((service) => (
+            <TextLink key={service.href} variant="underline" href={service.href}>
+              {service.title}
+            </TextLink>
           ))}
-        </ul>
+        </nav>
       </div>
 
       <ReviewPromo />

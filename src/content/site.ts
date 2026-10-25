@@ -5,6 +5,7 @@ export const serviceLinks = [
 		href: '/web-design-watford',
 		summary: 'Custom, on-brand design built around how your customers decide.',
 		fit: "Good for you if your site looks dated, or doesn't feel like your business.",
+		choice: 'My site looks dated',
 		image: 'brand',
 	},
 	{
@@ -12,16 +13,36 @@ export const serviceLinks = [
 		href: '/web-development-watford',
 		summary: 'Bookings, accounts and bespoke tools built around your business.',
 		fit: "Good for you if you need it to do more, like bookings, customer accounts or a quote calculator.",
-		image: 'requirements',
+		choice: 'I need it to do more',
+		image: 'development',
 	},
 	{
 		title: 'E-Commerce',
 		href: '/ecommerce-watford',
 		summary: 'Online stores that present products clearly and make buying simple.',
 		fit: 'Good for you if you want to start selling your products online.',
+		choice: 'I want to sell online',
 		image: 'product-pages',
 	},
 ];
+
+/** The services page picker's first choice, for visitors who have no website yet. */
+export const newSiteChoice = {
+	label: "I don't have a website yet",
+	tag: 'New website',
+	title: 'Starting with no website',
+	description:
+		"You don't need to know what you need yet. We talk through your business, then I design and build the site around it and look after it once it's live.",
+	image: '/images/focus/new-site.webp',
+	href: '/contact',
+	cta: 'Start a project',
+	steps: [
+		{ label: 'Talk', text: 'We go through your business and what the site should do' },
+		{ label: 'Design', text: 'A look built around your business, never a template' },
+		{ label: 'Build', text: 'Custom-built, with content you can edit yourself' },
+		{ label: 'Look after', text: "Support once it's live" },
+	],
+};
 
 export const nav: {
 	label: string;
