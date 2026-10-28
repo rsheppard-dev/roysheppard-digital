@@ -3,6 +3,7 @@ import { Resend } from "resend";
 import { cta as fallbackCta, footer as fallbackFooter } from "@/content/site";
 import { validateContactForm, hasContactFormErrors, type ContactFormValues } from "@/lib/contact-form";
 import { sendMetaLead } from "@/lib/meta-capi";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 export const runtime = "nodejs";
 
@@ -21,6 +22,8 @@ type ContactRequestBody = ContactFormValues & {
   hpField?: string;
   /** Client-set timestamp (ms) of when the form was first rendered. */
   renderedAt?: number;
+  /** Invisible Turnstile token, checked with Cloudflare before anything is sent. */
+  turnstileToken?: string;
   /** The visitor's cookie-banner choice; the Meta Lead event is only sent when "granted". */
   consent?: string;
   /** Page the form was submitted from, reported to Meta as the event source. */
@@ -74,6 +77,20 @@ export async function POST(request: Request) {
   const errors = validateContactForm(values);
   if (hasContactFormErrors(errors)) {
     return NextResponse.json({ error: "Please fix the highlighted fields.", fieldErrors: errors }, { status: 422 });
+  }
+
+  const turnstile = await verifyTurnstile(body.turnstileToken, { action: "contact", request });
+  if (turnstile === "failed") {
+    return NextResponse.json(
+      { error: "We couldn't confirm you're a real person. Please refresh the page and try again." },
+      { status: 400 },
+    );
+  }
+  if (turnstile === "unavailable") {
+    return NextResponse.json(
+      { error: "Sorry, something went wrong sending your message. Please try again shortly." },
+      { status: 503 },
+    );
   }
 
   const apiKey = process.env.RESEND_API_KEY;

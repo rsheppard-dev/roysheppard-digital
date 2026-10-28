@@ -9,6 +9,7 @@ import {
   type ReviewFormErrors,
 } from "@/lib/review-form";
 import { getStoredConsent } from "@/lib/consent";
+import { TurnstileWidget, type TurnstileHandle } from "@/components/turnstile-widget";
 
 const FALLBACK_EMAIL = fallbackFooter.email || fallbackCta.email;
 
@@ -77,6 +78,7 @@ export function ReviewForm() {
   // "validation" (fix the highlighted fields) vs "submit" (the send failed: offer the email fallback).
   const [errorKind, setErrorKind] = useState<"validation" | "submit" | null>(null);
   const renderedAtRef = useRef<number | null>(null);
+  const turnstileRef = useRef<TurnstileHandle>(null);
   const messageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -125,12 +127,14 @@ export function ReviewForm() {
     const honeypot = (new FormData(event.currentTarget).get("hp_field") as string) || "";
 
     try {
+      const turnstileToken = await turnstileRef.current?.getToken();
       const response = await fetch("/api/free-review", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...values,
           hpField: honeypot,
+          turnstileToken,
           renderedAt: renderedAtRef.current ?? undefined,
           consent: getStoredConsent(),
           sourceUrl: window.location.href,
@@ -138,6 +142,7 @@ export function ReviewForm() {
       });
 
       const data = await response.json().catch(() => null);
+      turnstileRef.current?.reset();
 
       if (!response.ok) {
         setStatus("error");
@@ -162,6 +167,7 @@ export function ReviewForm() {
       setValues(EMPTY_VALUES);
       setErrors({});
     } catch {
+      turnstileRef.current?.reset();
       setStatus("error");
       setErrorKind("submit");
       setStatusMessage("Something went wrong sending your request. Please check your connection and try again.");
@@ -201,6 +207,7 @@ export function ReviewForm() {
         <label htmlFor="review_hp_field">Leave this field blank</label>
         <input type="text" id="review_hp_field" name="hp_field" tabIndex={-1} autoComplete="off" />
       </div>
+      <TurnstileWidget action="free-review" ref={turnstileRef} />
 
       <div className="flex flex-col gap-1.5">
         <h2 className="text-[26px] font-semibold leading-tight text-ink">Request your free review</h2>

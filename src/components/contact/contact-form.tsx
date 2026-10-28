@@ -9,6 +9,7 @@ import {
   type ContactFormErrors,
 } from "@/lib/contact-form";
 import { getStoredConsent } from "@/lib/consent";
+import { TurnstileWidget, type TurnstileHandle } from "@/components/turnstile-widget";
 
 const FALLBACK_EMAIL = fallbackFooter.email || fallbackCta.email;
 
@@ -84,6 +85,7 @@ export function ContactForm() {
   // Set after mount, not during render — render must stay pure, and this
   // only needs to be "roughly when the form became interactive" anyway.
   const renderedAtRef = useRef<number | null>(null);
+  const turnstileRef = useRef<TurnstileHandle>(null);
   useEffect(() => {
     renderedAtRef.current = Date.now();
   }, []);
@@ -126,12 +128,14 @@ export function ContactForm() {
     const honeypot = (new FormData(formEl).get("hp_field") as string) || "";
 
     try {
+      const turnstileToken = await turnstileRef.current?.getToken();
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...values,
           hpField: honeypot,
+          turnstileToken,
           renderedAt: renderedAtRef.current ?? undefined,
           consent: getStoredConsent(),
           sourceUrl: window.location.href,
@@ -139,6 +143,7 @@ export function ContactForm() {
       });
 
       const data = await response.json().catch(() => null);
+      turnstileRef.current?.reset();
 
       if (!response.ok) {
         setStatus("error");
@@ -165,6 +170,7 @@ export function ContactForm() {
       setValues(EMPTY_VALUES);
       setErrors({});
     } catch {
+      turnstileRef.current?.reset();
       setStatus("error");
       setErrorKind("submit");
       setStatusMessage(
@@ -216,6 +222,7 @@ export function ContactForm() {
         <label htmlFor="hp_field">Leave this field blank</label>
         <input type="text" id="hp_field" name="hp_field" tabIndex={-1} autoComplete="off" />
       </div>
+      <TurnstileWidget action="contact" ref={turnstileRef} />
 
       {status === "error" && statusMessage && (
         <div
