@@ -7,10 +7,10 @@ const variants = {
   /**
    * Header contact pill: coral with an ink outline and a hard ink shadow, tilted like a sketched sticker.
    * Ink text on coral passes AA (5.9:1). Small on phones so it fits beside the menu toggle, larger from lg.
-   * Plays a one-off entrance (cta-in in globals.css); pressing it drops it into its shadow.
+   * Pressing it drops it into its shadow.
    */
   navPill:
-    "tap-area inline-flex min-h-8 items-center gap-1.25 rounded-pill border-[1.5px] border-ink bg-accent px-3 py-1 text-[13px] font-bold text-ink -rotate-2 shadow-[2px_2px_0_var(--color-ink)] transition-[translate,box-shadow] duration-150 ease-out-strong hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[0_0_0_var(--color-ink)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[0_0_0_var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-safe:animate-[cta-in_520ms_var(--ease-out-strong)_450ms_backwards] lg:min-h-10 lg:gap-2 lg:px-5 lg:text-[15px]",
+    "tap-area inline-flex min-h-8 items-center gap-1.25 rounded-pill border-[1.5px] border-ink bg-accent px-3 py-1 text-[13px] font-bold text-ink -rotate-2 shadow-[2px_2px_0_var(--color-ink)] transition-[translate,box-shadow] duration-150 ease-out-strong hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[0_0_0_var(--color-ink)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[0_0_0_var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink lg:min-h-10 lg:gap-2 lg:px-5 lg:text-[15px]",
   /** Primary hero-style action: bold, ink, arrow, accent on hover. */
   big: "tap-area inline-flex items-center gap-2.5 font-semibold text-ink transition-colors hover:text-accent-text",
   /**
