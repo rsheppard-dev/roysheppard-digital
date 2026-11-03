@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { footer as fallbackFooter, nav } from '@/content/site';
 import { TextLink } from '@/components/ui/text-link';
 import { CookieSettingsButton } from '@/components/consent/cookie-settings-button';
@@ -40,9 +41,13 @@ export async function Footer() {
 		<div className='bg-ink px-6 py-12 text-cream sm:px-10 lg:px-35 lg:py-20'>
 			<div className='flex flex-col gap-10 lg:flex-row lg:justify-between'>
 				<div className='flex max-w-85 flex-col gap-3.5'>
-					<span className='font-display text-xl font-bold lg:text-[22px]'>
+					<Link
+						href='/'
+						aria-label={`${footer.name}, home`}
+						className='tap-area self-start font-display text-xl font-bold transition-opacity hover:opacity-65 lg:text-[22px]'
+					>
 						{footer.name}
-					</span>
+					</Link>
 					<p className='text-sm leading-relaxed text-[#B7B3A4]'>
 						{footer.blurb}
 					</p>
