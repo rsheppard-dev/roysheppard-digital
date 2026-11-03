@@ -80,6 +80,10 @@ export default async function ServicesPage() {
             </TextLink>
           ))}
         </nav>
+        <p className="mt-6 max-w-180 text-[15px] text-muted-strong">
+          Based in Watford, working with businesses across Hertfordshire and the rest of the UK. We can talk by phone,
+          email or video call, and I&apos;m happy to meet in person if you&apos;re nearby.
+        </p>
       </div>
 
       <ReviewPromo />

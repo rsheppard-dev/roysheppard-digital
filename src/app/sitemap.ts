@@ -49,6 +49,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
+      url: `${SITE_URL}/ecommerce-website-cost`,
+      lastModified: servicePage(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
       url: `${SITE_URL}/work`,
       lastModified: pageModified(edits, { source: "work" }),
       changeFrequency: "monthly",

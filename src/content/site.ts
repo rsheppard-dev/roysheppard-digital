@@ -156,6 +156,11 @@ export const faqs = [
 		answer:
 			"Absolutely. Send over your brand guidelines and I'll build the site around them.",
 	},
+	{
+		question: 'Do you only work with businesses in Watford?',
+		answer:
+			"No. I'm based in Watford and work with businesses across Hertfordshire and the rest of the UK. We can talk by phone, email or video call, and I'm happy to meet in person if you're nearby.",
+	},
 ];
 
 export const cta = {
