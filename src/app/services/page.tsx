@@ -84,6 +84,12 @@ export default async function ServicesPage() {
           Based in Watford, working with businesses across Hertfordshire and the rest of the UK. We can talk by phone,
           email or video call, and I&apos;m happy to meet in person if you&apos;re nearby.
         </p>
+        <p className="mt-4 text-[15px] text-muted-strong">
+          Thinking about an online shop?{" "}
+          <TextLink variant="underline" href="/ecommerce-website-cost">
+            See what an online shop costs
+          </TextLink>
+        </p>
       </div>
 
       <ReviewPromo />

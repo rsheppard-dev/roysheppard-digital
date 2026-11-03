@@ -14,6 +14,7 @@ import { ServiceJsonLd } from "@/components/service-page/service-jsonld";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Accordion } from "@/components/ui/accordion";
 import { FaqJsonLd } from "@/components/ui/faq-jsonld";
+import { TextLink } from "@/components/ui/text-link";
 
 const SLUG = "ecommerce-watford";
 const PATH = `/${SLUG}`;
@@ -57,6 +58,9 @@ export default async function EcommercePage() {
         <Eyebrow>FAQ</Eyebrow>
         <h2 className="text-3xl font-semibold lg:text-[42px]">E-commerce questions</h2>
         <Accordion items={ecommerce.faqs} />
+        <TextLink variant="underline" href="/ecommerce-website-cost" className="self-start">
+          Read the online shop cost guide <span aria-hidden="true">→</span>
+        </TextLink>
       </div>
 
       <RelatedLinks items={ecommerce.related} />
