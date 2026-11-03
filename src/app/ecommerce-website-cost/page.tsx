@@ -13,7 +13,7 @@ import { TextLink } from "@/components/ui/text-link";
 const PATH = "/ecommerce-website-cost";
 const TITLE = "How Much Does an Ecommerce Website Cost? | Roy Sheppard";
 const DESCRIPTION =
-  "What an online shop costs to build, what changes the price and how I quote. Online shops from £2,000, on Shopify or custom-built, by a Watford freelancer.";
+  "What an online shop costs to build, what changes the price and how I quote. Online shops from £2,000, built around your business by a Watford freelancer.";
 
 const priceFactors = [
   {
@@ -22,9 +22,9 @@ const priceFactors = [
       "Ten products and a thousand products need different work. A bigger catalogue means more to organise, more to import and more ways for customers to filter and search.",
   },
   {
-    title: "Shopify or a custom build",
+    title: "A ready-made platform or a custom build",
     description:
-      "Shopify gets a straightforward shop live sooner. A custom build costs more but suits shops with unusual needs, such as made-to-order products or trade pricing.",
+      "A ready-made platform gets a straightforward shop live sooner. A custom build costs more but suits shops with unusual needs, such as made-to-order products or trade pricing.",
   },
   {
     title: "How your products are sold",
@@ -57,8 +57,8 @@ const otherCosts = [
   {
     cost: "The platform",
     detail:
-      "Shopify charges its own monthly plan, separate from my fee. A custom build has hosting costs instead.",
-    paidTo: "Shopify, or your host",
+      "A ready-made platform charges its own monthly plan, separate from my fee. A custom build has hosting costs instead.",
+    paidTo: "Your platform or host",
   },
   {
     cost: "Payment fees",
@@ -112,9 +112,9 @@ const faqs = [
       "No. It's where online shops start. The final price depends on the things listed above, and you get a written quote before any work begins, so you know the cost up front.",
   },
   {
-    question: "Do you build on Shopify?",
+    question: "Which platform will you build my shop on?",
     answer:
-      "Yes, and I also build custom shops. I'll recommend whichever suits what you sell and how you want to run the shop, and explain why.",
+      "Whichever suits what you sell and how you want to run it. That might be a ready-made platform or a custom build, and I'll explain why before you decide.",
   },
   {
     question: "Can I add and change products myself?",
@@ -157,7 +157,7 @@ export default function EcommerceCostPage() {
         </h2>
         <div className="flex max-w-155 flex-col gap-4 text-base leading-relaxed text-muted-strong lg:text-lg">
           <p>
-            That is the starting point for a shop built around your products, on Shopify or custom-built. Where your
+            That is the starting point for a shop built around your products and how you sell them. Where your
             shop lands above that depends on what it needs to do.
           </p>
           <p>

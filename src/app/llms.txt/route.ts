@@ -29,7 +29,7 @@ Key facts:
 - Services: custom web design, web development, and e-commerce websites.
 - Every site is designed and built around the business rather than fitted into a template, often with a headless CMS so clients can edit their own content.
 - Also offers bespoke functionality, SEO fundamentals, content management setup and ongoing support after launch.
-- E-commerce is built on Shopify or as a custom build, depending on the catalogue.
+- E-commerce sites are built around the business, on a ready-made platform or custom-built, depending on what is sold.
 - Pricing is quoted per project after an initial conversation about the business and its goals. Online shops start from £2,000.
 - Contact: info@roysheppard.digital, 07883066944, or the contact form. He usually replies within a day.
 
@@ -38,7 +38,7 @@ Key facts:
 - [All services](${SITE_URL}/services): An overview of the three services and which one fits.
 - [Web design in Watford](${SITE_URL}/web-design-watford): Custom design built around your brand and customers, looking right on phones first, with a clear next step on every page.
 - [Web development in Watford](${SITE_URL}/web-development-watford): Custom-built websites with content clients can manage themselves, plus custom functionality such as booking systems, customer accounts, portals and quote calculators.
-- [E-commerce in Watford](${SITE_URL}/ecommerce-watford): Online stores built around what the business sells, on Shopify or a custom build.
+- [E-commerce in Watford](${SITE_URL}/ecommerce-watford): Online stores built around what the business sells.
 
 ## Case studies
 
