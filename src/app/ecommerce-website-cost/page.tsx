@@ -54,11 +54,33 @@ const priceFactors = [
 ];
 
 const otherCosts = [
-  "The platform. Shopify charges its own monthly plan, paid to Shopify and separate from my fee. A custom build has hosting costs instead.",
-  "Payment fees. Card providers such as Stripe and PayPal take a small charge on each sale.",
-  "Your domain name, if you don't already have one.",
-  "Photography, if your products need professional pictures.",
-  "Ongoing support after launch, if you want me to keep the site updated and looked after. This is optional.",
+  {
+    cost: "The platform",
+    detail:
+      "Shopify charges its own monthly plan, separate from my fee. A custom build has hosting costs instead.",
+    paidTo: "Shopify, or your host",
+  },
+  {
+    cost: "Payment fees",
+    detail: "Card providers such as Stripe and PayPal take a small charge on each sale.",
+    paidTo: "Your payment provider",
+  },
+  {
+    cost: "Your domain name",
+    detail: "Only if you don't already have one.",
+    paidTo: "A domain registrar",
+  },
+  {
+    cost: "Photography",
+    detail: "If your products need professional pictures.",
+    paidTo: "A photographer",
+  },
+  {
+    cost: "Support after launch",
+    detail: "If you want me to keep the site updated and looked after. This is optional.",
+    paidTo: "Me, only if you want it",
+    mine: true,
+  },
 ];
 
 const quoteSteps = [
@@ -160,16 +182,32 @@ export default function EcommerceCostPage() {
         </dl>
       </div>
 
-      <div className="flex flex-col gap-6 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-8 lg:px-35 lg:py-25">
-        <h2 className="max-w-190 text-3xl font-semibold lg:text-[42px] lg:leading-[1.12]">
-          What you pay for besides the build
-        </h2>
-        <p className="max-w-155 text-base leading-relaxed text-muted-strong lg:text-lg">
-          Some costs go to other companies, not to me. It&apos;s worth knowing about them before you decide.
-        </p>
-        <ul className="flex max-w-155 list-disc flex-col gap-3 pl-5 text-base leading-relaxed text-muted-strong marker:text-ink lg:text-lg">
-          {otherCosts.map((cost) => (
-            <li key={cost}>{cost}</li>
+      <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-12 lg:px-35 lg:py-25">
+        <div className="flex flex-col gap-4">
+          <h2 className="max-w-190 text-3xl font-semibold lg:text-[42px] lg:leading-[1.12]">
+            What you pay for besides the build
+          </h2>
+          <p className="max-w-155 text-base leading-relaxed text-muted-strong lg:text-lg">
+            Most of these costs go to other companies, not to me. It&apos;s worth knowing about them before you decide.
+          </p>
+        </div>
+        <ul className="flex flex-col">
+          {otherCosts.map((item) => (
+            <li
+              key={item.cost}
+              className={
+                item.mine
+                  ? "-mx-4 mt-4 grid gap-2 rounded-md bg-accent-soft px-4 py-6 lg:-mx-6 lg:grid-cols-[15rem_minmax(0,1fr)_17rem] lg:items-baseline lg:gap-10 lg:px-6"
+                  : "grid gap-2 border-t border-border-tan py-6 lg:grid-cols-[15rem_minmax(0,1fr)_17rem] lg:items-baseline lg:gap-10"
+              }
+            >
+              <h3 className="text-xl font-bold leading-snug text-ink">{item.cost}</h3>
+              <p className="max-w-110 text-base leading-relaxed text-muted-strong">{item.detail}</p>
+              <p className="text-sm leading-snug text-muted-strong">
+                <span className="font-mono text-[13px]">Paid to </span>
+                <span className="font-semibold text-ink">{item.paidTo}</span>
+              </p>
+            </li>
           ))}
         </ul>
       </div>
