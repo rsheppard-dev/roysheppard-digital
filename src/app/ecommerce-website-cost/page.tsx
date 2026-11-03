@@ -79,7 +79,6 @@ const otherCosts = [
     cost: "Support after launch",
     detail: "If you want me to keep the site updated and looked after. This is optional.",
     paidTo: "Me, only if you want it",
-    mine: true,
   },
 ];
 
@@ -195,11 +194,7 @@ export default function EcommerceCostPage() {
           {otherCosts.map((item) => (
             <li
               key={item.cost}
-              className={
-                item.mine
-                  ? "-mx-4 mt-4 grid gap-2 rounded-md bg-accent-soft px-4 py-6 lg:-mx-6 lg:grid-cols-[15rem_minmax(0,1fr)_17rem] lg:items-baseline lg:gap-10 lg:px-6"
-                  : "grid gap-2 border-t border-border-tan py-6 lg:grid-cols-[15rem_minmax(0,1fr)_17rem] lg:items-baseline lg:gap-10"
-              }
+              className="grid gap-2 border-t border-border-tan py-6 last:border-b lg:grid-cols-[15rem_minmax(0,1fr)_17rem] lg:items-baseline lg:gap-10"
             >
               <h3 className="text-xl font-bold leading-snug text-ink">{item.cost}</h3>
               <p className="max-w-110 text-base leading-relaxed text-muted-strong">{item.detail}</p>
