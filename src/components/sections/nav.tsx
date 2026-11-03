@@ -190,12 +190,44 @@ export function Nav() {
               </TextLink>
             ),
           )}
-          <TextLink variant="navCta" href="/contact">
+          <TextLink variant="navPill" href="/contact" className="group">
             Let&apos;s talk
+            <svg
+            aria-hidden="true"
+            width="11"
+            height="11"
+            viewBox="0 0 12 12"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="transition-transform duration-150 ease-out-strong group-hover:translate-x-px group-hover:-translate-y-px group-focus-visible:translate-x-px group-focus-visible:-translate-y-px lg:h-3 lg:w-3"
+          >
+            <path d="M3 9l6-6M4 3h5v5" />
+          </svg>
           </TextLink>
         </div>
 
-        {/* Mobile toggle */}
+        {/* Mobile: the contact pill stays in the header, next to the menu toggle */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <TextLink variant="navPill" href="/contact" onClick={closeAll} className="group">
+            Let&apos;s talk
+            <svg
+            aria-hidden="true"
+            width="11"
+            height="11"
+            viewBox="0 0 12 12"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="transition-transform duration-150 ease-out-strong group-hover:translate-x-px group-hover:-translate-y-px group-focus-visible:translate-x-px group-focus-visible:-translate-y-px lg:h-3 lg:w-3"
+          >
+            <path d="M3 9l6-6M4 3h5v5" />
+          </svg>
+          </TextLink>
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -204,10 +236,11 @@ export function Nav() {
             if (open) closeAll();
             else setOpen(true);
           }}
-          className="-mr-0.5 flex h-11 w-11 items-center justify-center lg:hidden"
+          className="-mr-0.5 flex h-11 w-11 items-center justify-center"
         >
           <MenuIcon open={open} />
         </button>
+        </div>
       </div>
 
       {/* Mobile panel: overlays the page below the header rather than pushing it down */}
@@ -276,13 +309,6 @@ export function Nav() {
               </div>
             );
           })}
-          <Link
-            href="/contact"
-            onClick={closeAll}
-            className="tap-area mt-3 w-fit border-b-[1.5px] border-ink pb-0.75 font-mono text-sm uppercase tracking-[0.03em] text-ink"
-          >
-            Let&apos;s talk
-          </Link>
         </div>
       )}
     </div>
