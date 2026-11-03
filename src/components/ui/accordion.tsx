@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import { LinkedText } from "@/components/ui/linked-text";
 
 type AccordionItemData = {
   question: string;
@@ -50,7 +51,7 @@ export function Accordion({ items }: { items: AccordionItemData[] }) {
             </h3>
             {open && (
               <p id={panelId} className="mb-6.5 max-w-160 text-[15px] leading-relaxed text-muted">
-                {item.answer}
+                <LinkedText text={item.answer} />
               </p>
             )}
           </div>

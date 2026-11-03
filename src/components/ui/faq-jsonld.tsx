@@ -1,3 +1,5 @@
+import { stripLinks } from "@/components/ui/linked-text";
+
 type Faq = { question: string; answer: string };
 
 /** FAQPage structured data — kept as a shared piece so it always matches the FAQs actually rendered on the page (Google requires the two to agree for FAQ rich results). */
@@ -10,7 +12,7 @@ export function FaqJsonLd({ faqs }: { faqs: Faq[] }) {
       name: item.question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: item.answer,
+        text: stripLinks(item.answer),
       },
     })),
   };

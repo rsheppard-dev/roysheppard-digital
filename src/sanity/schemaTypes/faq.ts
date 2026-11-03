@@ -23,6 +23,7 @@ export const faq = defineType({
       title: "Answer",
       type: "text",
       rows: 3,
+      description: "To add a link, write [link text](/page-path), for example [cost guide](/ecommerce-website-cost).",
     }),
   ],
   orderings: [

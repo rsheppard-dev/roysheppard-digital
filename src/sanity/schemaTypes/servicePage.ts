@@ -142,6 +142,7 @@ export const servicePage = defineType({
               title: "Answer",
               type: "text",
               rows: 4,
+              description: "To add a link, write [link text](/page-path), for example [cost guide](/ecommerce-website-cost).",
               validation: (Rule) => Rule.required(),
             }),
           ],
