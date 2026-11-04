@@ -128,8 +128,8 @@ export default function WebsiteCostPage() {
         tone="tan"
         costQuiz={false}
         items={[
-          { label: "Online shop cost guide", href: "/ecommerce-website-cost" },
-          { label: "Web design", href: "/web-design-watford" },
+          { label: "Online Shop Cost Guide", href: "/ecommerce-website-cost" },
+          { label: "Web Design", href: "/web-design-watford" },
         ]}
       />
     </PageShell>

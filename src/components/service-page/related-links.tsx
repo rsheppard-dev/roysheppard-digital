@@ -14,7 +14,7 @@ export function RelatedLinks({
   const links = [
     ...items,
     ...(costQuiz ? [{ label: "Website Cost Quiz", href: "/website-cost" }] : []),
-    { label: "All services", href: "/services" },
+    { label: "All Services", href: "/services" },
   ];
 
   return (

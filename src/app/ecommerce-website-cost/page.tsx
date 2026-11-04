@@ -235,8 +235,8 @@ export default function EcommerceCostPage() {
       <RelatedLinks
         tone="cream"
         items={[
-          { label: "E-commerce websites", href: "/ecommerce-watford" },
-          { label: "Web design", href: "/web-design-watford" },
+          { label: "E-Commerce", href: "/ecommerce-watford" },
+          { label: "Web Design", href: "/web-design-watford" },
         ]}
       />
     </PageShell>
