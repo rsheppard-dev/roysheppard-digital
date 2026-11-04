@@ -72,6 +72,9 @@ export async function Footer() {
 						<TextLink variant='footer' href='/ecommerce-watford'>
 							E-Commerce
 						</TextLink>
+						<TextLink variant='footer' href='/website-cost'>
+							Website cost
+						</TextLink>
 					</FooterColumn>
 
 					<FooterColumn label='Contact'>

@@ -192,3 +192,61 @@ body {
     transform: none;
   }
 }
+
+/*
+ * Cost quiz: each new question or result eases in from a few pixels below (it remounts, so this
+ * runs once per step). On the result, the ink line draws from the low end to where the answers
+ * point, then the marker settles on it. Reduced motion shows both in place.
+ */
+.quiz-step {
+  transition:
+    opacity 220ms var(--ease-out-strong),
+    transform 220ms var(--ease-out-strong);
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes quiz-range-fill {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 var(--stop, 0%) 0 0);
+  }
+}
+
+@keyframes quiz-range-marker {
+  from {
+    opacity: 0;
+    scale: 0.6;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.quiz-range-fill {
+  clip-path: inset(0 var(--stop, 0%) 0 0);
+  animation: quiz-range-fill 600ms var(--ease-out-strong) 200ms backwards;
+}
+
+.quiz-range-marker {
+  animation: quiz-range-marker 300ms var(--ease-out-strong) 700ms backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quiz-step {
+    @starting-style {
+      transform: none;
+    }
+  }
+
+  .quiz-range-fill,
+  .quiz-range-marker {
+    animation: none;
+  }
+}

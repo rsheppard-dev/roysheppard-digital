@@ -85,6 +85,12 @@ export default async function ServicesPage() {
           email or video call, and I&apos;m happy to meet in person if you&apos;re nearby.
         </p>
         <p className="mt-4 text-[15px] text-muted-strong">
+          Not sure what it will cost?{" "}
+          <TextLink variant="underline" href="/website-cost">
+            Try the website cost quiz
+          </TextLink>
+        </p>
+        <p className="mt-2 text-[15px] text-muted-strong">
           Thinking about an online shop?{" "}
           <TextLink variant="underline" href="/ecommerce-website-cost">
             See what an online shop costs

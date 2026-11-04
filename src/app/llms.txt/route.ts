@@ -39,6 +39,7 @@ Key facts:
 - [Web design in Watford](${SITE_URL}/web-design-watford): Custom design built around your brand and customers, looking right on phones first, with a clear next step on every page.
 - [Web development in Watford](${SITE_URL}/web-development-watford): Custom-built websites with content clients can manage themselves, plus custom functionality such as booking systems, customer accounts, portals and quote calculators.
 - [E-commerce in Watford](${SITE_URL}/ecommerce-watford): Online stores built around what the business sells.
+- [Website cost quiz](${SITE_URL}/website-cost): Typical prices for business websites, redesigns and online shops, with an optional written quote.
 
 ## Case studies
 
