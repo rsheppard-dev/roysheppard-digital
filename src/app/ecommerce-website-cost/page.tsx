@@ -112,6 +112,11 @@ const faqs = [
       "No. It's where online shops start. The final price depends on the things listed above, and you get a written quote before any work begins, so you know the cost up front.",
   },
   {
+    question: "What does a website that isn't a shop cost?",
+    answer:
+      "It depends on what you need, and you get a written quote before any work begins. The [website cost quiz](/website-cost) shows what a business website or a redesign typically costs.",
+  },
+  {
     question: "Which platform will you build my shop on?",
     answer:
       "Whichever suits what you sell and how you want to run it. That might be a ready-made platform or a custom build, and I'll explain why before you decide.",

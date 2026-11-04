@@ -53,7 +53,7 @@ export const nav: {
 }[] = [
 	{ label: 'Work', href: '/work' },
 	{ label: 'Services', href: '/services', menu: true },
-	{ label: 'About', href: '/#about' },
+	{ label: 'Cost', href: '/website-cost' },
 	{ label: 'Free review', href: '/free-website-review', highlight: true },
 ];
 

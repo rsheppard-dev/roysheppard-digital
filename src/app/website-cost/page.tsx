@@ -59,11 +59,7 @@ export default function WebsiteCostPage() {
   return (
     <PageShell>
       <PageModifiedJsonLd path={PATH} name={TITLE} source="service" />
-      <Breadcrumbs
-        label="Website cost quiz"
-        path={PATH}
-        parents={[{ label: "Services", path: "/services" }]}
-      />
+      <Breadcrumbs label="Website cost" path={PATH} />
 
       {/* On a phone the order is text then quiz, so the first question is never pushed far down. */}
       <div className="grid grid-cols-1 gap-x-18 gap-y-10 px-6 pb-16 pt-8 sm:px-10 lg:grid-cols-2 lg:items-start lg:px-35 lg:pb-24 lg:pt-10">
@@ -130,6 +126,7 @@ export default function WebsiteCostPage() {
 
       <RelatedLinks
         tone="tan"
+        costQuiz={false}
         items={[
           { label: "Online shop cost guide", href: "/ecommerce-website-cost" },
           { label: "Web design", href: "/web-design-watford" },
