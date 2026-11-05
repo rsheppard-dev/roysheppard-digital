@@ -417,9 +417,8 @@ export function CostQuiz() {
 
         <div className="flex flex-col gap-2 text-[15px] leading-relaxed text-muted-strong">
           <p>
-            That&apos;s based on your answers. {result.path.id === "features" ? "Features of this kind" : "Websites of this kind"} run from {formatPounds(result.from)} to{" "}
-            {formatPounds(result.to)} overall, and yours points to the{" "}
-            <strong className="font-semibold text-ink">{POSITION_LABEL[result.position]}</strong>.
+            That&apos;s based on your answers, which point to the{" "}
+            <strong className="font-semibold text-ink">{POSITION_LABEL[result.position]}</strong> of the scale above.
             {result.position === "upper" && " Bigger projects can go above it, and a written quote covers that properly."}
           </p>
           {result.path.id === "features" && answers.built === "builder" && (
