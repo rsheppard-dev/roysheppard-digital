@@ -44,7 +44,7 @@ const priceFactors = [
   {
     title: "Your photos and product descriptions",
     description:
-      "A shop is only as good as its product pages. If your photos and descriptions are ready, it's quicker. If they still need writing or shooting, that time needs planning for.",
+      "A shop is only as good as its product pages. Clear photos and descriptions make a big difference, and we'll talk through what you have and what would help.",
   },
   {
     title: "Moving from an old shop",

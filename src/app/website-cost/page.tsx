@@ -35,9 +35,9 @@ const priceFactors = [
       "Showing what you do and taking enquiries is the simplest. Bookings, logins, quote requests or something specific to your business add work.",
   },
   {
-    title: "How ready your text and photos are",
+    title: "Your text and photos",
     description:
-      "If your words and pictures are ready, it's quicker. If they still need writing or sourcing, that time has to come from somewhere.",
+      "Words and pictures you already have help the project move quickly. If you'd like a hand with either, we'll talk through what you have and what would help.",
   },
   {
     title: "Starting fresh or rebuilding",
