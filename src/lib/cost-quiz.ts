@@ -196,8 +196,9 @@ export const QUIZ_PATHS: QuizPath[] = [
         id: "built",
         prompt: "How is your website built?",
         options: [
-          { id: "custom", label: "It was custom-built, or I'm not sure", points: 0 },
+          { id: "custom", label: "It was custom-built", points: 0 },
           { id: "builder", label: "With a website builder such as Wix or Squarespace", points: 1 },
+          { id: "unsure", label: "I'm not sure", points: 0 },
         ],
       },
     ],

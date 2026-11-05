@@ -428,6 +428,9 @@ export function CostQuiz() {
               I&apos;ll tell you if that applies when I send your quote.
             </p>
           )}
+          {result.path.id === "features" && answers.built === "unsure" && (
+            <p>I&apos;ll check how your site is built before I send your quote, since that can affect what&apos;s possible.</p>
+          )}
           <p>This is a guide, not a quote. Your written quote is the real price.</p>
           {result.path.id === "shop" && (
             <p>
