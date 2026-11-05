@@ -11,8 +11,7 @@ import { FaqJsonLd } from "@/components/ui/faq-jsonld";
 import { HighlightedHeading } from "@/components/ui/highlighted-heading";
 import { TextLink } from "@/components/ui/text-link";
 import { CostQuiz } from "@/components/cost-quiz/cost-quiz";
-import { Signature } from "@/components/ui/signature";
-import { Stars } from "@/components/ui/stars";
+import { QuizProgressProvider, ResultTestimonial } from "@/components/cost-quiz/quiz-progress";
 import { sanityFetch } from "@/sanity/lib/live";
 import { testimonialsQuery } from "@/sanity/lib/queries";
 
@@ -87,40 +86,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata({ title: TITLE, description: DESCRIPTION, path: PATH });
 }
 
-/** One client's words beside the quiz. Desktop shows it under the byline, phones show it after the quiz so the first question is never pushed down. */
-function QuizTestimonial({
-  quote,
-  name,
-  company,
-  show,
-}: {
-  quote: string;
-  name?: string | null;
-  company?: string | null;
-  show: "desktop" | "mobile";
-}) {
-  return (
-    <figure
-      className={`${show === "desktop" ? "hidden lg:flex" : "flex lg:hidden"} w-full max-w-130 flex-col gap-4 rounded-card bg-ink px-7 py-7`}
-    >
-      <div className="flex items-start justify-between gap-6">
-        <span aria-hidden="true" className="-mb-5 -mt-1 text-[56px] font-semibold leading-none text-accent">
-          &ldquo;
-        </span>
-        <Stars size={14} className="mt-1" />
-      </div>
-      <blockquote className="text-pretty text-base font-medium leading-relaxed text-cream lg:text-[17px]">
-        <p>{quote}&rdquo;</p>
-      </blockquote>
-      <Signature name={name} company={company} onDark />
-    </figure>
-  );
-}
-
 export default async function WebsiteCostPage() {
   const { data } = await sanityFetch({ query: testimonialsQuery });
   const testimonial = data?.find((item) => item.name?.trim() === "James Sumner" && item.quote);
-  const resultProof = data?.find((item) => item.name?.trim() === "Paul Franklin" && item.quote);
 
   return (
     <PageShell>
@@ -128,42 +96,42 @@ export default async function WebsiteCostPage() {
       <Breadcrumbs label="Website cost" path={PATH} />
 
       {/* On a phone the order is text then quiz, so the first question is never pushed far down. */}
-      <div className="grid grid-cols-1 gap-x-18 gap-y-10 px-6 pb-16 pt-8 sm:px-10 lg:grid-cols-2 lg:items-start lg:px-35 lg:pb-24 lg:pt-10">
-        <div className="flex flex-col gap-6 lg:pt-4">
-          <h1 className="max-w-150 text-balance text-4xl font-medium leading-[1.1] tracking-[-0.015em] sm:text-5xl lg:text-[56px] lg:leading-[1.08]">
-            <HighlightedHeading text="How much will my website cost?" highlight="cost" />
-          </h1>
-          <p className="max-w-130 text-lg leading-relaxed text-muted-strong lg:text-[19px]">
-            Answer a few quick questions to see what a website like yours typically costs.
-          </p>
-          <ul className="flex flex-col gap-2 text-base text-muted-strong">
-            {notes.map((note) => (
-              <li key={note}>{note}</li>
-            ))}
-          </ul>
-          <div className="flex items-center gap-4 pt-2">
-            <Image
-              src={PORTRAIT.path}
-              alt={PORTRAIT.alt}
-              width={PORTRAIT.width}
-              height={PORTRAIT.height}
-              sizes="96px"
-              className="h-20 w-20 shrink-0 rounded-full border border-border-tan lg:h-24 lg:w-24"
-            />
-            <p className="flex flex-col text-sm leading-snug text-muted-strong lg:text-base">
-              <span className="font-semibold text-ink">Roy Sheppard</span>
-              Freelance web designer and developer in Watford
+      <QuizProgressProvider>
+        <div className="grid grid-cols-1 gap-x-18 gap-y-10 px-6 pb-16 pt-8 sm:px-10 lg:grid-cols-2 lg:items-start lg:px-35 lg:pb-24 lg:pt-10">
+          <div className="flex flex-col gap-6 lg:pt-4">
+            <h1 className="max-w-150 text-balance text-4xl font-medium leading-[1.1] tracking-[-0.015em] sm:text-5xl lg:text-[56px] lg:leading-[1.08]">
+              <HighlightedHeading text="How much will my website cost?" highlight="cost" />
+            </h1>
+            <p className="max-w-130 text-lg leading-relaxed text-muted-strong lg:text-[19px]">
+              Answer a few quick questions to see what a website like yours typically costs.
             </p>
+            <ul className="flex flex-col gap-2 text-base text-muted-strong">
+              {notes.map((note) => (
+                <li key={note}>{note}</li>
+              ))}
+            </ul>
+            <div className="flex items-center gap-4 pt-2">
+              <Image
+                src={PORTRAIT.path}
+                alt={PORTRAIT.alt}
+                width={PORTRAIT.width}
+                height={PORTRAIT.height}
+                sizes="96px"
+                className="h-20 w-20 shrink-0 rounded-full border border-border-tan lg:h-24 lg:w-24"
+              />
+              <p className="flex flex-col text-sm leading-snug text-muted-strong lg:text-base">
+                <span className="font-semibold text-ink">Roy Sheppard</span>
+                Freelance web designer and developer in Watford
+              </p>
+            </div>
+            {testimonial && <ResultTestimonial {...testimonial} quote={testimonial.quote ?? ""} show="desktop" />}
           </div>
-          {testimonial && <QuizTestimonial {...testimonial} quote={testimonial.quote ?? ""} show="desktop" />}
+          <div className="flex flex-col gap-8">
+            <CostQuiz />
+            {testimonial && <ResultTestimonial {...testimonial} quote={testimonial.quote ?? ""} show="mobile" />}
+          </div>
         </div>
-        <div className="flex flex-col gap-8">
-          <CostQuiz
-            proof={resultProof ? { quote: resultProof.quote ?? "", name: resultProof.name, company: resultProof.company } : null}
-          />
-          {testimonial && <QuizTestimonial {...testimonial} quote={testimonial.quote ?? ""} show="mobile" />}
-        </div>
-      </div>
+      </QuizProgressProvider>
 
       <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-12 lg:px-35 lg:py-25">
         <div className="flex flex-col gap-4">

@@ -275,9 +275,9 @@ body {
   animation: quiz-range-marker 800ms linear 150ms backwards;
 }
 
-/* The client's words come in last, once the slider and price have finished. Space is held from the start, so nothing shifts. */
+/* The testimonial beside the quiz is only mounted once the result shows, then waits for the slider and price before rising in. */
 .quiz-proof {
-  animation: quiz-estimate-in 500ms var(--ease-out-strong) 1700ms backwards;
+  animation: quiz-estimate-in 500ms var(--ease-out-strong) 1800ms backwards;
 }
 
 /* The price: waits for the slider, then rises in. The highlighter is a background that grows from the left. */
