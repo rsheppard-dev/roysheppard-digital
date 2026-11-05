@@ -89,7 +89,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function WebsiteCostPage() {
   const { data } = await sanityFetch({ query: testimonialsQuery });
   // The first shows on a small scroll after the result; the second only if they keep scrolling.
-  const proof: Testimonial[] = ["James Sumner", "Chrystella Nicolaou"].flatMap((who) => {
+  const proof: Testimonial[] = ["James Sumner", "Paul Franklin"].flatMap((who) => {
     const item = data?.find((entry) => entry.name?.trim() === who && entry.quote);
     return item ? [{ quote: item.quote ?? "", name: item.name, company: item.company }] : [];
   });
