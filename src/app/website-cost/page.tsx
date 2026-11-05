@@ -11,7 +11,7 @@ import { FaqJsonLd } from "@/components/ui/faq-jsonld";
 import { HighlightedHeading } from "@/components/ui/highlighted-heading";
 import { TextLink } from "@/components/ui/text-link";
 import { CostQuiz } from "@/components/cost-quiz/cost-quiz";
-import { QuizProgressProvider, ResultTestimonial } from "@/components/cost-quiz/quiz-progress";
+import { QuizProgressProvider, ResultTestimonials, type Testimonial } from "@/components/cost-quiz/quiz-progress";
 import { sanityFetch } from "@/sanity/lib/live";
 import { testimonialsQuery } from "@/sanity/lib/queries";
 
@@ -88,7 +88,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function WebsiteCostPage() {
   const { data } = await sanityFetch({ query: testimonialsQuery });
-  const testimonial = data?.find((item) => item.name?.trim() === "James Sumner" && item.quote);
+  // The first shows on a small scroll after the result; the second only if they keep scrolling.
+  const proof: Testimonial[] = ["James Sumner", "Chrystella Nicolaou"].flatMap((who) => {
+    const item = data?.find((entry) => entry.name?.trim() === who && entry.quote);
+    return item ? [{ quote: item.quote ?? "", name: item.name, company: item.company }] : [];
+  });
 
   return (
     <PageShell>
@@ -124,11 +128,11 @@ export default async function WebsiteCostPage() {
                 Freelance web designer and developer in Watford
               </p>
             </div>
-            {testimonial && <ResultTestimonial {...testimonial} quote={testimonial.quote ?? ""} show="desktop" />}
+            {proof.length > 0 && <ResultTestimonials items={proof} show="desktop" />}
           </div>
           <div className="flex flex-col gap-8">
             <CostQuiz />
-            {testimonial && <ResultTestimonial {...testimonial} quote={testimonial.quote ?? ""} show="mobile" />}
+            {proof.length > 0 && <ResultTestimonials items={proof} show="mobile" />}
           </div>
         </div>
       </QuizProgressProvider>
