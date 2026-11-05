@@ -7,6 +7,7 @@ import { footerQuery, siteSettingsQuery } from "@/sanity/lib/queries";
 import { shareImages } from "@/lib/page-metadata";
 import { ConsentDefaultScript } from "@/components/consent/consent-default-script";
 import { ConsentBanner } from "@/components/consent/consent-banner";
+import { ContactClickTracker } from "@/components/analytics/contact-click-tracker";
 import { LocalBusinessJsonLd } from "@/components/ui/local-business-jsonld";
 import { isProduction } from "@/lib/is-production";
 import { PORTRAIT } from "@/lib/portrait";
@@ -152,6 +153,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         </noscript>
         {children}
         <ConsentBanner />
+        <ContactClickTracker />
       </body>
     </html>
   );
