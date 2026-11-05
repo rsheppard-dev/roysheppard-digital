@@ -37,12 +37,12 @@ const priceFactors = [
   {
     title: "Your text and photos",
     description:
-      "Words and pictures you already have help the project move quickly. If you'd like a hand with either, we'll talk through what you have and what would help.",
+      "Words and pictures you already have help the project move quickly. If you'd like a hand with either, I'll talk through what you have and what would help.",
   },
   {
     title: "Starting fresh or rebuilding",
     description:
-      "With an existing site, we look at what you have, what stays and what changes before anything is built.",
+      "With an existing site, I look at what you have, what stays and what changes before anything is built.",
   },
   {
     title: "Connections to other tools",
@@ -75,7 +75,7 @@ const faqs = [
   {
     question: "What happens after I send my answers?",
     answer:
-      "I read your answers and usually reply within 24 hours. If anything is unclear I'll ask, then I send a written quote that covers the work we've agreed, with no obligation.",
+      "I read your answers and usually reply within 24 hours. If anything is unclear I'll ask, then I send a written quote that covers what you need, with no obligation.",
   },
 ];
 

@@ -44,12 +44,12 @@ const priceFactors = [
   {
     title: "Your photos and product descriptions",
     description:
-      "A shop is only as good as its product pages. Clear photos and descriptions make a big difference, and we'll talk through what you have and what would help.",
+      "A shop is only as good as its product pages. Clear photos and descriptions make a big difference, and I'll talk through what you have and what would help.",
   },
   {
     title: "Moving from an old shop",
     description:
-      "If you already sell online, bringing your existing products across adds to the job. We'll look at what you have before I quote.",
+      "If you already sell online, bringing your existing products across adds to the job. I'll look at what you have before I quote.",
   },
 ];
 
@@ -84,14 +84,14 @@ const otherCosts = [
 
 const quoteSteps = [
   {
-    title: "We talk about your business",
+    title: "I find out about your business",
     description:
       "What you sell, who buys it and what you want the shop to do. No obligation, and I usually reply within 24 hours.",
   },
   {
     title: "You get a clear quote",
     description:
-      "A written quote covering the work we've agreed, so you know what's included before anything starts.",
+      "A written quote covering exactly what you need, so you know what's included before anything starts.",
   },
   {
     title: "I design the key pages first",
@@ -99,9 +99,9 @@ const quoteSteps = [
       "You see how the shop will look and work before it's built, and can change things while that's still easy.",
   },
   {
-    title: "I build it and we review it together",
+    title: "I build it and go through it with you",
     description:
-      "I build the shop, then we go through it together before it goes live. I show you how to update products yourself.",
+      "I build the shop, then go through it with you before it goes live. I show you how to update products yourself.",
   },
 ];
 
@@ -129,7 +129,7 @@ const faqs = [
   {
     question: "Can you redo my existing online shop?",
     answer:
-      "Yes. I can refresh or rebuild an existing shop. We'll look at your current products and pages together before I quote.",
+      "Yes. I can refresh or rebuild an existing shop. I'll look at your current products and pages before I quote.",
   },
 ];
 
@@ -166,8 +166,8 @@ export default function EcommerceCostPage() {
             shop lands above that depends on what it needs to do.
           </p>
           <p>
-            I don&apos;t price from a menu. After we talk about your business I send a written quote, so the figure
-            you see covers the work we&apos;ve actually agreed.
+            I don&apos;t price from a menu. After I find out about your business I send a written quote, so the figure
+            you see covers exactly what you need.
           </p>
         </div>
       </div>
