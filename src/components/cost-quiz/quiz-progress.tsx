@@ -89,25 +89,24 @@ export function ResultTestimonials({ items, show }: { items: Testimonial[]; show
   return (
     <div className={`${show === "desktop" ? "hidden lg:flex" : "flex lg:hidden"} w-full max-w-130 flex-col gap-6`}>
       {items.slice(0, shown).map((item) => (
-        <figure key={item.quote} className="quiz-proof flex flex-col gap-4 rounded-card bg-ink px-7 py-7">
-          <div className="flex items-start justify-between gap-6">
-            <span aria-hidden="true" className="-mb-5 -mt-1 text-[56px] font-semibold leading-none text-accent">
-              &ldquo;
-            </span>
-            <Stars size={14} className="mt-1" />
-          </div>
-          <blockquote className="flex flex-col gap-3 text-pretty text-base font-medium leading-relaxed text-cream lg:text-[17px]">
+        <figure
+          key={item.quote}
+          className="quiz-proof flex flex-col gap-4 rounded-card border border-border-tan bg-paper p-6 shadow-[0_12px_32px_rgba(23,23,26,0.07)]"
+        >
+          <Stars size={14} />
+          <blockquote className="flex flex-col gap-3 text-pretty text-[17px] leading-relaxed text-ink">
             {item.quote
               .split(/\n\s*\n/)
               .filter(Boolean)
               .map((paragraph, index, all) => (
                 <p key={paragraph}>
+                  {index === 0 && "\u201C"}
                   {paragraph}
                   {index === all.length - 1 && "\u201D"}
                 </p>
               ))}
           </blockquote>
-          <Signature name={item.name} company={item.company} onDark />
+          <Signature name={item.name} company={item.company} />
         </figure>
       ))}
     </div>
