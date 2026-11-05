@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { buildPageMetadata } from "@/lib/page-metadata";
+import { PORTRAIT } from "@/lib/portrait";
 import { PageShell } from "@/components/service-page/page-shell";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
 import { RelatedLinks } from "@/components/service-page/related-links";
@@ -19,6 +21,39 @@ const notes = [
   "Takes about a minute.",
   "You see the range without giving an email.",
   "Your written quote is always the real price.",
+];
+
+const priceFactors = [
+  {
+    title: "How big the site is",
+    description:
+      "A handful of pages is quicker than a large site with many sections. Every extra page is more to design, write and check.",
+  },
+  {
+    title: "What it needs to do",
+    description:
+      "Showing what you do and taking enquiries is the simplest. Bookings, logins, quote requests or something specific to your business add work.",
+  },
+  {
+    title: "How ready your text and photos are",
+    description:
+      "If your words and pictures are ready, it's quicker. If they still need writing or sourcing, that time has to come from somewhere.",
+  },
+  {
+    title: "Starting fresh or rebuilding",
+    description:
+      "With an existing site, we look at what you have, what stays and what changes before anything is built.",
+  },
+  {
+    title: "Connections to other tools",
+    description:
+      "Linking the site to a calendar, your accounts or another system takes extra setup. If it only needs to stand on its own, you don't pay for it.",
+  },
+  {
+    title: "Help after launch",
+    description:
+      "Ongoing support is optional and separate from the build, so you only pay for it if you want it.",
+  },
 ];
 
 const faqs = [
@@ -68,11 +103,49 @@ export default function WebsiteCostPage() {
               <li key={note}>{note}</li>
             ))}
           </ul>
+          <div className="flex items-center gap-4 pt-2">
+            <Image
+              src={PORTRAIT.path}
+              alt={PORTRAIT.alt}
+              width={PORTRAIT.width}
+              height={PORTRAIT.height}
+              sizes="96px"
+              className="h-20 w-20 shrink-0 rounded-full border border-border-tan lg:h-24 lg:w-24"
+            />
+            <p className="flex flex-col text-sm leading-snug text-muted-strong lg:text-base">
+              <span className="font-semibold text-ink">Roy Sheppard</span>
+              Freelance web designer and developer in Watford
+            </p>
+          </div>
         </div>
         <CostQuiz />
       </div>
 
-      <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
+      <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-12 lg:px-35 lg:py-25">
+        <div className="flex flex-col gap-4">
+          <h2 className="max-w-190 text-3xl font-semibold lg:text-[42px] lg:leading-[1.12]">What changes the price</h2>
+          <p className="max-w-155 text-base leading-relaxed text-muted-strong lg:text-lg">
+            Every project is different. These are the things that move a quote up or down.
+          </p>
+        </div>
+        <dl className="grid gap-x-16 sm:grid-cols-2">
+          {priceFactors.map((factor) => (
+            <div key={factor.title} className="border-t border-border-tan py-6">
+              <dt className="text-xl font-bold leading-snug text-ink">{factor.title}</dt>
+              <dd className="mt-2 max-w-110 text-base leading-relaxed text-muted-strong">{factor.description}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="max-w-155 text-base leading-relaxed text-muted-strong">
+          Planning an online shop? The{" "}
+          <TextLink variant="underline" href="/ecommerce-website-cost">
+            cost guide
+          </TextLink>{" "}
+          lists each cost and who it&apos;s paid to.
+        </p>
+      </div>
+
+      <div className="flex flex-col gap-8 border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
         <FaqJsonLd faqs={faqs} />
         <h2 className="text-3xl font-semibold lg:text-[42px]">Questions about cost</h2>
         <Accordion items={faqs} />
@@ -87,7 +160,7 @@ export default function WebsiteCostPage() {
       </div>
 
       <RelatedLinks
-        tone="cream"
+        tone="tan"
         costQuiz={false}
         items={[
           { label: "Online Shop Cost Guide", href: "/ecommerce-website-cost" },
