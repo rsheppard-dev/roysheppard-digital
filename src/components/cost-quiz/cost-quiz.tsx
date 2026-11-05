@@ -391,7 +391,7 @@ export function CostQuiz() {
           <p className="font-mono text-[13px] text-muted-strong">{result.path.label}</p>
           <h2 ref={stepHeadingRef} tabIndex={-1} className="scroll-mt-28 text-[26px] font-semibold leading-tight text-ink focus:outline-none">
             {result.path.id === "features" ? "Features like yours typically cost" : "Websites like yours typically cost"}{" "}
-            <span className="whitespace-nowrap bg-highlight px-1.5 [box-decoration-break:clone]">
+            <span className="quiz-estimate whitespace-nowrap px-1.5">
               {formatPounds(result.estimateFrom)} to {formatPounds(result.estimateTo)}
             </span>
           </h2>

@@ -195,8 +195,9 @@ body {
 
 /*
  * Cost quiz: each new question or result eases in from a few pixels below (it remounts, so this
- * runs once per step). On the result, the ink line draws from the low end to where the answers
- * point, then the marker settles on it. Reduced motion shows both in place.
+ * runs once per step). On the result the sequence is: the ink line draws from the low end to where
+ * the answers point, the marker settles on it, then the price rises into view and the highlighter
+ * sweeps in behind it. About 1.3s in all, shown once per quiz. Reduced motion shows everything in place.
  */
 .quiz-step {
   transition:
@@ -229,13 +230,44 @@ body {
   }
 }
 
+@keyframes quiz-estimate-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@keyframes quiz-estimate-mark {
+  from {
+    background-size: 0% 100%;
+  }
+  to {
+    background-size: 100% 100%;
+  }
+}
+
 .quiz-range-fill {
   clip-path: inset(0 var(--stop, 0%) 0 0);
-  animation: quiz-range-fill 600ms var(--ease-out-strong) 200ms backwards;
+  animation: quiz-range-fill 550ms var(--ease-out-strong) 100ms backwards;
 }
 
 .quiz-range-marker {
-  animation: quiz-range-marker 300ms var(--ease-out-strong) 700ms backwards;
+  animation: quiz-range-marker 280ms var(--ease-out-strong) 600ms backwards;
+}
+
+/* The price: waits for the slider, then rises in. The highlighter is a background that grows from the left. */
+.quiz-estimate {
+  display: inline-block;
+  background: linear-gradient(var(--color-highlight), var(--color-highlight)) no-repeat left center / 100% 100%;
+  animation:
+    quiz-estimate-in 360ms var(--ease-out-strong) 800ms backwards,
+    quiz-estimate-mark 420ms var(--ease-out-strong) 900ms backwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -246,7 +278,8 @@ body {
   }
 
   .quiz-range-fill,
-  .quiz-range-marker {
+  .quiz-range-marker,
+  .quiz-estimate {
     animation: none;
   }
 }
