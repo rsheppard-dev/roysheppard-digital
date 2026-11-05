@@ -11,6 +11,10 @@ import { FaqJsonLd } from "@/components/ui/faq-jsonld";
 import { HighlightedHeading } from "@/components/ui/highlighted-heading";
 import { TextLink } from "@/components/ui/text-link";
 import { CostQuiz } from "@/components/cost-quiz/cost-quiz";
+import { Signature } from "@/components/ui/signature";
+import { Stars } from "@/components/ui/stars";
+import { sanityFetch } from "@/sanity/lib/live";
+import { testimonialsQuery } from "@/sanity/lib/queries";
 
 const PATH = "/website-cost";
 const TITLE = "How Much Does a Website Cost? Quick Quiz | Roy Sheppard";
@@ -83,7 +87,35 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata({ title: TITLE, description: DESCRIPTION, path: PATH });
 }
 
-export default function WebsiteCostPage() {
+/** One client's words beside the quiz. Desktop shows it under the byline, phones show it after the quiz so the first question is never pushed down. */
+function QuizTestimonial({
+  quote,
+  name,
+  company,
+  show,
+}: {
+  quote: string;
+  name?: string | null;
+  company?: string | null;
+  show: "desktop" | "mobile";
+}) {
+  return (
+    <figure
+      className={`${show === "desktop" ? "hidden lg:flex" : "flex lg:hidden"} w-full max-w-130 flex-col gap-4 rounded-card border border-border-tan bg-paper p-6 shadow-[0_12px_32px_rgba(23,23,26,0.07)]`}
+    >
+      <Stars size={14} />
+      <blockquote className="text-pretty text-[17px] leading-relaxed text-ink">
+        &ldquo;{quote}&rdquo;
+      </blockquote>
+      <Signature name={name} company={company} />
+    </figure>
+  );
+}
+
+export default async function WebsiteCostPage() {
+  const { data } = await sanityFetch({ query: testimonialsQuery });
+  const testimonial = data?.find((item) => item.name?.trim() === "James Sumner" && item.quote);
+
   return (
     <PageShell>
       <PageModifiedJsonLd path={PATH} name={TITLE} source="service" />
@@ -117,8 +149,12 @@ export default function WebsiteCostPage() {
               Freelance web designer and developer in Watford
             </p>
           </div>
+          {testimonial && <QuizTestimonial {...testimonial} quote={testimonial.quote ?? ""} show="desktop" />}
         </div>
-        <CostQuiz />
+        <div className="flex flex-col gap-8">
+          <CostQuiz />
+          {testimonial && <QuizTestimonial {...testimonial} quote={testimonial.quote ?? ""} show="mobile" />}
+        </div>
       </div>
 
       <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-12 lg:px-35 lg:py-25">
