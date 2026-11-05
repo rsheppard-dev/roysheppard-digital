@@ -18,15 +18,10 @@ import {
 } from "@/lib/cost-quiz";
 import { getStoredConsent } from "@/lib/consent";
 import { formatUkPhone, telHref } from "@/lib/phone";
-import { Signature } from "@/components/ui/signature";
-import { Stars } from "@/components/ui/stars";
 import { TurnstileWidget, type TurnstileHandle } from "@/components/turnstile-widget";
 
 const FALLBACK_EMAIL = fallbackFooter.email || fallbackCta.email;
 const PHONE = fallbackFooter.phone;
-
-/** A client's words shown under the quote button on the result. */
-type Proof = { quote: string; name?: string | null; company?: string | null };
 
 const EMPTY_VALUES: QuoteRequestValues = { name: "", email: "", notes: "" };
 
@@ -125,7 +120,7 @@ function OptionButton({
  * straight away (no email needed), then optionally ask for a written quote. The range only ever uses
  * Roy's published figures; the answers decide whether it points to the lower end, the middle or the upper end.
  */
-export function CostQuiz({ proof = null }: { proof?: Proof | null }) {
+export function CostQuiz() {
   const [pathId, setPathId] = useState<PathId | null>(null);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   // 0 is "what do you need", 1..n are that path's questions, n + 1 is the result.
@@ -563,14 +558,6 @@ export function CostQuiz({ proof = null }: { proof?: Proof | null }) {
           Privacy policy
         </Link>
       </p>
-
-      {proof && (
-        <figure className="flex flex-col gap-3 border-t border-border-tan pt-6">
-          <Stars size={14} />
-          <blockquote className="text-pretty text-[15px] leading-relaxed text-ink">&ldquo;{proof.quote}&rdquo;</blockquote>
-          <Signature name={proof.name} company={proof.company} />
-        </figure>
-      )}
 
       <button
         type="button"
