@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { Signature } from "@/components/ui/signature";
 import { Stars } from "@/components/ui/stars";
 
@@ -20,9 +20,13 @@ export function useQuizProgress() {
 }
 
 /**
- * A client's words that stay out of the way during the questions and come in a couple of seconds
- * after the result appears, once the slider and price have played. Desktop shows it under the
- * byline; phones show it after the quiz so the first question is never pushed down.
+ * A client's words that stay out of the way during the questions. Once the result shows, it slides in
+ * when the visitor scrolls a little (about 80px), so it arrives as they move down to the quote form.
+ * Someone who never needs to scroll still sees it after 6 seconds. Desktop shows it under the byline;
+ * phones show it after the quiz so the first question is never pushed down.
+ *
+ * "Scrolled a little" is watched with an invisible marker placed just below the screen once the result's
+ * own scroll has settled, so there is no scroll listener: the marker coming into view is the signal.
  */
 export function ResultTestimonial({
   quote,
@@ -36,7 +40,47 @@ export function ResultTestimonial({
   show: "desktop" | "mobile";
 }) {
   const { onResult } = useQuizProgress();
-  if (!onResult) return null;
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    if (!onResult) return;
+
+    let observer: IntersectionObserver | undefined;
+    let marker: HTMLDivElement | undefined;
+    const reveal = () => setRevealed(true);
+
+    // The result scrolls itself into view on a phone, so wait for that before measuring.
+    const arm = window.setTimeout(() => {
+      marker = document.createElement("div");
+      marker.setAttribute("aria-hidden", "true");
+      Object.assign(marker.style, {
+        position: "absolute",
+        left: "0",
+        top: `${window.scrollY + window.innerHeight + 80}px`,
+        width: "1px",
+        height: "1px",
+        pointerEvents: "none",
+      });
+      document.body.appendChild(marker);
+      observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) reveal();
+      });
+      observer.observe(marker);
+    }, 1200);
+
+    const fallback = window.setTimeout(reveal, 6000);
+
+    return () => {
+      window.clearTimeout(arm);
+      window.clearTimeout(fallback);
+      observer?.disconnect();
+      marker?.remove();
+      // Leaving the result (Start again) puts it away until the next result.
+      setRevealed(false);
+    };
+  }, [onResult]);
+
+  if (!onResult || !revealed) return null;
 
   return (
     <figure
