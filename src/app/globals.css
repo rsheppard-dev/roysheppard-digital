@@ -210,23 +210,37 @@ body {
   }
 }
 
+/*
+ * The dot is visible from the first frame at the low end and carries the line with it. It travels
+ * to the answer, overshoots by about 6px, then settles. --travel is the dot's final position as a
+ * percentage of the line, --stop is what the fill leaves uncovered, and cqw is a percent of the line's
+ * width (the line is a size container), so the dot and the end of the fill stay together.
+ */
 @keyframes quiz-range-fill {
-  from {
+  0% {
     clip-path: inset(0 100% 0 0);
+    animation-timing-function: var(--ease-out-strong);
   }
-  to {
+  70% {
+    clip-path: inset(0 calc(var(--stop, 0%) - 1.4%) 0 0);
+    animation-timing-function: cubic-bezier(0.3, 0, 0.4, 1);
+  }
+  100% {
     clip-path: inset(0 var(--stop, 0%) 0 0);
   }
 }
 
 @keyframes quiz-range-marker {
-  from {
-    opacity: 0;
-    scale: 0.6;
+  0% {
+    transform: translateX(calc(var(--travel, 0) * -1cqw));
+    animation-timing-function: var(--ease-out-strong);
   }
-  to {
-    opacity: 1;
-    scale: 1;
+  70% {
+    transform: translateX(1.4cqw);
+    animation-timing-function: cubic-bezier(0.3, 0, 0.4, 1);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 
@@ -254,11 +268,11 @@ body {
 
 .quiz-range-fill {
   clip-path: inset(0 var(--stop, 0%) 0 0);
-  animation: quiz-range-fill 550ms var(--ease-out-strong) 100ms backwards;
+  animation: quiz-range-fill 800ms linear 150ms backwards;
 }
 
 .quiz-range-marker {
-  animation: quiz-range-marker 280ms var(--ease-out-strong) 600ms backwards;
+  animation: quiz-range-marker 800ms linear 150ms backwards;
 }
 
 /* The price: waits for the slider, then rises in. The highlighter is a background that grows from the left. */

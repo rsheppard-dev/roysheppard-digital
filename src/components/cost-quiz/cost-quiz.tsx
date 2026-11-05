@@ -398,7 +398,7 @@ export function CostQuiz() {
         </div>
 
         <div className="flex flex-col gap-2.5">
-          <div className="relative h-5" role="img" aria-label={`Your answers point to the ${POSITION_LABEL[result.position]} of the full range, ${formatPounds(result.from)} to ${formatPounds(result.to)}`}>
+          <div className="relative h-5 [container-type:inline-size]" role="img" aria-label={`Your answers point to the ${POSITION_LABEL[result.position]} of the full range, ${formatPounds(result.from)} to ${formatPounds(result.to)}`}>
             <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-border-tan" />
             <div
               className="quiz-range-fill absolute inset-x-0 top-1/2 h-0.5 -translate-y-1/2 bg-ink"
@@ -406,7 +406,7 @@ export function CostQuiz() {
             />
             <span
               className="quiz-range-marker absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-[1.5px] border-ink bg-accent"
-              style={{ left: `${stop}%` }}
+              style={{ left: `${stop}%`, "--travel": stop } as React.CSSProperties}
             />
           </div>
           <div className="flex justify-between font-mono text-[13px] text-muted-strong">
