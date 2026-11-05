@@ -105,7 +105,7 @@ const servicesIndexFallback = {
   eyebrow: "Services",
   heading: "Web design, development and e-commerce in Watford",
   intro:
-    "Everything is built around how your business works. Pick what sounds like you, or tell me what you need and we'll work it out together.",
+    "Everything is built around how your business works. Pick what sounds like you, or tell me what you need and I'll help you work it out.",
 };
 
 export async function getServicesIndexPage() {

@@ -32,12 +32,12 @@ export const newSiteChoice = {
 	tag: 'New website',
 	title: 'Starting with no website',
 	description:
-		"You don't need to know what you need yet. We talk through your business, then I design and build the site around it and look after it once it's live.",
+		"You don't need to know what you need yet. I talk through your business with you, then design and build the site around it and look after it once it's live.",
 	image: '/images/focus/new-site.webp',
 	href: '/contact',
 	cta: 'Start a project',
 	steps: [
-		{ label: 'Talk', text: 'We go through your business and what the site should do' },
+		{ label: 'Talk', text: 'I go through your business and what the site should do' },
 		{ label: 'Design', text: 'A look built around your business, never a template' },
 		{ label: 'Build', text: 'Custom-built, with content you can edit yourself' },
 		{ label: 'Look after', text: "Support once it's live" },
@@ -144,7 +144,7 @@ export const faqs = [
 	{
 		question: 'How long does a project take?',
 		answer:
-			"It depends on the size and scope of the project, and how quickly content and feedback come together. I'll give you a realistic timeline once we've talked through what you need.",
+			"It depends on the size and scope of the project, and how quickly content and feedback come together. I'll give you a realistic timeline once I know what you need.",
 	},
 	{
 		question: 'Do you offer support after launch?',

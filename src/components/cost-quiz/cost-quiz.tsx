@@ -431,16 +431,6 @@ export function CostQuiz() {
             <p>I&apos;ll check how your site is built before I send your quote, since that can affect what&apos;s possible.</p>
           )}
           <p>This is a guide, not a quote. Your written quote is the real price.</p>
-          {result.path.id === "shop" && (
-            <p>
-              <Link
-                href="/ecommerce-website-cost"
-                className="tap-area border-b-[1.5px] border-ink pb-0.5 font-semibold text-ink transition-colors hover:border-accent-text hover:text-accent-text"
-              >
-                See what changes the price of a shop
-              </Link>
-            </p>
-          )}
         </div>
       </div>
 

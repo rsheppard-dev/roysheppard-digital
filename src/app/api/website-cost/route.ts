@@ -89,7 +89,7 @@ export async function POST(request: Request) {
   const turnstile = await verifyTurnstile(body.turnstileToken, { action: "website-cost", request });
   if (turnstile === "failed") {
     return NextResponse.json(
-      { error: "We couldn't confirm you're a real person. Please refresh the page and try again." },
+      { error: "Sorry, I couldn't confirm you're a real person. Please refresh the page and try again." },
       { status: 400 },
     );
   }
