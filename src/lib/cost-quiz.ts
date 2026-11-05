@@ -49,7 +49,7 @@ export const QUIZ_PATHS: QuizPath[] = [
     label: "A website for my business",
     description: "Showing what you do and bringing in enquiries.",
     from: 1200,
-    to: 4000,
+    to: 5000,
     questions: [
       { id: "size", prompt: "How big does the website need to be?", options: PAGE_COUNT_OPTIONS },
       {
