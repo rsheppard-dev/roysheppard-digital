@@ -275,6 +275,11 @@ body {
   animation: quiz-range-marker 800ms linear 150ms backwards;
 }
 
+/* The client's words come in last, once the slider and price have finished. Space is held from the start, so nothing shifts. */
+.quiz-proof {
+  animation: quiz-estimate-in 500ms var(--ease-out-strong) 1700ms backwards;
+}
+
 /* The price: waits for the slider, then rises in. The highlighter is a background that grows from the left. */
 .quiz-estimate {
   display: inline-block;
@@ -293,7 +298,8 @@ body {
 
   .quiz-range-fill,
   .quiz-range-marker,
-  .quiz-estimate {
+  .quiz-estimate,
+  .quiz-proof {
     animation: none;
   }
 }

@@ -120,6 +120,7 @@ function QuizTestimonial({
 export default async function WebsiteCostPage() {
   const { data } = await sanityFetch({ query: testimonialsQuery });
   const testimonial = data?.find((item) => item.name?.trim() === "James Sumner" && item.quote);
+  const resultProof = data?.find((item) => item.name?.trim() === "Paul Franklin" && item.quote);
 
   return (
     <PageShell>
@@ -157,7 +158,9 @@ export default async function WebsiteCostPage() {
           {testimonial && <QuizTestimonial {...testimonial} quote={testimonial.quote ?? ""} show="desktop" />}
         </div>
         <div className="flex flex-col gap-8">
-          <CostQuiz />
+          <CostQuiz
+            proof={resultProof ? { quote: resultProof.quote ?? "", name: resultProof.name, company: resultProof.company } : null}
+          />
           {testimonial && <QuizTestimonial {...testimonial} quote={testimonial.quote ?? ""} show="mobile" />}
         </div>
       </div>

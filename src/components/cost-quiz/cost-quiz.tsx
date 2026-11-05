@@ -18,10 +18,15 @@ import {
 } from "@/lib/cost-quiz";
 import { getStoredConsent } from "@/lib/consent";
 import { formatUkPhone, telHref } from "@/lib/phone";
+import { Signature } from "@/components/ui/signature";
+import { Stars } from "@/components/ui/stars";
 import { TurnstileWidget, type TurnstileHandle } from "@/components/turnstile-widget";
 
 const FALLBACK_EMAIL = fallbackFooter.email || fallbackCta.email;
 const PHONE = fallbackFooter.phone;
+
+/** A client's words that come in on the result, after the slider and price have played. */
+type Proof = { quote: string; name?: string | null; company?: string | null };
 
 const EMPTY_VALUES: QuoteRequestValues = { name: "", email: "", notes: "" };
 
@@ -120,7 +125,7 @@ function OptionButton({
  * straight away (no email needed), then optionally ask for a written quote. The range only ever uses
  * Roy's published figures; the answers decide whether it points to the lower end, the middle or the upper end.
  */
-export function CostQuiz() {
+export function CostQuiz({ proof = null }: { proof?: Proof | null }) {
   const [pathId, setPathId] = useState<PathId | null>(null);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   // 0 is "what do you need", 1..n are that path's questions, n + 1 is the result.
@@ -558,6 +563,21 @@ export function CostQuiz() {
           Privacy policy
         </Link>
       </p>
+
+      {proof && (
+        <figure className="quiz-proof flex flex-col gap-3 rounded-md bg-ink p-6">
+          <div className="flex items-start justify-between gap-6">
+            <span aria-hidden="true" className="-mb-4 -mt-1 text-[44px] font-semibold leading-none text-accent">
+              &ldquo;
+            </span>
+            <Stars size={13} className="mt-1" />
+          </div>
+          <blockquote className="text-pretty text-[15px] font-medium leading-relaxed text-cream">
+            <p>{proof.quote}&rdquo;</p>
+          </blockquote>
+          <Signature name={proof.name} company={proof.company} onDark />
+        </figure>
+      )}
 
       <button
         type="button"
