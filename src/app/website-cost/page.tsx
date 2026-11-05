@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/page-metadata";
-import { QUIZ_PATHS, formatRange } from "@/lib/cost-quiz";
 import { PageShell } from "@/components/service-page/page-shell";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
 import { RelatedLinks } from "@/components/service-page/related-links";
@@ -21,13 +20,6 @@ const notes = [
   "You see the range without giving an email.",
   "Your written quote is always the real price.",
 ];
-
-const rangeNotes: Record<string, string> = {
-  business: "From a few pages up to a larger site with extra features.",
-  redesign: "A new design and build for a site you already have.",
-  shop: "A shop built around your products and how you sell them.",
-  features: "Bookings, logins or something specific to your business, added to a site you already have.",
-};
 
 const faqs = [
   {
@@ -80,38 +72,7 @@ export default function WebsiteCostPage() {
         <CostQuiz />
       </div>
 
-      <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-12 lg:px-35 lg:py-25">
-        <div className="flex flex-col gap-4">
-          <h2 className="max-w-190 text-3xl font-semibold lg:text-[42px] lg:leading-[1.12]">
-            Typical prices at a glance
-          </h2>
-          <p className="max-w-155 text-base leading-relaxed text-muted-strong lg:text-lg">
-            I don&apos;t price from a menu. These are the ranges most projects fall into, and your written quote
-            covers what you actually need.
-          </p>
-        </div>
-        <ul className="flex flex-col">
-          {QUIZ_PATHS.map((item) => (
-            <li
-              key={item.id}
-              className="grid gap-2 border-t border-border-tan py-6 last:border-b lg:grid-cols-[17rem_minmax(0,1fr)_14rem] lg:items-baseline lg:gap-10"
-            >
-              <h3 className="text-xl font-bold leading-snug text-ink">{item.label}</h3>
-              <p className="max-w-110 text-base leading-relaxed text-muted-strong">{rangeNotes[item.id]}</p>
-              <p className="font-semibold text-ink">{formatRange(item)}</p>
-            </li>
-          ))}
-        </ul>
-        <p className="max-w-155 text-base leading-relaxed text-muted-strong">
-          Planning an online shop? The{" "}
-          <TextLink variant="underline" href="/ecommerce-website-cost">
-            cost guide
-          </TextLink>{" "}
-          explains what changes the price.
-        </p>
-      </div>
-
-      <div className="flex flex-col gap-8 border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
+      <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
         <FaqJsonLd faqs={faqs} />
         <h2 className="text-3xl font-semibold lg:text-[42px]">Questions about cost</h2>
         <Accordion items={faqs} />
@@ -126,7 +87,7 @@ export default function WebsiteCostPage() {
       </div>
 
       <RelatedLinks
-        tone="tan"
+        tone="cream"
         costQuiz={false}
         items={[
           { label: "Online Shop Cost Guide", href: "/ecommerce-website-cost" },
