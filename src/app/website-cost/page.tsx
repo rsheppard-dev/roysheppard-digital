@@ -101,13 +101,18 @@ function QuizTestimonial({
 }) {
   return (
     <figure
-      className={`${show === "desktop" ? "hidden lg:flex" : "flex lg:hidden"} w-full max-w-130 flex-col gap-4 rounded-card border border-border-tan bg-paper p-6 shadow-[0_12px_32px_rgba(23,23,26,0.07)]`}
+      className={`${show === "desktop" ? "hidden lg:flex" : "flex lg:hidden"} w-full max-w-130 flex-col gap-4 rounded-card bg-ink px-7 py-7`}
     >
-      <Stars size={14} />
-      <blockquote className="text-pretty text-[17px] leading-relaxed text-ink">
-        &ldquo;{quote}&rdquo;
+      <div className="flex items-start justify-between gap-6">
+        <span aria-hidden="true" className="-mb-5 -mt-1 text-[56px] font-semibold leading-none text-accent">
+          &ldquo;
+        </span>
+        <Stars size={14} className="mt-1" />
+      </div>
+      <blockquote className="text-pretty text-base font-medium leading-relaxed text-cream lg:text-[17px]">
+        <p>{quote}&rdquo;</p>
       </blockquote>
-      <Signature name={name} company={company} />
+      <Signature name={name} company={company} onDark />
     </figure>
   );
 }
