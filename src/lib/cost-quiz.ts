@@ -7,7 +7,7 @@
  * it only says whether the answers point to the lower end, the middle or the upper end.
  */
 
-export type PathId = "shop" | "business" | "redesign";
+export type PathId = "shop" | "business" | "redesign" | "features";
 
 export type QuizOption = {
   id: string;
@@ -22,6 +22,9 @@ export type QuizQuestion = {
   options: QuizOption[];
 };
 
+/** A fixed price band for the lower, middle or upper answers, used where the work varies too much for a sliding estimate. */
+export type QuizTier = { from: number; to: number };
+
 export type QuizPath = {
   id: PathId;
   label: string;
@@ -29,6 +32,8 @@ export type QuizPath = {
   /** Typical price range in pounds, as published on the cost pages. */
   from: number;
   to: number;
+  /** Lower, middle and upper bands. When set, the result shows the band the answers fall in instead of a sliding estimate. */
+  tiers?: [QuizTier, QuizTier, QuizTier];
   questions: QuizQuestion[];
 };
 
@@ -148,6 +153,55 @@ export const QUIZ_PATHS: QuizPath[] = [
       },
     ],
   },
+  {
+    id: "features",
+    label: "New features for my existing website",
+    description: "Adding bookings, logins or something specific to how your business works.",
+    from: 300,
+    to: 5000,
+    tiers: [
+      { from: 300, to: 800 },
+      { from: 800, to: 2500 },
+      { from: 2500, to: 5000 },
+    ],
+    questions: [
+      {
+        id: "what",
+        prompt: "What do you want to add?",
+        options: [
+          { id: "simple", label: "A form or simple tool, such as an enquiry form", points: 0 },
+          { id: "standard", label: "Bookings, payments or customer accounts", points: 1 },
+          { id: "specific", label: "Something specific to how my business works", points: 2 },
+        ],
+      },
+      {
+        id: "count",
+        prompt: "How many separate features is that?",
+        options: [
+          { id: "one", label: "Just one", points: 0 },
+          { id: "few", label: "Two or three", points: 1 },
+          { id: "many", label: "Four or more, or a full system", points: 2 },
+        ],
+      },
+      {
+        id: "tools",
+        prompt: "Does it need to connect to other tools?",
+        options: [
+          { id: "none", label: "No, it stands on its own", points: 0 },
+          { id: "one", label: "One, such as a courier or my accounts", points: 1 },
+          { id: "several", label: "Several, such as stock, accounts and couriers", points: 2 },
+        ],
+      },
+      {
+        id: "built",
+        prompt: "How is your website built?",
+        options: [
+          { id: "custom", label: "It was custom-built, or I'm not sure", points: 0 },
+          { id: "builder", label: "With a website builder such as Wix or Squarespace", points: 1 },
+        ],
+      },
+    ],
+  },
 ];
 
 export type QuizAnswers = Record<string, string>;
@@ -203,6 +257,14 @@ export function scoreQuiz(pathId: unknown, answers: unknown): QuizResult | null 
 
   const fraction = max === 0 ? 0 : points / max;
   const position: QuizPosition = fraction < 0.34 ? "lower" : fraction < 0.67 ? "middle" : "upper";
+
+  // Paths with fixed bands show the band the answers fall in, and place the marker at the middle of that band.
+  if (path.tiers) {
+    const tier = path.tiers[position === "lower" ? 0 : position === "middle" ? 1 : 2];
+    const middle = (tier.from + tier.to) / 2;
+    const bandFraction = (middle - path.from) / (path.to - path.from);
+    return { path, from: path.from, to: path.to, estimateFrom: tier.from, estimateTo: tier.to, position, fraction: bandFraction };
+  }
 
   // A window two fifths as wide as the full range, slid along it by how involved the answers are.
   const span = path.to - path.from;

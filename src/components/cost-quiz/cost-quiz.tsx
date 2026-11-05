@@ -390,7 +390,7 @@ export function CostQuiz() {
         <div className="flex flex-col gap-3">
           <p className="font-mono text-[13px] text-muted-strong">{result.path.label}</p>
           <h2 ref={stepHeadingRef} tabIndex={-1} className="scroll-mt-28 text-[26px] font-semibold leading-tight text-ink focus:outline-none">
-            Websites like yours typically cost{" "}
+            {result.path.id === "features" ? "Features like yours typically cost" : "Websites like yours typically cost"}{" "}
             <span className="whitespace-nowrap bg-highlight px-1.5 [box-decoration-break:clone]">
               {formatPounds(result.estimateFrom)} to {formatPounds(result.estimateTo)}
             </span>
@@ -417,11 +417,17 @@ export function CostQuiz() {
 
         <div className="flex flex-col gap-2 text-[15px] leading-relaxed text-muted-strong">
           <p>
-            That&apos;s based on your answers. Websites of this kind run from {formatPounds(result.from)} to{" "}
+            That&apos;s based on your answers. {result.path.id === "features" ? "Features of this kind" : "Websites of this kind"} run from {formatPounds(result.from)} to{" "}
             {formatPounds(result.to)} overall, and yours points to the{" "}
             <strong className="font-semibold text-ink">{POSITION_LABEL[result.position]}</strong>.
             {result.position === "upper" && " Bigger projects can go above it, and a written quote covers that properly."}
           </p>
+          {result.path.id === "features" && answers.built === "builder" && (
+            <p>
+              Sites made with a website builder can limit what you can add, so this may mean rebuilding part of the site.
+              I&apos;ll tell you if that applies when I send your quote.
+            </p>
+          )}
           <p>This is a guide, not a quote. Your written quote is the real price.</p>
           {result.path.id === "shop" && (
             <p>

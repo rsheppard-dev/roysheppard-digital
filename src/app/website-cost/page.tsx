@@ -14,7 +14,7 @@ import { CostQuiz } from "@/components/cost-quiz/cost-quiz";
 const PATH = "/website-cost";
 const TITLE = "How Much Does a Website Cost? Quick Quiz | Roy Sheppard";
 const DESCRIPTION =
-  "Answer a few questions to see what a website like yours typically costs, then ask for a written quote. Business sites, redesigns and online shops, from a Watford freelancer.";
+  "Answer a few questions to see what a website like yours typically costs, then ask for a written quote. Business sites, redesigns, online shops and new features, from a Watford freelancer.";
 
 const notes = [
   "Takes about a minute.",
@@ -26,6 +26,7 @@ const rangeNotes: Record<string, string> = {
   business: "From a few pages up to a larger site with extra features.",
   redesign: "A new design and build for a site you already have.",
   shop: "A shop built around your products and how you sell them.",
+  features: "Bookings, logins or something specific to your business, added to a site you already have.",
 };
 
 const faqs = [
