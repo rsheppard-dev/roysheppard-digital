@@ -47,9 +47,6 @@ export async function Services() {
 								aria-hidden='true'
 								className={`absolute -top-2.5 left-6 h-4.5 w-11 border border-[#f3d9cd] bg-accent-soft/90 ${tilt.tape}`}
 							/>
-							<span className='font-mono text-sm font-semibold text-accent-text'>
-								{String(index + 1).padStart(2, '0')}
-							</span>
 							<h3 className='text-xl font-bold lg:text-[22px]'>
 								{service.title}
 							</h3>
