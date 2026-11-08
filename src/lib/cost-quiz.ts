@@ -34,6 +34,8 @@ export type QuizPath = {
   to: number;
   /** Lower, middle and upper bands. When set, the result shows the band the answers fall in instead of a sliding estimate. */
   tiers?: [QuizTier, QuizTier, QuizTier];
+  /** When true the result shows no price range: the work varies too much, so each project is quoted individually. */
+  quoteOnly?: boolean;
   questions: QuizQuestion[];
 };
 
@@ -159,6 +161,7 @@ export const QUIZ_PATHS: QuizPath[] = [
     description: "Adding bookings, logins or something specific to how your business works.",
     from: 300,
     to: 5000,
+    quoteOnly: true,
     tiers: [
       { from: 300, to: 800 },
       { from: 800, to: 2500 },
@@ -172,24 +175,6 @@ export const QUIZ_PATHS: QuizPath[] = [
           { id: "simple", label: "A form or simple tool, such as an enquiry form", points: 0 },
           { id: "standard", label: "Bookings, payments or customer accounts", points: 1 },
           { id: "specific", label: "Something specific to how my business works", points: 2 },
-        ],
-      },
-      {
-        id: "count",
-        prompt: "How many separate features is that?",
-        options: [
-          { id: "one", label: "Just one", points: 0 },
-          { id: "few", label: "Two or three", points: 1 },
-          { id: "many", label: "Four or more, or a full system", points: 2 },
-        ],
-      },
-      {
-        id: "tools",
-        prompt: "Does it need to connect to other tools?",
-        options: [
-          { id: "none", label: "No, it stands on its own", points: 0 },
-          { id: "one", label: "One, such as a courier or my accounts", points: 1 },
-          { id: "several", label: "Several, such as stock, accounts and couriers", points: 2 },
         ],
       },
       {

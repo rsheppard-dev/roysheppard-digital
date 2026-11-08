@@ -124,14 +124,16 @@ export async function POST(request: Request) {
   const estimate = formatRange({ from: result.estimateFrom, to: result.estimateTo });
   const range = formatRange(result.path);
   const answered = describeAnswers(result.path, body.answers ?? {});
-  const verdict = `${estimate} (typical range for this kind of site is ${range}, their answers point to the ${POSITION_LABEL[result.position]})`;
+  const verdict = result.path.quoteOnly
+    ? "None, this kind of work is quoted individually (they were shown no price)"
+    : `${estimate} (typical range for this kind of site is ${range}, their answers point to the ${POSITION_LABEL[result.position]})`;
 
   const resend = new Resend(apiKey);
   const { error } = await resend.emails.send({
     from: fromEmail,
     to: toEmail,
     replyTo: email,
-    subject: `Website cost quiz: ${name} (${result.path.label}, ${estimate})`,
+    subject: `Website cost quiz: ${name} (${result.path.label}${result.path.quoteOnly ? "" : `, ${estimate}`})`,
     text: [
       `Name: ${name}`,
       `Email: ${email}`,

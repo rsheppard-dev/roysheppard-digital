@@ -401,13 +401,20 @@ export function CostQuiz() {
         <div className="flex flex-col gap-3">
           <p className="font-mono text-[13px] text-muted-strong">{result.path.label}</p>
           <h2 ref={stepHeadingRef} tabIndex={-1} className="scroll-mt-28 text-[26px] font-semibold leading-tight text-ink focus:outline-none">
-            {result.path.id === "features" ? "Features like yours typically cost" : "Websites like yours typically cost"}{" "}
-            <span className="quiz-estimate whitespace-nowrap px-1.5">
-              {formatPounds(result.estimateFrom)} to {formatPounds(result.estimateTo)}
-            </span>
+            {result.path.quoteOnly ? (
+              "Every feature is priced to fit the job"
+            ) : (
+              <>
+                Websites like yours typically cost{" "}
+                <span className="quiz-estimate whitespace-nowrap px-1.5">
+                  {formatPounds(result.estimateFrom)} to {formatPounds(result.estimateTo)}
+                </span>
+              </>
+            )}
           </h2>
         </div>
 
+        {!result.path.quoteOnly && (
         <div className="flex flex-col gap-2.5">
           <div className="relative h-5 [container-type:inline-size]" role="img" aria-label={`Your answers point to the ${POSITION_LABEL[result.position]} of the full range, ${formatPounds(result.from)} to ${formatPounds(result.to)}`}>
             <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-border-tan" />
@@ -425,13 +432,21 @@ export function CostQuiz() {
             <span>{formatPounds(result.to)}</span>
           </div>
         </div>
+        )}
 
         <div className="flex flex-col gap-2 text-[15px] leading-relaxed text-muted-strong">
-          <p>
-            That&apos;s based on your answers, which point to the{" "}
-            <strong className="font-semibold text-ink">{POSITION_LABEL[result.position]}</strong> of the scale above.
-            {result.position === "upper" && " Bigger projects can go above it, and a written quote covers that properly."}
-          </p>
+          {result.path.quoteOnly ? (
+            <p>
+              A simple addition, like an enquiry form, can cost far less than a full system, so I quote each feature
+              on what it actually needs to do. Send your answers and I&apos;ll give you a clear price.
+            </p>
+          ) : (
+            <p>
+              That&apos;s based on your answers, which point to the{" "}
+              <strong className="font-semibold text-ink">{POSITION_LABEL[result.position]}</strong> of the scale above.
+              {result.position === "upper" && " Bigger projects can go above it, and a written quote covers that properly."}
+            </p>
+          )}
           {result.path.id === "features" && answers.built === "builder" && (
             <p>
               Sites made with a website builder can limit what you can add, so this may mean rebuilding part of the site.
@@ -441,7 +456,7 @@ export function CostQuiz() {
           {result.path.id === "features" && answers.built === "unsure" && (
             <p>I&apos;ll check how your site is built before I send your quote, since that can affect what&apos;s possible.</p>
           )}
-          <p>This is a guide, not a quote. Your written quote is the real price.</p>
+          {!result.path.quoteOnly && <p>This is a guide, not a quote. Your written quote is the real price.</p>}
         </div>
       </div>
 
@@ -523,7 +538,8 @@ export function CostQuiz() {
 
       <div className="flex flex-col gap-2">
         <label htmlFor="cost-notes" className="text-sm font-semibold text-ink">
-          Anything else I should know? <span className="font-normal text-muted-strong">Optional</span>
+          {result.path.quoteOnly ? "What would you like added?" : "Anything else I should know?"}{" "}
+          <span className="font-normal text-muted-strong">Optional</span>
         </label>
         <textarea
           id="cost-notes"
