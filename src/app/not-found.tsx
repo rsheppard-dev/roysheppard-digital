@@ -51,7 +51,7 @@ export default async function NotFound() {
             </span>
             <Image
               src="/images/404-bath-sketch.webp"
-              alt="Illustration of Roy Sheppard in a bubble bath, looking surprised to have been caught"
+              alt="Illustration of Roy Sheppard in a bubble bath, shocked to have been walked in on"
               width={1280}
               height={850}
               loading="eager"
