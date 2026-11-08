@@ -470,6 +470,11 @@ export type About = {
   _rev: string;
   eyebrow?: string;
   statement?: string;
+  badges?: Array<{
+    label?: string;
+    href?: string;
+    _key: string;
+  }>;
   tags?: Array<string>;
   image?: {
     asset?: SanityImageAssetReference;
@@ -672,11 +677,16 @@ export type HeroQueryResult = {
 
 // Source: src/sanity/lib/queries.ts
 // Variable: aboutQuery
-// Query: *[_type == "about"][0]{ eyebrow, statement, tags, image, "imageDimensions": image.asset->metadata.dimensions{width, height} }
+// Query: *[_type == "about"][0]{ eyebrow, statement, tags, badges[]{ _key, label, href }, image, "imageDimensions": image.asset->metadata.dimensions{width, height} }
 export type AboutQueryResult = {
   eyebrow: string | null;
   statement: string | null;
   tags: Array<string> | null;
+  badges: Array<{
+    _key: string;
+    label: string | null;
+    href: string | null;
+  }> | null;
   image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -1247,7 +1257,7 @@ declare module "@sanity/client" {
     '*[_type == "workItem" && slug.current == $slug][0]._updatedAt': WorkItemUpdatedQueryResult;
     '*[_type == "siteSettings"][0]{ seo }': SiteSettingsQueryResult;
     '*[_type == "hero"][0]{ badge, heading, tagline, body }': HeroQueryResult;
-    '*[_type == "about"][0]{ eyebrow, statement, tags, image, "imageDimensions": image.asset->metadata.dimensions{width, height} }': AboutQueryResult;
+    '*[_type == "about"][0]{ eyebrow, statement, tags, badges[]{ _key, label, href }, image, "imageDimensions": image.asset->metadata.dimensions{width, height} }': AboutQueryResult;
     '*[_type == "cta"][0]{ heading, body, email }': CtaQueryResult;
     '*[_type == "footer"][0]{ name, blurb, email, phone, social }': FooterQueryResult;
     '*[_type == "service"] | order(order asc){ title, description, bullets }': ServicesQueryResult;

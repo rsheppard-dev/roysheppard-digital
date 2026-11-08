@@ -9,7 +9,7 @@ export const heroQuery = defineQuery(
 );
 
 export const aboutQuery = defineQuery(
-  `*[_type == "about"][0]{ eyebrow, statement, tags, image, "imageDimensions": image.asset->metadata.dimensions{width, height} }`,
+  `*[_type == "about"][0]{ eyebrow, statement, tags, badges[]{ _key, label, href }, image, "imageDimensions": image.asset->metadata.dimensions{width, height} }`,
 );
 
 export const ctaQuery = defineQuery(

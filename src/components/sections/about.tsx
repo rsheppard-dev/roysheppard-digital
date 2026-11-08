@@ -7,13 +7,31 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { aboutQuery } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 
+/** Fallback links for badges that come without one (old plain tags or the built-in list). */
+const TAG_HREFS: Record<string, string> = {
+  "Bespoke web design": "/web-design-watford",
+  "Custom web development": "/web-development-watford",
+  "E-commerce websites": "/ecommerce-watford",
+  "Easy to update yourself": "/services",
+  "SEO built in": "/services",
+  "Support after launch": "/services",
+};
+
 export async function About() {
   const { data } = await sanityFetch({ query: aboutQuery });
   const about = data ?? null;
 
   const eyebrow = about?.eyebrow || fallbackAbout.eyebrow;
   const statement = about?.statement || fallbackAbout.statement;
-  const tags = about?.tags && about.tags.length > 0 ? about.tags : fallbackAbout.tags;
+  // Badges set in the Studio carry their own link. Old plain tags, or the built-in fallback, take their link from TAG_HREFS.
+  const studioBadges = (about?.badges ?? []).flatMap((badge) =>
+    badge.label ? [{ key: badge._key, label: badge.label, href: badge.href || undefined }] : [],
+  );
+  const plainTags = about?.tags && about.tags.length > 0 ? about.tags : fallbackAbout.tags;
+  const badges =
+    studioBadges.length > 0
+      ? studioBadges
+      : plainTags.map((tag) => ({ key: tag, label: tag, href: TAG_HREFS[tag] }));
 
   const imageWidth = about?.imageDimensions?.width ?? 800;
   const imageHeight = about?.imageDimensions?.height ?? 1602;
@@ -32,8 +50,10 @@ export async function About() {
           {statement}
         </p>
         <ul className="mt-1 flex flex-wrap gap-2 sm:gap-2.5">
-          {tags.map((tag) => (
-            <Tag key={tag}>{tag}</Tag>
+          {badges.map((badge) => (
+            <Tag key={badge.key} href={badge.href}>
+              {badge.label}
+            </Tag>
           ))}
         </ul>
       </div>
