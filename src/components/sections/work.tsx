@@ -24,25 +24,6 @@ export async function Work() {
             {hasMore ? "All work" : "Start yours"} <span aria-hidden="true">→</span>
           </TextLink>
         </div>
-        {/* Only where hovering is possible: tells visitors the screens scroll through each site. */}
-        <p className="hidden -rotate-2 items-start gap-2 pb-1 lg:mr-40 font-hand text-xl leading-none text-muted-strong [@media(hover:hover)_and_(pointer:fine)]:lg:flex">
-          hover a screen to scroll the site
-          <svg
-            aria-hidden="true"
-            width="32"
-            height="34"
-            viewBox="0 0 32 34"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="mt-3 text-accent"
-          >
-            <path d="M2 5c11-4 21 3 21 22" />
-            <path d="M17 21l6 7 5-7" />
-          </svg>
-        </p>
       </div>
       <WorkGrid items={workItems.slice(0, HOMEPAGE_LIMIT)} />
     </div>
