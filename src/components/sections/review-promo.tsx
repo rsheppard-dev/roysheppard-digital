@@ -53,7 +53,7 @@ export function ReviewPromo({ tone = "cream" }: { tone?: "tan" | "cream" }) {
             alt="Roy pointing at a browser window with three ticked improvements"
             width={1012}
             height={831}
-            sizes="(min-width: 1024px) 480px, 92vw"
+            sizes="(min-width: 1024px) 480px, min(92vw, 480px)"
             className="h-auto w-full max-w-120"
           />
         </div>
