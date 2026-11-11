@@ -127,6 +127,11 @@ const faqs = [
       "Yes. I show you how to update products, prices and content before the shop goes live, so you don't need to ask me for every change.",
   },
   {
+    question: "Can you look after my shop once it's live?",
+    answer:
+      "Yes, if you'd like me to. The [hosting and care plans](/hosting-and-care) cover updates, monitoring, backups and small changes for one fixed monthly price, month to month. They don't include a ready-made platform's own monthly fee, which is paid to the platform.",
+  },
+  {
     question: "Can you redo my existing online shop?",
     answer:
       "Yes. I can refresh or rebuild an existing shop. I'll look at your current products and pages before I quote.",

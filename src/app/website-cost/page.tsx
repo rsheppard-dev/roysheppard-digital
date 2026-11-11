@@ -73,7 +73,12 @@ const faqs = [
   {
     question: "What does the price cover?",
     answer:
-      "My work designing and building the site. Things paid to other companies, such as a domain name, a platform or hosting plan and payment fees, are separate, and ongoing support is optional. For online shops, the [cost guide](/ecommerce-website-cost) lists each one and who it's paid to.",
+      "My work designing and building the site. Things paid to other companies, such as a domain name, a platform or hosting plan and payment fees, are separate, and ongoing support is optional (the [hosting and care plans](/hosting-and-care) include hosting). For online shops, the [cost guide](/ecommerce-website-cost) lists each one and who it's paid to.",
+  },
+  {
+    question: "Can you look after the site once it's built?",
+    answer:
+      "Yes. The [hosting and care plans](/hosting-and-care) cover hosting, updates, monitoring, backups and small changes for one fixed monthly price. They're optional and run month to month, so you can stop at the end of any month.",
   },
   {
     question: "What happens after I send my answers?",
@@ -180,6 +185,7 @@ export default async function WebsiteCostPage() {
         costQuiz={false}
         items={[
           { label: "Online Shop Cost Guide", href: "/ecommerce-website-cost" },
+          { label: "Hosting and Care", href: "/hosting-and-care" },
           { label: "Web Design", href: "/web-design-watford" },
         ]}
       />

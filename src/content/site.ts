@@ -24,6 +24,14 @@ export const serviceLinks = [
 		choice: 'I want to sell online',
 		image: 'product-pages',
 	},
+	{
+		title: 'Hosting and Care',
+		href: '/hosting-and-care',
+		summary: 'Hosting, updates, backups and small changes for one fixed monthly price.',
+		fit: 'Good for you if you want someone to look after your site once it is live.',
+		choice: 'I want it looked after',
+		image: 'looked-after',
+	},
 ];
 
 /** The services page picker's first choice, for visitors who have no website yet. */
@@ -149,7 +157,7 @@ export const faqs = [
 	{
 		question: 'Do you offer support after launch?',
 		answer:
-			'Yes. Ongoing support is available to help keep your site fast, secure and up to date after launch.',
+			'Yes. My [hosting and care plans](/hosting-and-care) cover hosting, updates, monitoring, backups and small changes for one fixed monthly price. They are optional and run month to month.',
 	},
 	{
 		question: 'Can you work with my existing brand?',

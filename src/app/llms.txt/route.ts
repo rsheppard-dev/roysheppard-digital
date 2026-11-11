@@ -40,6 +40,7 @@ Key facts:
 - [Web development in Watford](${SITE_URL}/web-development-watford): Custom-built websites with content clients can manage themselves, plus custom functionality such as booking systems, customer accounts, portals and quote calculators.
 - [E-commerce in Watford](${SITE_URL}/ecommerce-watford): Online stores built around what the business sells.
 - [Website cost quiz](${SITE_URL}/website-cost): Typical prices for business websites, redesigns, online shops and new features, with an optional written quote.
+- [Website hosting and care](${SITE_URL}/hosting-and-care): Fixed monthly plans, £45 or £65, covering hosting, updates, monitoring, backups and small changes. No contract, month to month.
 
 ## Case studies
 
