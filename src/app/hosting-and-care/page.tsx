@@ -10,16 +10,18 @@ import { Accordion } from "@/components/ui/accordion";
 import { FaqJsonLd } from "@/components/ui/faq-jsonld";
 import { HighlightedHeading } from "@/components/ui/highlighted-heading";
 import { TextLink } from "@/components/ui/text-link";
+import { sanityFetch } from "@/sanity/lib/live";
+import { testimonialsQuery } from "@/sanity/lib/queries";
 
 const PATH = "/hosting-and-care";
 const TITLE = "Website Hosting and Care Plans | Roy Sheppard, Watford";
 const DESCRIPTION =
-  "Hosting and care for the website I build for you, for one fixed monthly price: updates, monitoring, backups and small changes, from £45 a month. From a Watford freelance web designer.";
+  "Hosting and care for the website I build for you, for one fixed monthly price: a database, image storage, email sending, updates, backups and small changes, from £45 a month. From a Watford freelance web designer.";
 
 const notes = [
-  "Two plans, £45 or £65 a month.",
-  "Hosting is included, so there's no separate hosting bill.",
-  "No contract: it runs month to month.",
+  "One bill covers hosting, database, image storage and email sending.",
+  "Your small changes are made for you every month.",
+  "No contract. Stop at the end of any month.",
 ];
 
 const plans = [
@@ -35,17 +37,73 @@ const plans = [
 
 /** `true` is a tick, `false` is not included, and text is shown as written. */
 type Cell = boolean | string;
-const features: { label: string; care: Cell; plus: Cell }[] = [
-  { label: "Hosting for your website", care: true, plus: true },
-  { label: "Monitoring, so I know if your site goes down", care: true, plus: true },
-  { label: "Security and software updates", care: true, plus: true },
-  { label: "Backups of your content", care: true, plus: true },
-  { label: "Email support", care: true, plus: true },
-  { label: "Small changes each month", care: "30 minutes", plus: "1 hour" },
-  { label: "Monthly report on how your site is doing in Google, in plain English", care: false, plus: true },
-  { label: "Regular check on your Google Business Profile", care: false, plus: true },
-  { label: "Priority replies", care: false, plus: true },
+type Feature = { label: string; care: Cell; plus: Cell };
+
+/** Grouped so an owner reads what I do for them first, and the hosting detail second. */
+const featureGroups: { title: string; features: Feature[] }[] = [
+  {
+    title: "Looking after your site",
+    features: [
+      { label: "Small changes made for you each month", care: "30 minutes", plus: "1 hour" },
+      { label: "Security and software updates", care: true, plus: true },
+      { label: "Monitoring, so I know if your site goes down", care: true, plus: true },
+      { label: "Help by email when you need it", care: true, plus: true },
+    ],
+  },
+  {
+    title: "Hosting, all in one bill",
+    features: [
+      { label: "Hosting for your website", care: true, plus: true },
+      { label: "Database for your site's content", care: true, plus: true },
+      { label: "Email sending for your forms and enquiries, from your own domain", care: true, plus: true },
+      { label: "Space for images and files", care: "10 GB", plus: "25 GB" },
+      { label: "Database size", care: "1 GB", plus: "5 GB" },
+      { label: "Website traffic each month", care: "50 GB", plus: "150 GB" },
+      { label: "Backups, kept for", care: "4 weeks", plus: "3 months" },
+    ],
+  },
+  {
+    title: "Only in Care Plus",
+    features: [
+      { label: "Monthly report on how your site is doing in Google, in plain English", care: false, plus: true },
+      { label: "Regular check on your Google Business Profile", care: false, plus: true },
+      { label: "Priority replies", care: false, plus: true },
+    ],
+  },
 ];
+
+/** The sums use the published £50 an hour rate for extra time, so they stay true if a price changes. */
+const breakdown = [
+  {
+    name: "Care",
+    sum: "£25 + £20",
+    description:
+      "The 30 minutes of changes would be £25 at my hourly rate. That leaves £20 for hosting, database, email sending, storage, backups, updates and monitoring.",
+  },
+  {
+    name: "Care Plus",
+    sum: "£50 + £15",
+    description:
+      "The hour of changes would be £50 on its own. That leaves £15 for all the hosting and looking after, plus the monthly report, the Google Business Profile check and priority replies.",
+  },
+];
+
+function Tick({ className }: { className: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 20 20"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4 10.5l4 4 8-9" />
+    </svg>
+  );
+}
 
 function Mark({ value, accent = false }: { value: Cell; accent?: boolean }) {
   if (typeof value === "string") return <span className="font-semibold text-ink">{value}</span>;
@@ -78,34 +136,34 @@ function Mark({ value, accent = false }: { value: Cell; accent?: boolean }) {
 
 const hostingPoints = [
   {
-    title: "Hosting is included",
+    title: "Your site is always yours",
     description:
-      "I host your website and look after it, and the cost is part of your monthly plan. There's no separate hosting bill and nothing for you to set up. A domain name is separate and stays in your name.",
+      "If you ever stop the plan, I'll hand over everything so it can run on your own hosting account or with another host. Your domain name stays in your name throughout.",
   },
   {
-    title: "Every hosting plan has limits",
+    title: "Stop at the end of any month",
     description:
-      "Hosting comes with limits on memory, processing power and storage. A normal business site uses a small part of what's available, so most owners never think about it.",
+      "Plans run month to month. There's no minimum term and no notice period to work out. Tell me and it stops at the end of that month.",
   },
   {
-    title: "Fair use for normal business sites",
+    title: "One bill for everything",
     description:
-      "The plans are priced for a business site in normal use. If your traffic or storage grows well beyond that, such as a busy shop or a lot of video, I'll talk to you before it becomes a problem and we'll agree the next step together.",
-  },
-  {
-    title: "Large files and video",
-    description:
-      "Video and big downloads are best kept on a service built for them, so they don't use up your site's allowance. I'll point you to the right one.",
-  },
-  {
-    title: "If you ever stop the plan",
-    description:
-      "Your site is yours. If you stop, I'll hand over everything so it can run on your own hosting account or with another host.",
+      "I host your website, its database, your images and files, and the emails it sends. There are no separate accounts for you to set up or pay for. A domain name is the only thing billed separately.",
   },
   {
     title: "Bigger jobs are quoted first",
     description:
       "New pages, new features and redesigns aren't small changes. I'll give you a price before I start, so nothing turns into a surprise bill.",
+  },
+  {
+    title: "Room for a normal business site",
+    description:
+      "Each plan comes with set amounts of storage and traffic, shown in the table above. A normal business site uses a small part of them. If yours regularly goes over, I'll let you know and we'll agree a plan that fits.",
+  },
+  {
+    title: "Large files and video",
+    description:
+      "Video and big downloads are best kept on a service built for them, so they don't use up your site's allowance. I'll point you to the right one.",
   },
 ];
 
@@ -118,7 +176,12 @@ const faqs = [
   {
     question: "Is hosting included?",
     answer:
-      "Yes. I host your site and the cost is part of your monthly plan, so there's no separate hosting bill. A domain name is separate and stays in your name.",
+      "Yes. I host your site, its database and your images and files, and look after the emails it sends. The cost is part of your monthly plan, so there's no separate hosting bill. A domain name is separate and stays in your name.",
+  },
+  {
+    question: "What does the email part cover?",
+    answer:
+      "I set up and look after the emails your site sends, such as enquiry form messages to you, confirmations to your customers and order emails, sent from your own domain so they look right and reach the inbox. It isn't a business mailbox. Addresses like info@yourbusiness.co.uk need a service like Google Workspace or Microsoft 365, which I can set up for you as an extra.",
   },
   {
     question: "What counts as a small change?",
@@ -146,49 +209,80 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata({ title: TITLE, description: DESCRIPTION, path: PATH });
 }
 
-export default function CarePlansPage() {
+export default async function CarePlansPage() {
+  const { data } = await sanityFetch({ query: testimonialsQuery });
+  // A client's own words on what happens after launch. Only the first paragraph, so it reads at a glance.
+  const aftercare = data?.find((entry) => entry.name?.trim() === "Jack Kingsley" && entry.quote);
+  const aftercareQuote = aftercare?.quote?.split("\n")[0]?.trim();
+
   return (
     <PageShell>
       <PageModifiedJsonLd path={PATH} name={TITLE} source="service" />
       <Breadcrumbs label="Hosting and care" path={PATH} parents={[{ label: "Services", path: "/services" }]} />
 
-      <div className="flex flex-col gap-6 px-6 pb-16 pt-8 sm:px-10 lg:px-35 lg:pb-24 lg:pt-10">
-        <h1 className="max-w-180 text-balance text-4xl font-medium leading-[1.1] tracking-[-0.015em] sm:text-5xl lg:text-[56px] lg:leading-[1.08]">
-          <HighlightedHeading text="Website hosting and care" highlight="care" />
-        </h1>
-        <p className="max-w-150 text-lg leading-relaxed text-muted-strong lg:text-[19px]">
-          Your website needs a home, and some looking after once it&apos;s live. I host it, keep it updated, keep an eye on it
-          and make small changes, all for one fixed monthly price.
-        </p>
-        <ul className="flex flex-col gap-2 text-base text-muted-strong">
-          {notes.map((note) => (
-            <li key={note}>{note}</li>
-          ))}
-        </ul>
-        <div className="flex items-center gap-4 pt-2">
-          <Image
-            src={PORTRAIT.path}
-            alt={PORTRAIT.alt}
-            width={PORTRAIT.width}
-            height={PORTRAIT.height}
-            sizes="96px"
-            className="h-20 w-20 shrink-0 rounded-full border border-border-tan lg:h-24 lg:w-24"
-          />
-          <p className="flex flex-col text-sm leading-snug text-muted-strong lg:text-base">
-            <span className="font-semibold text-ink">Roy Sheppard</span>
-            Freelance web designer and developer in Watford
+      <div className="flex flex-col gap-10 px-6 pb-14 pt-8 sm:px-10 lg:flex-row lg:items-center lg:gap-16 lg:px-35 lg:pb-20 lg:pt-10">
+        <div className="flex flex-col gap-6 lg:flex-1">
+          <h1 className="max-w-180 text-balance text-4xl font-medium leading-[1.1] tracking-[-0.015em] sm:text-5xl lg:text-[56px] lg:leading-[1.08]">
+            <HighlightedHeading text="Website hosting and care" highlight="care" />
+          </h1>
+          <p className="max-w-150 text-lg leading-relaxed text-muted-strong lg:text-[19px]">
+            Once your site is live, I host it, keep it safe and up to date, and make your small changes for you. One
+            fixed monthly price from £45, which is about £1.50 a day.
           </p>
+          <ul className="flex flex-col gap-2.5 text-base text-ink">
+            {notes.map((note) => (
+              <li key={note} className="flex items-start gap-3">
+                <Tick className="mt-0.75 h-5 w-5 shrink-0 text-accent-text" />
+                {note}
+              </li>
+            ))}
+          </ul>
+          <div className="flex items-center gap-4 pt-1">
+            <Image
+              src={PORTRAIT.path}
+              alt={PORTRAIT.alt}
+              width={PORTRAIT.width}
+              height={PORTRAIT.height}
+              sizes="96px"
+              priority
+              className="h-20 w-20 shrink-0 rounded-full border border-border-tan lg:h-24 lg:w-24"
+            />
+            <p className="flex flex-col text-sm leading-snug text-muted-strong lg:text-base">
+              <span className="font-semibold text-ink">Roy Sheppard</span>
+              Freelance web designer and developer in Watford
+            </p>
+          </div>
+          <div className="mt-1 flex flex-wrap items-center gap-x-7 gap-y-4">
+            <TextLink variant="button" href="/contact">
+              Start a project <span aria-hidden="true">→</span>
+            </TextLink>
+            <TextLink variant="underline" href="#plans">
+              Compare the plans
+            </TextLink>
+          </div>
         </div>
+        <Image
+          src="/images/hosting-care-watering.webp"
+          alt="Roy watering a plant pot with a small website growing from it"
+          width={760}
+          height={1141}
+          sizes="(min-width: 1024px) 380px, 0px"
+          priority
+          className="hidden h-auto w-95 shrink-0 lg:block"
+        />
       </div>
 
-      <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-12 lg:px-35 lg:py-25">
+      <div
+        id="plans"
+        className="flex scroll-mt-24 flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-12 lg:px-35 lg:py-25"
+      >
         <div className="flex flex-col gap-4">
           <h2 className="max-w-190 text-3xl font-semibold lg:text-[42px] lg:leading-[1.12]">
             Pick the level of help you want
           </h2>
           <p className="max-w-155 text-base leading-relaxed text-muted-strong lg:text-lg">
-            Both plans host and look after your site. Care Plus adds more of my time and a monthly report that shows
-            what your site is doing for you in Google.
+            Both plans host and look after your site. Care Plus doubles the time for your changes and adds a monthly
+            report that shows what your site is doing for you in Google.
           </p>
         </div>
 
@@ -218,41 +312,82 @@ export default function CarePlansPage() {
                 })}
               </tr>
             </thead>
-            <tbody>
-              {features.map((feature) => (
-                <tr key={feature.label} className="border-t border-border-tan">
-                  <th scope="row" className="py-3.5 pl-4 pr-2 text-sm font-normal leading-snug text-ink sm:py-4 sm:pl-7 sm:pr-4 sm:text-base">
-                    {feature.label}
+            {featureGroups.map((group) => (
+              <tbody key={group.title}>
+                <tr className="border-t border-border-tan bg-cream">
+                  <th
+                    scope="rowgroup"
+                    colSpan={3}
+                    className="py-2.5 pl-4 pr-2 text-left font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted-strong sm:pl-7"
+                  >
+                    {group.title}
                   </th>
-                  <td className="px-2 py-3.5 text-center text-sm sm:px-5 sm:py-4 sm:text-base">
-                    <Mark value={feature.care} />
-                  </td>
-                  <td className="px-2 py-3.5 text-center text-sm sm:px-5 sm:py-4 sm:text-base">
-                    <Mark value={feature.plus} accent />
-                  </td>
                 </tr>
-              ))}
-            </tbody>
+                {group.features.map((feature) => (
+                  <tr key={feature.label} className="border-t border-border-tan">
+                    <th
+                      scope="row"
+                      className="py-3.5 pl-4 pr-2 text-sm font-normal leading-snug text-ink sm:py-4 sm:pl-7 sm:pr-4 sm:text-base"
+                    >
+                      {feature.label}
+                    </th>
+                    <td className="px-2 py-3.5 text-center text-sm sm:px-5 sm:py-4 sm:text-base">
+                      <Mark value={feature.care} />
+                    </td>
+                    <td className="px-2 py-3.5 text-center text-sm sm:px-5 sm:py-4 sm:text-base">
+                      <Mark value={feature.plus} accent />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            ))}
           </table>
         </div>
 
-        <p className="max-w-170 text-base leading-relaxed text-muted-strong">
-          Time doesn&apos;t roll over from one month to the next. If you need more than your plan includes, extra time
-          is £50 an hour and I&apos;ll agree it with you before I start.
-        </p>
+        <div className="flex flex-col gap-6 pt-4 lg:gap-8 lg:pt-6">
+          <div className="flex flex-col gap-3">
+            <h3 className="text-2xl font-semibold lg:text-3xl">Where the money goes</h3>
+            <p className="max-w-155 text-base leading-relaxed text-muted-strong">
+              My time on its own is £50 an hour. Here is how each plan compares with that.
+            </p>
+          </div>
+          <dl className="grid gap-x-16 sm:grid-cols-2">
+            {breakdown.map((plan) => (
+              <div key={plan.name} className="border-t border-border-tan py-6">
+                <dt className="text-base font-bold text-ink">{plan.name}</dt>
+                <dd className="mt-1 font-display text-4xl font-bold tabular-nums text-ink lg:text-5xl">{plan.sum}</dd>
+                <dd className="mt-3 max-w-110 text-base leading-relaxed text-muted-strong">{plan.description}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="max-w-170 text-base leading-relaxed text-muted-strong">
+            Time doesn&apos;t roll over from one month to the next. If you need more than your plan includes, extra
+            time is £50 an hour and I&apos;ll agree it with you before I start.
+          </p>
+        </div>
       </div>
+
+      {aftercareQuote && aftercare && (
+        <figure className="flex flex-col gap-5 border-t border-border-tan bg-paper px-6 py-14 sm:px-10 lg:px-35 lg:py-20">
+          <blockquote className="max-w-210 text-balance text-2xl font-medium leading-snug text-ink lg:text-[34px] lg:leading-[1.25]">
+            &ldquo;{aftercareQuote}&rdquo;
+          </blockquote>
+          <figcaption className="text-base text-muted-strong">
+            <span className="font-semibold text-ink">{aftercare.name}</span>
+            {aftercare.company ? `, ${aftercare.company}` : ""}
+          </figcaption>
+        </figure>
+      )}
 
       <div
         id="hosting-and-limits"
         className="flex scroll-mt-24 flex-col gap-8 border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:gap-12 lg:px-35 lg:py-25"
       >
         <div className="flex flex-col gap-4">
-          <h2 className="max-w-190 text-3xl font-semibold lg:text-[42px] lg:leading-[1.12]">
-            Hosting and fair use
-          </h2>
+          <h2 className="max-w-190 text-3xl font-semibold lg:text-[42px] lg:leading-[1.12]">No surprises</h2>
           <p className="max-w-155 text-base leading-relaxed text-muted-strong lg:text-lg">
-            I manage the hosting for you, so your site, its updates and its backups are all in one place with one
-            person to call.
+            Your site, its updates and its backups are all in one place, with one person to call. Here is how the
+            plans work, in plain English.
           </p>
         </div>
         <dl className="grid gap-x-16 sm:grid-cols-2">

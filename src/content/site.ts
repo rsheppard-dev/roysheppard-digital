@@ -30,7 +30,7 @@ export const serviceLinks = [
 		summary: 'Hosting, updates, backups and small changes for one fixed monthly price.',
 		fit: 'Good for you if you want someone to look after your site once it is live.',
 		choice: 'I want it looked after',
-		image: 'looked-after',
+		image: 'looked-after-v2',
 	},
 ];
 

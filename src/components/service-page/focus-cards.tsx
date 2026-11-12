@@ -15,7 +15,7 @@ const SPOTS: { match: RegExp; src: string }[] = [
   { match: /mobile/i, src: "mobile" },
   { match: /requirement/i, src: "requirements" },
   { match: /performance|speed|fast/i, src: "performance" },
-  { match: /looked after|support|maintain/i, src: "looked-after" },
+  { match: /looked after|support|maintain/i, src: "looked-after-v2" },
 ];
 
 /**
