@@ -1,13 +1,21 @@
 import { hero as fallbackHero } from "@/content/site";
 import { TextLink } from "@/components/ui/text-link";
+import { Stars } from "@/components/ui/stars";
 import { HeroIllustration } from "@/components/sections/hero-illustration";
 import { HighlightedHeading } from "@/components/ui/highlighted-heading";
 import { sanityFetch } from "@/sanity/lib/live";
-import { heroQuery } from "@/sanity/lib/queries";
+import { heroQuery, testimonialsQuery } from "@/sanity/lib/queries";
+
+/** The client whose short quote sits under the hero buttons. Shown only while that testimonial exists. */
+const HERO_PROOF = "Paul Franklin";
 
 export async function Hero() {
-  const { data } = await sanityFetch({ query: heroQuery });
+  const [{ data }, { data: testimonials }] = await Promise.all([
+    sanityFetch({ query: heroQuery }),
+    sanityFetch({ query: testimonialsQuery }),
+  ]);
   const hero = data ?? fallbackHero;
+  const proof = testimonials?.find((entry) => entry.name?.trim() === HERO_PROOF && entry.quote);
 
   return (
     <div className="flex flex-col items-center gap-10 px-6 py-14 sm:px-10 md:py-16 lg:flex-row lg:gap-14 lg:px-35 lg:py-12">
@@ -35,10 +43,20 @@ export async function Hero() {
           <TextLink variant="button" href="/contact" className="text-base lg:text-lg">
             Start a project <span className="text-lg lg:text-xl">→</span>
           </TextLink>
-          <TextLink variant="underline" href="/work" className="text-sm lg:text-[15px]">
-            See my work
+          <TextLink variant="underline" href="/free-website-review" className="text-sm lg:text-[15px]">
+            Get a free website review
           </TextLink>
         </div>
+        {proof && (
+          <figure className="mt-1 flex max-w-140 flex-col gap-2 border-t border-border-tan pt-5">
+            <Stars />
+            <blockquote className="text-base leading-snug text-ink">&ldquo;{proof.quote?.trim()}&rdquo;</blockquote>
+            <figcaption className="text-sm text-muted-strong">
+              {proof.name}
+              {proof.company ? `, ${proof.company}` : ""}
+            </figcaption>
+          </figure>
+        )}
       </div>
       <div className="flex w-full flex-1 items-center justify-center">
         <HeroIllustration />

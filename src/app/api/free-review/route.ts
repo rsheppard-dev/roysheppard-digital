@@ -51,6 +51,7 @@ export async function POST(request: Request) {
     name: typeof body.name === "string" ? body.name : "",
     email: typeof body.email === "string" ? body.email : "",
     notes: typeof body.notes === "string" ? body.notes : "",
+    share: body.share === true,
   };
 
   // Honeypot tripped: pretend success so bots don't learn to avoid this field,
@@ -113,6 +114,7 @@ export async function POST(request: Request) {
   const name = values.name.trim();
   const email = values.email.trim();
   const notes = values.notes.trim();
+  const sharing = values.share ? "Yes, findings can be shared publicly" : "No, keep the findings private";
 
   const { error } = await resend.emails.send({
     from: fromEmail,
@@ -123,6 +125,7 @@ export async function POST(request: Request) {
       `Name: ${name}`,
       `Email: ${email}`,
       `Website: ${toUrl(website)}`,
+      `OK to share: ${sharing}`,
       notes ? "" : null,
       notes ? "Anything they'd like looked at:" : null,
       notes || null,
@@ -133,6 +136,7 @@ export async function POST(request: Request) {
       `<p><strong>Name:</strong> ${escapeHtml(name)}</p>`,
       `<p><strong>Email:</strong> ${escapeHtml(email)}</p>`,
       `<p><strong>Website:</strong> <a href="${escapeHtml(toUrl(website))}">${escapeHtml(website)}</a></p>`,
+      `<p><strong>OK to share:</strong> ${sharing}</p>`,
       notes ? `<p><strong>Anything they'd like looked at:</strong></p>` : "",
       notes ? `<p>${escapeHtml(notes).replace(/\n/g, "<br>")}</p>` : "",
     ].join("\n"),

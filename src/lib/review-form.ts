@@ -3,9 +3,11 @@ export type ReviewFormValues = {
   name: string;
   email: string;
   notes: string;
+  /** Ticked when they are happy for the findings to be shared publicly. Off unless they choose it. */
+  share: boolean;
 };
 
-export type ReviewFormErrors = Partial<Record<keyof ReviewFormValues, string>>;
+export type ReviewFormErrors = Partial<Record<Exclude<keyof ReviewFormValues, "share">, string>>;
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // A bare domain or a full address: yourbusiness.co.uk, www.example.com/page, https://example.com

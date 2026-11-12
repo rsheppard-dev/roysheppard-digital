@@ -68,8 +68,8 @@ export const nav: {
 export const hero = {
 	badge: '',
 	heading: 'Freelance web designer & developer in Watford',
-	tagline: 'Bespoke websites built around how your business works.',
-	body: "I'm Roy, a freelance web designer and developer based in Watford. I design and build fast, thoughtful websites that help businesses and organisations achieve more online.",
+	tagline: 'A website built around your business, by one person from first call to aftercare.',
+	body: "I'm Roy. I design and build every site around how your business works, never from a template. You can edit it yourself, you get a written quote before any work starts, and I look after it once it's live.",
 };
 
 export const services = [

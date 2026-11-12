@@ -13,7 +13,7 @@ import { TurnstileWidget, type TurnstileHandle } from "@/components/turnstile-wi
 
 const FALLBACK_EMAIL = fallbackFooter.email || fallbackCta.email;
 
-const EMPTY_VALUES: ReviewFormValues = { website: "", name: "", email: "", notes: "" };
+const EMPTY_VALUES: ReviewFormValues = { website: "", name: "", email: "", notes: "", share: false };
 
 // 16px on phones: iOS zooms the whole page when a focused field's text is smaller.
 const fieldClasses =
@@ -103,7 +103,7 @@ export function ReviewForm() {
     messageRef.current?.focus({ preventScroll: true });
   }, [status]);
 
-  function updateField<K extends keyof ReviewFormValues>(field: K, value: string) {
+  function updateField<K extends keyof ReviewFormValues>(field: K, value: ReviewFormValues[K]) {
     setValues((prev) => ({ ...prev, [field]: value }));
   }
 
@@ -321,6 +321,21 @@ export function ReviewForm() {
         <FieldError id="review-notes-error" message={errors.notes} />
       </div>
 
+      <label htmlFor="review-share" className="flex cursor-pointer items-start gap-3 text-[15px] leading-snug text-ink">
+        <input
+          id="review-share"
+          name="share"
+          type="checkbox"
+          checked={values.share}
+          onChange={(e) => updateField("share", e.target.checked)}
+          className="mt-0.5 h-5 w-5 shrink-0 accent-ink"
+        />
+        <span>
+          You can share what you find publicly, without my name or email.{" "}
+          <span className="text-muted-strong">Optional</span>
+        </span>
+      </label>
+
       <button
         type="submit"
         disabled={submitting}
@@ -336,9 +351,8 @@ export function ReviewForm() {
       </button>
 
       <p className="text-[13px] leading-relaxed text-muted-strong">
-        I usually reply within 24 hours. I only use your contact details to send the review. By requesting a
-        review you agree that I may share my findings about your website publicly, including on social media
-        and on this site. I will never share your name or email. See the{" "}
+        I usually reply within 24 hours. I only use your contact details to send the review, and your review
+        stays private unless you tick the box above. I will never share your name or email. See the{" "}
         <a href="/privacy-policy" className="text-ink underline underline-offset-2 hover:text-accent-text">
           privacy policy
         </a>

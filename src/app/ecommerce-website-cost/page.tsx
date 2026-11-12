@@ -13,7 +13,7 @@ import { TextLink } from "@/components/ui/text-link";
 const PATH = "/ecommerce-website-cost";
 const TITLE = "How Much Does an Ecommerce Website Cost? | Roy Sheppard";
 const DESCRIPTION =
-  "What an online shop costs to build, what changes the price and how I quote. Online shops from £2,000, built around your business by a Watford freelancer.";
+  "What an online shop costs to build, what changes the price and how I quote. Built around your business by a Watford freelancer, with a written quote first.";
 
 const priceFactors = [
   {

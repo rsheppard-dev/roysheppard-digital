@@ -16,7 +16,7 @@ import { testimonialsQuery } from "@/sanity/lib/queries";
 const PATH = "/hosting-and-care";
 const TITLE = "Website Hosting and Care Plans | Roy Sheppard, Watford";
 const DESCRIPTION =
-  "Hosting and care for the website I build for you, for one fixed monthly price: a database, image storage, email sending, updates, backups and small changes, from £45 a month. From a Watford freelance web designer.";
+  "Hosting and care for the website I build for you. Updates, backups, monitoring and small changes, all looked after for one fixed monthly price, with no contract.";
 
 const notes = [
   "One bill covers hosting, database, image storage and email sending.",
@@ -226,8 +226,8 @@ export default async function CarePlansPage() {
             <HighlightedHeading text="Website hosting and care" highlight="care" />
           </h1>
           <p className="max-w-150 text-lg leading-relaxed text-muted-strong lg:text-[19px]">
-            Once your site is live, I host it, keep it safe and up to date, and make your small changes for you. One
-            fixed monthly price from £45, which is about £1.50 a day.
+            Once your site is live, I host it, keep it safe and up to date, and make your small changes for you, all
+            for one fixed monthly price.
           </p>
           <ul className="flex flex-col gap-2.5 text-base text-ink">
             {notes.map((note) => (

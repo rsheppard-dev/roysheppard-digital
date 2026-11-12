@@ -34,10 +34,10 @@ export function ConsentBanner() {
       role="dialog"
       aria-label="Cookie preferences"
       aria-describedby="cookie-consent-description"
-      className="fixed inset-x-0 bottom-0 z-60 border-t border-border bg-cream px-6 py-5 sm:px-10 lg:px-35"
+      className="fixed inset-x-0 bottom-0 z-60 border-t border-border bg-cream px-6 py-3 sm:px-10 sm:py-5 lg:px-35"
     >
-      <div className="mx-auto flex max-w-290 flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p id="cookie-consent-description" className="max-w-140 text-sm leading-relaxed text-muted-strong">
+      <div className="mx-auto flex max-w-290 flex-col items-start gap-2.5 sm:flex-row sm:gap-4 sm:items-center sm:justify-between">
+        <p id="cookie-consent-description" className="max-w-140 text-[13px] leading-snug text-muted-strong sm:text-sm sm:leading-relaxed">
           This site uses cookies for analytics. I only set them if you say it&apos;s OK. See the{" "}
           <Link href="/privacy-policy" className="underline decoration-border-tan underline-offset-4 hover:text-accent-text">
             privacy policy
@@ -48,14 +48,14 @@ export function ConsentBanner() {
           <button
             type="button"
             onClick={() => choose("denied")}
-            className="rounded-pill border border-ink px-6 py-3 text-sm font-semibold text-ink transition-[color,background-color,scale] ease-out-strong hover:bg-ink hover:text-cream active:scale-[0.97]"
+            className="rounded-pill border border-ink px-5 py-2.5 text-sm sm:px-6 sm:py-3 font-semibold text-ink transition-[color,background-color,scale] ease-out-strong hover:bg-ink hover:text-cream active:scale-[0.97]"
           >
             Decline
           </button>
           <button
             type="button"
             onClick={() => choose("granted")}
-            className="rounded-pill bg-accent px-6 py-3 text-sm font-semibold text-ink transition-[color,background-color,scale] ease-out-strong hover:bg-ink hover:text-cream active:scale-[0.97]"
+            className="rounded-pill border border-accent bg-accent px-5 py-2.5 text-sm sm:px-6 sm:py-3 font-semibold text-ink transition-[color,background-color,scale] ease-out-strong hover:bg-ink hover:text-cream active:scale-[0.97]"
           >
             Accept
           </button>
