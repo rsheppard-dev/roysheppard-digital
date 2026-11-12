@@ -20,10 +20,11 @@ export default function Home() {
       <main>
       <PageModifiedJsonLd path="/" source="home" />
       <Hero />
-      <Services />
-      <ReviewPromo />
+      {/* Proof first: visitors from an ad want to see the work and what clients say before the detail. */}
       <Work />
       <Testimonials />
+      <Services />
+      <ReviewPromo />
       <About />
       <Faq />
       <CtaBanner />

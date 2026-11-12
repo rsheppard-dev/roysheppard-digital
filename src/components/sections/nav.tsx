@@ -3,8 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { nav, serviceLinks } from "@/content/site";
+import { footer, nav, serviceLinks } from "@/content/site";
+import { formatUkPhone, telHref } from "@/lib/phone";
 import { TextLink } from "@/components/ui/text-link";
+
+const PHONE = footer.phone;
 
 function MenuIcon({ open }: { open: boolean }) {
   return (
@@ -210,7 +213,27 @@ export function Nav() {
         </div>
 
         {/* Mobile: the contact pill stays in the header, next to the menu toggle */}
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2.5 lg:hidden">
+          {/* A paper sticker beside the coral one, drawn the same way. Hidden on the narrowest phones, where the header has no room for it. */}
+          <a
+            href={telHref(PHONE)}
+            aria-label={`Call Roy on ${formatUkPhone(PHONE)}`}
+            className="tap-area hidden h-8 w-8 shrink-0 rotate-3 items-center justify-center rounded-full border-[1.5px] border-ink bg-paper text-ink shadow-[2px_2px_0_var(--color-ink)] transition-[translate,box-shadow] duration-150 ease-out-strong active:translate-x-0.5 active:translate-y-0.5 active:shadow-[0_0_0_var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink min-[375px]:flex"
+          >
+            <svg
+              aria-hidden="true"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+          </a>
           <TextLink variant="navPill" href="/contact" onClick={closeAll} className="group">
             Let&apos;s talk
             <svg

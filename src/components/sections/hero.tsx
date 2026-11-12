@@ -18,7 +18,7 @@ export async function Hero() {
   const proof = testimonials?.find((entry) => entry.name?.trim() === HERO_PROOF && entry.quote);
 
   return (
-    <div className="flex flex-col items-center gap-10 px-6 py-14 sm:px-10 md:py-16 lg:flex-row lg:gap-14 lg:px-35 lg:py-12">
+    <div className="flex flex-col items-center gap-8 px-6 pb-10 pt-14 sm:gap-10 sm:px-10 sm:pb-14 md:py-16 lg:flex-row lg:gap-14 lg:px-35 lg:py-12">
       <div className="flex flex-1 flex-col justify-center gap-5 lg:gap-5">
         {hero.badge && (
           <div className="flex w-fit items-center gap-2 rounded-pill bg-tan px-4 py-2">

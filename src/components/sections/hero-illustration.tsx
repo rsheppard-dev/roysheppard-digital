@@ -8,6 +8,17 @@ const LOOP_SRC = "/images/hero-desk-sketch-loop-v2.webp";
 const SETTLE_MS = 2500;
 
 /**
+ * The loop plays on desktop only. On phones the drawing sits below the first screen and the
+ * ~900KB file would be half the page's download, so phones keep the static frame.
+ */
+function canAnimate() {
+  return (
+    window.matchMedia("(min-width: 1024px)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
+/**
  * Static by default; swaps to the looping typing animation while the page
  * is actively being scrolled, then settles back a moment after scrolling stops.
  * The static image is the loop's first frame, so the swap doesn't jump.
@@ -21,7 +32,7 @@ export function HeroIllustration() {
   // Warm the browser cache for the animated frame so the first scroll swap is instant.
   // Waits for the load event so the ~900KB file never competes with the LCP image.
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!canAnimate()) return;
     function preloadLoop() {
       const preload = new window.Image();
       preload.src = LOOP_SRC;
@@ -35,7 +46,7 @@ export function HeroIllustration() {
   }, []);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!canAnimate()) return;
     function handleScroll() {
       setScrolling(true);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -58,10 +69,10 @@ export function HeroIllustration() {
       // The static frame goes through the image optimizer (AVIF/WebP, right-sized);
       // the animated loop must be served as-is or it would be flattened.
       unoptimized={scrolling}
-      sizes="(min-width: 1024px) 640px, 420px"
+      sizes="(min-width: 1024px) 640px, (min-width: 640px) 420px, 288px"
       loading="eager"
       fetchPriority="high"
-      className="h-auto w-full max-w-105 lg:max-w-160"
+      className="h-auto w-full max-w-72 sm:max-w-105 lg:max-w-160"
     />
   );
 }

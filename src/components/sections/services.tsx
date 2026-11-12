@@ -32,7 +32,7 @@ export async function Services() {
 					keep.
 				</p>
 			</div>
-			<div className='flex flex-col gap-8 pt-2 lg:flex-row lg:gap-10 lg:pt-3'>
+			<div className='flex flex-col gap-6 pt-2 sm:gap-8 lg:flex-row lg:gap-10 lg:pt-3'>
 				{services.map((service, index) => {
 					const pageHref = service.title
 						? SERVICE_PAGE_HREFS[service.title]
@@ -41,7 +41,7 @@ export async function Services() {
 					return (
 						<div
 							key={service.title}
-							className={`relative flex flex-1 flex-col gap-4 rounded-md border border-border-tan bg-paper p-7 shadow-[0_14px_26px_-16px_rgba(23,23,26,0.3)] transition-shadow duration-150 hover:shadow-[0_20px_32px_-16px_rgba(23,23,26,0.4)] ${tilt.rotate} ${tilt.lift ?? ''}`}
+							className={`relative flex flex-1 flex-col gap-3 rounded-md border border-border-tan bg-paper p-6 sm:gap-4 sm:p-7 shadow-[0_14px_26px_-16px_rgba(23,23,26,0.3)] transition-shadow duration-150 hover:shadow-[0_20px_32px_-16px_rgba(23,23,26,0.4)] ${tilt.rotate} ${tilt.lift ?? ''}`}
 						>
 							<span
 								aria-hidden='true'
@@ -53,7 +53,7 @@ export async function Services() {
 							<p className='text-[15px] leading-relaxed text-muted'>
 								{service.description}
 							</p>
-							<div className='mt-2 flex flex-col gap-2 text-sm text-muted-strong'>
+							<div className='mt-2 hidden flex-col gap-2 text-sm text-muted-strong sm:flex'>
 								{service.bullets?.map(bullet => (
 									<span key={bullet}>— {bullet}</span>
 								))}
