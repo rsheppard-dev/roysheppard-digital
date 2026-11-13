@@ -9,7 +9,7 @@ export const heroQuery = defineQuery(
 );
 
 export const aboutQuery = defineQuery(
-  `*[_type == "about"][0]{ eyebrow, statement, tags, badges[]{ _key, label, href }, image, "imageDimensions": image.asset->metadata.dimensions{width, height} }`,
+  `*[_type == "about"][0]{ statement, tags, badges[]{ _key, label, href }, image, "imageDimensions": image.asset->metadata.dimensions{width, height} }`,
 );
 
 export const ctaQuery = defineQuery(
@@ -29,13 +29,12 @@ export const servicePageQuery = defineQuery(
     title,
     description,
     socialImage,
-    eyebrow,
     heading,
     highlight,
     intro,
     capabilities[]{ _key, title, description, benefit },
     focusAreas[]{ _key, title, description },
-    caseStudy{ eyebrow, name, meta, url, contribution, quote, quoteName, quoteCompany },
+    caseStudy{ name, meta, url, contribution, quote, quoteName, quoteCompany },
     processIntro,
     process[]{ _key, title, description },
     faqs[]{ _key, question, answer },
@@ -49,7 +48,7 @@ export const privacyPolicyQuery = defineQuery(
 
 export const freeReviewPageQuery = defineQuery(
   `*[_type == "freeReviewPage"][0]{
-    title, description, socialImage, eyebrow, heading, intro,
+    title, description, socialImage, heading, intro,
     areasHeading, areasIntro, areas[]{ _key, title, description },
     stepsHeading, stepsIntro, steps[]{ _key, title, description },
     faqHeading, faqs[]{ _key, question, answer }
@@ -65,11 +64,11 @@ export const notFoundPageQuery = defineQuery(
 );
 
 export const workIndexPageQuery = defineQuery(
-  `*[_type == "workIndexPage"][0]{ title, description, socialImage, eyebrow, heading, intro }`,
+  `*[_type == "workIndexPage"][0]{ title, description, socialImage, heading, intro }`,
 );
 
 export const servicesIndexPageQuery = defineQuery(
-  `*[_type == "servicesIndexPage"][0]{ title, description, socialImage, eyebrow, heading, intro }`,
+  `*[_type == "servicesIndexPage"][0]{ title, description, socialImage, heading, intro }`,
 );
 
 export const servicePageSlugsQuery = defineQuery(

@@ -1,5 +1,4 @@
 import { BrowserMockup } from "@/components/ui/browser-mockup";
-import { Eyebrow } from "@/components/ui/eyebrow";
 import { TextLink } from "@/components/ui/text-link";
 
 type Fact = { label: string; value?: string | null };
@@ -29,7 +28,6 @@ export function CaseStudyHero({
   return (
     <>
       <div className="flex flex-col gap-5 px-6 pb-10 pt-8 sm:px-10 lg:gap-6 lg:px-35 lg:pb-16 lg:pt-10">
-        <Eyebrow>Case study</Eyebrow>
         <h1 className="max-w-190 text-4xl font-medium leading-[1.1] tracking-[-0.01em] sm:text-5xl lg:text-[56px] lg:leading-[1.08]">
           {name}
         </h1>

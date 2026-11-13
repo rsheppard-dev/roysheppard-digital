@@ -322,13 +322,16 @@ export function ContactForm() {
         <FieldError id="projectDetails-error" message={errors.projectDetails} />
       </div>
 
-      <button
-        type="submit"
-        disabled={submitting}
-        className="mt-2 inline-flex w-fit items-center gap-2.5 rounded-pill bg-accent px-7 py-3.5 font-semibold text-ink transition-[color,background-color,scale] ease-out-strong hover:bg-ink hover:text-cream enabled:active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60"
-      >
-        {submitting ? "Sending…" : "Send message"}
-      </button>
+      <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+        <button
+          type="submit"
+          disabled={submitting}
+          className="inline-flex w-fit items-center gap-2.5 rounded-pill bg-accent px-7 py-3.5 font-semibold text-ink transition-[color,background-color,scale] ease-out-strong hover:bg-ink hover:text-cream enabled:active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {submitting ? "Sending…" : "Send message"}
+        </button>
+        <p className="text-[13px] text-muted-strong">I usually reply within 24 hours. No obligation.</p>
+      </div>
     </form>
   );
 }

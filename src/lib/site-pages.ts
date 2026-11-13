@@ -42,7 +42,6 @@ export async function getFreeReviewPage() {
     title: page.title ?? "",
     description: page.description ?? "",
     socialImage: page.socialImage ?? null,
-    eyebrow: page.eyebrow ?? "",
     heading: page.heading ?? "",
     intro: page.intro ?? "",
     areasHeading: page.areasHeading ?? "",
@@ -91,7 +90,6 @@ export async function getWorkIndexPage() {
     title: page.title ?? "",
     description: page.description ?? "",
     socialImage: page.socialImage ?? null,
-    eyebrow: page.eyebrow ?? "",
     heading: page.heading ?? "",
     intro: page.intro ?? "",
   };
@@ -102,7 +100,6 @@ const servicesIndexFallback = {
   title: "Web Design, Development & E-Commerce Services in Watford",
   description:
     "Freelance web design, web development and e-commerce for Watford businesses. Custom-built around how you work, with support after launch.",
-  eyebrow: "Services",
   heading: "Web design, development and e-commerce in Watford",
   intro:
     "Everything is built around how your business works. Pick what sounds like you, or tell me what you need and I'll help you work it out.",
@@ -117,7 +114,6 @@ export async function getServicesIndexPage() {
     title: text("title"),
     description: text("description"),
     socialImage: (page?.socialImage as Parameters<typeof import("@/lib/page-metadata").socialImageUrl>[0] | null | undefined) ?? null,
-    eyebrow: text("eyebrow"),
     heading: text("heading"),
     intro: text("intro"),
   };

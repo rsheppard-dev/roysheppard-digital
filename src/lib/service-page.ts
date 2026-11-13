@@ -12,7 +12,6 @@ export async function getServicePage(slug: string) {
     title: data.title ?? "",
     description: data.description ?? "",
     socialImage: data.socialImage ?? null,
-    eyebrow: data.eyebrow ?? "",
     heading: data.heading ?? "",
     highlight: data.highlight ?? undefined,
     intro: data.intro ?? "",
@@ -26,7 +25,6 @@ export async function getServicePage(slug: string) {
       description: f.description ?? "",
     })),
     caseStudy: {
-      eyebrow: data.caseStudy?.eyebrow ?? "Showcase",
       name: data.caseStudy?.name ?? "",
       meta: data.caseStudy?.meta ?? "",
       url: data.caseStudy?.url ?? "",

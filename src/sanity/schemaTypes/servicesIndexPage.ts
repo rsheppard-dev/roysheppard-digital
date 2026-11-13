@@ -7,7 +7,6 @@ export const servicesIndexPage = defineType({
   type: "document",
   fields: [
     ...seoFields(),
-    requiredText("eyebrow", "Eyebrow label"),
     requiredText("heading", "Heading"),
     requiredText("intro", "Intro", 3, "The three services listed below it are managed under Services (the cards on the homepage)."),
   ],

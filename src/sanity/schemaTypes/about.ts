@@ -6,12 +6,6 @@ export const about = defineType({
   type: "document",
   fields: [
     defineField({
-      name: "eyebrow",
-      title: "Eyebrow label",
-      type: "string",
-      initialValue: "About",
-    }),
-    defineField({
       name: "statement",
       title: "Statement",
       type: "text",

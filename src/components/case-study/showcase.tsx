@@ -1,5 +1,4 @@
 import { BrowserMockup } from "@/components/ui/browser-mockup";
-import { Eyebrow } from "@/components/ui/eyebrow";
 import { PhoneMockup } from "@/components/ui/phone-mockup";
 import { Popout } from "./popout";
 import { urlFor } from "@/sanity/lib/image";
@@ -171,10 +170,7 @@ export function Showcase({ blocks }: { blocks: Block[] }) {
 
   return (
     <div className="flex flex-col gap-10 border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:gap-14 lg:px-35 lg:py-25">
-      <div className="flex flex-col gap-3">
-        <Eyebrow>Design showcase</Eyebrow>
-        <h2 className="text-3xl font-semibold lg:text-[42px]">How it came together</h2>
-      </div>
+      <h2 className="text-3xl font-semibold lg:text-[42px]">How it came together</h2>
       <div className="flex flex-col gap-16 lg:gap-28">
         {blocks.map((block) => {
           const beside = block._type === "showcaseDetail" || (block._type === "showcasePopout" && !!block.heading);

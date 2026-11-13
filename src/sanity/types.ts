@@ -22,9 +22,9 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
-export type WorkIndexPage = {
+export type ServicesIndexPage = {
   _id: string;
-  _type: "workIndexPage";
+  _type: "servicesIndexPage";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -37,7 +37,6 @@ export type WorkIndexPage = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  eyebrow?: string;
   heading?: string;
   intro?: string;
 };
@@ -56,6 +55,25 @@ export type SanityImageHotspot = {
   y?: number;
   height?: number;
   width?: number;
+};
+
+export type WorkIndexPage = {
+  _id: string;
+  _type: "workIndexPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
+  socialImage?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  heading?: string;
+  intro?: string;
 };
 
 export type NotFoundPage = {
@@ -109,7 +127,6 @@ export type FreeReviewPage = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  eyebrow?: string;
   heading?: string;
   intro?: string;
   areasHeading?: string;
@@ -378,7 +395,6 @@ export type ServicePage = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  eyebrow?: string;
   heading?: string;
   highlight?: string;
   intro?: string;
@@ -394,7 +410,6 @@ export type ServicePage = {
     _key: string;
   }>;
   caseStudy?: {
-    eyebrow?: string;
     name?: string;
     meta?: string;
     url?: string;
@@ -468,7 +483,6 @@ export type About = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  eyebrow?: string;
   statement?: string;
   badges?: Array<{
     label?: string;
@@ -615,9 +629,10 @@ export type Geopoint = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | WorkIndexPage
+  | ServicesIndexPage
   | SanityImageCrop
   | SanityImageHotspot
+  | WorkIndexPage
   | NotFoundPage
   | ContactPage
   | FreeReviewPage
@@ -677,9 +692,8 @@ export type HeroQueryResult = {
 
 // Source: src/sanity/lib/queries.ts
 // Variable: aboutQuery
-// Query: *[_type == "about"][0]{ eyebrow, statement, tags, badges[]{ _key, label, href }, image, "imageDimensions": image.asset->metadata.dimensions{width, height} }
+// Query: *[_type == "about"][0]{ statement, tags, badges[]{ _key, label, href }, image, "imageDimensions": image.asset->metadata.dimensions{width, height} }
 export type AboutQueryResult = {
-  eyebrow: string | null;
   statement: string | null;
   tags: Array<string> | null;
   badges: Array<{
@@ -736,7 +750,7 @@ export type ServicesQueryResult = Array<{
 
 // Source: src/sanity/lib/queries.ts
 // Variable: servicePageQuery
-// Query: *[_type == "servicePage" && slug.current == $slug][0]{    title,    description,    socialImage,    eyebrow,    heading,    highlight,    intro,    capabilities[]{ _key, title, description, benefit },    focusAreas[]{ _key, title, description },    caseStudy{ eyebrow, name, meta, url, contribution, quote, quoteName, quoteCompany },    processIntro,    process[]{ _key, title, description },    faqs[]{ _key, question, answer },    related[]{ _key, label, href }  }
+// Query: *[_type == "servicePage" && slug.current == $slug][0]{    title,    description,    socialImage,    heading,    highlight,    intro,    capabilities[]{ _key, title, description, benefit },    focusAreas[]{ _key, title, description },    caseStudy{ name, meta, url, contribution, quote, quoteName, quoteCompany },    processIntro,    process[]{ _key, title, description },    faqs[]{ _key, question, answer },    related[]{ _key, label, href }  }
 export type ServicePageQueryResult = {
   title: string | null;
   description: string | null;
@@ -747,7 +761,6 @@ export type ServicePageQueryResult = {
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
-  eyebrow: string | null;
   heading: string | null;
   highlight: string | null;
   intro: string | null;
@@ -763,7 +776,6 @@ export type ServicePageQueryResult = {
     description: string | null;
   }> | null;
   caseStudy: {
-    eyebrow: string | null;
     name: string | null;
     meta: string | null;
     url: string | null;
@@ -815,7 +827,7 @@ export type PrivacyPolicyQueryResult = {
 
 // Source: src/sanity/lib/queries.ts
 // Variable: freeReviewPageQuery
-// Query: *[_type == "freeReviewPage"][0]{    title, description, socialImage, eyebrow, heading, intro,    areasHeading, areasIntro, areas[]{ _key, title, description },    stepsHeading, stepsIntro, steps[]{ _key, title, description },    faqHeading, faqs[]{ _key, question, answer }  }
+// Query: *[_type == "freeReviewPage"][0]{    title, description, socialImage, heading, intro,    areasHeading, areasIntro, areas[]{ _key, title, description },    stepsHeading, stepsIntro, steps[]{ _key, title, description },    faqHeading, faqs[]{ _key, question, answer }  }
 export type FreeReviewPageQueryResult = {
   title: string | null;
   description: string | null;
@@ -826,7 +838,6 @@ export type FreeReviewPageQueryResult = {
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
-  eyebrow: string | null;
   heading: string | null;
   intro: string | null;
   areasHeading: string | null;
@@ -885,7 +896,7 @@ export type NotFoundPageQueryResult = {
 
 // Source: src/sanity/lib/queries.ts
 // Variable: workIndexPageQuery
-// Query: *[_type == "workIndexPage"][0]{ title, description, socialImage, eyebrow, heading, intro }
+// Query: *[_type == "workIndexPage"][0]{ title, description, socialImage, heading, intro }
 export type WorkIndexPageQueryResult = {
   title: string | null;
   description: string | null;
@@ -896,7 +907,23 @@ export type WorkIndexPageQueryResult = {
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
-  eyebrow: string | null;
+  heading: string | null;
+  intro: string | null;
+} | null;
+
+// Source: src/sanity/lib/queries.ts
+// Variable: servicesIndexPageQuery
+// Query: *[_type == "servicesIndexPage"][0]{ title, description, socialImage, heading, intro }
+export type ServicesIndexPageQueryResult = {
+  title: string | null;
+  description: string | null;
+  socialImage: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
   heading: string | null;
   intro: string | null;
 } | null;
@@ -1257,16 +1284,17 @@ declare module "@sanity/client" {
     '*[_type == "workItem" && slug.current == $slug][0]._updatedAt': WorkItemUpdatedQueryResult;
     '*[_type == "siteSettings"][0]{ seo }': SiteSettingsQueryResult;
     '*[_type == "hero"][0]{ badge, heading, tagline, body }': HeroQueryResult;
-    '*[_type == "about"][0]{ eyebrow, statement, tags, badges[]{ _key, label, href }, image, "imageDimensions": image.asset->metadata.dimensions{width, height} }': AboutQueryResult;
+    '*[_type == "about"][0]{ statement, tags, badges[]{ _key, label, href }, image, "imageDimensions": image.asset->metadata.dimensions{width, height} }': AboutQueryResult;
     '*[_type == "cta"][0]{ heading, body, email }': CtaQueryResult;
     '*[_type == "footer"][0]{ name, blurb, email, phone, social }': FooterQueryResult;
     '*[_type == "service"] | order(order asc){ title, description, bullets }': ServicesQueryResult;
-    '*[_type == "servicePage" && slug.current == $slug][0]{\n    title,\n    description,\n    socialImage,\n    eyebrow,\n    heading,\n    highlight,\n    intro,\n    capabilities[]{ _key, title, description, benefit },\n    focusAreas[]{ _key, title, description },\n    caseStudy{ eyebrow, name, meta, url, contribution, quote, quoteName, quoteCompany },\n    processIntro,\n    process[]{ _key, title, description },\n    faqs[]{ _key, question, answer },\n    related[]{ _key, label, href }\n  }': ServicePageQueryResult;
+    '*[_type == "servicePage" && slug.current == $slug][0]{\n    title,\n    description,\n    socialImage,\n    heading,\n    highlight,\n    intro,\n    capabilities[]{ _key, title, description, benefit },\n    focusAreas[]{ _key, title, description },\n    caseStudy{ name, meta, url, contribution, quote, quoteName, quoteCompany },\n    processIntro,\n    process[]{ _key, title, description },\n    faqs[]{ _key, question, answer },\n    related[]{ _key, label, href }\n  }': ServicePageQueryResult;
     '*[_type == "privacyPolicy"][0]{ title, description, socialImage, heading, policyUpdated, sections[]{ _key, heading, paragraphs, list } }': PrivacyPolicyQueryResult;
-    '*[_type == "freeReviewPage"][0]{\n    title, description, socialImage, eyebrow, heading, intro,\n    areasHeading, areasIntro, areas[]{ _key, title, description },\n    stepsHeading, stepsIntro, steps[]{ _key, title, description },\n    faqHeading, faqs[]{ _key, question, answer }\n  }': FreeReviewPageQueryResult;
+    '*[_type == "freeReviewPage"][0]{\n    title, description, socialImage, heading, intro,\n    areasHeading, areasIntro, areas[]{ _key, title, description },\n    stepsHeading, stepsIntro, steps[]{ _key, title, description },\n    faqHeading, faqs[]{ _key, question, answer }\n  }': FreeReviewPageQueryResult;
     '*[_type == "contactPage"][0]{ title, description, socialImage, heading, intro, stepsHeading, steps, directHeading }': ContactPageQueryResult;
     '*[_type == "notFoundPage"][0]{ title, description, heading, body, primaryButton, secondaryLink }': NotFoundPageQueryResult;
-    '*[_type == "workIndexPage"][0]{ title, description, socialImage, eyebrow, heading, intro }': WorkIndexPageQueryResult;
+    '*[_type == "workIndexPage"][0]{ title, description, socialImage, heading, intro }': WorkIndexPageQueryResult;
+    '*[_type == "servicesIndexPage"][0]{ title, description, socialImage, heading, intro }': ServicesIndexPageQueryResult;
     '*[_type == "servicePage" && defined(slug.current)]{ "slug": slug.current }': ServicePageSlugsQueryResult;
     '*[_type == "workItem"] | order(order asc){ name, meta, image, url, "slug": slug.current, "imageDimensions": image.asset->metadata.dimensions{width, height} }': WorkItemsQueryResult;
     '*[_type == "workItem" && defined(slug.current)] | order(order asc){ name, tagline, industry, projectType, url, image, "slug": slug.current, "imageDimensions": image.asset->metadata.dimensions{width, height} }': WorkIndexQueryResult;

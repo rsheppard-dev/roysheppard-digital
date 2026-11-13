@@ -1,5 +1,4 @@
 import { Card } from "@/components/ui/card";
-import { Eyebrow } from "@/components/ui/eyebrow";
 import { TextLink } from "@/components/ui/text-link";
 import { FeatureList } from "@/components/service-page/feature-list";
 import { Signature } from "@/components/ui/signature";
@@ -31,7 +30,7 @@ export function TechnologyList({ items }: { items: Technology[] }) {
   return (
     <div className="grid gap-6 border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-16 lg:px-35 lg:py-25">
       <div className="flex flex-col gap-3">
-        <Eyebrow as="h2">Built with</Eyebrow>
+        <h2 className="text-2xl font-semibold lg:text-[28px]">Built with</h2>
         <p className="max-w-75 text-[15px] leading-relaxed text-muted">
           Chosen for what they do for the business, not for the sake of the latest tools.
         </p>

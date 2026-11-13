@@ -8,7 +8,6 @@ import { Signature } from "@/components/ui/signature";
 import { Stars } from "@/components/ui/stars";
 
 type ProjectEvidenceProps = {
-  eyebrow: string;
   name: string;
   meta: string;
   url: string;
@@ -29,7 +28,6 @@ const normaliseUrl = (url?: string | null) => url?.replace(/\/+$/, "").toLowerCa
  * shown, so it's labelled on its own rather than implying it is.
  */
 export async function ProjectEvidence({
-  eyebrow,
   name,
   meta,
   url,
@@ -72,9 +70,6 @@ export async function ProjectEvidence({
           <div className="group w-full lg:w-[55%] lg:shrink-0">{mockup}</div>
         )}
         <div className="flex flex-1 flex-col gap-3.5">
-          <span className="font-mono text-xs font-medium uppercase tracking-[0.06em] text-muted">
-            {eyebrow}
-          </span>
           <h3 className="text-2xl font-bold lg:text-[34px] lg:leading-[1.15]">{name}</h3>
           <p className="text-sm text-muted">{meta}</p>
           <ul className="mt-2 flex flex-col gap-2.5 text-[15px] leading-relaxed text-muted-strong">

@@ -49,7 +49,7 @@ export const servicePage = defineType({
       title: "Page address",
       type: "slug",
       description: "The page's URL, for example web-design-watford. Do not change this on a live page.",
-      options: { source: "eyebrow" },
+      options: { source: "heading" },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -68,12 +68,6 @@ export const servicePage = defineType({
       validation: (Rule) => Rule.required().max(165).warning("Over 165 characters may be cut off in Google."),
     }),
     socialImageField(),
-    defineField({
-      name: "eyebrow",
-      title: "Eyebrow label",
-      type: "string",
-      validation: (Rule) => Rule.required(),
-    }),
     defineField({
       name: "heading",
       title: "Heading",
@@ -100,7 +94,6 @@ export const servicePage = defineType({
       title: "Showcase project",
       type: "object",
       fields: [
-        defineField({ name: "eyebrow", title: "Eyebrow label", type: "string", initialValue: "Showcase" }),
         defineField({ name: "name", title: "Project name", type: "string" }),
         defineField({ name: "meta", title: "Project summary line", type: "string" }),
         defineField({ name: "url", title: "Project website", type: "url" }),
@@ -167,7 +160,7 @@ export const servicePage = defineType({
     }),
   ],
   preview: {
-    select: { title: "eyebrow", subtitle: "slug.current" },
+    select: { title: "heading", subtitle: "slug.current" },
     prepare({ title, subtitle }) {
       return { title, subtitle: subtitle ? `/${subtitle}` : "" };
     },

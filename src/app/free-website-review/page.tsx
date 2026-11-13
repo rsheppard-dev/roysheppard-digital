@@ -5,7 +5,6 @@ import { buildPageMetadata } from "@/lib/page-metadata";
 import { PageShell } from "@/components/service-page/page-shell";
 import { Breadcrumbs } from "@/components/service-page/breadcrumbs";
 import { PageModifiedJsonLd } from "@/components/ui/page-modified-jsonld";
-import { Eyebrow } from "@/components/ui/eyebrow";
 import { Accordion } from "@/components/ui/accordion";
 import { FaqJsonLd } from "@/components/ui/faq-jsonld";
 import { ReviewForm } from "@/components/free-review/review-form";
@@ -29,7 +28,6 @@ export default async function FreeWebsiteReviewPage() {
       {/* On a phone the order is text, form, picture so the form is never pushed down; from lg the picture sits under the text. */}
       <div className="grid grid-cols-1 gap-x-18 gap-y-10 px-6 pb-20 pt-10 sm:px-10 lg:grid-cols-2 lg:gap-y-6 lg:px-35 lg:pb-24">
         <div className="flex flex-col gap-6 lg:col-start-1 lg:row-start-1">
-          <Eyebrow>{freeReview.eyebrow}</Eyebrow>
           <h1 className="max-w-150 text-4xl font-medium leading-[1.06] tracking-[-0.015em] sm:text-5xl lg:text-[60px]">
             {freeReview.heading}
           </h1>
@@ -77,7 +75,6 @@ export default async function FreeWebsiteReviewPage() {
         className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25"
       >
         <FaqJsonLd faqs={freeReview.faqs} />
-        <Eyebrow>FAQ</Eyebrow>
         <h2 className="text-3xl font-semibold lg:text-[42px]">{freeReview.faqHeading}</h2>
         <Accordion items={freeReview.faqs} />
       </div>

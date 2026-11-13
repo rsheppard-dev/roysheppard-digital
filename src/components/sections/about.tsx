@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { about as fallbackAbout } from '@/content/site';
-import { Eyebrow } from '@/components/ui/eyebrow';
 import { Tag } from '@/components/ui/tag';
 import { AboutIllustration } from '@/components/sections/about-illustration';
 import { sanityFetch } from '@/sanity/lib/live';
@@ -21,7 +20,6 @@ export async function About() {
 	const { data } = await sanityFetch({ query: aboutQuery });
 	const about = data ?? null;
 
-	const eyebrow = about?.eyebrow || fallbackAbout.eyebrow;
 	const statement = about?.statement || fallbackAbout.statement;
 	// Badges set in the Studio carry their own link. Old plain tags, or the built-in fallback, take their link from TAG_HREFS.
 	const studioBadges = (about?.badges ?? []).flatMap(badge =>
@@ -52,7 +50,7 @@ export async function About() {
 			className='flex flex-col items-center gap-10 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:flex-row lg:gap-16 lg:px-35 lg:py-25'
 		>
 			<div className='flex flex-1 flex-col gap-5 lg:gap-6'>
-				<Eyebrow as='h2'>{eyebrow}</Eyebrow>
+				<h2 className='sr-only'>About</h2>
 				<p className='max-w-145 text-xl font-medium leading-relaxed lg:text-[28px]'>
 					{statement}
 				</p>

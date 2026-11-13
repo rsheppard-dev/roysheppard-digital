@@ -11,7 +11,6 @@ import { ProjectEvidence } from "@/components/service-page/project-evidence";
 import { RelatedLinks } from "@/components/service-page/related-links";
 import { PageModifiedJsonLd } from "@/components/ui/page-modified-jsonld";
 import { ServiceJsonLd } from "@/components/service-page/service-jsonld";
-import { Eyebrow } from "@/components/ui/eyebrow";
 import { Accordion } from "@/components/ui/accordion";
 import { FaqJsonLd } from "@/components/ui/faq-jsonld";
 import { ReviewPromo } from "@/components/sections/review-promo";
@@ -37,7 +36,6 @@ export default async function WebDesignPage() {
       />
       <Breadcrumbs label="Web Design" path={PATH} parents={[{ label: "Services", path: "/services" }]} />
       <ServiceHeader
-        eyebrow={webDesign.eyebrow}
         heading={webDesign.heading}
         intro={webDesign.intro}
         aside={<WorkScreens />}
@@ -56,7 +54,6 @@ export default async function WebDesignPage() {
 
       <div className="flex flex-col gap-8 border-t border-border-tan bg-tan px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25">
         <FaqJsonLd faqs={webDesign.faqs} />
-        <Eyebrow>FAQ</Eyebrow>
         <h2 className="text-3xl font-semibold lg:text-[42px]">Web design questions</h2>
         <Accordion items={webDesign.faqs} />
       </div>

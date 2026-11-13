@@ -68,8 +68,8 @@ export const nav: {
 export const hero = {
 	badge: '',
 	heading: 'Freelance web designer & developer in Watford',
-	tagline: 'A website built around your business, by one person from first call to aftercare.',
-	body: "I'm Roy. I design and build every site around how your business works, never from a template. You can edit it yourself, you get a written quote before any work starts, and I look after it once it's live.",
+	tagline: '',
+	body: "You deal with one person, from the first call to long after launch. I design and build your website, you can edit it yourself, and I'm here for support whenever you need it.",
 };
 
 export const services = [
@@ -77,7 +77,7 @@ export const services = [
 		number: '01',
 		title: 'Web Design',
 		description:
-			'Custom, on-brand design, never a template. Built around how your customers decide to buy.',
+			'Custom design built around your business and how your customers decide to buy.',
 		bullets: [
 			'A look that matches your business',
 			'Looks right on phones first',
@@ -88,11 +88,11 @@ export const services = [
 		number: '02',
 		title: 'Web Development',
 		description:
-			'Custom-built websites and functionality, tailored to how your business works and easy to look after once they are live.',
+			'Custom-built websites and functionality, tailored to how your business works and easy for you to update.',
 		bullets: [
 			'Bookings, customer accounts and custom tools',
 			'Edit your own content, no developer needed',
-			"Looked after once it's live",
+			"Support once it's live",
 		],
 	},
 	{
@@ -115,7 +115,6 @@ export const workItems = [
 ];
 
 export const about = {
-	eyebrow: 'About',
 	statement:
 		"I'm Roy. Working from Watford, I've spent the last 6 years designing and building websites for businesses of all sizes, from new start-ups to long-established family firms, who needed something that actually worked, not just looked nice in a mockup.",
 	tags: [

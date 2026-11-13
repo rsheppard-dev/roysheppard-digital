@@ -21,7 +21,6 @@ export const freeReviewPage = defineType({
   type: "document",
   fields: [
     ...seoFields(),
-    requiredText("eyebrow", "Eyebrow label"),
     requiredText("heading", "Heading", 2),
     requiredText("intro", "Intro", 3),
     requiredText("areasHeading", "\"What I look at\" heading"),

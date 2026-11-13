@@ -1,5 +1,4 @@
 import { testimonials as fallbackTestimonials } from '@/content/site';
-import { Eyebrow } from '@/components/ui/eyebrow';
 import { RevealGroup } from '@/components/ui/reveal-group';
 import { Signature } from '@/components/ui/signature';
 import { Stars } from '@/components/ui/stars';
@@ -41,7 +40,7 @@ export async function Testimonials() {
 	return (
 		<div className='border-t border-border-tan bg-cream px-6 py-14 sm:px-10 lg:px-35 lg:py-25'>
 			<RevealGroup className='flex flex-col gap-8 lg:gap-12'>
-				<Eyebrow as='h2'>Kind words</Eyebrow>
+				<h2 className='text-3xl font-semibold lg:text-[42px]'>What clients say</h2>
 
 				<div className='flex min-w-0 flex-col gap-8 lg:gap-12'>
 					{featured && (
@@ -73,24 +72,23 @@ export async function Testimonials() {
 						role='region'
 						aria-label='More client reviews'
 						tabIndex={0}
-						className='-mx-6 flex items-start snap-x contain-[paint] lg:contain-none snap-mandatory gap-5 overflow-x-auto scroll-px-6 px-6 pb-4 outline-none focus-visible:ring-2 focus-visible:ring-accent sm:-mx-10 sm:scroll-px-10 sm:px-10 lg:mx-0 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-10 lg:gap-y-12 lg:overflow-visible lg:px-0 lg:pb-12'
+						className='-mx-6 flex items-start snap-x contain-[paint] lg:contain-none snap-mandatory gap-5 overflow-x-auto scroll-px-6 px-6 pb-4 outline-none focus-visible:ring-2 focus-visible:ring-accent sm:-mx-10 sm:scroll-px-10 sm:px-10 lg:mx-0 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-10 lg:gap-y-8 lg:overflow-visible lg:px-0 lg:pb-0'
 					>
 						{notes.map((testimonial, index) => {
 							const quote = testimonial.quote ?? '';
 							const isLastOdd =
 								notes.length % 2 === 1 && index === notes.length - 1;
-							const isRightColumn = index % 2 === 1;
 
 							return (
 								<figure
 									key={`${testimonial.name ?? ''}-${quote}`}
 									className={`reveal-item flex w-[82%] shrink-0 snap-start flex-col justify-between gap-8 rounded-md border border-border-tan bg-paper p-7 shadow-[0_14px_26px_-16px_rgba(23,23,26,0.3)] sm:w-[46%] lg:w-auto ${
 										isLastOdd
-											? 'lg:col-span-2 lg:rotate-0'
+											? 'lg:col-span-2 lg:flex-row lg:items-end lg:gap-16 lg:rotate-0'
 											: NOTE_TILTS[index % 2]
-									} ${isRightColumn ? 'lg:translate-y-12' : ''}`}
+									}`}
 								>
-									<div className='flex flex-col gap-5'>
+									<div className={`flex flex-col gap-5 ${isLastOdd ? 'lg:flex-1' : ''}`}>
 										<Stars size={14} className='reveal-stars' />
 										<blockquote
 											className={`flex flex-col gap-3 text-pretty text-[15px] leading-relaxed text-ink lg:text-base ${

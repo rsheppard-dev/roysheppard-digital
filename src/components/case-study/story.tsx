@@ -1,4 +1,3 @@
-import { Eyebrow } from "@/components/ui/eyebrow";
 
 type Chapter = {
   title: string;
@@ -35,7 +34,7 @@ export function Story({ chapters }: { chapters: Chapter[] }) {
               <span className="font-mono text-[13px] font-medium text-muted" aria-hidden="true">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <Eyebrow as="h2">{chapter.title}</Eyebrow>
+              <h2 className="text-2xl font-semibold leading-tight lg:text-[28px]">{chapter.title}</h2>
             </div>
             <div className="flex max-w-170 flex-col gap-5">
               {paragraphs.map((paragraph, paragraphIndex) => (

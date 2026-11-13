@@ -20,6 +20,9 @@ const variants = {
    */
   button:
     "inline-flex items-center gap-2.5 rounded-pill bg-accent px-7 py-3.5 font-semibold text-ink transition-[color,background-color,scale] ease-out-strong hover:bg-ink hover:text-cream active:scale-[0.97]",
+  /** Quieter partner to `button`: same pill shape and size, ink outline and no fill. Fills with ink on hover. */
+  buttonOutline:
+    "inline-flex items-center gap-2.5 rounded-pill border-[1.5px] border-ink px-6.5 py-3 font-semibold text-ink transition-[color,background-color,scale] ease-out-strong hover:bg-ink hover:text-cream active:scale-[0.97]",
   /** Same shape as `button`, inverted for use on the accent-colored CTA banner (ink fill, cream text). */
   buttonInverse:
     "inline-flex items-center gap-2.5 rounded-pill bg-ink px-7 py-3.5 font-semibold text-cream transition-[color,background-color,scale] ease-out-strong hover:bg-white hover:text-ink active:scale-[0.97]",

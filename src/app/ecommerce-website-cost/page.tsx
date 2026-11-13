@@ -155,7 +155,6 @@ export default function EcommerceCostPage() {
         ]}
       />
       <ServiceHeader
-        eyebrow="Cost guide"
         heading="How much does an ecommerce website cost?"
         highlight="cost"
         intro="Online shops start from £2,000. Here's what changes the price, what you pay for besides the build, and how I quote, so there are no surprises."

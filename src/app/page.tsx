@@ -23,9 +23,9 @@ export default function Home() {
       {/* Proof first: visitors from an ad want to see the work and what clients say before the detail. */}
       <Work />
       <Testimonials />
-      <Services />
-      <ReviewPromo />
       <About />
+      <Services />
+      <ReviewPromo tone="tan" />
       <Faq />
       <CtaBanner />
       </main>

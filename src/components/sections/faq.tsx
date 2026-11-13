@@ -1,5 +1,4 @@
 import { faqs as fallbackFaqs } from "@/content/site";
-import { Eyebrow } from "@/components/ui/eyebrow";
 import { Accordion } from "@/components/ui/accordion";
 import { FaqJsonLd } from "@/components/ui/faq-jsonld";
 import { sanityFetch } from "@/sanity/lib/live";
@@ -18,7 +17,6 @@ export async function Faq() {
       className="flex flex-col gap-8 bg-cream px-6 py-14 sm:px-10 lg:gap-10 lg:px-35 lg:py-25"
     >
       <FaqJsonLd faqs={faqs} />
-      <Eyebrow>FAQ</Eyebrow>
       <h2 className="text-3xl font-semibold lg:text-[42px]">
         Common questions
       </h2>

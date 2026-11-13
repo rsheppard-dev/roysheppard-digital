@@ -65,7 +65,7 @@ export default async function ServicesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
       <Breadcrumbs label="Services" path={PATH} />
-      <ServiceHeader eyebrow={page.eyebrow} heading={page.heading} intro={page.intro} />
+      <ServiceHeader heading={page.heading} intro={page.intro} />
 
       <div className="border-y border-border-tan bg-tan px-6 py-12 sm:px-10 lg:px-35 lg:py-20">
         <h2 className="mb-8 max-w-180 text-3xl font-medium leading-tight tracking-[-0.01em] lg:mb-10 lg:text-[44px]">
