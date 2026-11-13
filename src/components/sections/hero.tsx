@@ -31,11 +31,11 @@ export async function Hero() {
         <p className="max-w-140 text-base leading-relaxed text-muted-strong lg:text-base">
           {hero.body}
         </p>
-        <div className="mt-1 flex flex-wrap items-center gap-5 lg:mt-1 lg:gap-6">
-          <TextLink variant="button" href="/contact" className="text-base lg:text-lg">
+        <div className="mt-1 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5 lg:mt-1 lg:gap-6">
+          <TextLink variant="button" href="/contact" className="justify-center text-base sm:justify-start lg:text-lg">
             Start a project <span className="text-lg lg:text-xl">→</span>
           </TextLink>
-          <TextLink variant="buttonOutline" href="/free-website-review" className="text-base">
+          <TextLink variant="underline" href="/free-website-review" className="self-center text-base sm:self-auto">
             Get a free website review
           </TextLink>
         </div>
