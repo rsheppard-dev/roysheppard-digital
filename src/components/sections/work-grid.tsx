@@ -80,17 +80,6 @@ export function WorkGrid({
                   <span className="sr-only"> for {item.name}</span>
                 </TextLink>
               )}
-              {item.url && (
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="tap-area font-mono text-xs text-muted transition-colors hover:text-accent-text"
-                >
-                  Live site <span aria-hidden="true">↗</span>
-                  <span className="sr-only"> for {item.name} (opens in a new tab)</span>
-                </a>
-              )}
             </div>
           </li>
         );

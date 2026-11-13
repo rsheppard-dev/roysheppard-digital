@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const STATIC_SRC = "/images/hero-desk-sketch-v2.webp";
-const LOOP_SRC = "/images/hero-desk-sketch-loop-v2.webp";
+const LOOP_SRC = "/images/hero-desk-sketch-loop-v7.webp";
 const SETTLE_MS = 2500;
 
 /**
