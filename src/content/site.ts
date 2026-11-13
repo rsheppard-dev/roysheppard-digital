@@ -28,8 +28,8 @@ export const serviceLinks = [
 		title: 'Hosting and Care',
 		href: '/hosting-and-care',
 		summary: 'Hosting, updates, backups and small changes for one fixed monthly price.',
-		fit: 'Good for you if you want someone to look after your site once it is live.',
-		choice: 'I want it looked after',
+		fit: 'Good for you if you want someone on hand once your site is live.',
+		choice: 'I want support after launch',
 		image: 'looked-after-v2',
 	},
 ];
